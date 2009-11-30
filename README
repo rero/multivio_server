@@ -1,0 +1,22 @@
+=============================================================================
+Project:   Multivio
+Copyright: (C) 2009 RERO
+=============================================================================
+
+Multivio: Generic browser and visualizer for digital objects
+
+<https://www.multivio.org/>
+
+== Description
+
+Multivio is a web application that provides a flexible, functional and enjoyable platform for accessing digital content, be it in textual format (like books, articles and journals) or in other media types, including sound and video, or a mix of any of them. It is designed specifically to work as front end for digital document repositories and digital libraries.
+
+The application runs natively inside the web browser using JavaScript technology, and does not require the installation of dedicated software. (Although specific file formats may require dedicated browser plugins.)
+
+Multivio is open-source software.
+
+== Motivation
+
+Multivio was originally motivated by the requirements of the digital library RERO DOC <http://doc.rero.ch/>. However, it is meant to be open and adjustable in order to smoothly integrate with other document servers. It is also modular and extensible in order to cope with the continuous evolution of digital formats.
+
+The application is built in-house by RERO (the Library Network of Western Switzerland) <http://www.rero.ch/> under an open-source license (to be defined), and integrates existing open-source software components. Its development is co-sponsored in the framework of the project E-lib.ch: Swiss Electronic library <http://www.e-lib.ch/>.
