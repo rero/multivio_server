@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<collection>
+<dc:dc xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
+  <dc:language>lat</dc:language>
+  <dc:creator>Bartholin, Thomas</dc:creator>
+  <dc:creator>Bartholin, Caspar</dc:creator>
+  <dc:title>Thomae Bartholini, archiatri danici, Anatome quartum renovata: non tantum ex Institutionibus b.m. parentis, Caspari Bartholini, sed etiam ex omnium cùm veterum, tum recentiorum observationibus, ad circulationem Harveianam, et vasa lymphaticca directis...</dc:title>
+  <dc:identifier>http://doc.rero.ch/lm.php?url=1000,10,2,20080513151308-NS/Bartholin_AB_titre.jpg</dc:identifier>
+  <dc:identifier>http://doc.rero.ch/lm.php?url=1000,10,2,20080513151308-NS/Bartholin_AB_p289tab48.jpg</dc:identifier>
+  <dc:identifier>http://doc.rero.ch/lm.php?url=1000,10,2,20080513151308-NS/Bartholin_AB_p435tab5.jpg</dc:identifier>
+  <dc:identifier>http://doc.rero.ch/lm.php?url=1000,10,2,20080513151308-NS/Bartholin_AB_p441tab12.jpg</dc:identifier>
+  <dc:date>2008-05-13T15:00:52Z</dc:date>
+</dc:dc>
+
+</collection>

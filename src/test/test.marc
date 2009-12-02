@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<collection xmlns="http://www.loc.gov/MARC21/slim">
+<record>
+  <controlfield tag="001">12852</controlfield>
+  <datafield tag="695" ind1=" " ind2=" ">
+    <subfield code="a">communication ; linguistique appliquée ; linguistique ; langue ; périodique</subfield>
+    <subfield code="9">fre</subfield>
+  </datafield>
+  <datafield tag="982" ind1=" " ind2=" ">
+    <subfield code="a">TRANEL</subfield>
+  </datafield>
+  <datafield tag="980" ind1=" " ind2=" ">
+    <subfield code="a">JOURNAL</subfield>
+    <subfield code="b">UNINE</subfield>
+  </datafield>
+  <datafield tag="310" ind1=" " ind2=" ">
+    <subfield code="a">Bi-annuelle</subfield>
+  </datafield>
+  <datafield tag="245" ind1=" " ind2=" ">
+    <subfield code="a">Revue Tranel</subfield>
+    <subfield code="9">fre</subfield>
+  </datafield>
+  <datafield tag="024" ind1="8" ind2=" ">
+    <subfield code="p">journal</subfield>
+  </datafield>
+  <datafield tag="260" ind1=" " ind2=" ">
+    <subfield code="a">Neuchâtel</subfield>
+    <subfield code="b">Institut des sciences du langage et de la communication</subfield>
+    <subfield code="c">1980 -></subfield>
+  </datafield>
+  <datafield tag="919" ind1=" " ind2=" ">
+    <subfield code="a">Université de Neuchâtel</subfield>
+    <subfield code="b">Neuchâtel</subfield>
+    <subfield code="d">doc.support@rero.ch</subfield>
+  </datafield>
+  <datafield tag="918" ind1=" " ind2=" ">
+    <subfield code="c">Centre de Linguistique Appliquée (CLA)</subfield>
+  </datafield>
+  <datafield tag="362" ind1=" " ind2=" ">
+    <subfield code="a">N°1 (1980) -></subfield>
+  </datafield>
+  <datafield tag="041" ind1=" " ind2=" ">
+    <subfield code="a">fre</subfield>
+  </datafield>
+  <datafield tag="041" ind1=" " ind2=" ">
+    <subfield code="a">ger</subfield>
+  </datafield>
+  <datafield tag="041" ind1=" " ind2=" ">
+    <subfield code="a">eng</subfield>
+  </datafield>
+  <datafield tag="856" ind1="4" ind2=" ">
+    <subfield code="u">http://doc.rero.ch/lm.php?url=1000,20,13,tranel_n_48_2008.pdf</subfield>
+    <subfield code="f">tranel_n_48_2008.pdf</subfield>
+    <subfield code="q">pdf</subfield>
+    <subfield code="s">1794896</subfield>
+    <subfield code="z">No. 48, 2008</subfield>
+  </datafield>
+  <datafield tag="856" ind1="4" ind2=" ">
+    <subfield code="u">http://doc.rero.ch/lm.php?url=1000,20,13,tranel_n_47_2007.pdf</subfield>
+    <subfield code="f">tranel_n_47_2007.pdf</subfield>
+    <subfield code="q">pdf</subfield>
+    <subfield code="s">3056193</subfield>
+    <subfield code="z">No. 47, 2007</subfield>
+  </datafield>
+  <datafield tag="856" ind1="4" ind2=" ">
+    <subfield code="u">http://doc.rero.ch/lm.php?url=1000,20,13,tranel_n_46_2007.pdf</subfield>
+    <subfield code="f">tranel_n_46_2007.pdf</subfield>
+    <subfield code="q">pdf</subfield>
+    <subfield code="s">1685617</subfield>
+    <subfield code="z">No. 46, 2007</subfield>
+  </datafield>
+</record>
+</collection>

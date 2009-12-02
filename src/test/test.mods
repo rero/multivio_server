@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modsCollection xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.loc.gov/mods/v3" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-3.xsd">
+<mods xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.loc.gov/mods/v3" version="3.3" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-3.xsd">
+  <titleInfo>
+    <title>La Liberté</title>
+    <subTitle>journal catholique quotidien</subTitle>
+  </titleInfo>
+  <typeOfResource>text</typeOfResource>
+  <genre authority="marcgt">newspaper</genre>
+  <genre authority="local">document</genre>
+  <originInfo>
+    <place>
+      <placeTerm type="text">Fribourg</placeTerm>
+    </place>
+    <publisher>Oeuvre de St-Paul</publisher>
+    <dateIssued>1871 -&gt;</dateIssued>
+    <frequency>Quotidien</frequency>
+  </originInfo>
+  <language>
+    <languageTerm authority="iso639-2b" type="code">fre</languageTerm>
+  </language>
+  <physicalDescription>
+    <form>pdf</form>
+  </physicalDescription>
+  <tableOfContents>1920-05</tableOfContents>
+  <note>Variantes de sous-titre: l'ami du peuple. Et: quotidien politique, religieux, social. Et encore: quotidien du matin</note>
+  <subject lang="fre">
+    <topic>La Liberté, quotidien, Fribourg</topic>
+  </subject>
+  <location>
+    <url access="raw object">http://doc.rero.ch/lm.php?url=1000,25,1,19200501_102_06.pdf</url>
+  </location>
+  <location>
+    <url access="raw object">http://doc.rero.ch/lm.php?url=1000,25,1,19200503_103_04.pdf</url>
+  </location>
+  <location>
+    <url access="raw object">http://doc.rero.ch/lm.php?url=1000,25,1,19200504_104_06.pdf</url>
+  </location>
+  <location>
+    <url access="raw object">http://doc.rero.ch/lm.php?url=1000,25,1,19200505_105_04.pdf</url>
+  </location>
+  <location>
+    <url access="raw object">http://doc.rero.ch/lm.php?url=1000,25,1,19200506_106_06.pdf</url>
+  </location>
+  <location>
+    <url access="raw object">http://doc.rero.ch/lm.php?url=1000,25,1,19200507_107_04.pdf</url>
+  </location>
+  <location>
+    <url access="raw object">http://doc.rero.ch/lm.php?url=1000,25,1,19200508_108_06.pdf</url>
+  </location>
+  <location>
+    <url access="raw object">http://doc.rero.ch/lm.php?url=1000,25,1,19200510_109_04.pdf</url>
+  </location>
+  <location>
+    <url access="raw object">http://doc.rero.ch/lm.php?url=1000,25,1,19200511_110_06.pdf</url>
+  </location>
+  <location>
+    <url access="raw object">http://doc.rero.ch/lm.php?url=1000,25,1,19200512_111_06.pdf</url>
+  </location>
+  <location>
+    <url access="raw object">http://doc.rero.ch/lm.php?url=1000,25,1,19200514_112_04.pdf</url>
+  </location>
+  <location>
+    <url access="raw object">http://doc.rero.ch/lm.php?url=1000,25,1,19200515_113_06.pdf</url>
+  </location>
+  <location>
+    <url access="raw object">http://doc.rero.ch/lm.php?url=1000,25,1,19200517_114_04.pdf</url>
+  </location>
+  <location>
+    <url access="raw object">http://doc.rero.ch/lm.php?url=1000,25,1,19200518_115_06.pdf</url>
+  </location>
+  <location>
+    <url access="raw object">http://doc.rero.ch/lm.php?url=1000,25,1,19200519_116_04.pdf</url>
+  </location>
+  <location>
+    <url access="raw object">http://doc.rero.ch/lm.php?url=1000,25,1,19200520_117_04.pdf</url>
+  </location>
+  <location>
+    <url access="raw object">http://doc.rero.ch/lm.php?url=1000,25,1,19200521_118_04.pdf</url>
+  </location>
+  <location>
+    <url access="raw object">http://doc.rero.ch/lm.php?url=1000,25,1,19200522_119_06.pdf</url>
+  </location>
+  <location>
+    <url access="raw object">http://doc.rero.ch/lm.php?url=1000,25,1,19200525_120_04.pdf</url>
+  </location>
+  <location>
+    <url access="raw object">http://doc.rero.ch/lm.php?url=1000,25,1,19200526_121_06.pdf</url>
+  </location>
+  <location>
+    <url access="raw object">http://doc.rero.ch/lm.php?url=1000,25,1,19200527_122_06.pdf</url>
+  </location>
+  <location>
+    <url access="raw object">http://doc.rero.ch/lm.php?url=1000,25,1,19200528_123_04.pdf</url>
+  </location>
+  <location>
+    <url access="raw object">http://doc.rero.ch/lm.php?url=1000,25,1,19200529_124_06.pdf</url>
+  </location>
+  <location>
+    <url access="raw object">http://doc.rero.ch/lm.php?url=1000,25,1,19200531_125_04.pdf</url>
+  </location>
+  <location>
+    <url access="object in context">http://doc.rero.ch/record/3241</url>
+  </location>
+  <recordInfo>
+    <recordIdentifier>3241</recordIdentifier>
+  </recordInfo>
+</mods>
+
+</modsCollection>
