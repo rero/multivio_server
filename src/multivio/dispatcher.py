@@ -22,6 +22,7 @@ import datetime
 # third party modules
 import logger
 import parser
+import thumb
 
 class InputProcessed(object):
     def read(self, *args):
@@ -32,6 +33,7 @@ class Dispatcher(object):
     def __init__(self):
         self._logger = logger.Logger('/tmp/multivio.log')
         self._parser = parser.ParserSelector()
+        self._thumb = thumb.Thumb()
         
     def __call__(self, environ, start_response):
         path = environ['PATH_INFO']
@@ -68,6 +70,22 @@ class Dispatcher(object):
                 start_response('405 Method Not Allowed', [('content-type', 'text/html')])
                 return ["Only Post Options is allowed."]
 
+        if path == '/multivio/document/thumbnail':
+            if not self.isPostRequest(environ):
+                if opts.has_key('url'):
+                    size = 100
+                    if opts.has_key('size'):
+                        size = opts['size'][0]
+                    (header, content) = self._thumb.generate(opts['url'][0], size)
+                    start_response('200 OK', header)
+                    return [content]
+                else:
+                    start_response('400 Bad Request', [('content-type', 'text/html')])
+                    return ["Missing url options."]
+                    
+            else:
+                start_response('405 Method Not Allowed', [('content-type', 'text/html')])
+                return ["Only Post Options is allowed."]
         print "Not found!"
         start_response('404 Not Found', [('content-type', 'text/html')])
 
