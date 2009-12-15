@@ -15,7 +15,9 @@ import sys
 import os
 from optparse import OptionParser
 from xml.dom.minidom import parseString
-import urllib2, json
+import urllib2
+import json
+#import simplejson as json
 
 # third party modules
 

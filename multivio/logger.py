@@ -13,44 +13,32 @@ __license__ = "Internal Use Only"
 # import of standard modules
 import sys
 import os
-import Image
-import cStringIO
 from optparse import OptionParser
-import urllib
+import json
+#import simplejson as json
 
 # third party modules
 
 
 # local modules
-class ThumbError:
-    class InvalidUrl(Exception):
+class LoggerError:
+    class InvalidJsonFormat(Exception):
+        pass
+    class InvalidLogFile(Exception):
         pass
 
-class Thumb:
-    def __init__(self):
-        pass
+class Logger:
+    def __init__(self, file_name):
+        try:
+            self._file = file(file_name, "a")
+        except Exception:
+            raise  LoggerError.InvalidLogFile("Cannot open file for writing %s" % file_name)
     
-    def generate(self, url, size=100):
-        print '------->',url, size
-        size = int(size)
-        image_file = urllib.urlopen(url)
-        im = cStringIO.StringIO(image_file.read()) # constructs a StringIO holding the image
-        img = Image.open(im)
-        print '------->',img.format, img.size, img.mode
-        img.thumbnail((size, size), Image.ANTIALIAS)
-        print '------->',img.format, img.size, img.mode
-        #del img
-        #write to file object
-        f = cStringIO.StringIO()
-        img.save(f, "PNG")
-        img.save('out.jpg')
-        f.seek(0)
-        content = f.read()
-        header = [('content-type', 'image/png'), ('content-length',
-        str(len(content)))]
-        #output to browser
-        return(header, content)
-
+    def addLog(self, header, json_body):
+        content = json_body #json.loads(json_body)
+        self._file.write(header+"\n")
+        self._file.write(json.dumps(content, sort_keys=True, indent=4)+"\n")
+        self._file.flush()
 
 
 #---------------------------- Main Part ---------------------------------------
