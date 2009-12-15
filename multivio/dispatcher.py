@@ -25,6 +25,7 @@ import logger
 import parser
 import thumb
 import pdf
+import re
 
 class InputProcessed(object):
     def read(self, *args):
@@ -91,7 +92,7 @@ class Dispatcher(object):
         path = environ['PATH_INFO']
         print path
         opts = cgi.parse_qs(environ['QUERY_STRING'])
-        if path == '/multivio/log':
+        if re.match('.*?/log', path):
             if self.isPostRequest(environ):
                 content = self.getPostForm(environ)
                 json_body = content.value
@@ -106,7 +107,8 @@ class Dispatcher(object):
             else:
                 start_response('405 Method Not Allowed', [('content-type', 'text/html')])
                 return ["Only Post Options is allowed."]
-        if path == '/multivio/document/get':
+
+        if re.match('.*?/document/get', path):
             if not self.isPostRequest(environ):
                 if opts.has_key('url'):
                     doc = self._parser.parseUrl(opts['url'][0]) 
@@ -122,7 +124,7 @@ class Dispatcher(object):
                 start_response('405 Method Not Allowed', [('content-type', 'text/html')])
                 return ["Only Post Options is allowed."]
 
-        if path == '/multivio/document/thumbnail':
+        if re.match('.*?/document/thumbnail', path):
             if not self.isPostRequest(environ):
                 if opts.has_key('url'):
                     size = 100
@@ -139,7 +141,7 @@ class Dispatcher(object):
                 start_response('405 Method Not Allowed', [('content-type', 'text/html')])
                 return ["Only Post Options is allowed."]
         
-        if path == '/multivio/document/pdf':
+        if re.match('.*?/document/pdf', path):
             if not self.isPostRequest(environ):
                 if opts.has_key('url'):
                     pagenr = 1
@@ -160,7 +162,7 @@ class Dispatcher(object):
                 start_response('405 Method Not Allowed', [('content-type', 'text/html')])
                 return ["Only Post Options is allowed."]
         
-        if path == '/multivio/document/html':
+        if re.match('.*?/document/html', path):
             if not self.isPostRequest(environ):
                 if opts.has_key('url'):
                     pagenr = 1
@@ -234,7 +236,7 @@ if __name__ == '__main__':
         parser.error("Error: incorrect number of arguments, try --help")
     from wsgiref.simple_server import make_server
     #server = make_server('localhost', 8081, simple_app)
-    server = make_server('localhost', 4041, application)
+    server = make_server('', 4041, application)
     server.serve_forever()
 
 
