@@ -84,7 +84,12 @@ You can now access it at __http://localhost:4041__
 == TODO ==
 
 - error, message defintion for client/sever communication
+
 - home made or existing http python framework
+
+- replace pdf library by http://poppler.freedesktop.org using a python wrapper
+	such as: swig
+
 
 == Questions ==
 
