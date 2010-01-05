@@ -16,7 +16,11 @@ import os
 from optparse import OptionParser
 from xml.dom.minidom import parseString
 import urllib2
+import urllib
 import json
+import pyPdf
+from application import Application
+import re
 #import simplejson as json
 
 # third party modules
@@ -25,12 +29,31 @@ import json
 # local modules
 import cdm
 
-class ParserSelector:
+class CdmParserApp(Application):
     def __init__(self):
+        Application.__init__(self)
         #self._mods = ModsParser()
         #self._marc = MarcParser()
         self._dc = DublinCoreParser()
+        self._pdf = PdfParser()
+        self.usage = """ Using the GET method it return a CDM in json format.<br>
+<b>Arguments:</b>
+<ul> 
+    <li><em>url --string--</em>  url of a xml file representing the record.  
+</ul> <a href="/multivio/cdm/get?url=http://doc.rero.ch/record/9264/export/xd?"><b>RERODOC
+example.</b></a>"""
     
+    def get(self, environ, start_response):
+        (path, opts) = self.getParams(environ)
+        if opts.has_key('url'):
+            doc = self.parseUrl(opts['url'][0]) 
+            start_response('200 OK', [('content-type',
+                'application/json')])
+            return ["%s" % doc.json()]
+        else:
+            start_response('400 Bad Request', [('content-type', 'text/html')])
+            return ["Missing url options."]
+
     def parseFile(self, file_name):
         f = file(file_name)
         content = f.read()
@@ -38,21 +61,25 @@ class ParserSelector:
         return self._parse(content)
     
     def parseUrl(self, query_url):
-        #print query_url
-        content = urllib2.urlopen(query_url).read()
-        return self._parse(content)
+        (local_file, mime) = self.getRemoteFile(query_url)
+        content = file(local_file,'r')
+        if mime == 'application/pdf':
+            self._pdf.parse(content, query_url)
+            return self._pdf
+        if mime == 'text/xml':
+            return self._parseXml(content)
 
-    def _parse(self, content):
+    def _parseXml(self, content):
         self._dc = DublinCoreParser()
-        doc = parseString(content)
+        doc = parseString(content.read())
         root = doc.documentElement
-        #if root.namespaceURI == 'http://www.loc.gov/mods/v3':
-        #    self._mods.parse(root)
-        #    return self._mods
-        #
-        #if root.namespaceURI == 'http://www.loc.gov/MARC21/slim':
-        #    self._marc.parse(root)
-        #    return self._marc
+        #    #if root.namespaceURI == 'http://www.loc.gov/mods/v3':
+        #    #    self._mods.parse(root)
+        #    #    return self._mods
+        #    #
+        #    #if root.namespaceURI == 'http://www.loc.gov/MARC21/slim':
+        #    #    self._marc.parse(root)
+        #    #    return self._marc
     
         dc = root.getElementsByTagName('dc:dc')
         if len(dc) and dc[0].namespaceURI == 'http://purl.org/dc/elements/1.1/':
@@ -70,6 +97,28 @@ class Parser:
     def display(self):
         print self.json()
 
+class PdfParser(Parser):
+    def __init__(self):
+        Parser.__init__(self)
+        self._url = 'http://localhost/multivio/document/pdf?zoom=1&url=%s&pagenr=%s'
+    
+    def parse(self, stream, query_url):
+        reader = pyPdf.PdfFileReader(stream)
+        self._cdm = cdm.CoreDocumentModel()
+        
+        metadata = {}
+        metadata['title'] = reader.getDocumentInfo().title
+        metadata['creator'] = reader.getDocumentInfo().author
+        metadata['language'] = 'unknown'
+        root = self._cdm.addNode(metadata=metadata, label=metadata['title']) 
+
+        i = 1
+        for url in range(reader.getNumPages()):
+            parent = self._cdm.addNode(parent_id=root, label='[%d]' % i)
+            self._cdm.addNode(parent_id=parent, url=self._url
+            % (urllib.quote(query_url),i), sequenceNumber=i)
+            i= i+1
+        #self._cdm.printStructure()
 
 class DublinCoreParser(Parser):
     def __init__(self):
@@ -163,6 +212,8 @@ class DublinCoreParser(Parser):
 
 #---------------------------- Main Part ---------------------------------------
 
+application = CdmParserApp()
+
 if __name__ == '__main__':
 
     usage = "usage: %prog [options]"
@@ -176,11 +227,17 @@ if __name__ == '__main__':
     parser.add_option ("-v", "--verbose", dest="verbose",
                        help="Verbose mode",
                        action="store_true", default=False)
+    parser.add_option ("-p", "--port", dest="port",
+                       help="Http Port (Default: 4041)",
+                       type="int", default=4041)
 
 
     (options,args) = parser.parse_args ()
 
     if len(args) != 0:
         parser.error("Error: incorrect number of arguments, try --help")
+    from wsgiref.simple_server import make_server
+    server = make_server('', options.port, application)
+    server.serve_forever()
 
 
