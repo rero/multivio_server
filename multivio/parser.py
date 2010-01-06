@@ -46,7 +46,8 @@ example.</b></a>"""
     def get(self, environ, start_response):
         (path, opts) = self.getParams(environ)
         if opts.has_key('url'):
-            doc = self.parseUrl(opts['url'][0]) 
+            url = urllib.unquote(opts['url'][0])
+            doc = self.parseUrl(url) 
             start_response('200 OK', [('content-type',
                 'application/json')])
             return ["%s" % doc.json()]
@@ -100,7 +101,6 @@ class Parser:
 class PdfParser(Parser):
     def __init__(self):
         Parser.__init__(self)
-        self._url = 'http://localhost/multivio/document/pdf?zoom=1&url=%s&pagenr=%s'
     
     def parse(self, stream, query_url):
         reader = pyPdf.PdfFileReader(stream)
@@ -115,8 +115,7 @@ class PdfParser(Parser):
         i = 1
         for url in range(reader.getNumPages()):
             parent = self._cdm.addNode(parent_id=root, label='[%d]' % i)
-            self._cdm.addNode(parent_id=parent, url=self._url
-            % (urllib.quote(query_url),i), sequenceNumber=i)
+            self._cdm.addNode(parent_id=parent, url=urllib.quote(query_url), sequenceNumber=i)
             i= i+1
         #self._cdm.printStructure()
 
@@ -144,7 +143,7 @@ class DublinCoreParser(Parser):
         i = 1
         for url in urls:
             parent = self._cdm.addNode(parent_id=root, label='[%d]' % i)
-            self._cdm.addNode(parent_id=parent, url=url, sequenceNumber=i)
+            self._cdm.addNode(parent_id=parent, url=urllib.quote(url), sequenceNumber=i)
             i= i+1
         #self._cdm.printStructure()
 

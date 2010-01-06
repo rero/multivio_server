@@ -1,10 +1,9 @@
 #!/usr/bin/env python
 from distutils.core import setup
-from pdfminer import __version__
 
 setup(
     name='multivio',
-    version=__version__,
+    version='0.0.1b',
     description='Multivio server.',
     long_description='''Multivio is a project...''',
     license='Internal',

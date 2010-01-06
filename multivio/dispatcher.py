@@ -28,14 +28,15 @@ from application import Application
 class Dispatcher(Application):
     def __init__(self):
         self._apps = {}
-        self._apps['/multivio/log/post'] = logger.LoggerApp('/tmp/multivio.log')
-        self._apps['/multivio/cdm/get'] = parser.CdmParserApp()
-        self._apps['/multivio/document/get'] = document.DocumentApp()
+        self._apps['/log/post'] = logger.LoggerApp('/tmp/multivio.log')
+        self._apps['/cdm/get'] = parser.CdmParserApp()
+        self._apps['/document/get'] = document.DocumentApp()
         self.usage = """<br><h1>Welcome to the multivio server.</h1><br>"""
         
     def __call__(self, environ, start_response):
         (path, opts) = self.getParams(environ)
-        if re.match('.*?/help', path) or re.match('.*?/multivio$', path):
+        print path
+        if re.match('.*?/help', path) or len(path) == 0:
             start_response('200 OK', [('content-type', 'text/html')])
             response = [self.usage]
             response.extend(["<h2>Available pathes:</h2>"])

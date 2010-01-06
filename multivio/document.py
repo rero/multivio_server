@@ -56,9 +56,10 @@ example.</b></a>"""
         print environ
         if opts.has_key('url'):
             width = 400
+            url = urllib.unquote(opts['url'][0])
             if opts.has_key('width'):
                 width = int(opts['width'][0])
-            (image_file, mime) = self.getRemoteFile(opts['url'][0])
+            (image_file, mime) = self.getRemoteFile(url)
             if re.match('image/', mime):
                 (header, content) = self.resize(image_file, width)
                 start_response('200 OK', header)
@@ -76,8 +77,7 @@ example.</b></a>"""
             start_response('400 Bad Request', [('content-type', 'text/html')])
             return ["Missing url options."]
 
-    def getImageFromPdf(self, url, pagenr=1, width=400):
-        (filename, mime) = self.getRemoteFile(url)
+    def getImageFromPdf(self, filename, pagenr=1, width=400):
         doc = gfx.open("pdf", filename)
         page = doc.getPage(pagenr)
         width = int(width)
