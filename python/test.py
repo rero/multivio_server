@@ -16,7 +16,6 @@ import os
 from optparse import OptionParser
 
 # third party modules
-import cairo
 
 
 # local modules
@@ -47,7 +46,7 @@ if __name__ == '__main__':
 
     import mypoppler
     mypoppler.init()
-    filename = mypoppler.GooString('/tmp/558e56cb0bcb0de7c803d1d70b908088da019cf8a8760c1f0e2fee37.pdf')
+    filename = mypoppler.GooString('test.pdf')
     mypoppler.cvar.globalParams.setEnableFreeType("yes")
     mypoppler.cvar.globalParams.setAntialias("yes")
     mypoppler.cvar.globalParams.setVectorAntialias("yes")
@@ -59,6 +58,6 @@ if __name__ == '__main__':
     data = bitmap.getDataPtr()
     import Image
     img = Image.fromstring('RGB', (bitmap.getWidth(), bitmap.getHeight()), data)
-    img.save('/home/marietho/test.jpg')
+    img.save('test.jpg')
     print bitmap
     filename.thisown = 0

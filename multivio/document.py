@@ -20,8 +20,8 @@ import re
 from application import Application
 
 import Image
-import cairo
-import poppler
+import mypoppler
+mypoppler.init()
 
 
 # local modules
@@ -73,18 +73,23 @@ example.</b></a>"""
             start_response('400 Bad Request', [('content-type', 'text/html')])
             return ["Missing url options."]
 
-    def getImageFromPdf(self, filename, pagenr=1, width=400):
-        doc = poppler.document_new_from_file('file://'+filename, None)
-        page    = doc.get_page(pagenr)
-        x, y    = page.get_size()
-        height = int(width*y/x)
-        #x, y    = page.set_size(width, height)
-        surf = cairo.ImageSurface(cairo.FORMAT_ARGB32, int(x),
-            int(y))
-        ctx = cairo.Context(surf)
-        page.render(ctx)
+    def getImageFromPdf(self, filename_, pagenr=1, width=400):
+        filename = mypoppler.GooString(filename_)
+        mypoppler.cvar.globalParams.setEnableFreeType("yes")
+        mypoppler.cvar.globalParams.setAntialias("yes")
+        mypoppler.cvar.globalParams.setVectorAntialias("yes")
+        doc = mypoppler.PDFDoc(filename)
+        splash = mypoppler.SplashOutputDev(mypoppler.splashModeRGB8, 3, False, (255, 255, 255))
+        splash.startDoc(doc.getXRef())
+        doc.displayPage(splash, pagenr, 150, 150, 0, True, False, False)
+        bitmap = splash.getBitmap()
+        width = bitmap.getWidth()
+        height = bitmap.getHeight()
+        data = bitmap.getDataPtr()
+        filename.thisown = 0
+        import Image
+        pil = Image.fromstring('RGB', (bitmap.getWidth(), bitmap.getHeight()), data)
         
-        pil = Image.frombuffer("RGBA", (surf.get_width(), surf.get_height()), surf.get_data(), "raw", "BGRA", 0, 1)
         #pil.thumbnail((width, height), Image.ANTIALIAS)
         pil = pil.resize((width, height), Image.BICUBIC)
         f = cStringIO.StringIO()
