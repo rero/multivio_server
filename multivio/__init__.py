@@ -14,6 +14,6 @@ from logger import *
 from dispatcher import *
 from parser import *
 from cdm import *
-from thumb import *
+from document import *
 
 

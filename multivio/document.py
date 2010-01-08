@@ -12,20 +12,16 @@ __license__ = "Internal Use Only"
 # import of standard modules
 import sys
 import os
-import Image
 import cStringIO
 from optparse import OptionParser
 import urllib
 import cgi
 import re
-import gfx
-
-# third party modules
-from pdfminer.pdfinterp import PDFResourceManager, process_pdf
-from pdfminer.converter import HTMLConverter, TextConverter
-from pdfminer.layout import LAParams
-from pdfminer.cmap import CMapDB, find_cmap_path
 from application import Application
+
+import Image
+import cairo
+import poppler
 
 
 # local modules
@@ -78,59 +74,38 @@ example.</b></a>"""
             return ["Missing url options."]
 
     def getImageFromPdf(self, filename, pagenr=1, width=400):
-        doc = gfx.open("pdf", filename)
-        page = doc.getPage(pagenr)
-        width = int(width)
-        height = int(width*page.height/page.width)
-        data = page.asImage(width, height)
-        img = Image.fromstring('RGB', (width, height), data)
+        doc = poppler.document_new_from_file('file://'+filename, None)
+        page    = doc.get_page(pagenr)
+        x, y    = page.get_size()
+        height = int(width*y/x)
+        #x, y    = page.set_size(width, height)
+        surf = cairo.ImageSurface(cairo.FORMAT_ARGB32, int(x),
+            int(y))
+        ctx = cairo.Context(surf)
+        page.render(ctx)
+        
+        pil = Image.frombuffer("RGBA", (surf.get_width(), surf.get_height()), surf.get_data(), "raw", "BGRA", 0, 1)
+        #pil.thumbnail((width, height), Image.ANTIALIAS)
+        pil = pil.resize((width, height), Image.BICUBIC)
         f = cStringIO.StringIO()
-        img.save(f, "PNG")#, dpi=(400,400))
+        pil.save(f, "PNG")
         f.seek(0)
         content = f.read()
         header = [('content-type', 'image/png'), ('content-length',
         str(len(content)))]
-        #output to browser
         return(header, content)
     
-    def getHtmlFromPdf(self, filename, pagenr=1, width=400):
-        infp = file(filename, 'r')
-        codec = 'utf-8'
-        maxpages=10
-        maxfilesize=5000000
-        html=True
-        outfp = cStringIO.StringIO()
-        cmapdir = find_cmap_path()
-        cmapdb = CMapDB(cmapdir)
-        rsrc = PDFResourceManager(cmapdb)
-        laparams = LAParams()
-        if html:
-            device = HTMLConverter(rsrc, outfp, codec=codec, laparams=laparams,
-                showpageno=False,pagepad=0)
-        else:
-            device = TextConverter(rsrc, outfp, codec=codec, laparams=laparams)
-        process_pdf(rsrc, device, infp, [pagenr-1], maxpages=maxpages)
-        outfp.seek(0)
-        header = [('content-type', 'text/html')]
-        content = outfp.read()
-        return(header, content)
     
     def resize(self, file_name, width=100):
         width = int(width)
-        #image_file = urllib.urlopen(url)
-        #im = cStringIO.StringIO(image_file.read()) # constructs a StringIO holding the image
         img = Image.open(file_name)
         img.thumbnail((width, width), Image.ANTIALIAS)
-        #del img
-        #write to file object
         f = cStringIO.StringIO()
         img.save(f, "PNG")
-        #img.save('out.jpg')
         f.seek(0)
         content = f.read()
         header = [('content-type', 'image/png'), ('content-length',
         str(len(content)))]
-        #output to browser
         return(header, content)
 
 
