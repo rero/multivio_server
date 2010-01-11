@@ -16,7 +16,10 @@ from optparse import OptionParser
 import urllib
 import cgi
 import re
-import json
+if sys.version_info < (2, 6):
+    import simplejson as json
+else:
+    import json
 import datetime
 
 # third party modules
@@ -43,6 +46,8 @@ class LoggerApp(Application):
         (path, opts) = self.getParams(environ)
         content = self.getPostForm(environ)
         json_body = content.value
+        if isinstance(content.value, list):
+            json_body = str(content.value)
         now = datetime.datetime.today()
         header = '%s - - [%s] "POST %s/%s %s"'\
             % (environ.get('SERVER_NAME'),
