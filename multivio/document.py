@@ -12,20 +12,16 @@ __license__ = "Internal Use Only"
 # import of standard modules
 import sys
 import os
-import Image
 import cStringIO
 from optparse import OptionParser
 import urllib
 import cgi
 import re
-import gfx
-
-# third party modules
-from pdfminer.pdfinterp import PDFResourceManager, process_pdf
-from pdfminer.converter import HTMLConverter, TextConverter
-from pdfminer.layout import LAParams
-from pdfminer.cmap import CMapDB, find_cmap_path
 from application import Application
+
+import Image
+import mypoppler
+mypoppler.init()
 
 
 # local modules
@@ -77,60 +73,44 @@ example.</b></a>"""
             start_response('400 Bad Request', [('content-type', 'text/html')])
             return ["Missing url options."]
 
-    def getImageFromPdf(self, filename, pagenr=1, width=400):
-        doc = gfx.open("pdf", filename)
-        page = doc.getPage(pagenr)
-        width = int(width)
-        height = int(width*page.height/page.width)
-        data = page.asImage(width, height)
-        img = Image.fromstring('RGB', (width, height), data)
+    def getImageFromPdf(self, filename_, pagenr=1, width=400):
+        filename = mypoppler.GooString(filename_)
+        mypoppler.cvar.globalParams.setEnableFreeType("yes")
+        mypoppler.cvar.globalParams.setAntialias("yes")
+        mypoppler.cvar.globalParams.setVectorAntialias("yes")
+        doc = mypoppler.PDFDoc(filename)
+        splash = mypoppler.SplashOutputDev(mypoppler.splashModeRGB8, 3, False, (255, 255, 255))
+        splash.startDoc(doc.getXRef())
+        doc.displayPage(splash, pagenr, 150, 150, 0, True, False, False)
+        bitmap = splash.getBitmap()
+        width = bitmap.getWidth()
+        height = bitmap.getHeight()
+        data = bitmap.getDataPtr()
+        filename.thisown = 0
+        import Image
+        pil = Image.fromstring('RGB', (bitmap.getWidth(), bitmap.getHeight()), data)
+        
+        #pil.thumbnail((width, height), Image.ANTIALIAS)
+        pil = pil.resize((width, height), Image.BICUBIC)
         f = cStringIO.StringIO()
-        img.save(f, "PNG")#, dpi=(400,400))
+        pil.save(f, "PNG")
         f.seek(0)
         content = f.read()
         header = [('content-type', 'image/png'), ('content-length',
         str(len(content)))]
-        #output to browser
         return(header, content)
     
-    def getHtmlFromPdf(self, filename, pagenr=1, width=400):
-        infp = file(filename, 'r')
-        codec = 'utf-8'
-        maxpages=10
-        maxfilesize=5000000
-        html=True
-        outfp = cStringIO.StringIO()
-        cmapdir = find_cmap_path()
-        cmapdb = CMapDB(cmapdir)
-        rsrc = PDFResourceManager(cmapdb)
-        laparams = LAParams()
-        if html:
-            device = HTMLConverter(rsrc, outfp, codec=codec, laparams=laparams,
-                showpageno=False,pagepad=0)
-        else:
-            device = TextConverter(rsrc, outfp, codec=codec, laparams=laparams)
-        process_pdf(rsrc, device, infp, [pagenr-1], maxpages=maxpages)
-        outfp.seek(0)
-        header = [('content-type', 'text/html')]
-        content = outfp.read()
-        return(header, content)
     
     def resize(self, file_name, width=100):
         width = int(width)
-        #image_file = urllib.urlopen(url)
-        #im = cStringIO.StringIO(image_file.read()) # constructs a StringIO holding the image
         img = Image.open(file_name)
         img.thumbnail((width, width), Image.ANTIALIAS)
-        #del img
-        #write to file object
         f = cStringIO.StringIO()
         img.save(f, "PNG")
-        #img.save('out.jpg')
         f.seek(0)
         content = f.read()
         header = [('content-type', 'image/png'), ('content-length',
         str(len(content)))]
-        #output to browser
         return(header, content)
 
 
