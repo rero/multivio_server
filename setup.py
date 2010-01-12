@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from distutils.core import setup
+from distutils.core import setup, Extension
 
 setup(
     name='multivio',
@@ -10,6 +10,9 @@ setup(
     author='Johnny Mariethoz',
     author_email='Johnny do Mariethoz at rero do ch',
     url='http://www.multivio.org',
+    ext_modules=[Extension('multivio/_mypoppler', ['multivio/mypoppler.i'], swig_opts=['-c++', '-modern',
+        '-I/usr/include'], extra_compile_args=['-I/usr/include/poppler'])],
+        py_modules=['multivio/mypoppler'],
     packages=[
     'multivio'
     ],

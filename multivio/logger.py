@@ -16,7 +16,7 @@ from optparse import OptionParser
 import urllib
 import cgi
 import re
-import json
+import simplejson as json
 import datetime
 
 # third party modules
