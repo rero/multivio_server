@@ -16,7 +16,6 @@ from optparse import OptionParser
 import urllib
 import cgi
 import re
-import simplejson as json
 import datetime
 
 # third party modules
@@ -25,8 +24,6 @@ from application import Application
 
 # local modules
 class LoggerError:
-    class InvalidJsonFormat(Exception):
-        pass
     class InvalidLogFile(Exception):
         pass
 
@@ -42,22 +39,22 @@ class LoggerApp(Application):
     def post(self, environ, start_response):
         (path, opts) = self.getParams(environ)
         content = self.getPostForm(environ)
-        json_body = content.value
+        body = content.value
+        if isinstance(content.value, list):
+            body = str(content.value)
         now = datetime.datetime.today()
         header = '%s - - [%s] "POST %s/%s %s"'\
             % (environ.get('SERVER_NAME'),
             now, path, opts, environ.get('SERVER_PROTOCOL')
             )
-        self.addLog(header, json_body)
+        self.addLog(header, body)
         start_response('200 OK', [('content-type', 'text/html')])
         return ["Ok"]
 
-    def addLog(self, header, json_body):
-        content = json_body #json.loads(json_body)
+    def addLog(self, header, body):
         self._file.write(header+"\n")
-        self._file.write(json.dumps(content, sort_keys=True, indent=4)+"\n")
+        self._file.write(body)
         self._file.flush()
-
 
 application = LoggerApp('/tmp/multivio.log')
 

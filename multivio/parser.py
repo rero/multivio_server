@@ -17,10 +17,13 @@ from optparse import OptionParser
 from xml.dom.minidom import parseString
 import urllib2
 import urllib
-import json
 import pyPdf
 from application import Application
 import re
+if sys.version_info < (2, 6):
+    import simplejson as json
+else:
+    import json
 #import simplejson as json
 
 # third party modules

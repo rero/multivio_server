@@ -14,6 +14,10 @@ __license__ = 'Internal Use Only'
 import sys
 import os
 from optparse import OptionParser
+if sys.version_info < (2, 6):
+    import simplejson as json
+else:
+    import json
 
 # third party modules
 
@@ -100,5 +104,4 @@ if __name__ == '__main__':
     b = t.addNode(a)
     c = t.addNode(root_id)
     t.printStructure()
-    import json
     print json.dumps(t, sort_keys=True, indent=4)
