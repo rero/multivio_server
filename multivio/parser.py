@@ -44,8 +44,18 @@ class CdmParserApp(Application):
 <b>Arguments:</b>
 <ul> 
     <li><em>url --string--</em>  url of a xml file representing the record.  
-</ul> <a href="/multivio/cdm/get?url=http://doc.rero.ch/record/9264/export/xd?"><b>RERODOC
-example.</b></a>"""
+</ul> 
+<b>Examples:</b>
+<ul> 
+<li><a href="/multivio/cdm/get?url=http://doc.rero.ch/record/9264/export/xd?"><b>Simple Dublin Core.</b></a>
+<li><a
+href="/multivio/cdm/get?url=http://doc.rero.ch/lm.php?url=1000,40,6,20091106095458-OI/2009INFO006.pdf"><b>Simple Pdf.</b></a>
+<li><a
+href="/multivio/cdm/get?url=http://doc.rero.ch/record/12703/export/xd?"><b>Dublin
+Core with Pdfs inside..</b></a>
+</ul>
+
+"""
     
     def get(self, environ, start_response):
         (path, opts) = self.getParams(environ)
