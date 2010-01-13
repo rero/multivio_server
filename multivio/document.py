@@ -81,17 +81,19 @@ example.</b></a>"""
         doc = mypoppler.PDFDoc(filename)
         splash = mypoppler.SplashOutputDev(mypoppler.splashModeRGB8, 3, False, (255, 255, 255))
         splash.startDoc(doc.getXRef())
-        doc.displayPage(splash, pagenr, 150, 150, 0, True, False, False)
+        page_width = doc.getPageMediaWidth(pagenr)
+        scale = width/page_width
+        doc.displayPage(splash, pagenr, 72*scale, 72*scale, 0, True, False, False)
         bitmap = splash.getBitmap()
-        width = bitmap.getWidth()
-        height = bitmap.getHeight()
+        new_width = bitmap.getWidth()
+        new_height = bitmap.getHeight()
         data = bitmap.getDataPtr()
         filename.thisown = 0
         import Image
-        pil = Image.fromstring('RGB', (bitmap.getWidth(), bitmap.getHeight()), data)
+        pil = Image.fromstring('RGB', (new_width, new_height), data)
         
         #pil.thumbnail((width, height), Image.ANTIALIAS)
-        pil = pil.resize((width, height), Image.BICUBIC)
+        pil = pil.resize((new_width, new_height), Image.BICUBIC)
         f = cStringIO.StringIO()
         pil.save(f, "PNG")
         f.seek(0)
