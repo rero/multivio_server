@@ -25,9 +25,9 @@ else:
 # local modules
 
 class CoreDocumentModel(dict):
-    def __init__(self):
+    def __init__(self, counter=1):
         dict.__init__(self)
-        self._counter = 1
+        self._counter = counter
         self._node_name = 'n%05d'
     
     def addNode(self, parent_id=None, label=None,

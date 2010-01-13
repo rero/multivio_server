@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 from distutils.core import setup, Extension
 
+poppler_install_path = '/usr/local'
+
 setup(
     name='multivio',
     version='0.0.1b',
@@ -10,9 +12,11 @@ setup(
     author='Johnny Mariethoz',
     author_email='Johnny do Mariethoz at rero do ch',
     url='http://www.multivio.org',
-    ext_modules=[Extension('multivio/_mypoppler', ['multivio/mypoppler.i'], swig_opts=['-c++', '-modern',
-        '-I/usr/include'], extra_compile_args=['-I/usr/include/poppler'])],
-        py_modules=['multivio/mypoppler'],
+    ext_modules=[Extension('multivio/_mypoppler', ['multivio/mypoppler.i'],
+        swig_opts=['-c++', '-modern', '-I%s/include' % poppler_install_path],
+        extra_compile_args=['-I%s/include/poppler' % poppler_install_path],
+        extra_link_args=['-lpoppler'])], 
+    py_modules=['multivio/mypoppler'],
     packages=[
     'multivio'
     ],

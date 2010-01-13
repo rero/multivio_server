@@ -16,6 +16,7 @@ import os
 from optparse import OptionParser
 from xml.dom.minidom import parseString
 import urllib2
+import hashlib
 import urllib
 import pyPdf
 from application import Application
@@ -37,8 +38,8 @@ class CdmParserApp(Application):
         Application.__init__(self)
         #self._mods = ModsParser()
         #self._marc = MarcParser()
-        self._dc = DublinCoreParser()
         self._pdf = PdfParser()
+        self._dc = DublinCoreParser()
         self.usage = """ Using the GET method it return a CDM in json format.<br>
 <b>Arguments:</b>
 <ul> 
@@ -74,7 +75,7 @@ example.</b></a>"""
             return self._parseXml(content)
 
     def _parseXml(self, content):
-        self._dc = DublinCoreParser()
+        #self._dc = DublinCoreParser()
         doc = parseString(content.read())
         root = doc.documentElement
         #    #if root.namespaceURI == 'http://www.loc.gov/mods/v3':
@@ -92,28 +93,48 @@ example.</b></a>"""
             
     
 class Parser:
-    def __init__(self):
-        self._cdm = cdm.CoreDocumentModel()
+    def __init__(self, counter=1, sub_parser={}, parent=None):
+        self._cdm = cdm.CoreDocumentModel(counter=counter)
+        self._sub_parser = sub_parser
+        self._parent = parent
+        self._tmp_dir = '/tmp'
+        self._tmp_files = []
     
+    def getRemoteFile(self, url):
+        url_md5 = hashlib.sha224(url).hexdigest()
+        local_file = os.path.join(self._tmp_dir, url_md5)
+        mime = urllib.urlopen(url).info()['Content-Type']
+        if mime == 'application/pdf':
+            local_file = local_file+'.pdf'
+        if mime == 'text/xml':
+            local_file = local_file+'.xml'
+        if not os.path.isfile(local_file):
+            (filename, headers) = urllib.urlretrieve(url, local_file)
+            self._tmp_files.append(filename)
+        return (local_file, mime)
     def json(self):
-        return json.dumps(self._cdm)
+        return json.dumps(self._cdm, sort_keys=True, indent=4)
+        #return json.dumps(self._cdm)
         
     def display(self):
         print self.json()
 
-class PdfParser(Parser):
-    def __init__(self):
-        Parser.__init__(self)
+class PdfParser(Parser, ):
+    def __init__(self, counter=1, sub_parser={}, parent=None):
+        Parser.__init__(self, counter, sub_parser, parent)
+        print "Init counter", self._cdm._counter
     
     def parse(self, stream, query_url):
+        print "Parse counter", self._cdm._counter
         reader = pyPdf.PdfFileReader(stream)
-        self._cdm = cdm.CoreDocumentModel()
+        #self._cdm = cdm.CoreDocumentModel()
         
         metadata = {}
         metadata['title'] = reader.getDocumentInfo().title
         metadata['creator'] = reader.getDocumentInfo().author
         metadata['language'] = 'unknown'
-        root = self._cdm.addNode(metadata=metadata, label=metadata['title']) 
+        root = self._cdm.addNode(metadata=metadata, label=metadata['title'],
+        parent_id=self._parent) 
 
         i = 1
         for url in range(reader.getNumPages()):
@@ -123,8 +144,8 @@ class PdfParser(Parser):
         #self._cdm.printStructure()
 
 class DublinCoreParser(Parser):
-    def __init__(self):
-        Parser.__init__(self)
+    def __init__(self, counter=1, sub_parser={}, parent=None):
+        Parser.__init__(self, counter, sub_parser, parent)
     
     def parse(self, root):
         
@@ -140,14 +161,31 @@ class DublinCoreParser(Parser):
         metadata['title'] = self.getValuesForLabels(record, 'dc:title')[0]
         metadata['creator'] = self.getValuesForLabels(record, 'dc:creator')
         metadata['language'] = self.getValuesForLabels(record, 'dc:language')
-        root = self._cdm.addNode(metadata=metadata, label=metadata['title']) 
+        root = self._cdm.addNode(metadata=metadata, label=metadata['title'],
+                parent_id=self._parent) 
 
         urls = self.getValuesForLabels(record, 'dc:identifier')
         i = 1
+        parent_id = self._cdm._node_name % (self._cdm._counter - 1)
         for url in urls:
-            parent = self._cdm.addNode(parent_id=root, label='[%d]' % i)
-            self._cdm.addNode(parent_id=parent, url=urllib.quote(url), sequenceNumber=i)
-            i= i+1
+            mime = urllib.urlopen(url).info()['Content-Type']
+            if mime == 'application/pdf':
+                children_id = self._cdm._node_name % (self._cdm._counter)
+                sub_parser = PdfParser(counter=self._cdm._counter)
+                (local_file, mime) = self.getRemoteFile(url)
+                content = file(local_file,'r')
+                sub_parser.parse(content, url)
+                self._cdm._counter = sub_parser._cdm._counter
+                #sub_parser.display()
+                self._cdm.update(sub_parser._cdm)
+                if not self._cdm[parent_id].has_key('children'):
+                    self._cdm[parent_id]['children'] = []
+                self._cdm[parent_id]['children'].append(children_id)
+                self._cdm[children_id]['parentId'] = parent_id
+            else:
+                parent = self._cdm.addNode(parent_id=root, label='[%d]' % i)
+                self._cdm.addNode(parent_id=parent, url=urllib.quote(url), sequenceNumber=i)
+                i= i+1
         #self._cdm.printStructure()
 
     def getValuesForLabels(self, record, tag_name):
