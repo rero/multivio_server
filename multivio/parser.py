@@ -156,18 +156,16 @@ class PdfParser(Parser):
         reader = pyPdf.PdfFileReader(stream)
         
         metadata = {}
-        label=None
         if reader.getDocumentInfo().title is not None:
             metadata['title'] = reader.getDocumentInfo().title
-            label = metadata['title']
         else:
             metadata['title'] = 'unknown'
         if reader.getDocumentInfo().author is not None:
-            metadata['creator'] = reader.getDocumentInfo().author
+            metadata['creator'] = [reader.getDocumentInfo().author]
         else:
-            metadata['creator'] = 'unknown'
-        metadata['language'] = 'unknown'
-        root = self._cdm.addNode(metadata=metadata, label=label) 
+            metadata['creator'] = ['unknown']
+        metadata['language'] = ['unknown']
+        root = self._cdm.addNode(metadata=metadata, label=metadata['title']) 
 
         i = 1
         for url in range(reader.getNumPages()):
