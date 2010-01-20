@@ -49,7 +49,7 @@ example.</b></a>"""
     
     def get(self, environ, start_response):
         (path, opts) = self.getParams(environ)
-        print environ
+        #print environ
         if opts.has_key('url'):
             width = 400
             url = urllib.unquote(opts['url'][0])

@@ -115,9 +115,9 @@ class Application(object):
         url_md5 = hashlib.sha224(url).hexdigest()
         local_file = os.path.join(self._tmp_dir, url_md5)
         mime = urllib.urlopen(url).info()['Content-Type']
-        if mime == 'application/pdf':
+        if mime == '.*?/pdf.*?':
             local_file = local_file+'.pdf'
-        if mime == 'text/xml':
+        if re.match('.*?/xml*?', mime):
             local_file = local_file+'.xml'
         if not os.path.isfile(local_file):
             (filename, headers) = urllib.urlretrieve(url, local_file)
