@@ -99,7 +99,7 @@ Core with Pdfs inside..</b></a>
     def parseUrl(self, query_url):
         (local_file, mime) = self.getRemoteFile(query_url)
         content = file(local_file,'r')
-        if mime == '.*?/pdf.*?':
+        if re.match('.*?/pdf.*?', mime):
             self._pdf.parse(content, query_url)
             return self._pdf
         if re.match('.*?image/.*?', mime):
@@ -128,7 +128,7 @@ Core with Pdfs inside..</b></a>
         if len(dc) and dc[0].namespaceURI == 'http://purl.org/dc/elements/1.1/':
             self._dc.parse(doc)
             return self._dc
-        print "Error: no valid parser detected for %s !" % 
+        print "Error: no valid parser detected for !"
             
     
 class Parser:
