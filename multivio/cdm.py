@@ -31,7 +31,8 @@ class CoreDocumentModel(dict):
         self._node_name = 'n%05d'
     
     def addNode(self, parent_id=None, label=None,
-                metadata=None, url=None, sequenceNumber=None):
+                metadata=None, url=None, sequenceNumber=None,
+                localSequenceNumber=None):
         current_id = self._node_name % self._counter
 
         to_add = {
@@ -45,15 +46,22 @@ class CoreDocumentModel(dict):
             to_add['urlDefault'] = url
         if sequenceNumber is not None:
             to_add['sequenceNumber'] = sequenceNumber
-        if parent_id is not None:
-            parent = self[parent_id]
-            if not parent.has_key('children'):
-                parent['children'] = []
+        if localSequenceNumber is not None:
+            to_add['localSequenceNumber'] = localSequenceNumber
+        if isinstance(parent_id, str):
+            parent_id = [parent_id]
+        if parent_id is not None and len(parent_id) > 0:
+            for pi in parent_id:
+                parent = self[pi]
+                if not parent.has_key('children'):
+                    parent['children'] = []
             
-            to_add['parentId'] = parent_id
-            parent['children'].append(current_id)
+                if not to_add.has_key('parentId'):
+                    to_add['parentId'] = []
+                to_add['parentId'].append(pi)
+                parent['children'].append(current_id)
         else:
-            to_add['parentId'] = 'undefined'
+            to_add['parentId'] = []
             self._root = current_id
         self[current_id] = to_add
         self._counter = self._counter + 1

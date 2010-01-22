@@ -23,19 +23,21 @@ import document
 #import pdf
 import re
 from application import Application
+print "Path: ", sys.path
 
 
 class Dispatcher(Application):
-    def __init__(self):
+    def __init__(self, config):
+	self._config = config
         self._apps = {}
-        self._apps['/log/post'] = logger.LoggerApp('/tmp/multivio.log')
-        self._apps['/cdm/get'] = parser.CdmParserApp()
-        self._apps['/document/get'] = document.DocumentApp()
+        self._apps['.*?/log/post'] = logger.LoggerApp(os.path.join(config['log_dir'], 'multivio_client.log'))
+        self._apps['.*?/cdm/get'] = parser.CdmParserApp()
+        self._apps['.*?/document/get'] = document.DocumentApp()
         self.usage = """<br><h1>Welcome to the multivio server.</h1><br>"""
         
     def __call__(self, environ, start_response):
         (path, opts) = self.getParams(environ)
-        print path
+        print "Request: %s", path
         if re.match('.*?/help', path) or len(path) == 0:
             start_response('200 OK', [('content-type', 'text/html')])
             response = [self.usage]

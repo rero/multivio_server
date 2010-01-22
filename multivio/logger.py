@@ -28,8 +28,8 @@ class LoggerError:
         pass
 
 class LoggerApp(Application):
-    def __init__(self, file_name):
-        Application.__init__(self)
+    def __init__(self, file_name='/tmp/multivio_server.log', temp_dir=None):
+        Application.__init__(self, temp_dir)
         try:
             self._file = file(file_name, "a")
         except Exception:
