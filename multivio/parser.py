@@ -59,7 +59,7 @@ Core with Pdfs inside..</b></a>
 <b>Examples Mets:</b>
 <ul> 
 <li><a href="/multivio/cdm/get?url=http://gdz.sub.uni-goettingen.de/mets_export.php?PPN=PPN338271201"><b>DFG Example 110 pages, 4 labels+titre.</b></a>
-<li><a href="/multivio/cdm/get?url=http://gdz.sub.uni-goettingen.de/mets_export.php?PPN=PPN574578608"><b>DFG Example: 165 pages, 26 labels + titre.</b></a>
+<li><a href="/multivio/cdm/get?url=http://gdz.sub.uni-goettingen.de/mets_export.php?PPN=PPN574578609"><b>DFG Example: 165 pages, 26 labels + titre.</b></a>
 <li><a href="/multivio/cdm/get?url=http://gdz.sub.uni-goettingen.de/mets_export.php?PPN=PPN243574339"><b>DFG Example: 421 pages, 71 labels + titre.</b></a>
 <li><a href="/multivio/cdm/get?url=http://gdz.sub.uni-goettingen.de/mets_export.php?PPN=PPN326329617"><b>DFG Example: 15 pages, 3 labels + titre, fichier rattaché au root.</b></a>
 <li><a href="/multivio/cdm/get?url=http://gdz.sub.uni-goettingen.de/mets_export.php?PPN=PPN58460422X"><b>DFG Example: 172 pages, 4 labels + titre.</b></a>
@@ -74,10 +74,17 @@ Core with Pdfs inside..</b></a>
             self._dc.reset()
             self._pdf.reset()
             self._img.reset()
-            doc = self.parseUrl(url) 
-            start_response('200 OK', [('content-type',
-                'application/json')])
-            return ["%s" % doc.json()]
+            try:
+                doc = self.parseUrl(url) 
+                start_response('200 OK', [('content-type',
+                    'application/json')])
+                return ["%s" % doc.json()]
+            except Exception:
+                start_response('200 OK', [('content-type',
+                    'application/json')])
+                err = ErrorParser('Error during Parsing')
+                return ["%s" % err.json()]
+                
         else:
             start_response('400 Bad Request', [('content-type', 'text/html')])
             return ["Missing url options."]
@@ -131,6 +138,7 @@ Core with Pdfs inside..</b></a>
         print "Error: no valid parser detected for !"
             
     
+
 class Parser:
     def __init__(self, counter=1, sequence_number=1):
         self._cdm = cdm.CoreDocumentModel(counter=counter)
@@ -176,6 +184,15 @@ class PdfParser(Parser):
             self._sequence_number = self._sequence_number + 1
             self._local_sequence_number = self._local_sequence_number + 1
             i = i+1
+
+class ErrorParser(Parser):
+    def __init__(self, msg="Error", counter=1, sequence_number=1):
+        Parser.__init__(self, counter=counter, sequence_number=sequence_number)
+        metadata = {'title':msg,
+                    'creator' : ['Server'],
+                    'language' : ['en']
+        }
+        self._cdm.addNode(metadata=metadata, label=metadata['title']) 
 
 class ImageParser(Parser):
     def __init__(self, counter=1, sequence_number=1):
