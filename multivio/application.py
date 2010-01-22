@@ -26,7 +26,7 @@ class InputProcessed(object):
     readline = readlines = __iter__ = read
 
 class Application(object):
-    def __init__(self):
+    def __init__(self, temp_dir=None):
         self.usage = """<br><h1>Welcome to the multivio server.</h1>
 <h2>Available pathes:</h2>
     <h3>/multivio/document/get?url=</h3>
@@ -76,7 +76,10 @@ class Application(object):
         <a href="/multivio/document/html?pagenr=1&zoom=2&url=http://doc.rero.ch/lm.php?url=1000,43,2,20091211165357-BU/shalkevitch_rfg.pdf"><b>HTML
         example.</b></a>
 """
-        self._tmp_dir = '/tmp'
+	if temp_dir is not None:
+            self._tmp_dir = temp_dir
+	else:
+            self._tmp_dir = '/tmp'
         self._tmp_files = []
 
     def get(self, environ, start_response):
@@ -143,7 +146,6 @@ class Application(object):
         environ['wsgi.input'] = new_input
         return fs
 
-application = Application()
 
 #---------------------------- Main Part ---------------------------------------
 
@@ -170,6 +172,7 @@ if __name__ == '__main__':
     if len(args) != 0:
         parser.error("Error: incorrect number of arguments, try --help")
     from wsgiref.simple_server import make_server
+    application = Application()
     server = make_server('', options.port, application)
     server.serve_forever()
 

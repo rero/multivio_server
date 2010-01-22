@@ -28,8 +28,8 @@ class LoggerError:
         pass
 
 class LoggerApp(Application):
-    def __init__(self, file_name):
-        Application.__init__(self)
+    def __init__(self, file_name='/tmp/multivio_server.log', temp_dir=None):
+        Application.__init__(self, temp_dir)
         try:
             self._file = file(file_name, "a")
         except Exception:
@@ -56,7 +56,6 @@ class LoggerApp(Application):
         self._file.write(body)
         self._file.flush()
 
-application = LoggerApp('/tmp/multivio.log')
 
 #---------------------------- Main Part ---------------------------------------
 
@@ -81,9 +80,11 @@ if __name__ == '__main__':
 
     (options,args) = parser.parse_args ()
 
+
     if len(args) != 0:
         parser.error("Error: incorrect number of arguments, try --help")
     from wsgiref.simple_server import make_server
+    application = LoggerApp('/tmp/multivio.log')
     server = make_server('', options.port, application)
     server.serve_forever()
 

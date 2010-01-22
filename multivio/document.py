@@ -30,8 +30,8 @@ class DocumentError:
         pass
 
 class DocumentApp(Application):
-    def __init__(self):
-        Application.__init__(self)
+    def __init__(self, temp_dir=None):
+        Application.__init__(self, temp_dir)
         self.usage = """Using the GET method it return a thumbnail in PNG format of a given size for a given
 image.<br>
 <b>Arguments:</b>
@@ -52,7 +52,8 @@ example.</b></a>"""
         #print environ
         if opts.has_key('url'):
             width = 400
-            url = urllib.unquote(opts['url'][0])
+            url = opts['url'][0]
+            #url = urllib.unquote(opts['url'][0])
             if opts.has_key('width'):
                 width = int(opts['width'][0])
             (image_file, mime) = self.getRemoteFile(url)
@@ -116,7 +117,6 @@ example.</b></a>"""
         return(header, content)
 
 
-application = DocumentApp()
 
 #---------------------------- Main Part ---------------------------------------
 
@@ -144,6 +144,7 @@ if __name__ == '__main__':
     if len(args) != 0:
         parser.error("Error: incorrect number of arguments, try --help")
     from wsgiref.simple_server import make_server
+    application = DocumentApp()
     server = make_server('', options.port, application)
     server.serve_forever()
 

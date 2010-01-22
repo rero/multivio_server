@@ -33,8 +33,8 @@ else:
 import cdm
 
 class CdmParserApp(Application):
-    def __init__(self, counter=1, sequence_number=1):
-        Application.__init__(self)
+    def __init__(self, counter=1, sequence_number=1, temp_dir=None):
+        Application.__init__(self, temp_dir)
         #self._mods = ModsParser()
         #self._marc = MarcParser()
         self._pdf = PdfParser(counter=counter, sequence_number=sequence_number)
@@ -70,7 +70,8 @@ Core with Pdfs inside..</b></a>
     def get(self, environ, start_response):
         (path, opts) = self.getParams(environ)
         if opts.has_key('url'):
-            url = urllib.unquote(opts['url'][0])
+            url = opts['url'][0]
+            #url = urllib.unquote(opts['url'][0])
             self._dc.reset()
             self._pdf.reset()
             self._img.reset()
@@ -100,7 +101,7 @@ Core with Pdfs inside..</b></a>
         opts = {}
         to_parse = environ['QUERY_STRING']
         if len(to_parse) > 0:
-            opts['url'] = [to_parse.replace('url=','')]
+            opts['url'] = [to_parse.replace('url=','', 1)]
         return (path, opts)
 
     def parseUrl(self, query_url):
@@ -510,7 +511,6 @@ class MedsParser(Parser):
 
 #---------------------------- Main Part ---------------------------------------
 
-application = CdmParserApp()
 
 if __name__ == '__main__':
 
@@ -535,6 +535,7 @@ if __name__ == '__main__':
     if len(args) != 0:
         parser.error("Error: incorrect number of arguments, try --help")
     from wsgiref.simple_server import make_server
+    application = CdmParserApp()
     server = make_server('', options.port, application)
     server.serve_forever()
 
