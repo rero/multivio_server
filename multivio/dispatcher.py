@@ -17,13 +17,12 @@ from optparse import OptionParser
 
 # third party modules
 import logger
-import parser
+import mvo_parser
 import document
 #import thumb
 #import pdf
 import re
 from application import Application
-print "Path: ", sys.path
 
 
 class Dispatcher(Application):
@@ -37,7 +36,7 @@ class Dispatcher(Application):
             }
         self._apps = {}
         self._apps['.*?/log/post'] = logger.LoggerApp(os.path.join(self._config['log_dir'], 'multivio_client.log'))
-        self._apps['.*?/cdm/get'] = parser.CdmParserApp(temp_dir=self._config['temp_data_dir'])
+        self._apps['.*?/cdm/get'] = mvo_parser.CdmParserApp(temp_dir=self._config['temp_data_dir'])
         self._apps['.*?/document/get'] = document.DocumentApp(temp_dir=self._config['temp_data_dir'])
         self.usage = """<br><h1>Welcome to the multivio server.</h1><br>"""
         

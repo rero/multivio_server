@@ -118,8 +118,13 @@ class Application(object):
         url_md5 = hashlib.sha224(url).hexdigest()
         local_file = os.path.join(self._tmp_dir, url_md5)
         mime = urllib.urlopen(url).info()['Content-Type']
-        if mime == '.*?/pdf.*?':
+        print "Mime: %s" % mime
+        if re.match('.*?/pdf.*?', mime):
             local_file = local_file+'.pdf'
+        if re.match('.*?/png.*?', mime):
+            local_file = local_file+'.png'
+        if re.match('.*?/jpeg.*?', mime):
+            local_file = local_file+'.jpg'
         if re.match('.*?/xml*?', mime):
             local_file = local_file+'.xml'
         if not os.path.isfile(local_file):
