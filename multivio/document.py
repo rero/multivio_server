@@ -143,9 +143,9 @@ if __name__ == '__main__':
 
     if len(args) != 0:
         parser.error("Error: incorrect number of arguments, try --help")
-    from wsgiref.simple_server import make_server
-    application = DocumentApp()
-    server = make_server('', options.port, application)
-    server.serve_forever()
-
+    #from wsgiref.simple_server import make_server
+    #application = DocumentApp()
+    #server = make_server('', options.port, application)
+    #server.serve_forever()
+    
 

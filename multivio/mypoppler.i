@@ -58,9 +58,6 @@ void init();
   { 
     //SplashColor temp;
     unsigned char* temp = (unsigned char*) malloc(3*sizeof(unsigned char));
-    printf("%d\n", temp[0] );
-    printf("%d\n", temp[1] );
-    printf("%d\n", temp[2] );
     fflush(stdout);
     /*
     if (!PyArg_ParseTuple($input,"iii", & temp[0], & temp[1], &temp[2])) 
@@ -72,9 +69,6 @@ void init();
     temp[0] = 255;
     temp[1] = 255;
     temp[2] = 255;
-    printf("%d\n", temp[0] );
-    printf("%d\n", temp[1] );
-    printf("%d\n", temp[2] );
     $1 = temp; 
   } 
   else 

@@ -79,8 +79,8 @@ Core with Pdfs inside..</b></a>
             self._dc.reset()
             self._pdf.reset()
             self._img.reset()
-            doc = self.parseUrl(url) 
             try:
+                doc = self.parseUrl(url) 
                 start_response('200 OK', [('content-type',
                     'application/json')])
                 return ["%s" % doc.json()]
@@ -180,10 +180,13 @@ class TocPdfParser(Parser, pyPdf.PdfFileReader):
             t = pages["/Type"]
             if t == "/Pages":
                 for page in pages["/Kids"]:
-                    _result[page.idnum] = len(_num_pages)
+                    #if len(_num_pages) == 0:
+                        #_num_pages.append(1)
+                    _result[page.idnum] = len(_num_pages) + 1
                     _setup_page_id_to_num(page.getObject(), _result, _num_pages)
-            elif t == "/Page":
-                _num_pages.append(1)
+            else:
+                if t == "/Page":
+                    _num_pages.append(1)
             return _result
         self._page_id_to_page_numbers = _setup_page_id_to_num()
 
@@ -193,6 +196,7 @@ class TocPdfParser(Parser, pyPdf.PdfFileReader):
     def displayToc(self):
         print "Title: %s" % self.getDocumentInfo().title
         print "Author: %s" % self.getDocumentInfo().author
+        print "Number of pages: %s" % self.getNumPages()
         res = {}
         def print_part(data, space=' '):
             for obj in data:
@@ -216,7 +220,6 @@ class TocPdfParser(Parser, pyPdf.PdfFileReader):
             metadata['title'] = 'PDF Document'
             pdf_file_parts = query_url.split('/')
             if len(pdf_file_parts) > 0:
-                print pdf_file_parts
                 if re.match('.*?\.pdf', pdf_file_parts[-1]):
                     metadata['title'] = pdf_file_parts[-1]
 
@@ -244,13 +247,14 @@ class TocPdfParser(Parser, pyPdf.PdfFileReader):
                 elif isinstance(obj, list):
                     get_parts(obj, current)
         outlines = self.getOutlines()
-        if len(outlines) > 0:
+        if self.hasToc() :
             get_parts(self.getOutlines(), root)
             self.appendPages(query_url)
         else:
             for i in range(self.getNumPages()):
                 self._cdm.addNode(url=urllib.quote(query_url),
-                    sequenceNumber=self._sequence_number+i, localSequenceNumber=i+1,
+                    sequenceNumber=self._sequence_number+i,
+                    localSequenceNumber=i+1,
                     parent_id=root)
         self._sequence_number = self._sequence_number + self.getNumPages()
         self._local_sequence_number = self._local_sequence_number + self.getNumPages()
@@ -267,22 +271,24 @@ class TocPdfParser(Parser, pyPdf.PdfFileReader):
         n_pages = self.getNumPages()
         for i, p in enumerate(pages):
             _from = p
-            _to = n_pages
+            _to = n_pages+1
             if i < len(pages) -1:
                 _to = pages[i+1]
-            for parent_id in self._physical_to_logical[p][:-1]:
+            if len(self._physical_to_logical[p][:-1]) > 0:
                 self._cdm.addNode(url=urllib.quote(query_url),
-                    sequenceNumber=p, localSequenceNumber=p,
-                    parent_id=parent_id)
+                    sequenceNumber=p+self._sequence_number - 1, localSequenceNumber=p,
+                    parent_id=self._physical_to_logical[p])
+                _from = _from + 1
             for i in range(_from, _to):
                 self._cdm.addNode(url=urllib.quote(query_url),
-                    sequenceNumber=self._sequence_number+i, localSequenceNumber=i,
+                    sequenceNumber=self._sequence_number + i - 1,
+                    localSequenceNumber=i,
                     parent_id=self._physical_to_logical[p][-1])
 
     
 class ErrorParser(Parser):
     def __init__(self, msg="Error", counter=1, sequence_number=1):
-        Parser.__init__(self, counter=counter, sequence_number=sequence_number)
+        Parser.__init__(self, counter=-1, sequence_number=sequence_number)
         metadata = {'title':msg,
                     'creator' : ['Server'],
                     'language' : ['en']
@@ -623,11 +629,15 @@ if __name__ == '__main__':
 
     (options,args) = parser.parse_args ()
 
-    if len(args) != 0:
+    if len(args) != 1:
         parser.error("Error: incorrect number of arguments, try --help")
-    from wsgiref.simple_server import make_server
-    application = CdmParserApp()
-    server = make_server('', options.port, application)
-    server.serve_forever()
+    #from wsgiref.simple_server import make_server
+    #application = CdmParserApp()
+    #server = make_server('', options.port, application)
+    #server.serve_forever()
+    pdf_file_name = args[0]
+    parser = TocPdfParser()
+    parser.parse(stream=file(pdf_file_name), query_url=pdf_file_name)
+    parser.displayToc()
 
 
