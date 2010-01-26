@@ -21,6 +21,12 @@ import shutil
 
 from wsgiref.util import setup_testing_defaults
 
+class ApplicationError:
+    """Base class for errors in the Urn packages."""
+    class InvalidURL(Exception):
+        """The configuration is not valid."""
+        pass
+
 class InputProcessed(object):
     def read(self, *args):
         raise EOFError('The wsgi.input stream has already been consumed')
@@ -118,7 +124,10 @@ class Application(object):
     def getRemoteFile(self, url):
         url_md5 = hashlib.sha224(url).hexdigest()
         local_file = os.path.join(self._tmp_dir, url_md5)
-        mime = urllib.urlopen(url).info()['Content-Type']
+        try:
+            mime = urllib.urlopen(url).info()['Content-Type']
+        except Exception:
+            raise ApplicationError.InvalidURL("Invalid URL: %s" % url)
         print "Mime: %s" % mime
         if re.match('.*?/pdf.*?', mime):
             local_file = local_file+'.pdf'

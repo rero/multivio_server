@@ -29,6 +29,21 @@ else:
 # third party modules
 
 
+class ParserError:
+    """Base class for errors in the Urn packages."""
+    class InvalidMimeType(Exception):
+        """The configuration is not valid."""
+        pass
+    class InvalidPdfDocument(Exception):
+        """The configuration is not valid."""
+        pass
+    class InvalidDublinCore(Exception):
+        """The configuration is not valid."""
+        pass
+    class InvalidMedsDocument(Exception):
+        """The configuration is not valid."""
+        pass
+
 # local modules
 import cdm
 
@@ -84,10 +99,10 @@ Core with Pdfs inside..</b></a>
                 start_response('200 OK', [('content-type',
                     'application/json')])
                 return ["%s" % doc.json()]
-            except Exception:
+            except Exception, detail:
                 start_response('200 OK', [('content-type',
                     'application/json')])
-                err = ErrorParser('Error during Parsing')
+                err = ErrorParser('Error: %s' % detail)
                 return ["%s" % err.json()]
                 
         else:
@@ -111,15 +126,16 @@ Core with Pdfs inside..</b></a>
     def parseUrl(self, query_url):
         (local_file, mime) = self.getRemoteFile(query_url)
         content = file(local_file,'r')
+        print "Url: %s Detected Mime: %s" % (query_url, mime)
         if re.match('.*?/pdf.*?', mime):
             self._pdf.parse(content, query_url)
             return self._pdf
         if re.match('.*?image/.*?', mime):
             self._img.parse(query_url)
             return self._img
-        print "Url: %s Detected Mime: %s" % (query_url, mime)
         if re.match('.*?/xml.*?', mime):
             return self._parseXml(content)
+        raise ParserError.InvalidMimeType("Not parser found for %s document type." % mime)
 
     def _parseXml(self, content):
         #self._dc = DublinCoreParser()
@@ -140,7 +156,7 @@ Core with Pdfs inside..</b></a>
         if len(dc) and dc[0].namespaceURI == 'http://purl.org/dc/elements/1.1/':
             self._dc.parse(doc, temp_dir=self._tmp_dir)
             return self._dc
-        print "Error: no valid parser detected for !"
+        raise ParserError.InvalidMimeType("Not valid XML parser found." % mime)
             
     
 
@@ -231,7 +247,10 @@ class TocPdfParser(Parser, pyPdf.PdfFileReader):
         return metadata
 
     def parse(self, stream, query_url):
-        self.__initpdf__(stream)
+        try:
+            self.__initpdf__(stream)
+        except Exception:
+            raise ParserError.InvalidPdfDocument("Cannot extract page from pdf: %s" % query_url)
         metadata = self.getMetaData(query_url)
         root = self._cdm.addNode(metadata=metadata, label=metadata['title']) 
         self._physical_to_logical = {1:[root]}
@@ -315,9 +334,9 @@ class DublinCoreParser(Parser):
 
         # get the id number of the first record
         if len(records) == 0:
-                print "No mods"
+                raise PaserError.InvalidDublinCore("XML/Dublin Core document should contains at lease one record!")
         if len(records) > 1:
-                print "More than one mods"
+                raise PaserError.InvalidDublinCore("XML/Dublin Core document should not contains more than one record!")
         record = records[0]
         metadata = {}
         metadata['title'] = self.getValuesForLabels(record, 'dc:title')[0]
@@ -394,7 +413,6 @@ class MedsParser(Parser):
         self.getFileList(root)
         self.getRelationBetweenPhysicalAndLogical(root)
         #self.connectLogicalStructure()
-        print self._logical_structure
         
         logical_nodes = self._logical_structure.keys()
         logical_nodes.sort()
@@ -457,10 +475,10 @@ class MedsParser(Parser):
                     if not self._physical_to_logical.has_key(f):
                         self._physical_to_logical[f] = []
                     self._physical_to_logical[f].append(cdm_root)
-                    #try:
-                    self._physical_to_logical[f].remove(cdm_node)
-                    #except:
-                    #    pass
+                    try:
+                        self._physical_to_logical[f].remove(cdm_node)
+                    except:
+                        pass
             self.appendChild(cdm_root, childs[n])
             #self.addFiles(cdm_root, childs[n]['files'])
         #for n in logical_nodes[1:]:
