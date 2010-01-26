@@ -326,13 +326,14 @@ class DublinCoreParser(Parser):
             parser_chooser = CdmParserApp(counter=self._cdm._counter,
                 sequence_number=self._sequence_number)
             sub_parser = parser_chooser.parseUrl(url)
-            self._cdm._counter = sub_parser._cdm._counter
-            self._cdm.update(sub_parser._cdm)
-            if not self._cdm[parent_id].has_key('children'):
-                self._cdm[parent_id]['children'] = []
-            self._cdm[parent_id]['children'].append(children_id)
-            self._cdm[children_id]['parentId'] = parent_id
-            self._sequence_number = sub_parser._sequence_number
+            if sub_parser is not None:
+                self._cdm._counter = sub_parser._cdm._counter
+                self._cdm.update(sub_parser._cdm)
+                if not self._cdm[parent_id].has_key('children'):
+                    self._cdm[parent_id]['children'] = []
+                self._cdm[parent_id]['children'].append(children_id)
+                self._cdm[children_id]['parentId'] = parent_id
+                self._sequence_number = sub_parser._sequence_number
         #self._cdm.printStructure()
 
     def getValuesForLabels(self, record, tag_name):
