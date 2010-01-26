@@ -138,7 +138,7 @@ Core with Pdfs inside..</b></a>
     
         dc = doc.getElementsByTagName('dc:dc')
         if len(dc) and dc[0].namespaceURI == 'http://purl.org/dc/elements/1.1/':
-            self._dc.parse(doc)
+            self._dc.parse(doc, temp_dir=self._tmp_dir)
             return self._dc
         print "Error: no valid parser detected for !"
             
@@ -303,7 +303,7 @@ class DublinCoreParser(Parser):
     def __init__(self, counter=1, sequence_number=1):
         Parser.__init__(self, counter=counter, sequence_number=sequence_number)
     
-    def parse(self, root):
+    def parse(self, root, temp_dir):
         
         records = root.getElementsByTagName('collection')
 
@@ -324,7 +324,7 @@ class DublinCoreParser(Parser):
         for url in urls:
             children_id = self._cdm._node_name % (self._cdm._counter)
             parser_chooser = CdmParserApp(counter=self._cdm._counter,
-                sequence_number=self._sequence_number)
+                sequence_number=self._sequence_number, temp_dir=temp_dir)
             sub_parser = parser_chooser.parseUrl(url)
             if sub_parser is not None:
                 self._cdm._counter = sub_parser._cdm._counter
