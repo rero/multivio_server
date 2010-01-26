@@ -128,10 +128,20 @@ class Application(object):
             local_file = local_file+'.jpg'
         if re.match('.*?/xml*?', mime):
             local_file = local_file+'.xml'
+        lock_file = local_file+".lock"
         if not os.path.isfile(local_file):
-            (filename, headers) = urllib.urlretrieve(url)
-            shutil.move(filename, local_file)
-            self._tmp_files.append(local_file)
+            if not os.path.isfile(lock_file):
+                print "Create: ", lock_file
+                open(lock_file, 'w').close() 
+                (filename, headers) = urllib.urlretrieve(url)
+                shutil.move(filename, local_file)
+                self._tmp_files.append(local_file)
+                os.remove(lock_file)
+                print "Remove: ", lock_file
+            else:
+                while os.path.isfile(lock_file):
+                    "Wait for file"
+                    time.sleep(.2)
         return (local_file, mime)
 
     def cleanTmpFiles(self):
