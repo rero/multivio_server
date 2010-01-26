@@ -128,8 +128,9 @@ class Application(object):
         if re.match('.*?/xml*?', mime):
             local_file = local_file+'.xml'
         if not os.path.isfile(local_file):
-            (filename, headers) = urllib.urlretrieve(url, local_file)
-            self._tmp_files.append(filename)
+            (filename, headers) = urllib.urlretrieve(url)
+            shutils.move(filename, local_file)
+            self._tmp_files.append(local_file)
         return (local_file, mime)
 
     def cleanTmpFiles(self):
