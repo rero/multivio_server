@@ -17,6 +17,7 @@ import cgi
 import re
 import hashlib
 import urllib
+import shutil
 
 from wsgiref.util import setup_testing_defaults
 
@@ -129,7 +130,7 @@ class Application(object):
             local_file = local_file+'.xml'
         if not os.path.isfile(local_file):
             (filename, headers) = urllib.urlretrieve(url)
-            shutils.move(filename, local_file)
+            shutil.move(filename, local_file)
             self._tmp_files.append(local_file)
         return (local_file, mime)
 
