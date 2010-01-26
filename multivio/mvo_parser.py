@@ -65,6 +65,10 @@ Core with Pdfs inside..</b></a>
 <li><a href="/multivio/cdm/get?url=http://gdz.sub.uni-goettingen.de/mets_export.php?PPN=PPN58460422X"><b>DFG Example: 172 pages, 4 labels + titre.</b></a>
 <li><a href="/multivio/cdm/get?url=http://gdz.sub.uni-goettingen.de/mets_export.php?PPN=PPN574841571"><b>DFG Example: 276 pages, 24 labels + titre.</b></a>
 </ul>
+<b>Examples Pdf:</b>
+<ul> 
+<li><a href="/multivio/cdm/get?url=http://doc.rero.ch/lm.php?url=1000,40,4,20091104141001-BU/Th_FautschC.pdf"><b>PDF with TOC.</b></a>
+</ul>
 """
     
     def get(self, environ, start_response):
@@ -75,8 +79,8 @@ Core with Pdfs inside..</b></a>
             self._dc.reset()
             self._pdf.reset()
             self._img.reset()
+            doc = self.parseUrl(url) 
             try:
-                doc = self.parseUrl(url) 
                 start_response('200 OK', [('content-type',
                     'application/json')])
                 return ["%s" % doc.json()]
@@ -156,36 +160,146 @@ class Parser:
     def display(self):
         print self.json()
 
+
+class TocPdfParser(Parser, pyPdf.PdfFileReader):
+    def __init__(self, stream, counter=1, sequence_number=1):
+        Parser.__init__(self, counter=counter, sequence_number=sequence_number)
+        pyPdf.PdfFileReader.__init__(self, stream)
+        self._physical_to_logical = None
+        
+        self._local_sequence_number = 1
+        def _setup_page_id_to_num(pages=None, _result=None, _num_pages=None):
+            if _result is None:
+                _result = {}
+            if pages is None:
+                _num_pages = []
+                pages = self.trailer["/Root"].getObject()["/Pages"].getObject()
+            t = pages["/Type"]
+            if t == "/Pages":
+                for page in pages["/Kids"]:
+                    _result[page.idnum] = len(_num_pages)
+                    _setup_page_id_to_num(page.getObject(), _result, _num_pages)
+            elif t == "/Page":
+                _num_pages.append(1)
+            return _result
+
+        self._page_id_to_page_numbers = _setup_page_id_to_num()
+
+
+    def getPageNumber(self, title):
+        return self._page_id_to_page_numbers.get(page_idnum, '???')
+
+    def displayToc(self):
+        print "Title: %s" % self.getDocumentInfo().title
+        print "Author: %s" % self.getDocumentInfo().author
+        res = {}
+        def print_part(data, space=' '):
+            for obj in data:
+                if isinstance(obj, pyPdf.pdf.Destination):
+                    print "%s%s %s" %(space, obj.title,
+                        self._page_id_to_page_numbers.get(obj.page.idnum, '???'))
+                elif isinstance(obj, list):
+                    print_part(obj, space + "  ")
+        print_part(self.getOutlines())
+    
+    def getMetaData(self, query_url):
+        metadata = {}
+        info = None
+        try:
+            info = self.getDocumentInfo()
+        except:
+            pass
+        if info and info.title is not None:
+            metadata['title'] = self.getDocumentInfo().title
+        else:
+            metadata['title'] = 'PDF Document'
+            pdf_file_parts = query_url.split('/')
+            if len(pdf_file_parts) > 0:
+                print pdf_file_parts
+                if re.match('.*?\.pdf', pdf_file_parts[-1]):
+                    metadata['title'] = pdf_file_parts[-1]
+
+        if info and info.author is not None:
+            metadata['creator'] = [self.getDocumentInfo().author]
+        else:
+            metadata['creator'] = ['unknown']
+        metadata['language'] = ['unknown']
+        return metadata
+
+    def parse(self, query_url):
+        metadata = self.getMetaData(query_url)
+        root = self._cdm.addNode(metadata=metadata, label=metadata['title']) 
+        self._physical_to_logical = {1:[root]}
+        def get_parts(data, parent_id):
+            for obj in data:
+                if isinstance(obj, pyPdf.pdf.Destination):
+                    label = obj.title
+                    pagenr = self._page_id_to_page_numbers.get(obj.page.idnum, '???')
+                    current = self._cdm.addNode(parent_id=parent_id, label=label)
+                    if not self._physical_to_logical.has_key(pagenr):
+                        self._physical_to_logical[pagenr] = []
+                    self._physical_to_logical[pagenr].append(current)
+                elif isinstance(obj, list):
+                    get_parts(obj, current)
+        get_parts(self.getOutlines(), root)
+        self.appendPages(query_url)
+    
+    def appendPages(self, query_url):
+        pages = self._physical_to_logical.keys()
+        pages.sort()
+        n_pages = self.getNumPages()
+        for i, p in enumerate(pages):
+            _from = p
+            _to = n_pages
+            if i < len(pages) -1:
+                _to = pages[i+1]
+            for parent_id in self._physical_to_logical[p][:-1]:
+                self._cdm.addNode(url=urllib.quote(query_url),
+                    sequenceNumber=p, localSequenceNumber=p,
+                    parent_id=parent_id)
+            for i in range(_from, _to):
+                self._cdm.addNode(url=urllib.quote(query_url),
+                    sequenceNumber=i, localSequenceNumber=i,
+                    parent_id=self._physical_to_logical[p][-1])
+
 class PdfParser(Parser):
     def __init__(self, counter=1, sequence_number=1):
         Parser.__init__(self, counter=counter, sequence_number=sequence_number)
         self._local_sequence_number = 1
     
-    def parse(self, stream, query_url):
-        reader = pyPdf.PdfFileReader(stream)
-        
+    def getMetaData(self, reader, query_url):
         metadata = {}
-        if reader.getDocumentInfo().title is not None:
+        info = None
+        try:
+            info = reader.getDocumentInfo()
+        except:
+            pass
+        if info and info.title is not None:
             metadata['title'] = reader.getDocumentInfo().title
         else:
-            metadata['title'] = 'unknown'
-        if reader.getDocumentInfo().author is not None:
+            metadata['title'] = 'PDF Document'
+        pdf_file_parts = query_url.split('/')
+        if len(pdf_file_parts) > 0:
+            print pdf_file_parts
+            if re.match('.*?\.pdf', pdf_file_parts[-1]):
+                metadata['title'] = pdf_file_parts[-1]
+
+        if info and info.author is not None:
             metadata['creator'] = [reader.getDocumentInfo().author]
         else:
             metadata['creator'] = ['unknown']
         metadata['language'] = ['unknown']
-        root = self._cdm.addNode(metadata=metadata, label=metadata['title']) 
+        return metadata
 
-        i = 1
-        for url in range(reader.getNumPages()):
-            parent = self._cdm.addNode(parent_id=root, label='[%d]' % i)
-            self._cdm.addNode(parent_id=parent, url=urllib.quote(query_url),
-                sequenceNumber=self._sequence_number,
-                localSequenceNumber=self._local_sequence_number)
-            self._sequence_number = self._sequence_number + 1
-            self._local_sequence_number = self._local_sequence_number + 1
-            i = i+1
-
+    def parse(self, stream, query_url):
+        reader = pyPdf.PdfFileReader(stream)
+        print "Start Parsing: pdf: %s" % query_url
+        
+        pdf_toc = TocPdfParser(stream)
+        pdf_toc.parse(query_url)
+        #pdf_toc.displayToc()
+        self._cdm = pdf_toc._cdm
+    
 class ErrorParser(Parser):
     def __init__(self, msg="Error", counter=1, sequence_number=1):
         Parser.__init__(self, counter=counter, sequence_number=sequence_number)
@@ -200,12 +314,8 @@ class ImageParser(Parser):
         Parser.__init__(self, counter=counter, sequence_number=sequence_number)
 
     def parse(self, url):
-        label = None
-        if self._sequence_number is not None:
-            label = "[%d]" % self._sequence_number
-        parent = self._cdm.addNode(label=label)
         self._cdm.addNode(url=urllib.quote(url),
-            sequenceNumber=self._sequence_number, parent_id=parent)
+            sequenceNumber=self._sequence_number, parent_id=root)
         if self._sequence_number is not None:
             self._sequence_number = self._sequence_number + 1
 
@@ -360,10 +470,10 @@ class MedsParser(Parser):
                     if not self._physical_to_logical.has_key(f):
                         self._physical_to_logical[f] = []
                     self._physical_to_logical[f].append(cdm_root)
-                    try:
-                        self._physical_to_logical[f].remove(cdm_node)
-                    except:
-                        pass
+                    #try:
+                    self._physical_to_logical[f].remove(cdm_node)
+                    #except:
+                    #    pass
             self.appendChild(cdm_root, childs[n])
             #self.addFiles(cdm_root, childs[n]['files'])
         #for n in logical_nodes[1:]:
