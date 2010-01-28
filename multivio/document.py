@@ -83,7 +83,10 @@ example.</b></a>"""
         splash = mypoppler.SplashOutputDev(mypoppler.splashModeRGB8, 3, False, (255, 255, 255))
         splash.startDoc(doc.getXRef())
         page_width = doc.getPageMediaWidth(pagenr)
+        page_height = doc.getPageMediaHeight(pagenr)
         scale = width/page_width
+        if page_height > page_width:
+            scale = width/page_height
         doc.displayPage(splash, pagenr, 72*scale, 72*scale, 0, True, False, False)
         bitmap = splash.getBitmap()
         new_width = bitmap.getWidth()

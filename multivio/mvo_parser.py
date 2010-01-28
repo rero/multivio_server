@@ -1,5 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+""" Provide several parsers to produce a Core Document Model
+    CDM.
+"""
 
 __author__ = "Johnny Mariethoz <Johnny.Mariethoz@rero.ch>"
 __version__ = "0.0.0"
@@ -7,27 +10,29 @@ __copyright__ = "Copyright (c) 2009 Rero, Johnny Mariethoz"
 __license__ = "Internal Use Only"
 
 
-#---------------------------- Modules -----------------------------------------
+#---------------------------- Modules ---------------------
 
 # import of standard modules
 import sys
 import os
 from optparse import OptionParser
 from xml.dom.minidom import parseString
-import urllib2
 import hashlib
 import urllib
 import pyPdf
-from application import Application
 import re
 if sys.version_info < (2, 6):
     import simplejson as json
 else:
     import json
-#import simplejson as json
 
 # third party modules
+from application import Application
 
+# local modules
+import cdm
+
+#------------------ Exceptions ----------------------------
 
 class ParserError:
     """Base class for errors in the Urn packages."""
@@ -40,22 +45,41 @@ class ParserError:
     class InvalidDublinCore(Exception):
         """The configuration is not valid."""
         pass
-    class InvalidMedsDocument(Exception):
+    class InvalidMetsDocument(Exception):
         """The configuration is not valid."""
         pass
 
-# local modules
-import cdm
 
+#------------------ Classes ----------------------------
 class CdmParserApp(Application):
+    """ Parser chooser or selector.
+        
+        Based on the mime type it select the right chooser and return a vaild
+        http response.
+    """
     def __init__(self, counter=1, sequence_number=1, temp_dir=None):
+        """ Build and instance used by the dispatcher.
+
+         Keyword arguments:
+            counter -- int: initial value for the node counter
+            sequence_number -- int: initial value for the sequence number often
+                                    usefull for parser of parsers
+        """
         Application.__init__(self, temp_dir)
-        #self._mods = ModsParser()
-        #self._marc = MarcParser()
-        self._pdf = TocPdfParser(counter=counter, sequence_number=sequence_number)
-        self._meds = MedsParser(counter=counter, sequence_number=sequence_number)
-        self._dc = DublinCoreParser(counter=counter, sequence_number=sequence_number)
-        self._img = ImageParser(counter=counter, sequence_number=sequence_number)
+
+        #Pdf parser
+        self._pdf = TocPdfParser(counter=counter,
+                sequence_number=sequence_number)
+        #xml/mets parser
+        self._mets = MetsParser(counter=counter,
+                sequence_number=sequence_number)
+        #dublin core parser
+        self._dc = DublinCoreParser(counter=counter,
+                sequence_number=sequence_number)
+        #simple image parser
+        self._img = ImageParser(counter=counter,
+                sequence_number=sequence_number)
+
         self.usage = """ Using the GET method it return a CDM in json format.<br>
 <b>Arguments:</b>
 <ul> 
@@ -87,14 +111,23 @@ Core with Pdfs inside..</b></a>
 """
     
     def get(self, environ, start_response):
+        """ Callback method for new http request.
+        
+        """
+        #get parameters from the URI
         (path, opts) = self.getParams(environ)
+
+        #check if is valid
         if opts.has_key('url'):
+            #get url value
             url = opts['url'][0]
-            #url = urllib.unquote(opts['url'][0])
+            #reset counters
+            self._mets.reset()
             self._dc.reset()
             self._pdf.reset()
             self._img.reset()
             try:
+                #parse the received url and return the cdm
                 doc = self.parseUrl(url) 
                 start_response('200 OK', [('content-type',
                     'application/json')])
@@ -109,23 +142,46 @@ Core with Pdfs inside..</b></a>
             start_response('400 Bad Request', [('content-type', 'text/html')])
             return ["Missing url options."]
 
+
     def parseFile(self, file_name):
+        """ Parse a local file."""
+
         f = file(file_name)
         content = f.read()
         f.close()
         return self._parse(content)
+
     
     def getParams(self, environ):
+        """ Overload the default method to allow cgi url.
+            
+            The url parameter should be at the end of the url.
+            i.e.
+            /server/cdm/get?format=raw&url=http:www.toto.ch/test?url=http://www.test.ch
+            is ok, but:
+            /server/cdm/get?url=http:www.toto.ch/test?url=http://www.test.ch&format=raw
+            is incorrect.
+        """
         path = environ['PATH_INFO']
         opts = {}
         to_parse = environ['QUERY_STRING']
         if len(to_parse) > 0:
+            #replace all until the first occurence of url=
             opts['url'] = [to_parse.replace('url=','', 1)]
         return (path, opts)
 
     def parseUrl(self, query_url):
+        """ Parse a given url and return a valid cdm.
+            
+            Keyword arguments:
+                query_url -- string: a valid url
+        """
+
+        #get the remote file and store it into the temp dir
         (local_file, mime) = self.getRemoteFile(query_url)
         content = file(local_file,'r')
+
+        #check the mime type
         print "Url: %s Detected Mime: %s" % (query_url, mime)
         if re.match('.*?/pdf.*?', mime):
             self._pdf.parse(content, query_url)
@@ -133,60 +189,140 @@ Core with Pdfs inside..</b></a>
         if re.match('.*?image/.*?', mime):
             self._img.parse(query_url)
             return self._img
+        #call xml parsers
         if re.match('.*?/xml.*?', mime):
             return self._parseXml(content)
         raise ParserError.InvalidMimeType("Not parser found for %s document type." % mime)
 
+
     def _parseXml(self, content):
-        #self._dc = DublinCoreParser()
+        
+        #read the content of the file
         content_str = content.read()
+
+        #some METS files contain uppercase mets directive
         content_str = content_str.replace('METS=', 'mets=')
         content_str = content_str.replace('METS:', 'mets:')
         content_str = content_str.replace('MODS=', 'mods=')
         content_str = content_str.replace('MODS:', 'mods:')
         doc = parseString(content_str)
-        #root = doc.documentElement
+        
+        #METS parser
         mets = doc.getElementsByTagName('mets:mets')
         if len(mets) > 0 and re.match('http://www.loc.gov/METS',
                 mets[0].namespaceURI):
-            self._meds.parse(doc)
-            return self._meds
-    
+            self._mets.parse(doc)
+            return self._mets
+        
+        #Dublin Core Parser 
         dc = doc.getElementsByTagName('dc:dc')
         if len(dc) and dc[0].namespaceURI == 'http://purl.org/dc/elements/1.1/':
             self._dc.parse(doc, temp_dir=self._tmp_dir)
             return self._dc
+
+        #unknown
         raise ParserError.InvalidMimeType("Not valid XML parser found." % mime)
             
     
 
 class Parser:
+    """ Base class for all parser."""
+    
     def __init__(self, counter=1, sequence_number=1):
+        """ Create and instance of the Parse class.
+        
+            Keyword arguments:
+                counter -- int: initial node counter value
+                sequence_number -- int: inital sequence_number value, usefull
+                                for parser of parsers.
+        """
+
+        #CDM
         self._cdm = cdm.CoreDocumentModel(counter=counter)
         self._sequence_number = sequence_number
 
     def reset(self):
+        """ Reset counters."""
         self._cdm = cdm.CoreDocumentModel(counter=1)
         self._sequence_number = 1
     
     def json(self):
+        """ Return the CDM in json format."""
         return json.dumps(self._cdm, sort_keys=True, indent=4, encoding='utf-8')
         #return json.dumps(self._cdm)
         
     def display(self):
+        """ Print on STDOUT the CDM in json format."""
         print self.json()
 
 
-class TocPdfParser(Parser, pyPdf.PdfFileReader):
+class ErrorParser(Parser):
+    """ Return a simple cdm with errror message."""
+
+    def __init__(self, msg="Error", counter=1, sequence_number=1):
+        """ Build an instance of error parser.
+        
+            This build a simple Core Document Model to pass the error message
+            to the Multivio client.
+            Keyword arguments:
+                msg -- string: error message
+                counter -- int: initial node counter value
+                sequence_number -- int: initial sequenceNumber value, usefull
+                            for parser of parsers.
+        """
+
+        Parser.__init__(self, counter=-1, sequence_number=sequence_number)
+        metadata = {'title':msg,
+                    'creator' : ['Server'],
+                    'language' : ['en']
+        }
+        #add root node to cdm
+        self._cdm.addNode(metadata=metadata, label=metadata['title']) 
+
+
+class ImageParser(Parser):
+    """ Simple image parser.
+
+        Build a leaf node with the image URL."""
+
     def __init__(self, counter=1, sequence_number=1):
+        """ Build an instance of Image parser."""
+
         Parser.__init__(self, counter=counter, sequence_number=sequence_number)
 
+    def parse(self, url):
+        """ Build a cdm with one Node with the given url inside."""
+
+        self._cdm.addNode(url=urllib.quote(url),
+            sequenceNumber=self._sequence_number)
+
+        if self._sequence_number is not None:
+            self._sequence_number = self._sequence_number + 1
+
+
+class TocPdfParser(Parser, pyPdf.PdfFileReader):
+    """ Parser of pdf file and create a CDM.
+
+        It is able to get metadata from the pdf content and read the TOC to
+        provide a corresponding CDM.
+    """
+
+    def __init__(self, counter=1, sequence_number=1):
+        
+        Parser.__init__(self, counter=counter, sequence_number=sequence_number)
+        
+        #to store relation bewteen TOC and pages.
         self._physical_to_logical = None
+
+        #basically page number
         self._local_sequence_number = 1
     
     def __initpdf__(self, stream):
+        #call pdf reader parent
         pyPdf.PdfFileReader.__init__(self, stream)
 
+        #to link page number with TOC entries. Stolen from:
+        #    http://stackoverflow.com/questions/1918420/split-a-pdf-based-on-outline
         def _setup_page_id_to_num(pages=None, _result=None, _num_pages=None):
             if _result is None:
                 _result = {}
@@ -196,8 +332,7 @@ class TocPdfParser(Parser, pyPdf.PdfFileReader):
             t = pages["/Type"]
             if t == "/Pages":
                 for page in pages["/Kids"]:
-                    #if len(_num_pages) == 0:
-                        #_num_pages.append(1)
+                    # +1 patch from original code (first page is 1 and not 0)
                     _result[page.idnum] = len(_num_pages) + 1
                     _setup_page_id_to_num(page.getObject(), _result, _num_pages)
             else:
@@ -206,14 +341,18 @@ class TocPdfParser(Parser, pyPdf.PdfFileReader):
             return _result
         self._page_id_to_page_numbers = _setup_page_id_to_num()
 
-    def getPageNumber(self, title):
-        return self._page_id_to_page_numbers.get(page_idnum, '???')
+    #def getPageNumber(self, title):
+    #    """ Not used."""
+    #    return self._page_id_to_page_numbers.get(page_idnum, '???')
 
     def displayToc(self):
+        """ Print on stdout the Table of content with the page number.
+        """
         print "Title: %s" % self.getDocumentInfo().title
         print "Author: %s" % self.getDocumentInfo().author
         print "Number of pages: %s" % self.getNumPages()
         res = {}
+        #recursive fnct
         def print_part(data, space=' '):
             for obj in data:
                 if isinstance(obj, pyPdf.pdf.Destination):
@@ -305,24 +444,6 @@ class TocPdfParser(Parser, pyPdf.PdfFileReader):
                     parent_id=self._physical_to_logical[p][-1])
 
     
-class ErrorParser(Parser):
-    def __init__(self, msg="Error", counter=1, sequence_number=1):
-        Parser.__init__(self, counter=-1, sequence_number=sequence_number)
-        metadata = {'title':msg,
-                    'creator' : ['Server'],
-                    'language' : ['en']
-        }
-        self._cdm.addNode(metadata=metadata, label=metadata['title']) 
-
-class ImageParser(Parser):
-    def __init__(self, counter=1, sequence_number=1):
-        Parser.__init__(self, counter=counter, sequence_number=sequence_number)
-
-    def parse(self, url):
-        self._cdm.addNode(url=urllib.quote(url),
-            sequenceNumber=self._sequence_number)
-        if self._sequence_number is not None:
-            self._sequence_number = self._sequence_number + 1
 
 class DublinCoreParser(Parser):
     def __init__(self, counter=1, sequence_number=1):
@@ -367,36 +488,7 @@ class DublinCoreParser(Parser):
             res.append(data_field.firstChild.nodeValue.encode('utf-8'))
         return res
     
-#class MarcParser(Parser):
-#    def __init__(self):
-#        Parser.__init__(self)
-#    
-#    def parse(self, root):
-#        
-#        records = root.getElementsByTagName('record')
-#
-#        # get the id number of the first record
-#        if len(records) == 0:
-#                print "No mods"
-#        if len(records) > 1:
-#                print "More than one mods"
-#        record = records[0]
-#        self._content['title'] = self._getFields(record, '245', 'a') 
-#        self._content['urls'] = self._getFields(record, '856', 'u')
-#            # loop through the control fields of the first record
-#    def _getFields(self, record, tag, code):
-#        values = []
-#        for data_field in record.getElementsByTagName('datafield'):
-#            if  data_field.hasAttributes() and \
-#                data_field.getAttribute('tag') == tag:
-#                for sub_field in data_field.getElementsByTagName('subfield'):
-#                    if  sub_field.hasAttributes() and \
-#                           sub_field.getAttribute('code') == code:
-#                        values.append(sub_field.firstChild.nodeValue.encode('utf-8'))
-#        return values
-#        
-#
-class MedsParser(Parser):
+class MetsParser(Parser):
     def __init__(self, counter=1, sequence_number=1):
         Parser.__init__(self, counter=counter, sequence_number=sequence_number)
         self._logical_structure = None
@@ -623,6 +715,35 @@ class MedsParser(Parser):
                     self._relation[x_from] = []
                 self._relation[x_from].append(x_to)
 
+#class MarcParser(Parser):
+#    def __init__(self):
+#        Parser.__init__(self)
+#    
+#    def parse(self, root):
+#        
+#        records = root.getElementsByTagName('record')
+#
+#        # get the id number of the first record
+#        if len(records) == 0:
+#                print "No mods"
+#        if len(records) > 1:
+#                print "More than one mods"
+#        record = records[0]
+#        self._content['title'] = self._getFields(record, '245', 'a') 
+#        self._content['urls'] = self._getFields(record, '856', 'u')
+#            # loop through the control fields of the first record
+#    def _getFields(self, record, tag, code):
+#        values = []
+#        for data_field in record.getElementsByTagName('datafield'):
+#            if  data_field.hasAttributes() and \
+#                data_field.getAttribute('tag') == tag:
+#                for sub_field in data_field.getElementsByTagName('subfield'):
+#                    if  sub_field.hasAttributes() and \
+#                           sub_field.getAttribute('code') == code:
+#                        values.append(sub_field.firstChild.nodeValue.encode('utf-8'))
+#        return values
+#        
+#
 
 #---------------------------- Main Part ---------------------------------------
 

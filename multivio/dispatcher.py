@@ -13,19 +13,24 @@ __license__ = "Internal Use Only"
 # import of standard modules
 import sys
 import os
+import re
 from optparse import OptionParser
 
 # third party modules
 import logger
 import mvo_parser
 import document
-#import thumb
-#import pdf
-import re
+
 from application import Application
 
 
 class Dispatcher(Application):
+    """ Dispach http request to several applications given the URI.
+    
+        This is the entry point of the server application. This class is
+        responsible to call applications given the URI of the HTTP request.
+    """
+
     def __init__(self, config=None):
         if config is not None:
 	    self._config = config
@@ -34,7 +39,10 @@ class Dispatcher(Application):
                 'temp_data_dir': '/tmp',
                 'log_dir': '/tmp'
             }
+        
+        #application configuration
         self._apps = {}
+        #Client logger
         self._apps['.*?/log/post'] = logger.LoggerApp(os.path.join(self._config['log_dir'], 'multivio_client.log'))
         self._apps['.*?/cdm/get'] = mvo_parser.CdmParserApp(temp_dir=self._config['temp_data_dir'])
         self._apps['.*?/document/get'] = document.DocumentApp(temp_dir=self._config['temp_data_dir'])
