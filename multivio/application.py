@@ -236,21 +236,21 @@ class Application(object):
                         time.sleep(.2)
         return (local_file, mime)
 
-	def lm(self, url):
-	    if re.match('http://doc.rero.ch/lm.php', url):
-	        parts = url.split(',')
-	        if parts[0].endswith('1000'):
-	            doc_type = document_type[parts[1]]
-	            if doc_type == 'journal':
-	                collection = journal_collections[parts[2]]
-	            elif doc_type == 'newspaper':
-	                collection = newspaper_collections[parts[2]]
-	            else:
-	                collection = localisations[parts[2]]
-	            return '/rerodoc/public/%s/%s/%s' % (doc_type, collection, parts[3])
-		else:
-	            raise ApplicationError.PermissionDenied("Your are not allowed to see this document.")
-            return None
+    def lm(self, url):
+        if re.match('http://doc.rero.ch/lm.php', url):
+            parts = url.split(',')
+            if parts[0].endswith('1000'):
+                doc_type = document_type[parts[1]]
+                if doc_type == 'journal':
+                    collection = journal_collections[parts[2]]
+                elif doc_type == 'newspaper':
+                    collection = newspaper_collections[parts[2]]
+                else:
+                    collection = localisations[parts[2]]
+                return '/rerodoc/public/%s/%s/%s' % (doc_type, collection, parts[3])
+    	else:
+                raise ApplicationError.PermissionDenied("Your are not allowed to see this document.")
+        return None
 
     def cleanTmpFiles(self):
         for f in self._tmp_files:

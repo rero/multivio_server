@@ -500,7 +500,9 @@ class MetsParser(Parser):
 
     def parse(self, root):
         self.getLogicalStructure(root)
+        print self._logical_structure
         self.getPhysicalStructure(root)
+        #print self._physical_structure
         self.getMetaData(root)
         self.getFileList(root)
         self.getRelationBetweenPhysicalAndLogical(root)
@@ -649,10 +651,16 @@ class MetsParser(Parser):
                     else:
                         if len(d.getAttribute('TYPE')) > 0:
                             label = d.getAttribute('TYPE')
+                    mptrs = d.getElementsByTagName('mets:mptr')
+                    external_docs = []
+                    for m in mptrs:
+                        url = m.getAttribute('xlink:href')
+                        external_docs.append(url)
                     to_return[order] = {
                         'label' : label,
                         'id' : id,
-                        'dmd_id' : dmd_id
+                        'dmd_id' : dmd_id,
+                        'external_docs' : external_docs
                         }
                 child_node = self.getLogicalNodes(d, n)
                 if to_return.has_key(order):
