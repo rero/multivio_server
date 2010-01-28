@@ -20,12 +20,90 @@ import urllib
 import shutil
 
 from wsgiref.util import setup_testing_defaults
+document_type = {
+            '10' : 'book',
+            '20' : 'journal', 
+            '25' : 'newspaper',
+            '30' : 'picture', 
+            '40' : 'thesis',
+            '41' : 'dissertation',
+            '42' : 'preprint',
+            '43' : 'postprint',
+            '44' : 'report',
+            '15' : 'partition'
+            }
+localisations = {
+            '1'  : 'rero',
+            '2'  : 'unifr',
+            '3'  : 'unige',
+            '4'  : 'unine',
+            '5'  : 'unil',
+            '6'  : 'unisi',
+            '8'  : 'hetsfr',
+            '9'  : 'hegge',
+            '10' : 'ecav',
+            '11' : 'hevs2',
+            '12' : 'hepvs',
+            '13' : 'iukb',
+            '14' : 'idiap',
+            '15' : 'fsch',
+            '16' : 'cred',
+            '17' : 'curpufm',
+            '18' : 'crem',
+            '19' : 'medvs',
+            '20' : 'crepa',
+            '21' : 'ffhs',
+            '22' : 'hevs_',
+            '23' : 'bpuge',
+            '24' : 'hetsge',
+            '25' : 'baage',
+            '26' : 'elsvd',
+            '28' : 'hedsfr',
+            '29' : 'bvcfne',
+            '30' : 'coege',
+            '31' : 'mhnge',
+            '32' : 'bpune',
+            '33' : 'bcufr',
+            '34' : 'bmuge',
+            '35' : 'imvge',
+            '36' : 'aege',
+            '37' : 'avlvd',
+            '38' : 'cio',
+            '39' : 'pa16ju',
+            '40' : 'iheid'
+            }
+book_collections = {
+            '10' : 'chronique_fribourgeoise'
+}
+
+journal_collections = {
+            '4'  : 'cahiers_de_psychologie',
+            '5'  : 'dossiers_de_psychologie',
+            '6'  : 'droit_du_bail',
+            '7'  : 'revue_suisse_droit_sante',
+            '10' : 'bulletin_vals_asla',
+	    '13' : 'revue_tranel'
+}
+            
+newspaper_collections = {
+            '1'  : 'la_liberte',
+            '2'  : 'freiburger_nachrichten',
+            '8'  : 'la_pilule',
+            '9'  : 'le_cretin_des_alpes',
+            '11' : 'messager_boiteux_neuchatel',
+            '12' : 'revue_historique_neuchateloise',
+            '13' : 'etrennes_fribourgeoises',
+            '14' : 'rameau_de_sapin'
+}
+
 
 class ApplicationError:
     """Base class for errors in the Urn packages."""
     class InvalidURL(Exception):
         """The configuration is not valid."""
         pass
+    class PermissionDenied(Exception):
+	pass
 
 class InputProcessed(object):
     def read(self, *args):
@@ -138,20 +216,41 @@ class Application(object):
         if re.match('.*?/xml*?', mime):
             local_file = local_file+'.xml'
         lock_file = local_file+".lock"
-        if not os.path.isfile(local_file):
-            if not os.path.isfile(lock_file):
-                print "Create: ", lock_file
-                open(lock_file, 'w').close() 
-                (filename, headers) = urllib.urlretrieve(url)
-                shutil.move(filename, local_file)
-                self._tmp_files.append(local_file)
-                os.remove(lock_file)
-                print "Remove: ", lock_file
-            else:
-                while os.path.isfile(lock_file):
-                    "Wait for file"
-                    time.sleep(.2)
+	rero_local_file = self.lm(url)
+	if rero_local_file is not None and os.path.isfile(rero_local_file):
+	    local_file = rero_local_file
+            print "File: %s" % local_file
+        else:
+            if not os.path.isfile(local_file):
+                if not os.path.isfile(lock_file):
+                    print "Create: ", lock_file
+                    open(lock_file, 'w').close() 
+                    (filename, headers) = urllib.urlretrieve(url)
+                    shutil.move(filename, local_file)
+                    self._tmp_files.append(local_file)
+                    os.remove(lock_file)
+                    print "Remove: ", lock_file
+                else:
+                    while os.path.isfile(lock_file):
+                        "Wait for file"
+                        time.sleep(.2)
         return (local_file, mime)
+
+	def lm(self, url):
+	    if re.match('http://doc.rero.ch/lm.php', url):
+	        parts = url.split(',')
+	        if parts[0].endswith('1000'):
+	            doc_type = document_type[parts[1]]
+	            if doc_type == 'journal':
+	                collection = journal_collections[parts[2]]
+	            elif doc_type == 'newspaper':
+	                collection = newspaper_collections[parts[2]]
+	            else:
+	                collection = localisations[parts[2]]
+	            return '/rerodoc/public/%s/%s/%s' % (doc_type, collection, parts[3])
+		else:
+	            raise ApplicationError.PermissionDenied("Your are not allowed to see this document.")
+            return None
 
     def cleanTmpFiles(self):
         for f in self._tmp_files:
