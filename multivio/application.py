@@ -248,7 +248,7 @@ class Application(object):
                 else:
                     collection = localisations[parts[2]]
                 return '/rerodoc/public/%s/%s/%s' % (doc_type, collection, parts[3])
-    	else:
+    	    else:
                 raise ApplicationError.PermissionDenied("Your are not allowed to see this document.")
         return None
 

@@ -126,9 +126,9 @@ Core with Pdfs inside..</b></a>
             self._dc.reset()
             self._pdf.reset()
             self._img.reset()
+            doc = self.parseUrl(url) 
             try:
                 #parse the received url and return the cdm
-                doc = self.parseUrl(url) 
                 start_response('200 OK', [('content-type',
                     'application/json')])
                 return ["%s" % doc.json()]
@@ -497,12 +497,11 @@ class MetsParser(Parser):
         self._relation = None
         self._file_list = None
         self._physical_to_logical = None
+        self._max_sequence_number = 0
 
     def parse(self, root):
         self.getLogicalStructure(root)
-        print self._logical_structure
         self.getPhysicalStructure(root)
-        #print self._physical_structure
         self.getMetaData(root)
         self.getFileList(root)
         self.getRelationBetweenPhysicalAndLogical(root)
@@ -529,7 +528,9 @@ class MetsParser(Parser):
         #    self.addFiles(cdm_root,
         #        self._logical_structure[logical_nodes[0]]['files'])
         #print self._physical_to_logical
+        self._max_sequence_number = 0
         self.addFiles(cdm_root)
+        self._sequence_number = self._max_sequence_number
     
     def addFiles(self, cdm_root):
         keys = self._physical_to_logical.keys()
@@ -547,7 +548,9 @@ class MetsParser(Parser):
                 for fi in file_ids:
                     if self._file_list.has_key(fi):
                         url = self._file_list[fi]
-                sequence_number = self._physical_structure[f]['order']
+                sequence_number = self._physical_structure[f]['order'] + self._sequence_number - 1
+                if sequence_number > self._max_sequence_number:
+                    self._max_sequence_number = sequence_number
                 self._cdm.addNode(url=urllib.quote(url),
                     sequenceNumber=sequence_number,
                     parent_id=self._physical_to_logical[f])
@@ -563,17 +566,35 @@ class MetsParser(Parser):
         childs = logical_struct['child']
         for n in nodes:
             current = childs[n]
-            cdm_root =  self._cdm.addNode(parent_id=cdm_node, label=childs[n]['label']) 
-            if self._relation.has_key(current['id']):
-                for f in self._relation[current['id']]:
-                    if not self._physical_to_logical.has_key(f):
-                        self._physical_to_logical[f] = []
-                    self._physical_to_logical[f].append(cdm_root)
-                    try:
-                        self._physical_to_logical[f].remove(cdm_node)
-                    except:
-                        pass
-            self.appendChild(cdm_root, childs[n])
+            if len(current['external_docs']) > 0:
+                for url in current['external_docs']:
+                    parent_id = cdm_node
+                    children_id = self._cdm._node_name % (self._cdm._counter)
+                    parser_chooser = CdmParserApp(counter=self._cdm._counter,
+                        sequence_number=self._sequence_number, temp_dir='/tmp')
+                    sub_parser = parser_chooser.parseUrl(url)
+                    if sub_parser is not None:
+                        self._cdm._counter = sub_parser._cdm._counter
+                        self._cdm.update(sub_parser._cdm)
+                        if not self._cdm[parent_id].has_key('children'):
+                            self._cdm[parent_id]['children'] = []
+                        self._cdm[parent_id]['children'].append(children_id)
+                        self._cdm[children_id]['parentId'] = parent_id
+                        self._sequence_number = sub_parser._sequence_number
+                self.appendChild(cdm_node, childs[n])
+
+            else:
+                cdm_root =  self._cdm.addNode(parent_id=cdm_node, label=childs[n]['label']) 
+                if self._relation.has_key(current['id']):
+                    for f in self._relation[current['id']]:
+                        if not self._physical_to_logical.has_key(f):
+                            self._physical_to_logical[f] = []
+                        self._physical_to_logical[f].append(cdm_root)
+                        try:
+                            self._physical_to_logical[f].remove(cdm_node)
+                        except:
+                            pass
+                self.appendChild(cdm_root, childs[n])
             #self.addFiles(cdm_root, childs[n]['files'])
         #for n in logical_nodes[1:]:
             
