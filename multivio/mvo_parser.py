@@ -485,7 +485,8 @@ class DublinCoreParser(Parser):
     def getValuesForLabels(self, record, tag_name):
         res = []
         for data_field in record.getElementsByTagName(tag_name):
-            res.append(data_field.firstChild.nodeValue.encode('utf-8'))
+            if data_field.firstChild is not None:
+                res.append(data_field.firstChild.nodeValue.encode('utf-8'))
         return res
     
 class MetsParser(Parser):
