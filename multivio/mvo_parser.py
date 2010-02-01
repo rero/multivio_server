@@ -126,8 +126,8 @@ Core with Pdfs inside..</b></a>
             self._dc.reset()
             self._pdf.reset()
             self._img.reset()
-            doc = self.parseUrl(url) 
             try:
+                doc = self.parseUrl(url) 
                 #parse the received url and return the cdm
                 start_response('200 OK', [('content-type',
                     'application/json')])
@@ -259,7 +259,7 @@ class Parser:
 class ErrorParser(Parser):
     """ Return a simple cdm with errror message."""
 
-    def __init__(self, msg="Error", counter=1, sequence_number=1):
+    def __init__(self, msg="Error", error_code="SERVER_ERROR", counter=-1, sequence_number=1):
         """ Build an instance of error parser.
         
             This build a simple Core Document Model to pass the error message
@@ -272,12 +272,12 @@ class ErrorParser(Parser):
         """
 
         Parser.__init__(self, counter=-1, sequence_number=sequence_number)
-        metadata = {'title':msg,
-                    'creator' : ['Server'],
-                    'language' : ['en']
+        serverMessage = {'errorMessage':msg,
+                    'errorCode' : error_code
         }
         #add root node to cdm
-        self._cdm.addNode(metadata=metadata, label=metadata['title']) 
+        self._cdm.addNode(serverMessage=serverMessage) 
+        print "Error (%s): %s" % (error_code, msg)
 
 
 class ImageParser(Parser):

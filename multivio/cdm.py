@@ -31,15 +31,20 @@ class CoreDocumentModel(dict):
         self._node_name = 'n%05d'
     
     def addNode(self, parent_id=None, label=None,
-                metadata=None, url=None, sequenceNumber=None,
+                metadata=None, serverMessage=None, url=None, sequenceNumber=None,
                 localSequenceNumber=None):
-        current_id = self._node_name % self._counter
+        if self._counter > 0:
+            current_id = self._node_name % self._counter
+        else:
+            current_id = self._counter
 
         to_add = {
                'guid': current_id, 
                }
         if metadata is not None:
             to_add['metadata'] = metadata
+        if serverMessage is not None:
+            to_add['serverMessage'] = serverMessage
         if label is not None:
             to_add['label'] = label
         if url is not None:
