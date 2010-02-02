@@ -18,6 +18,7 @@ import urllib
 import cgi
 import re
 from application import Application
+import time
 
 import Image
 import mypoppler
@@ -75,6 +76,7 @@ example.</b></a>"""
             return ["Missing url options."]
 
     def getImageFromPdf(self, filename_, pagenr=1, width=400):
+        start = time.clock()
         filename = mypoppler.GooString(filename_)
         mypoppler.cvar.globalParams.setEnableFreeType("yes")
         mypoppler.cvar.globalParams.setAntialias("yes")
@@ -96,13 +98,12 @@ example.</b></a>"""
         import Image
         pil = Image.fromstring('RGB', (new_width, new_height), data)
         
-        #pil.thumbnail((width, height), Image.ANTIALIAS)
-        pil = pil.resize((new_width, new_height), Image.BICUBIC)
         f = cStringIO.StringIO()
-        pil.save(f, "PNG")
+        pil.save(f, "JPEG")
         f.seek(0)
         content = f.read()
-        header = [('content-type', 'image/png'), ('content-length',
+        print "Total Process Time: ", (time.clock() - start)
+        header = [('content-type', 'image/jpeg'), ('content-length',
         str(len(content)))]
         return(header, content)
     

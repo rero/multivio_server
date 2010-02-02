@@ -128,10 +128,12 @@ Core with Pdfs inside..</b></a>
             self._img.reset()
             try:
                 doc = self.parseUrl(url) 
+                #print "successfully parsed"
+                to_return = doc.json()
                 #parse the received url and return the cdm
                 start_response('200 OK', [('content-type',
                     'application/json')])
-                return ["%s" % doc.json()]
+                return ["%s" % to_return]
             except Exception, detail:
                 start_response('200 OK', [('content-type',
                     'application/json')])
@@ -248,6 +250,7 @@ class Parser:
     
     def json(self):
         """ Return the CDM in json format."""
+        #print "--->", self._cdm.values()
         return json.dumps(self._cdm, sort_keys=True, indent=4, encoding='utf-8')
         #return json.dumps(self._cdm)
         
@@ -356,8 +359,15 @@ class TocPdfParser(Parser, pyPdf.PdfFileReader):
         def print_part(data, space=' '):
             for obj in data:
                 if isinstance(obj, pyPdf.pdf.Destination):
-                    print "%s%s %s" %(space, obj.title,
-                        self._page_id_to_page_numbers.get(obj.page.idnum, '???'))
+                    title = obj.title
+                    if not isinstance(title, unicode):
+                        import chardet
+                        encoding = chardet.detect(title)['encoding']
+                        if not re.match('ascii', encoding):
+                            title = title.decode(encoding)
+                            title = title.encode('utf-8')
+                    pagenr = self._page_id_to_page_numbers.get(obj.page.idnum, '???')
+                    print "%s%s %s" % (space, title, pagenr)
                 elif isinstance(obj, list):
                     print_part(obj, space + "  ")
         print_part(self.getOutlines())
@@ -396,7 +406,15 @@ class TocPdfParser(Parser, pyPdf.PdfFileReader):
         def get_parts(data, parent_id):
             for obj in data:
                 if isinstance(obj, pyPdf.pdf.Destination):
-                    label = obj.title
+                    title = obj.title
+                    if not isinstance(title, unicode):
+                        import chardet
+                        encoding = chardet.detect(title)['encoding']
+                        print encoding, chardet.detect(title)
+                        if not re.match('ascii', encoding):
+                            title = title.decode(encoding)
+                            title = title.encode('utf-8')
+                    label = title
                     pagenr = self._page_id_to_page_numbers.get(obj.page.idnum, '???')
                     current = self._cdm.addNode(parent_id=parent_id, label=label)
                     if not self._physical_to_logical.has_key(pagenr):
