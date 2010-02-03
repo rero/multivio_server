@@ -21,18 +21,10 @@ import datetime
 from application import Application
 
 
-# local modules
-class LoggerError:
-    class InvalidLogFile(Exception):
-        pass
 
 class LoggerApp(Application):
-    def __init__(self, file_name='/tmp/multivio_server.log', temp_dir=None):
-        Application.__init__(self, temp_dir)
-        try:
-            self._file = file(file_name, "a")
-        except Exception:
-            raise  LoggerError.InvalidLogFile("Cannot open file for writing %s" % file_name)
+    def __init__(self):
+        Application.__init__(self)
         self.usage = """Using the POST method it put a log message in the server.<br>"""
     
     def post(self, environ, start_response):
@@ -51,9 +43,8 @@ class LoggerApp(Application):
         return ["Ok"]
 
     def addLog(self, header, body):
-        self._file.write(header+"\n")
-        self._file.write(body)
-        self._file.flush()
+        print header
+        print body
 
 
 #---------------------------- Main Part ---------------------------------------

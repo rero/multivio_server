@@ -21,7 +21,7 @@ setup(
     'multivio'
     ],
     scripts=[
-    'tools/multivio_server_example.py'
+    'tools/multivio_server.py', 'tools/mvo_config_example.py'
     ],
     keywords=['multivio'],
     classifiers=[

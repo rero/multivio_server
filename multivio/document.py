@@ -97,9 +97,6 @@ example.</b></a>"""
         pil = Image.fromstring('RGB', (new_width, new_height), data)
         
         f = cStringIO.StringIO()
-        #pil.save(f, "JPEG")
-        #pil.convert('LA')
-        pil.save("test.png", optimize=False)
         pil.save(f, "JPEG", quality=10)
         f.seek(0)
         content = f.read()

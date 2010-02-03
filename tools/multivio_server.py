@@ -15,9 +15,5 @@ sys.stdout = sys.stderr
 
 import multivio
 
-config = {
-    'temp_data_dir': '/www/multivio/temp',
-    'log_dir': '/www/multivio/log'
-}
-application = multivio.Dispatcher(config=config)
+application = multivio.Dispatcher()
 

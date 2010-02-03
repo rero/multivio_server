@@ -28,6 +28,7 @@ else:
 
 # third party modules
 from application import Application
+from mvo_config import MVOConfig
 
 # local modules
 import cdm
@@ -57,7 +58,8 @@ class CdmParserApp(Application):
         Based on the mime type it select the right chooser and return a vaild
         http response.
     """
-    def __init__(self, counter=1, sequence_number=1, temp_dir=None):
+    def __init__(self, counter=1, sequence_number=1,
+            temp_dir=MVOConfig.General.temp_dir):
         """ Build and instance used by the dispatcher.
 
          Keyword arguments:
@@ -219,7 +221,7 @@ Core with Pdfs inside..</b></a>
         #Dublin Core Parser 
         dc = doc.getElementsByTagName('dc:dc')
         if len(dc) and dc[0].namespaceURI == 'http://purl.org/dc/elements/1.1/':
-            self._dc.parse(doc, temp_dir=self._tmp_dir)
+            self._dc.parse(doc)
             return self._dc
 
         #unknown
@@ -467,7 +469,7 @@ class DublinCoreParser(Parser):
     def __init__(self, counter=1, sequence_number=1):
         Parser.__init__(self, counter=counter, sequence_number=sequence_number)
     
-    def parse(self, root, temp_dir):
+    def parse(self, root):
         
         records = root.getElementsByTagName('collection')
 
@@ -488,7 +490,7 @@ class DublinCoreParser(Parser):
         for url in urls:
             children_id = self._cdm._node_name % (self._cdm._counter)
             parser_chooser = CdmParserApp(counter=self._cdm._counter,
-                sequence_number=self._sequence_number, temp_dir=temp_dir)
+                sequence_number=self._sequence_number)
             sub_parser = parser_chooser.parseUrl(url)
             if sub_parser is not None:
                 self._cdm._counter = sub_parser._cdm._counter
@@ -590,7 +592,7 @@ class MetsParser(Parser):
                     parent_id = cdm_node
                     children_id = self._cdm._node_name % (self._cdm._counter)
                     parser_chooser = CdmParserApp(counter=self._cdm._counter,
-                        sequence_number=self._sequence_number, temp_dir='/tmp')
+                        sequence_number=self._sequence_number)
                     sub_parser = parser_chooser.parseUrl(url)
                     if sub_parser is not None:
                         self._cdm._counter = sub_parser._cdm._counter
@@ -818,13 +820,13 @@ if __name__ == '__main__':
 
     if len(args) != 1:
         parser.error("Error: incorrect number of arguments, try --help")
-    #from wsgiref.simple_server import make_server
-    #application = CdmParserApp()
-    #server = make_server('', options.port, application)
-    #server.serve_forever()
-    pdf_file_name = args[0]
-    parser = TocPdfParser()
-    parser.parse(stream=file(pdf_file_name), query_url=pdf_file_name)
-    parser.displayToc()
+    from wsgiref.simple_server import make_server
+    application = CdmParserApp()
+    server = make_server('', options.port, application)
+    server.serve_forever()
+    #pdf_file_name = args[0]
+    #parser = TocPdfParser()
+    #parser.parse(stream=file(pdf_file_name), query_url=pdf_file_name)
+    #parser.displayToc()
 
 

@@ -18,6 +18,9 @@ import re
 import hashlib
 import urllib
 import shutil
+import time
+
+from mvo_config import MVOConfig
 
 from wsgiref.util import setup_testing_defaults
 document_type = {
@@ -111,7 +114,7 @@ class InputProcessed(object):
     readline = readlines = __iter__ = read
 
 class Application(object):
-    def __init__(self, temp_dir=None):
+    def __init__(self, temp_dir=MVOConfig.General.temp_dir):
         self.usage = """<br><h1>Welcome to the multivio server.</h1>
 <h2>Available pathes:</h2>
     <h3>/multivio/document/get?url=</h3>
@@ -161,13 +164,10 @@ class Application(object):
         <a href="/multivio/document/html?pagenr=1&zoom=2&url=http://doc.rero.ch/lm.php?url=1000,43,2,20091211165357-BU/shalkevitch_rfg.pdf"><b>HTML
         example.</b></a>
 """
-	if temp_dir is not None:
-            self._tmp_dir = temp_dir
-	else:
-            self._tmp_dir = '/tmp'
+        self._tmp_dir = temp_dir
         self._tmp_files = []
         self._urlopener = urllib.URLopener()
-        self._urlopener.version = 'Firefox/3.5.2'
+        self._urlopener.version = MVOConfig.Url.user_agent
 
     def get(self, environ, start_response):
         start_response('405 Method Not Allowed', [('content-type',
@@ -227,7 +227,7 @@ class Application(object):
                 if not os.path.isfile(lock_file):
                     print "Create: ", lock_file
                     open(lock_file, 'w').close() 
-                    (filename, headers) = self._urlopener.urlretrieve(url)
+                    (filename, headers) = self._urlopener.retrieve(url)
                     shutil.move(filename, local_file)
                     self._tmp_files.append(local_file)
                     os.remove(lock_file)

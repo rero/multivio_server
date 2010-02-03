@@ -22,6 +22,7 @@ import mvo_parser
 import document
 
 from application import Application
+from mvo_config import MVOConfig
 
 
 class Dispatcher(Application):
@@ -31,21 +32,16 @@ class Dispatcher(Application):
         responsible to call applications given the URI of the HTTP request.
     """
 
-    def __init__(self, config=None):
-        if config is not None:
-	    self._config = config
-        else:
-            self._config = {
-                'temp_data_dir': '/tmp',
-                'log_dir': '/tmp'
-            }
+    def __init__(self):
         
         #application configuration
         self._apps = {}
         #Client logger
-        self._apps['.*?/log/post'] = logger.LoggerApp(os.path.join(self._config['log_dir'], 'multivio_client.log'))
-        self._apps['.*?/cdm/get'] = mvo_parser.CdmParserApp(temp_dir=self._config['temp_data_dir'])
-        self._apps['.*?/document/get'] = document.DocumentApp(temp_dir=self._config['temp_data_dir'])
+        self._apps['.*?/log/post'] = logger.LoggerApp()
+        self._apps['.*?/cdm/get'] = \
+            mvo_parser.CdmParserApp(temp_dir=MVOConfig.General.temp_dir)
+        self._apps['.*?/document/get'] = \
+            document.DocumentApp(temp_dir=MVOConfig.General.temp_dir)
         self.usage = """<br><h1>Welcome to the multivio server.</h1><br>"""
         
     def __call__(self, environ, start_response):
