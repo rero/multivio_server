@@ -12,15 +12,11 @@
 #include "splash/SplashFontEngine.h"
 #include "goo/gmem.h"
 #include "goo/GooString.h"
-#include "goo/GooList.h"
 #include "GlobalParams.h"
-#include "Object.h"
 #include "PDFDoc.h"
 #include "splash/SplashBitmap.h"
 #include "splash/Splash.h"
 #include "SplashOutputDev.h"
-#include "Outline.h"
-#include "Object.h"
 %}
 %include "typemaps.i"
 
@@ -103,6 +99,3 @@ public:
 %include "poppler/Page.h"
 %include "poppler/SplashOutputDev.h"
 %include "poppler/GlobalParams.h"
-%include "poppler/Outline.h"
-%include "poppler/goo/GooList.h"
-%include "poppler/Object.h"
