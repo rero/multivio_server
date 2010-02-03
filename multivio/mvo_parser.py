@@ -360,7 +360,8 @@ class TocPdfParser(Parser, pyPdf.PdfFileReader):
         #recursive fnct
         def print_part(data, space=' '):
             for obj in data:
-                if isinstance(obj, pyPdf.pdf.Destination):
+                if isinstance(obj, pyPdf.pdf.Destination) and not \
+                    isinstance(obj.page, pyPdf.generic.NullObject):
                     title = obj.title
                     if not isinstance(title, unicode):
                         import chardet
@@ -381,8 +382,8 @@ class TocPdfParser(Parser, pyPdf.PdfFileReader):
             info = self.getDocumentInfo()
         except:
             pass
-        if info and info.title is not None and self.hasToc():
-            metadata['title'] = self.getDocumentInfo().title
+        if info and info.title is not None and len(info.title) > 0 and self.hasToc(self.getOutlines()):
+            metadata['title'] = info.title
         else:
             metadata['title'] = 'PDF Document'
             pdf_file_parts = query_url.split('/')
@@ -390,8 +391,8 @@ class TocPdfParser(Parser, pyPdf.PdfFileReader):
                 if re.match('.*?\.pdf', pdf_file_parts[-1]):
                     metadata['title'] = pdf_file_parts[-1]
 
-        if info and info.author is not None:
-            metadata['creator'] = [self.getDocumentInfo().author]
+        if info and info.author is not None and len(info.author) > 0:
+            metadata['creator'] = [info.author]
         else:
             metadata['creator'] = ['']
         metadata['language'] = ['']
@@ -406,8 +407,10 @@ class TocPdfParser(Parser, pyPdf.PdfFileReader):
         root = self._cdm.addNode(metadata=metadata, label=metadata['title']) 
         self._physical_to_logical = {1:[root]}
         def get_parts(data, parent_id):
+            current = parent_id
             for obj in data:
-                if isinstance(obj, pyPdf.pdf.Destination):
+                if isinstance(obj, pyPdf.pdf.Destination) and not \
+                    isinstance(obj.page, pyPdf.generic.NullObject):
                     title = obj.title
                     if not isinstance(title, unicode):
                         import chardet
@@ -417,6 +420,9 @@ class TocPdfParser(Parser, pyPdf.PdfFileReader):
                             title = title.decode(encoding)
                             title = title.encode('utf-8')
                     label = title
+                   # print "Page: ", obj.page
+                   # if isinstance(obj.page, pyPdf.generic.NullObject):
+                   #     print "Title:", title
                     pagenr = self._page_id_to_page_numbers.get(obj.page.idnum, '???')
                     current = self._cdm.addNode(parent_id=parent_id, label=label)
                     if not self._physical_to_logical.has_key(pagenr):
@@ -425,8 +431,8 @@ class TocPdfParser(Parser, pyPdf.PdfFileReader):
                 elif isinstance(obj, list):
                     get_parts(obj, current)
         outlines = self.getOutlines()
-        if self.hasToc() :
-            get_parts(self.getOutlines(), root)
+        if self.hasToc(outlines) :
+            get_parts(outlines, root)
             self.appendPages(query_url)
         else:
             for i in range(self.getNumPages()):
@@ -437,8 +443,8 @@ class TocPdfParser(Parser, pyPdf.PdfFileReader):
         self._sequence_number = self._sequence_number + self.getNumPages()
         self._local_sequence_number = self._local_sequence_number + self.getNumPages()
 
-    def hasToc(self):
-        for obj in self.getOutlines():
+    def hasToc(self, outlines):
+        for obj in outlines:
             if isinstance(obj, pyPdf.pdf.Destination):
                 return True
         return False
@@ -820,13 +826,13 @@ if __name__ == '__main__':
 
     if len(args) != 1:
         parser.error("Error: incorrect number of arguments, try --help")
-    from wsgiref.simple_server import make_server
-    application = CdmParserApp()
-    server = make_server('', options.port, application)
-    server.serve_forever()
-    #pdf_file_name = args[0]
-    #parser = TocPdfParser()
-    #parser.parse(stream=file(pdf_file_name), query_url=pdf_file_name)
-    #parser.displayToc()
+    #from wsgiref.simple_server import make_server
+    #application = CdmParserApp()
+    #server = make_server('', options.port, application)
+    #server.serve_forever()
+    pdf_file_name = args[0]
+    parser = TocPdfParser()
+    parser.parse(stream=file(pdf_file_name), query_url=pdf_file_name)
+    parser.displayToc()
 
 

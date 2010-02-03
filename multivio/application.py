@@ -227,6 +227,7 @@ class Application(object):
                 if not os.path.isfile(lock_file):
                     print "Create: ", lock_file
                     open(lock_file, 'w').close() 
+                    print "Try to retrieve %s file" % url
                     (filename, headers) = self._urlopener.retrieve(url)
                     shutil.move(filename, local_file)
                     self._tmp_files.append(local_file)
