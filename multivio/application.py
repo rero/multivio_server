@@ -166,6 +166,8 @@ class Application(object):
 	else:
             self._tmp_dir = '/tmp'
         self._tmp_files = []
+        self._urlopener = urllib.URLopener()
+        self._urlopener.version = 'Firefox/3.5.2'
 
     def get(self, environ, start_response):
         start_response('405 Method Not Allowed', [('content-type',
@@ -203,7 +205,7 @@ class Application(object):
         url_md5 = hashlib.sha224(url).hexdigest()
         local_file = os.path.join(self._tmp_dir, url_md5)
         try:
-            mime = urllib.urlopen(url).info()['Content-Type']
+            mime = self._urlopener.open(url).info()['Content-Type']
         except Exception:
             raise ApplicationError.InvalidURL("Invalid URL: %s" % url)
         print "Mime: %s" % mime
@@ -225,7 +227,7 @@ class Application(object):
                 if not os.path.isfile(lock_file):
                     print "Create: ", lock_file
                     open(lock_file, 'w').close() 
-                    (filename, headers) = urllib.urlretrieve(url)
+                    (filename, headers) = self._urlopener.urlretrieve(url)
                     shutil.move(filename, local_file)
                     self._tmp_files.append(local_file)
                     os.remove(lock_file)

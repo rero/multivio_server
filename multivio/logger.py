@@ -13,7 +13,6 @@ __license__ = "Internal Use Only"
 import sys
 import os
 from optparse import OptionParser
-import urllib
 import cgi
 import re
 import datetime

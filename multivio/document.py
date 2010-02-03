@@ -14,7 +14,6 @@ import sys
 import os
 import cStringIO
 from optparse import OptionParser
-import urllib
 import cgi
 import re
 from application import Application
@@ -54,7 +53,6 @@ example.</b></a>"""
         if opts.has_key('url'):
             width = 400
             url = opts['url'][0]
-            #url = urllib.unquote(opts['url'][0])
             if opts.has_key('width'):
                 width = int(opts['width'][0])
             (image_file, mime) = self.getRemoteFile(url)
@@ -99,11 +97,14 @@ example.</b></a>"""
         pil = Image.fromstring('RGB', (new_width, new_height), data)
         
         f = cStringIO.StringIO()
-        pil.save(f, "JPEG")
+        #pil.save(f, "JPEG")
+        #pil.convert('LA')
+        pil.save("test.png", optimize=False)
+        pil.save(f, "JPEG", quality=10)
         f.seek(0)
         content = f.read()
         print "Total Process Time: ", (time.clock() - start)
-        header = [('content-type', 'image/jpeg'), ('content-length',
+        header = [('content-type', 'image/jpg'), ('content-length',
         str(len(content)))]
         return(header, content)
     
