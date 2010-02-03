@@ -391,8 +391,8 @@ class TocPdfParser(Parser, pyPdf.PdfFileReader):
         if info and info.author is not None:
             metadata['creator'] = [self.getDocumentInfo().author]
         else:
-            metadata['creator'] = ['unknown']
-        metadata['language'] = ['unknown']
+            metadata['creator'] = ['']
+        metadata['language'] = ['']
         return metadata
 
     def parse(self, stream, query_url):
