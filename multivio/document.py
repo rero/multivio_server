@@ -41,10 +41,10 @@ image.<br>
 <li><em>pagenr --integer--</em>  extract the page <pagenr>. Pdf only. Default(1).
 </ul>
 <a
-href="/multivio/document/get?width=400&url=http://doc.rero.ch/lm.php?url=1000,10,2,20080701134109-FH/Braune_MWK_tab1a.jpg"><b>Image
+href="/server/document/get?width=400&url=http://doc.rero.ch/lm.php?url=1000,10,2,20080701134109-FH/Braune_MWK_tab1a.jpg"><b>Image
 example.</b></a><br>
 <a
-href="/multivio/document/get?width=800&pagenr=2&url=http://doc.rero.ch/lm.php?url=1000,43,4,20070117103715-FR/Dufaux_Alain_-_Automatic_sound_detection_and_recognition_20070117.pdf"><b>PDF
+href="/server/document/get?width=800&pagenr=2&url=http://doc.rero.ch/lm.php?url=1000,43,4,20070117103715-FR/Dufaux_Alain_-_Automatic_sound_detection_and_recognition_20070117.pdf"><b>PDF
 example.</b></a>"""
     
     def get(self, environ, start_response):

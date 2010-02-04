@@ -117,18 +117,18 @@ class Application(object):
     def __init__(self, temp_dir=MVOConfig.General.temp_dir):
         self.usage = """<br><h1>Welcome to the multivio server.</h1>
 <h2>Available pathes:</h2>
-    <h3>/multivio/document/get?url=</h3>
+    <h3>/server/document/get?url=</h3>
         Using the GET method it return a CDM in json format.<br>
         <b>Arguments:</b>
         <ul>
         <li><em>url --string--</em>  url of a xml file representing the record.
         </ul>
         <a
-        href="/multivio/document/get?url=http://doc.rero.ch/record/9264/export/xd?"><b>RERODOC
+        href="/server/document/get?url=http://doc.rero.ch/record/9264/export/xd?"><b>RERODOC
         example.</b></a>
-    <h3>/multivio/log</h3>
+    <h3>/server/log</h3>
         Using the POST method it put a log message in the server.<br>
-    <h3>/multivio/document/thumbnail?size=400&url=</h3>
+    <h3>/server/document/thumbnail?size=400&url=</h3>
         Using the GET method it return a thumbnail in PNG format of a given size for a given
         image.<br>
         <b>Arguments:</b>
@@ -138,9 +138,9 @@ class Application(object):
         </ul>
         <a
         <a
-        href="/multivio/document/thumbnail?size=400&url=http://doc.rero.ch/lm.php?url=1000,10,2,20080701134109-FH/Braune_MWK_tab1a.jpg"><b>Thumbnail
+        href="/server/document/thumbnail?size=400&url=http://doc.rero.ch/lm.php?url=1000,10,2,20080701134109-FH/Braune_MWK_tab1a.jpg"><b>Thumbnail
         example.</b></a>
-    <h3>/multivio/document/pdf?zoom=1&pagenr=1&url=</h3>
+    <h3>/server/document/pdf?zoom=1&pagenr=1&url=</h3>
         Using the GET method it return a PNG image corresponding to the pagenr
         of pdf document for a given zoom factor.<br>
         <ul>
@@ -150,9 +150,9 @@ class Application(object):
         convert.
         </ul>
         <a
-        href="/multivio/document/pdf?pagenr=1&zoom=2&url=http://doc.rero.ch/lm.php?url=1000,43,2,20091211165357-BU/shalkevitch_rfg.pdf"><b>PDF
+        href="/server/document/pdf?pagenr=1&zoom=2&url=http://doc.rero.ch/lm.php?url=1000,43,2,20091211165357-BU/shalkevitch_rfg.pdf"><b>PDF
         example.</b></a>
-    <h3>/multivio/document/html?zoom=1&pagenr=1&url=</h3>
+    <h3>/server/document/html?zoom=1&pagenr=1&url=</h3>
         Using the GET method it return a html document corresponding to the pagenr
         of pdf document for a given zoom factor.<br>
         <ul>
@@ -161,7 +161,7 @@ class Application(object):
         <li><em>pagenr --integer--</em>  page number of the input pdf file to
         convert.
         </ul>
-        <a href="/multivio/document/html?pagenr=1&zoom=2&url=http://doc.rero.ch/lm.php?url=1000,43,2,20091211165357-BU/shalkevitch_rfg.pdf"><b>HTML
+        <a href="/server/document/html?pagenr=1&zoom=2&url=http://doc.rero.ch/lm.php?url=1000,43,2,20091211165357-BU/shalkevitch_rfg.pdf"><b>HTML
         example.</b></a>
 """
         self._tmp_dir = temp_dir
