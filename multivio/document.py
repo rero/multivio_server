@@ -97,11 +97,12 @@ example.</b></a>"""
         pil = Image.fromstring('RGB', (new_width, new_height), data)
         
         f = cStringIO.StringIO()
-        pil.save(f, "JPEG", quality=10)
+        #pil.save(f, "PNG", optimized=True)
+        pil.save(f, "JPEG", quality=90)
         f.seek(0)
         content = f.read()
         print "Total Process Time: ", (time.clock() - start)
-        header = [('content-type', 'image/jpg'), ('content-length',
+        header = [('content-type', 'image/jpeg'), ('content-length',
         str(len(content)))]
         return(header, content)
     
@@ -111,10 +112,11 @@ example.</b></a>"""
         img = Image.open(file_name)
         img.thumbnail((width, width), Image.ANTIALIAS)
         f = cStringIO.StringIO()
-        img.save(f, "PNG")
+        #img.save(f, "PNG")
+        pil.save(f, "JPEG", quality=90)
         f.seek(0)
         content = f.read()
-        header = [('content-type', 'image/png'), ('content-length',
+        header = [('content-type', 'image/jpeg'), ('content-length',
         str(len(content)))]
         return(header, content)
 

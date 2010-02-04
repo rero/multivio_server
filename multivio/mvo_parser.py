@@ -128,8 +128,8 @@ Core with Pdfs inside..</b></a>
             self._dc.reset()
             self._pdf.reset()
             self._img.reset()
+            doc = self.parseUrl(url) 
             try:
-                doc = self.parseUrl(url) 
                 #print "successfully parsed"
                 to_return = doc.json()
                 #parse the received url and return the cdm
@@ -373,7 +373,12 @@ class TocPdfParser(Parser, pyPdf.PdfFileReader):
                     print "%s%s %s" % (space, title, pagenr)
                 elif isinstance(obj, list):
                     print_part(obj, space + "  ")
-        print_part(self.getOutlines())
+        try:
+            outlines = self.getOutlines()
+        except:
+            outlines = None
+        if outlines is not None:
+            print_part(self.getOutlines())
     
     def getMetaData(self, query_url):
         metadata = {}
@@ -430,7 +435,10 @@ class TocPdfParser(Parser, pyPdf.PdfFileReader):
                     self._physical_to_logical[pagenr].append(current)
                 elif isinstance(obj, list):
                     get_parts(obj, current)
-        outlines = self.getOutlines()
+        try:
+            outlines = self.getOutlines()
+        except:
+            outlines = None
         if self.hasToc(outlines) :
             get_parts(outlines, root)
             self.appendPages(query_url)
@@ -444,6 +452,8 @@ class TocPdfParser(Parser, pyPdf.PdfFileReader):
         self._local_sequence_number = self._local_sequence_number + self.getNumPages()
 
     def hasToc(self, outlines):
+        if outlines is None:
+            return False
         for obj in outlines:
             if isinstance(obj, pyPdf.pdf.Destination):
                 return True
