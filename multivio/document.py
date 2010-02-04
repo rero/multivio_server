@@ -113,7 +113,7 @@ example.</b></a>"""
         img.thumbnail((width, width), Image.ANTIALIAS)
         f = cStringIO.StringIO()
         #img.save(f, "PNG")
-        pil.save(f, "JPEG", quality=90)
+        img.save(f, "JPEG", quality=90)
         f.seek(0)
         content = f.read()
         header = [('content-type', 'image/jpeg'), ('content-length',
