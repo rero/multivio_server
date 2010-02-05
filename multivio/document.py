@@ -80,7 +80,8 @@ example.</b></a>"""
         mypoppler.cvar.globalParams.setAntialias("yes")
         mypoppler.cvar.globalParams.setVectorAntialias("yes")
         doc = mypoppler.PDFDoc(filename)
-        splash = mypoppler.SplashOutputDev(mypoppler.splashModeRGB8, 3, False, (255, 255, 255))
+        splash = mypoppler.SplashOutputDev(mypoppler.splashModeRGB8, 3, False,
+        (255, 255, 255), True, True)
         splash.startDoc(doc.getXRef())
         page_width = doc.getPageMediaWidth(pagenr)
         page_height = doc.getPageMediaHeight(pagenr)
@@ -98,6 +99,7 @@ example.</b></a>"""
         
         f = cStringIO.StringIO()
         #pil.save(f, "PNG", optimized=True)
+        #pil.save('/tmp/test.png')
         pil.save(f, "JPEG", quality=90)
         f.seek(0)
         content = f.read()

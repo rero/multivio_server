@@ -25,6 +25,7 @@ if sys.version_info < (2, 6):
     import simplejson as json
 else:
     import json
+import string, Image, ImageDraw, ImageFont
 
 # third party modules
 from application import Application
@@ -81,6 +82,8 @@ class CdmParserApp(Application):
         #simple image parser
         self._img = ImageParser(counter=counter,
                 sequence_number=sequence_number)
+        self._info = InfoParser(counter=counter,
+                sequence_number=sequence_number)
 
         self.usage = """ Using the GET method it return a CDM in json format.<br>
 <b>Arguments:</b>
@@ -128,8 +131,8 @@ Core with Pdfs inside..</b></a>
             self._dc.reset()
             self._pdf.reset()
             self._img.reset()
-            doc = self.parseUrl(url) 
             try:
+                doc = self.parseUrl(url) 
                 #print "successfully parsed"
                 to_return = doc.json()
                 #parse the received url and return the cdm
@@ -180,10 +183,10 @@ Core with Pdfs inside..</b></a>
             Keyword arguments:
                 query_url -- string: a valid url
         """
-
         #get the remote file and store it into the temp dir
         (local_file, mime) = self.getRemoteFile(query_url)
-        content = file(local_file,'r')
+        if local_file is not None:
+            content = file(local_file,'r')
 
         #check the mime type
         print "Url: %s Detected Mime: %s" % (query_url, mime)
@@ -196,7 +199,31 @@ Core with Pdfs inside..</b></a>
         #call xml parsers
         if re.match('.*?/xml.*?', mime):
             return self._parseXml(content)
-        raise ParserError.InvalidMimeType("Not parser found for %s document type." % mime)
+
+        msg = """
+
+
+
+
+
+
+
+
+
+                      Warning: the file pointed by the url:
+
+  %s
+
+                      is not yet supported by the Multivio viewer.
+
+                      See http://www.multivio.org for more details.
+
+                                          Thanks for using Multivio.
+""" % query_url
+        msg = msg.split('\n')
+        self._info.parse(query_url, msg)
+        return self._info
+        #raise ParserError.InvalidMimeType("Not parser found for %s document type." % mime)
 
 
     def _parseXml(self, content):
@@ -260,6 +287,148 @@ class Parser:
         """ Print on STDOUT the CDM in json format."""
         print self.json()
 
+class InfoParser(Parser):
+    """ Return a simple cdm with errror message."""
+
+    def __init__(self, msg="Error", error_code="SERVER_ERROR", counter=1, sequence_number=1):
+        """ Build an instance of info parser.
+        
+            This build a simple Core Document Model to pass the error message
+            to the Multivio client.
+            Keyword arguments:
+                msg -- string: error message
+                counter -- int: initial node counter value
+                sequence_number -- int: initial sequenceNumber value, usefull
+                            for parser of parsers.
+        """
+        Parser.__init__(self, counter=counter, sequence_number=sequence_number)
+
+    def txt2img(self, text, font_name=MVOConfig.Info.font_name,
+        font_size=MVOConfig.Info.font_size, bg_color=MVOConfig.Info.bg_color,
+        fg_color=MVOConfig.Info.fg_color, output_size=MVOConfig.Info.output_size):
+
+
+        file_name = hashlib.sha224("".join(text)).hexdigest() + ".jpg"
+        output_file_name = os.path.join(MVOConfig.Info.output_dir,
+            file_name)
+        if os.path.isfile(output_file_name):
+            return file_name
+        
+        objIm = Image.new("RGBA", output_size, bg_color)
+        draw = ImageDraw.Draw(objIm)
+        tupBG = objIm.size
+        
+        intBG_Xsize = tupBG[0]
+        intBG_Ysize = tupBG[1]
+        
+        intFontSize = font_size
+        font = ImageFont.truetype(font_name, intFontSize)
+        
+        #current JPG image/'page'
+        intPage=1
+        
+        intX = 0
+        intY = 0
+        
+        intMaxLines = 0
+        lstParsed = []
+        strBigLine= ''
+        blnWrap = 0
+        
+        #parse the lines read merging lines together if they are within a word-<wrap> tag
+        for strLine in text:
+            image_width = objIm.size[0] 
+            text_width = font.getsize(strLine)[0]
+            print image_width," ", text_width
+            if text_width > image_width:
+                char_size_in_pix = int(text_width / len(strLine))
+                max_n_char = image_width / char_size_in_pix - 10
+                line = strLine
+                print line
+                while text_width > image_width:
+                    lstParsed.append("          "+line[:max_n_char])
+                    line = line[max_n_char:-1]
+                    text_width = font.getsize(line)[0]
+                lstParsed.append("          "+line)
+                    
+                #lstParsed.extend(parts)
+
+            else:
+                lstParsed.append(strLine)
+        intC = 0
+        for strLine in lstParsed:
+            intC = intC + 1
+            strBuffer = string.replace(strLine,'\n','')
+            strBuffer = string.replace(strBuffer,'’','`')
+            strBuffer = string.replace(strBuffer,'—','-')
+            strBuffer = string.replace(strBuffer,'“','"')
+            strBuffer = string.replace(strBuffer,'”','"')
+            strBuffer = string.replace(strBuffer,'…','...')
+        
+            #print 'Processing line %s' % intC + ' of %s' % intMaxLines + ' (line length: %s characters)' % len(strBuffer) 
+            #print "Line: %s" % strBuffer
+            strLineSegment = ''
+        
+            if len(strBuffer) == 0:
+                tupXY = font.getsize(strBuffer)
+                if (intY + tupXY[1]) > intBG_Ysize:
+                #    print "Case 2"
+                    return None 
+                draw.text((intX, intY), ' ', font=font)
+                intY = intY + tupXY[1]
+            else:
+                #while loop to write text to JPG in segments for word-wrap formatting
+                while len(strBuffer) > 0:
+        
+                    tupXY = font.getsize(strBuffer)
+                    if tupXY[0] < intBG_Xsize:
+                        strLineSegment = strBuffer
+                        strBuffer = ''
+                    else: 
+                        tupXYseg = font.getsize(strLineSegment)
+                        intPos = 0
+        
+                        while (tupXYseg[0] < intBG_Xsize) and (len(strBuffer) > 0):
+                            intPos = strBuffer.find(' ')
+                            if intPos == -1:
+                                intPos = len(strBuffer)
+                            tupN = font.getsize(' ' + strBuffer[:intPos])    
+                            if (tupXYseg[0] + tupN[0]) > intBG_Xsize:
+                                break
+                            else:
+                                strLineSegment = strLineSegment + strBuffer[:intPos] + ' '
+                                strTemp = strBuffer[intPos+1:]
+                                strBuffer = strTemp
+                                tupXYseg = font.getsize(strLineSegment)                 
+                            
+                    if (intY + tupXY[1]) > intBG_Ysize:
+                    #    print "Case 1"
+                        return None
+        
+                    draw.text((intX, intY), strLineSegment , fill=fg_color, font=font)
+                    strLineSegment = ''
+                    intY = intY + tupXY[1]
+        
+        print "Created a new image message message: %s" % output_file_name
+        objIm.save(output_file_name)
+        return file_name
+    
+    def parse(self, query_url, text):
+    
+        file_parts = query_url.split('/')
+        metadata = {
+            'title' : file_parts[-1]
+        }
+        info = self._cdm.addNode(metadata=metadata, label=file_parts[-1])
+        out_file_name = self.txt2img(text)
+        #print "Message file: ", text
+        #print "Output file: ", out_file_name
+        self._cdm.addNode(parent_id=info,
+        url=urllib.quote(MVOConfig.Info.url+"/"+out_file_name),
+            sequenceNumber=self._sequence_number)
+
+        if self._sequence_number is not None:
+            self._sequence_number = self._sequence_number + 1
 
 class ErrorParser(Parser):
     """ Return a simple cdm with errror message."""

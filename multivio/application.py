@@ -204,19 +204,33 @@ class Application(object):
     def getRemoteFile(self, url):
         url_md5 = hashlib.sha224(url).hexdigest()
         local_file = os.path.join(self._tmp_dir, url_md5)
+        local = False
         try:
-            mime = self._urlopener.open(url).info()['Content-Type']
+            if url.startswith("file://"):
+                local = True
+                mime = 'image/jpeg'
+                local_file = url.replace('file://','')
+                return (local_file, mime)
+            else:
+                mime = self._urlopener.open(url).info()['Content-Type']
         except Exception:
             raise ApplicationError.InvalidURL("Invalid URL: %s" % url)
         print "Mime: %s" % mime
+        supported = False
         if re.match('.*?/pdf.*?', mime):
             local_file = local_file+'.pdf'
+            supported = True
         if re.match('.*?/png.*?', mime):
             local_file = local_file+'.png'
+            supported = True
         if re.match('.*?/jpeg.*?', mime):
             local_file = local_file+'.jpg'
+            supported = True
         if re.match('.*?/xml*?', mime):
             local_file = local_file+'.xml'
+            supported = True
+        if not supported:
+            return (None, mime)
         lock_file = local_file+".lock"
 	rero_local_file = self.lm(url)
 	if rero_local_file is not None and os.path.isfile(rero_local_file):
