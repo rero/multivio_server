@@ -223,7 +223,7 @@ class Application(object):
         if re.match('.*?/png.*?', mime):
             local_file = local_file+'.png'
             supported = True
-        if re.match('.*?/jpeg.*?', mime):
+        if re.match('.*?/jpeg.*?', mime) or  re.match('.*?/jpg.*?', mime):
             local_file = local_file+'.jpg'
             supported = True
         if re.match('.*?/xml*?', mime):
