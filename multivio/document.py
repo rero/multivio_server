@@ -88,7 +88,7 @@ example.</b></a>"""
         scale = width/page_width
         if page_height > page_width:
             scale = width/page_height
-        doc.displayPage(splash, pagenr, 72*scale, 72*scale, 0, True, False, False)
+        doc.displayPage(splash, pagenr, 72*scale, 72*scale, 0, True, True, False)
         bitmap = splash.getBitmap()
         new_width = bitmap.getWidth()
         new_height = bitmap.getHeight()
