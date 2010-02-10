@@ -1,7 +1,7 @@
 Multivio Server
 ===============
 Johnny Mariethoz <Johnny.Mariethoz@rero.ch>
-V. 0.0, 2009/11/26
+V. 0.0, 2010/02/10
 
 == Introduction ==
 Python based multivio server.
@@ -22,6 +22,8 @@ The PIL library need also libjpeg as describe in the PIL documentation.
 
 == Debian Packages ==
 
+=====================
+---------------------
 apt-get install libapache2-mod-wsgi python-imaging python-simplejson
 apt-get install openssh-server
 apt-get install swig
@@ -31,6 +33,8 @@ apt-get install python-dev
 apt-get install python-pypdf
 apt-get install ttf-freefont
 apt-get install gsfonts gsfonts-x11
+---------------------
+=====================
 
 == With apache ==
 First you need to install the project itself:
