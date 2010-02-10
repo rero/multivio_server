@@ -11,28 +11,54 @@ Python based multivio server.
 .An Used packages
 [width="80%",frame="topbot",options="header"]
 |========================================================================================================================
-|Packages   |Documentation                                    |Licence    |2.5 Installation          |2.6 Installation
-|wsgiref    |http://docs.python.org/library/wsgiref.html      |PSF-2      |easy_install wsgiref      |default
-|json       |http://docs.python.org/library/json.html         |PSF-2      |easy_install simplejson   |default
-|PIL        |http://www.pythonware.com/products/pil           |MIT like   |setup.py                  |easy_install
-|pdfminer   |http://www.unixuser.org/~euske/python/pdfminer   |MIT/X      |setup.py                  |setup.py
-|gfx        |http://www.swftools.org/gfx_tutorial.html        |GPL2       |./configure               |./configure
+|Packages   |Documentation                                 |Licence        |2.5 Installation          |2.6 Installation
+|wsgiref    |http://docs.python.org/library/wsgiref.html   |PSF-2          |easy_install wsgiref      |default
+|json       |http://docs.python.org/library/json.html      |PSF-2          |easy_install simplejson   |default
+|PIL        |http://www.pythonware.com/products/pil        |MIT like       |setup.py                  |easy_install
+|pyPdf      |http://pybrary.net/pyPdf/                     |modified BSD   |setup.py                  |easy_install
 |========================================================================================================================
 
 The PIL library need also libjpeg as describe in the PIL documentation.
 
-The gfx package should first be compiled using ./configure. In macosx, I got
-an error and I should to run ranlib on lib/*.a. The lib/python/*.so
-files should be copied by hand in a python library directory.
+== Debian Packages ==
+
+apt-get install libapache2-mod-wsgi python-imaging python-simplejson
+apt-get install openssh-server
+apt-get install swig
+apt-get install libpoppler-dev
+apt-get install g++
+apt-get install python-dev
+apt-get install python-pypdf
+apt-get install ttf-freefont
+apt-get install gsfonts gsfonts-x11
 
 == With apache ==
-You have to copy the dispatcher.py in an apache web directory: i.e.
-$HOME/Sites.
+First you need to install the project itself:
+python setup.py install --home /var/www/multivio
 
-Modify the apache config by adding a line containing:
+Then rename the sample config file:
+
+cd /var/www/multivio/bin
+mv mvo_config_example.py mvo_config.py
+and change it.
+
+If you decide to change the temp directory, do not forget to adapt the user right:
+
+chown www-data /var/www/multivio/temp
+for example.
+
+
+Modify the apache config file. For example:
 =====================
 ---------------------
-WSGIScriptAlias /mvo_server /ChangeIt/Sites/mvo_server.py
+<Directory /var/www/multivio>
+Order allow,deny
+Allow from all
+</Directory>
+ErrorLog /var/www/multivio/log/apache.err
+WSGIPythonPath /var/www/multivio/lib/python:/var/www/multivio/bin
+LogLevel debug
+WSGIScriptAlias /server /var/www/multivio/bin/multivio_server.py
 ---------------------
 =====================
 And restart apache.
@@ -75,7 +101,7 @@ instead. No environment variable is needed.
 You can run a local server as:
 =====================
 ---------------------
-python ./src/multivio/dispatcher.py
+python build_dir/lib*/dispatcher.py
 ---------------------
 =====================
 

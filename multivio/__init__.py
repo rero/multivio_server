@@ -12,7 +12,7 @@ Multivio Python package.
 
 from logger import *
 from dispatcher import *
-from parser import *
+from mvo_parser import *
 from cdm import *
 from document import *
 
