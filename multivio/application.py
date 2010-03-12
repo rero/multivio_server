@@ -166,7 +166,7 @@ class Application(object):
 """
         self._tmp_dir = temp_dir
         self._tmp_files = []
-        self._urlopener = urllib.URLopener()
+        self._urlopener = urllib.FancyURLopener()
         self._urlopener.version = MVOConfig.Url.user_agent
 
     def get(self, environ, start_response):
@@ -204,54 +204,69 @@ class Application(object):
     def getRemoteFile(self, url):
         url_md5 = hashlib.sha224(url).hexdigest()
         local_file = os.path.join(self._tmp_dir, url_md5)
-        local = False
-        try:
-            if url.startswith("file://"):
-                local = True
-                mime = 'image/jpeg'
-                local_file = url.replace('file://','')
-                return (local_file, mime)
-            else:
-                mime = self._urlopener.open(url).info()['Content-Type']
-        except Exception:
-            raise ApplicationError.InvalidURL("Invalid URL: %s" % url)
-        print "Mime: %s" % mime
-        supported = False
-        if re.match('.*?/pdf.*?', mime):
-            local_file = local_file+'.pdf'
-            supported = True
-        if re.match('.*?/png.*?', mime):
-            local_file = local_file+'.png'
-            supported = True
-        if re.match('.*?/jpeg.*?', mime) or  re.match('.*?/jpg.*?', mime):
-            local_file = local_file+'.jpg'
-            supported = True
-        if re.match('.*?/xml*?', mime):
-            local_file = local_file+'.xml'
-            supported = True
-        if not supported:
-            return (None, mime)
-        lock_file = local_file+".lock"
+
+	#file in the local file system
+        if url.startswith("file://"):
+            mime = 'image/jpeg'
+            local_file = url.replace('file://','')
+            return (local_file, mime)
+	
+	#file in RERO DOC nfs volume
 	rero_local_file = self.lm(url)
 	if rero_local_file is not None and os.path.isfile(rero_local_file):
 	    local_file = rero_local_file
             print "File: %s" % local_file
-        else:
-            if not os.path.isfile(local_file):
-                if not os.path.isfile(lock_file):
-                    print "Create: ", lock_file
-                    open(lock_file, 'w').close() 
-                    print "Try to retrieve %s file" % url
+	    mime = "application/pdf"
+	    if re.match(".*?\.(jpg|jpeg)", rero_local_file):
+		mime = "image/jpeg"
+	    if re.match(".*?\.png", rero_local_file):
+		mime = "image/png"
+	    if re.match(".*?\.gif", rero_local_file):
+		mime = "image/gif"
+	    return (local_file, mime)
+	
+	#remote file
+        lock_file = local_file + ".lock"
+	mime_file = local_file + ".mime"
+
+	#already downloaded?
+        if not os.path.isfile(local_file):
+            if not os.path.isfile(lock_file):
+                print "Create: ", lock_file
+                open(lock_file, 'w').close() 
+                print "Try to retrieve %s file" % url
+        	try:
                     (filename, headers) = self._urlopener.retrieve(url)
-                    shutil.move(filename, local_file)
-                    self._tmp_files.append(local_file)
-                    os.remove(lock_file)
-                    print "Remove: ", lock_file
-                else:
-                    while os.path.isfile(lock_file):
-                        "Wait for file"
-                        time.sleep(.2)
-        return (local_file, mime)
+        	except Exception:
+            	    raise ApplicationError.InvalidURL("Invalid URL: %s" % url)
+		mime = headers['Content-Type']
+		if re.match('.*?/x-download', mime):
+		    mime = 'application/pdf'
+                shutil.move(filename, local_file)
+                self._tmp_files.append(local_file)
+                os.remove(lock_file)
+                print "Remove: ", lock_file
+		output_mime_file = file(mime_file, "w")
+		output_mime_file.write(mime)
+		output_mime_file.close()
+
+	    #downloading by an other process?
+            else:
+                while os.path.isfile(lock_file):
+                    print "Wait for file"
+
+                    time.sleep(.2)
+	output_mime_file = file(mime_file, "r")
+	mime = output_mime_file.read()
+	output_mime_file.close()
+	print "Url: %s Mime: %s LocalFile: %s" % (url, mime, local_file)
+        if re.match('.*?/pdf.*?', mime) or \
+      	    re.match('.*?/xml.*?', mime) or \
+      	    re.match('image/.*?', mime):
+            return (local_file, mime)
+	else:
+	    return (None, mime)
+
 
     def lm(self, url):
         if re.match('http://doc.rero.ch/lm.php', url):

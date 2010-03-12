@@ -60,7 +60,7 @@ example.</b></a>"""
                 (header, content) = self.resize(image_file, width)
                 start_response('200 OK', header)
                 return [content]
-            if re.match('application/pdf', mime):
+            if re.match('.*?/pdf', mime):
                 pagenr = 1
                 if opts.has_key('pagenr'):
                     pagenr = int(opts['pagenr'][0])
