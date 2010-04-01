@@ -96,7 +96,9 @@ newspaper_collections = {
             '11' : 'messager_boiteux_neuchatel',
             '12' : 'revue_historique_neuchateloise',
             '13' : 'etrennes_fribourgeoises',
-            '14' : 'rameau_de_sapin'
+            '14' : 'rameau_de_sapin',
+            '15' : 'l_express',
+            '16' : 'l_impartial'
 }
 
 
@@ -166,6 +168,8 @@ class Application(object):
 """
         self._tmp_dir = temp_dir
         self._tmp_files = []
+	#import socket
+	#socket.setdefaulttimeout(1)
         self._urlopener = urllib.FancyURLopener()
         self._urlopener.version = MVOConfig.Url.user_agent
 
@@ -253,8 +257,7 @@ class Application(object):
 	    #downloading by an other process?
             else:
                 while os.path.isfile(lock_file):
-                    print "Wait for file"
-
+                    print "Wait for file %s" % lock_file 
                     time.sleep(.2)
 	output_mime_file = file(mime_file, "r")
 	mime = output_mime_file.read()
