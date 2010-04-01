@@ -7,6 +7,7 @@ __copyright__ = "Copyright (c) 2009 Rero, Johnny Mariethoz"
 __license__ = "Internal Use Only"
 
 
+import logging
 
 class MVOConfig:
 
@@ -25,6 +26,11 @@ class MVOConfig:
         output_dir = '/var/www/multivio/images'
         #output_dir = '/var/www/multivio/images'
         url = 'file:///var/www/multivio/images'
+    class Logger:
+        name = "multivio"
+        file_name = "/tmp/multivio.log"
+        console = True
+        level = logging.DEBUG
         
         											
         											

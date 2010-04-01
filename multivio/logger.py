@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+"""Logging module for the Multivio application."""
 
 __author__ = "Johnny Mariethoz <Johnny.Mariethoz@rero.ch>"
 __version__ = "0.0.0"
@@ -10,54 +11,79 @@ __license__ = "Internal Use Only"
 #---------------------------- Modules -----------------------------------------
 
 # import of standard modules
-import sys
-import os
 from optparse import OptionParser
-import cgi
-import re
-import datetime
 
-# third party modules
+# local modules
+
+import logging
+from mvo_config import MVOConfig
 from application import Application
 
+class Logger:
+    """To log several messages"""
+    def __init__(self, name="multivio", log_output_file=None, log_console=True,
+                log_level=logging.DEBUG):
+        """ Create an Looger object for messages logging.
 
+            Keyword arguments:
+                name  -- string : message application name
+                log_output_file  -- string : name of the output file
+                log_console  -- string : print message on the console
+                log_level  -- logging.level : level of the log messages
+        """
+        self.name = name
+        # create logger with "spam_application"
+        self.logger = logging.getLogger(name)
+        self.logger.setLevel(log_level)
+        formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s"\
+                                        "- %(message)s")
+        # create file handler logger
+        if log_output_file is not None:
+            log_filehandler = logging.FileHandler(log_output_file)
+            log_filehandler.setFormatter(formatter)
+            self.logger.addHandler(log_filehandler)
+
+        # create console handler logger
+        if log_console is True:
+            log_console = logging.StreamHandler()
+            log_console.setLevel(log_level)
+            log_console.setFormatter(formatter)
+            self.logger.addHandler(log_console)
+
+LOGGER = Logger(MVOConfig.Logger.name, MVOConfig.Logger.file_name,
+                MVOConfig.Logger.console, MVOConfig.Logger.level)
 
 class LoggerApp(Application):
+    """Web application for logging"""
     def __init__(self):
+        """Basic constructor"""
         Application.__init__(self)
-        self.usage = """Using the POST method it put a log message in the server.<br>"""
+        self.usage = """Using the POST method it put a log message in"\
+                        "the server.<br>"""
+        self.logger = logging.getLogger(MVOConfig.Logger.name+".LoggerApp") 
     
     def post(self, environ, start_response):
-        (path, opts) = self.getParams(environ)
+        """Get the log message from the client in forward it into the loggging
+        system of the server.
+        """
         content = self.getPostForm(environ)
         body = content.value
         if isinstance(content.value, list):
             body = str(content.value)
-        now = datetime.datetime.today()
-        header = '%s - - [%s] "POST %s/%s %s"'\
-            % (environ.get('SERVER_NAME'),
-            now, path, opts, environ.get('SERVER_PROTOCOL')
-            )
-        self.addLog(header, body)
+        self.logger.info(body)
         start_response('200 OK', [('content-type', 'text/html')])
         return ["Ok"]
-
-    def addLog(self, header, body):
-        print header
-        print body
 
 
 #---------------------------- Main Part ---------------------------------------
 
-if __name__ == '__main__':
-
+def main():
+    """Main function"""
     usage = "usage: %prog [options]"
 
     parser = OptionParser(usage)
 
-    parser.set_description ("Change It")
-
-
+    parser.set_description ("To test the Logger class.")
 
     parser.add_option ("-v", "--verbose", dest="verbose",
                        help="Verbose mode",
@@ -67,15 +93,15 @@ if __name__ == '__main__':
                        help="Http Port (Default: 4041)",
                        type="int", default=4041)
 
-
-    (options,args) = parser.parse_args ()
-
+    (options, args) = parser.parse_args()
 
     if len(args) != 0:
         parser.error("Error: incorrect number of arguments, try --help")
+
     from wsgiref.simple_server import make_server
-    application = LoggerApp('/tmp/multivio.log')
+    application = LoggerApp()
     server = make_server('', options.port, application)
     server.serve_forever()
 
-
+if __name__ == '__main__':
+    main()
