@@ -11,9 +11,11 @@ Multivio Python package.
 # load all the sub-modules
 
 from logger import *
-from dispatcher import *
-from mvo_parser import *
-from cdm import *
-from document import *
+from dispatcher_app import *
+from processor import *
+from parser_app import *
+from pdf_parser import *
+from dc_parser import *
+from mets_parser import *
 
 

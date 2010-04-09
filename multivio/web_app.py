@@ -19,6 +19,7 @@ import hashlib
 import urllib
 import shutil
 import time
+import logging
 
 from mvo_config import MVOConfig
 
@@ -115,7 +116,7 @@ class InputProcessed(object):
         raise EOFError('The wsgi.input stream has already been consumed')
     readline = readlines = __iter__ = read
 
-class Application(object):
+class WebApplication(object):
     def __init__(self, temp_dir=MVOConfig.General.temp_dir):
         self.usage = """<br><h1>Welcome to the multivio server.</h1>
 <h2>Available pathes:</h2>
@@ -172,6 +173,8 @@ class Application(object):
 	#socket.setdefaulttimeout(1)
         self._urlopener = urllib.FancyURLopener()
         self._urlopener.version = MVOConfig.Url.user_agent
+        self.logger = logging.getLogger(MVOConfig.Logger.name + "."
+                        + self.__class__.__name__) 
 
     def get(self, environ, start_response):
         start_response('405 Method Not Allowed', [('content-type',
@@ -219,7 +222,7 @@ class Application(object):
 	rero_local_file = self.lm(url)
 	if rero_local_file is not None and os.path.isfile(rero_local_file):
 	    local_file = rero_local_file
-            print "File: %s" % local_file
+            self.logger.debug("File: %s" % local_file)
 	    mime = "application/pdf"
 	    if re.match(".*?\.(jpg|jpeg)", rero_local_file):
 		mime = "image/jpeg"
@@ -236,9 +239,9 @@ class Application(object):
 	#already downloaded?
         if not os.path.isfile(local_file):
             if not os.path.isfile(lock_file):
-                print "Create: ", lock_file
+                self.logger.debug("Create lock file: %s" % lock_file)
                 open(lock_file, 'w').close() 
-                print "Try to retrieve %s file" % url
+                self.logger.debug("Try to retrieve %s file" % url)
         	try:
                     (filename, headers) = self._urlopener.retrieve(url)
         	except Exception:
@@ -249,7 +252,7 @@ class Application(object):
                 shutil.move(filename, local_file)
                 self._tmp_files.append(local_file)
                 os.remove(lock_file)
-                print "Remove: ", lock_file
+                self.logger.debug("Remove: %s" % lock_file)
 		output_mime_file = file(mime_file, "w")
 		output_mime_file.write(mime)
 		output_mime_file.close()
@@ -257,12 +260,13 @@ class Application(object):
 	    #downloading by an other process?
             else:
                 while os.path.isfile(lock_file):
-                    print "Wait for file %s" % lock_file 
+                    self.logger.debug("Wait for file %s" % lock_file)
                     time.sleep(.2)
 	output_mime_file = file(mime_file, "r")
 	mime = output_mime_file.read()
 	output_mime_file.close()
-	print "Url: %s Mime: %s LocalFile: %s" % (url, mime, local_file)
+	self.logger.debug("Url: %s Mime: %s LocalFile: %s" % (url, mime,
+                local_file))
         if re.match('.*?/pdf.*?', mime) or \
       	    re.match('.*?/xml.*?', mime) or \
       	    re.match('image/.*?', mime):

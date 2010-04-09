@@ -16,7 +16,7 @@ import cStringIO
 from optparse import OptionParser
 import cgi
 import re
-from application import Application
+from web_app import WebApplication
 import time
 
 import Image
@@ -29,9 +29,9 @@ class DocumentError:
     class InvalidUrl(Exception):
         pass
 
-class DocumentApp(Application):
+class DocumentApp(WebApplication):
     def __init__(self, temp_dir=None):
-        Application.__init__(self, temp_dir)
+        WebApplication.__init__(self, temp_dir)
         self.usage = """Using the GET method it return a thumbnail in PNG format of a given size for a given
 image.<br>
 <b>Arguments:</b>

@@ -27,7 +27,9 @@ import test_parser
 
 # create a big test suite
 test_suite = (
-    unittest.makeSuite (test_parser.ParserOK),
+    unittest.makeSuite (test_parser.PdfParserOK),
+    unittest.makeSuite (test_parser.DublinCoreParserOK),
+    unittest.makeSuite (test_parser.MetsParserOK),
     unittest.makeSuite (test_logger.LoggerOK),
     )
 

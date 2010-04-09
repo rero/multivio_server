@@ -1,0 +1,3403 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<METS:mets xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dv="http://dfg-viewer.de/" xmlns:MODS="http://www.loc.gov/mods/v3" xmlns:METS="http://www.loc.gov/METS/" xmlns:GDZ="http://gdz.sub.uni-goettingen.de/" xsi:schemaLocation="http://www.loc.gov/METS/ http://www.loc.gov/mets/mets.xsd http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-2.xsd">
+<METS:dmdSec xmlns:METS="http://www.loc.gov/METS/" xmlns:MODS="http://www.loc.gov/mods/v3" ID="dmdlog1">
+<METS:mdWrap MDTYPE="MODS">
+<METS:xmlData>
+<MODS:mods>
+<MODS:recordInfo>
+<MODS:recordIdentifier>PPN338271201</MODS:recordIdentifier>
+</MODS:recordInfo>
+<MODS:identifier type="purl">http://resolver.sub.uni-goettingen.de/purl?PPN338271201</MODS:identifier>
+<MODS:location>
+<MODS:url>http://resolver.sub.uni-goettingen.de/purl?PPN338271201</MODS:url>
+</MODS:location>
+<MODS:identifier type="PPN">PPN338271201</MODS:identifier>
+<MODS:identifier type="PPNanalog">PPN146811372</MODS:identifier>
+<MODS:titleInfo>
+<MODS:title>D. Joh. Sal. Semlers Antwort auf das Bahrdische Glaubensbekenntnis</MODS:title>
+</MODS:titleInfo>
+<MODS:language>
+<MODS:languageTerm type="code" authority="iso639-2b">ger</MODS:languageTerm>
+</MODS:language>
+<MODS:originInfo>
+<MODS:dateIssued encoding="w3cdtf">1779</MODS:dateIssued>
+<MODS:place>
+<MODS:placeTerm type="text">Halle</MODS:placeTerm>
+</MODS:place>
+<MODS:publisher>Hemmerde</MODS:publisher>
+<MODS:dateCaptured encoding="w3cdtf">2002-01-25</MODS:dateCaptured>
+</MODS:originInfo>
+<MODS:subject authority="gdz">
+<MODS:topic>semld</MODS:topic>
+</MODS:subject>
+<MODS:physicalDescription>
+<MODS:extent>135 pages</MODS:extent>
+<MODS:digitalOrigin>reformatted digital</MODS:digitalOrigin>
+</MODS:physicalDescription>
+<MODS:physicalDescription>
+<MODS:extent>8ê</MODS:extent>
+</MODS:physicalDescription>
+<MODS:classification authority="gdz">Varia</MODS:classification>
+<MODS:name type="personal">
+<MODS:role>
+<MODS:roleTerm type="code" authority="marcrelator">aut</MODS:roleTerm>
+</MODS:role>
+<MODS:namePart type="family">Semler</MODS:namePart>
+<MODS:namePart type="given">Johann Salomon</MODS:namePart>
+</MODS:name>
+</MODS:mods>
+</METS:xmlData>
+</METS:mdWrap>
+</METS:dmdSec>
+<METS:dmdSec xmlns:METS="http://www.loc.gov/METS/" xmlns:MODS="http://www.loc.gov/mods/v3" ID="dmdlog2">
+<METS:mdWrap MDTYPE="MODS">
+<METS:xmlData>
+<MODS:mods>
+<MODS:language>
+<MODS:languageTerm type="code" authority="iso639-2b">ger</MODS:languageTerm>
+</MODS:language>
+<MODS:physicalDescription>
+<MODS:extent>1 page</MODS:extent>
+</MODS:physicalDescription>
+</MODS:mods>
+</METS:xmlData>
+</METS:mdWrap>
+</METS:dmdSec>
+<METS:dmdSec xmlns:METS="http://www.loc.gov/METS/" xmlns:MODS="http://www.loc.gov/mods/v3" ID="dmdlog3">
+<METS:mdWrap MDTYPE="MODS">
+<METS:xmlData>
+<MODS:mods>
+<MODS:language>
+<MODS:languageTerm type="code" authority="iso639-2b">ger</MODS:languageTerm>
+</MODS:language>
+<MODS:physicalDescription>
+<MODS:extent>14 pages</MODS:extent>
+</MODS:physicalDescription>
+</MODS:mods>
+</METS:xmlData>
+</METS:mdWrap>
+</METS:dmdSec>
+<METS:dmdSec xmlns:METS="http://www.loc.gov/METS/" xmlns:MODS="http://www.loc.gov/mods/v3" ID="dmdlog4">
+<METS:mdWrap MDTYPE="MODS">
+<METS:xmlData>
+<MODS:mods>
+<MODS:titleInfo>
+<MODS:title>Nachricht an den Leser.</MODS:title>
+</MODS:titleInfo>
+<MODS:language>
+<MODS:languageTerm type="code" authority="iso639-2b">ger</MODS:languageTerm>
+</MODS:language>
+<MODS:physicalDescription>
+<MODS:extent>9 pages</MODS:extent>
+</MODS:physicalDescription>
+</MODS:mods>
+</METS:xmlData>
+</METS:mdWrap>
+</METS:dmdSec>
+<METS:dmdSec xmlns:METS="http://www.loc.gov/METS/" xmlns:MODS="http://www.loc.gov/mods/v3" ID="dmdlog5">
+<METS:mdWrap MDTYPE="MODS">
+<METS:xmlData>
+<MODS:mods>
+<MODS:titleInfo>
+<MODS:title>Ueber das Bekentnis selbst</MODS:title>
+</MODS:titleInfo>
+<MODS:language>
+<MODS:languageTerm type="code" authority="iso639-2b">ger</MODS:languageTerm>
+</MODS:language>
+<MODS:physicalDescription>
+<MODS:extent>110 pages</MODS:extent>
+</MODS:physicalDescription>
+</MODS:mods>
+</METS:xmlData>
+</METS:mdWrap>
+</METS:dmdSec>
+<METS:amdSec xmlns:METS="http://www.loc.gov/METS/" xmlns:dv="http://dfg-viewer.de/" ID="amd1">
+<METS:rightsMD ID="rights1">
+<METS:mdWrap MIMETYPE="text/xml" MDTYPE="OTHER" OTHERMDTYPE="DVRIGHTS">
+<METS:xmlData>
+<dv:rights xmlns:dv="http://dfg-viewer.de/">
+<dv:owner>Digitalisierungszentrum der Niedersächsichen Staats- und Universitäts Bibliothek Göttingen</dv:owner>
+<dv:ownerLogo>http://gdz.sub.uni-goettingen.de/logo_gdz_dfgv.png</dv:ownerLogo>
+<dv:ownerSiteURL>http://gdz.sub.uni-goettingen.de/</dv:ownerSiteURL>
+</dv:rights>
+</METS:xmlData>
+</METS:mdWrap>
+</METS:rightsMD>
+<METS:digiprovMD ID="digiprov1">
+<METS:mdWrap MIMETYPE="text/xml" MDTYPE="OTHER" OTHERMDTYPE="DVLINKS">
+<METS:xmlData>
+<dv:links xmlns:dv="http://dfg-viewer.de/">
+<dv:reference>http://opac.sub.uni-goettingen.de/DB=1/PPN?PPN=338271201</dv:reference>
+<dv:presentation>http://gdz.sub.uni-goettingen.de/dms/resolveppn/?PPN338271201</dv:presentation>
+</dv:links>
+</METS:xmlData>
+</METS:mdWrap>
+</METS:digiprovMD>
+</METS:amdSec>
+<METS:fileSec xmlns:METS="http://www.loc.gov/METS/" xmlns:xlink="http://www.w3.org/1999/xlink">
+<METS:fileGrp USE="DEFAULT">
+<METS:file ID="fi1_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000001.jpg"/>
+</METS:file>
+<METS:file ID="fi2_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000002.jpg"/>
+</METS:file>
+<METS:file ID="fi3_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000003.jpg"/>
+</METS:file>
+<METS:file ID="fi4_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000004.jpg"/>
+</METS:file>
+<METS:file ID="fi5_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000005.jpg"/>
+</METS:file>
+<METS:file ID="fi6_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000006.jpg"/>
+</METS:file>
+<METS:file ID="fi7_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000007.jpg"/>
+</METS:file>
+<METS:file ID="fi8_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000008.jpg"/>
+</METS:file>
+<METS:file ID="fi9_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000009.jpg"/>
+</METS:file>
+<METS:file ID="fi10_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000010.jpg"/>
+</METS:file>
+<METS:file ID="fi11_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000011.jpg"/>
+</METS:file>
+<METS:file ID="fi12_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000012.jpg"/>
+</METS:file>
+<METS:file ID="fi13_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000013.jpg"/>
+</METS:file>
+<METS:file ID="fi14_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000014.jpg"/>
+</METS:file>
+<METS:file ID="fi15_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000015.jpg"/>
+</METS:file>
+<METS:file ID="fi16_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000016.jpg"/>
+</METS:file>
+<METS:file ID="fi17_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000017.jpg"/>
+</METS:file>
+<METS:file ID="fi18_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000018.jpg"/>
+</METS:file>
+<METS:file ID="fi19_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000019.jpg"/>
+</METS:file>
+<METS:file ID="fi20_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000020.jpg"/>
+</METS:file>
+<METS:file ID="fi21_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000021.jpg"/>
+</METS:file>
+<METS:file ID="fi22_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000022.jpg"/>
+</METS:file>
+<METS:file ID="fi23_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000023.jpg"/>
+</METS:file>
+<METS:file ID="fi24_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000024.jpg"/>
+</METS:file>
+<METS:file ID="fi25_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000025.jpg"/>
+</METS:file>
+<METS:file ID="fi26_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000026.jpg"/>
+</METS:file>
+<METS:file ID="fi27_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000027.jpg"/>
+</METS:file>
+<METS:file ID="fi28_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000028.jpg"/>
+</METS:file>
+<METS:file ID="fi29_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000029.jpg"/>
+</METS:file>
+<METS:file ID="fi30_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000030.jpg"/>
+</METS:file>
+<METS:file ID="fi31_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000031.jpg"/>
+</METS:file>
+<METS:file ID="fi32_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000032.jpg"/>
+</METS:file>
+<METS:file ID="fi33_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000033.jpg"/>
+</METS:file>
+<METS:file ID="fi34_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000034.jpg"/>
+</METS:file>
+<METS:file ID="fi35_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000035.jpg"/>
+</METS:file>
+<METS:file ID="fi36_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000036.jpg"/>
+</METS:file>
+<METS:file ID="fi37_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000037.jpg"/>
+</METS:file>
+<METS:file ID="fi38_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000038.jpg"/>
+</METS:file>
+<METS:file ID="fi39_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000039.jpg"/>
+</METS:file>
+<METS:file ID="fi40_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000040.jpg"/>
+</METS:file>
+<METS:file ID="fi41_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000041.jpg"/>
+</METS:file>
+<METS:file ID="fi42_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000042.jpg"/>
+</METS:file>
+<METS:file ID="fi43_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000043.jpg"/>
+</METS:file>
+<METS:file ID="fi44_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000044.jpg"/>
+</METS:file>
+<METS:file ID="fi45_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000045.jpg"/>
+</METS:file>
+<METS:file ID="fi46_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000046.jpg"/>
+</METS:file>
+<METS:file ID="fi47_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000047.jpg"/>
+</METS:file>
+<METS:file ID="fi48_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000048.jpg"/>
+</METS:file>
+<METS:file ID="fi49_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000049.jpg"/>
+</METS:file>
+<METS:file ID="fi50_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000050.jpg"/>
+</METS:file>
+<METS:file ID="fi51_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000051.jpg"/>
+</METS:file>
+<METS:file ID="fi52_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000052.jpg"/>
+</METS:file>
+<METS:file ID="fi53_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000053.jpg"/>
+</METS:file>
+<METS:file ID="fi54_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000054.jpg"/>
+</METS:file>
+<METS:file ID="fi55_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000055.jpg"/>
+</METS:file>
+<METS:file ID="fi56_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000056.jpg"/>
+</METS:file>
+<METS:file ID="fi57_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000057.jpg"/>
+</METS:file>
+<METS:file ID="fi58_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000058.jpg"/>
+</METS:file>
+<METS:file ID="fi59_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000059.jpg"/>
+</METS:file>
+<METS:file ID="fi60_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000060.jpg"/>
+</METS:file>
+<METS:file ID="fi61_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000061.jpg"/>
+</METS:file>
+<METS:file ID="fi62_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000062.jpg"/>
+</METS:file>
+<METS:file ID="fi63_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000063.jpg"/>
+</METS:file>
+<METS:file ID="fi64_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000064.jpg"/>
+</METS:file>
+<METS:file ID="fi65_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000065.jpg"/>
+</METS:file>
+<METS:file ID="fi66_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000066.jpg"/>
+</METS:file>
+<METS:file ID="fi67_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000067.jpg"/>
+</METS:file>
+<METS:file ID="fi68_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000068.jpg"/>
+</METS:file>
+<METS:file ID="fi69_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000069.jpg"/>
+</METS:file>
+<METS:file ID="fi70_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000070.jpg"/>
+</METS:file>
+<METS:file ID="fi71_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000071.jpg"/>
+</METS:file>
+<METS:file ID="fi72_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000072.jpg"/>
+</METS:file>
+<METS:file ID="fi73_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000073.jpg"/>
+</METS:file>
+<METS:file ID="fi74_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000074.jpg"/>
+</METS:file>
+<METS:file ID="fi75_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000075.jpg"/>
+</METS:file>
+<METS:file ID="fi76_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000076.jpg"/>
+</METS:file>
+<METS:file ID="fi77_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000077.jpg"/>
+</METS:file>
+<METS:file ID="fi78_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000078.jpg"/>
+</METS:file>
+<METS:file ID="fi79_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000079.jpg"/>
+</METS:file>
+<METS:file ID="fi80_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000080.jpg"/>
+</METS:file>
+<METS:file ID="fi81_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000081.jpg"/>
+</METS:file>
+<METS:file ID="fi82_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000082.jpg"/>
+</METS:file>
+<METS:file ID="fi83_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000083.jpg"/>
+</METS:file>
+<METS:file ID="fi84_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000084.jpg"/>
+</METS:file>
+<METS:file ID="fi85_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000085.jpg"/>
+</METS:file>
+<METS:file ID="fi86_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000086.jpg"/>
+</METS:file>
+<METS:file ID="fi87_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000087.jpg"/>
+</METS:file>
+<METS:file ID="fi88_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000088.jpg"/>
+</METS:file>
+<METS:file ID="fi89_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000089.jpg"/>
+</METS:file>
+<METS:file ID="fi90_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000090.jpg"/>
+</METS:file>
+<METS:file ID="fi91_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000091.jpg"/>
+</METS:file>
+<METS:file ID="fi92_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000092.jpg"/>
+</METS:file>
+<METS:file ID="fi93_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000093.jpg"/>
+</METS:file>
+<METS:file ID="fi94_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000094.jpg"/>
+</METS:file>
+<METS:file ID="fi95_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000095.jpg"/>
+</METS:file>
+<METS:file ID="fi96_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000096.jpg"/>
+</METS:file>
+<METS:file ID="fi97_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000097.jpg"/>
+</METS:file>
+<METS:file ID="fi98_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000098.jpg"/>
+</METS:file>
+<METS:file ID="fi99_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000099.jpg"/>
+</METS:file>
+<METS:file ID="fi100_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000100.jpg"/>
+</METS:file>
+<METS:file ID="fi101_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000101.jpg"/>
+</METS:file>
+<METS:file ID="fi102_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000102.jpg"/>
+</METS:file>
+<METS:file ID="fi103_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000103.jpg"/>
+</METS:file>
+<METS:file ID="fi104_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000104.jpg"/>
+</METS:file>
+<METS:file ID="fi105_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000105.jpg"/>
+</METS:file>
+<METS:file ID="fi106_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000106.jpg"/>
+</METS:file>
+<METS:file ID="fi107_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000107.jpg"/>
+</METS:file>
+<METS:file ID="fi108_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000108.jpg"/>
+</METS:file>
+<METS:file ID="fi109_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000109.jpg"/>
+</METS:file>
+<METS:file ID="fi110_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000110.jpg"/>
+</METS:file>
+<METS:file ID="fi111_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000111.jpg"/>
+</METS:file>
+<METS:file ID="fi112_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000112.jpg"/>
+</METS:file>
+<METS:file ID="fi113_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000113.jpg"/>
+</METS:file>
+<METS:file ID="fi114_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000114.jpg"/>
+</METS:file>
+<METS:file ID="fi115_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000115.jpg"/>
+</METS:file>
+<METS:file ID="fi116_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000116.jpg"/>
+</METS:file>
+<METS:file ID="fi117_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000117.jpg"/>
+</METS:file>
+<METS:file ID="fi118_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000118.jpg"/>
+</METS:file>
+<METS:file ID="fi119_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000119.jpg"/>
+</METS:file>
+<METS:file ID="fi120_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000120.jpg"/>
+</METS:file>
+<METS:file ID="fi121_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000121.jpg"/>
+</METS:file>
+<METS:file ID="fi122_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000122.jpg"/>
+</METS:file>
+<METS:file ID="fi123_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000123.jpg"/>
+</METS:file>
+<METS:file ID="fi124_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000124.jpg"/>
+</METS:file>
+<METS:file ID="fi125_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000125.jpg"/>
+</METS:file>
+<METS:file ID="fi126_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000126.jpg"/>
+</METS:file>
+<METS:file ID="fi127_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000127.jpg"/>
+</METS:file>
+<METS:file ID="fi128_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000128.jpg"/>
+</METS:file>
+<METS:file ID="fi129_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000129.jpg"/>
+</METS:file>
+<METS:file ID="fi130_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000130.jpg"/>
+</METS:file>
+<METS:file ID="fi131_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000131.jpg"/>
+</METS:file>
+<METS:file ID="fi132_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000132.jpg"/>
+</METS:file>
+<METS:file ID="fi133_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000133.jpg"/>
+</METS:file>
+<METS:file ID="fi134_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000134.jpg"/>
+</METS:file>
+<METS:file ID="fi135_800" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/800/0/00000135.jpg"/>
+</METS:file>
+</METS:fileGrp>
+<METS:fileGrp USE="MIN">
+<METS:file ID="fi1_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000001.jpg"/>
+</METS:file>
+<METS:file ID="fi2_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000002.jpg"/>
+</METS:file>
+<METS:file ID="fi3_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000003.jpg"/>
+</METS:file>
+<METS:file ID="fi4_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000004.jpg"/>
+</METS:file>
+<METS:file ID="fi5_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000005.jpg"/>
+</METS:file>
+<METS:file ID="fi6_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000006.jpg"/>
+</METS:file>
+<METS:file ID="fi7_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000007.jpg"/>
+</METS:file>
+<METS:file ID="fi8_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000008.jpg"/>
+</METS:file>
+<METS:file ID="fi9_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000009.jpg"/>
+</METS:file>
+<METS:file ID="fi10_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000010.jpg"/>
+</METS:file>
+<METS:file ID="fi11_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000011.jpg"/>
+</METS:file>
+<METS:file ID="fi12_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000012.jpg"/>
+</METS:file>
+<METS:file ID="fi13_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000013.jpg"/>
+</METS:file>
+<METS:file ID="fi14_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000014.jpg"/>
+</METS:file>
+<METS:file ID="fi15_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000015.jpg"/>
+</METS:file>
+<METS:file ID="fi16_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000016.jpg"/>
+</METS:file>
+<METS:file ID="fi17_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000017.jpg"/>
+</METS:file>
+<METS:file ID="fi18_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000018.jpg"/>
+</METS:file>
+<METS:file ID="fi19_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000019.jpg"/>
+</METS:file>
+<METS:file ID="fi20_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000020.jpg"/>
+</METS:file>
+<METS:file ID="fi21_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000021.jpg"/>
+</METS:file>
+<METS:file ID="fi22_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000022.jpg"/>
+</METS:file>
+<METS:file ID="fi23_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000023.jpg"/>
+</METS:file>
+<METS:file ID="fi24_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000024.jpg"/>
+</METS:file>
+<METS:file ID="fi25_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000025.jpg"/>
+</METS:file>
+<METS:file ID="fi26_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000026.jpg"/>
+</METS:file>
+<METS:file ID="fi27_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000027.jpg"/>
+</METS:file>
+<METS:file ID="fi28_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000028.jpg"/>
+</METS:file>
+<METS:file ID="fi29_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000029.jpg"/>
+</METS:file>
+<METS:file ID="fi30_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000030.jpg"/>
+</METS:file>
+<METS:file ID="fi31_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000031.jpg"/>
+</METS:file>
+<METS:file ID="fi32_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000032.jpg"/>
+</METS:file>
+<METS:file ID="fi33_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000033.jpg"/>
+</METS:file>
+<METS:file ID="fi34_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000034.jpg"/>
+</METS:file>
+<METS:file ID="fi35_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000035.jpg"/>
+</METS:file>
+<METS:file ID="fi36_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000036.jpg"/>
+</METS:file>
+<METS:file ID="fi37_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000037.jpg"/>
+</METS:file>
+<METS:file ID="fi38_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000038.jpg"/>
+</METS:file>
+<METS:file ID="fi39_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000039.jpg"/>
+</METS:file>
+<METS:file ID="fi40_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000040.jpg"/>
+</METS:file>
+<METS:file ID="fi41_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000041.jpg"/>
+</METS:file>
+<METS:file ID="fi42_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000042.jpg"/>
+</METS:file>
+<METS:file ID="fi43_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000043.jpg"/>
+</METS:file>
+<METS:file ID="fi44_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000044.jpg"/>
+</METS:file>
+<METS:file ID="fi45_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000045.jpg"/>
+</METS:file>
+<METS:file ID="fi46_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000046.jpg"/>
+</METS:file>
+<METS:file ID="fi47_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000047.jpg"/>
+</METS:file>
+<METS:file ID="fi48_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000048.jpg"/>
+</METS:file>
+<METS:file ID="fi49_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000049.jpg"/>
+</METS:file>
+<METS:file ID="fi50_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000050.jpg"/>
+</METS:file>
+<METS:file ID="fi51_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000051.jpg"/>
+</METS:file>
+<METS:file ID="fi52_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000052.jpg"/>
+</METS:file>
+<METS:file ID="fi53_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000053.jpg"/>
+</METS:file>
+<METS:file ID="fi54_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000054.jpg"/>
+</METS:file>
+<METS:file ID="fi55_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000055.jpg"/>
+</METS:file>
+<METS:file ID="fi56_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000056.jpg"/>
+</METS:file>
+<METS:file ID="fi57_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000057.jpg"/>
+</METS:file>
+<METS:file ID="fi58_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000058.jpg"/>
+</METS:file>
+<METS:file ID="fi59_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000059.jpg"/>
+</METS:file>
+<METS:file ID="fi60_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000060.jpg"/>
+</METS:file>
+<METS:file ID="fi61_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000061.jpg"/>
+</METS:file>
+<METS:file ID="fi62_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000062.jpg"/>
+</METS:file>
+<METS:file ID="fi63_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000063.jpg"/>
+</METS:file>
+<METS:file ID="fi64_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000064.jpg"/>
+</METS:file>
+<METS:file ID="fi65_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000065.jpg"/>
+</METS:file>
+<METS:file ID="fi66_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000066.jpg"/>
+</METS:file>
+<METS:file ID="fi67_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000067.jpg"/>
+</METS:file>
+<METS:file ID="fi68_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000068.jpg"/>
+</METS:file>
+<METS:file ID="fi69_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000069.jpg"/>
+</METS:file>
+<METS:file ID="fi70_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000070.jpg"/>
+</METS:file>
+<METS:file ID="fi71_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000071.jpg"/>
+</METS:file>
+<METS:file ID="fi72_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000072.jpg"/>
+</METS:file>
+<METS:file ID="fi73_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000073.jpg"/>
+</METS:file>
+<METS:file ID="fi74_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000074.jpg"/>
+</METS:file>
+<METS:file ID="fi75_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000075.jpg"/>
+</METS:file>
+<METS:file ID="fi76_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000076.jpg"/>
+</METS:file>
+<METS:file ID="fi77_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000077.jpg"/>
+</METS:file>
+<METS:file ID="fi78_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000078.jpg"/>
+</METS:file>
+<METS:file ID="fi79_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000079.jpg"/>
+</METS:file>
+<METS:file ID="fi80_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000080.jpg"/>
+</METS:file>
+<METS:file ID="fi81_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000081.jpg"/>
+</METS:file>
+<METS:file ID="fi82_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000082.jpg"/>
+</METS:file>
+<METS:file ID="fi83_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000083.jpg"/>
+</METS:file>
+<METS:file ID="fi84_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000084.jpg"/>
+</METS:file>
+<METS:file ID="fi85_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000085.jpg"/>
+</METS:file>
+<METS:file ID="fi86_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000086.jpg"/>
+</METS:file>
+<METS:file ID="fi87_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000087.jpg"/>
+</METS:file>
+<METS:file ID="fi88_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000088.jpg"/>
+</METS:file>
+<METS:file ID="fi89_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000089.jpg"/>
+</METS:file>
+<METS:file ID="fi90_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000090.jpg"/>
+</METS:file>
+<METS:file ID="fi91_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000091.jpg"/>
+</METS:file>
+<METS:file ID="fi92_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000092.jpg"/>
+</METS:file>
+<METS:file ID="fi93_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000093.jpg"/>
+</METS:file>
+<METS:file ID="fi94_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000094.jpg"/>
+</METS:file>
+<METS:file ID="fi95_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000095.jpg"/>
+</METS:file>
+<METS:file ID="fi96_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000096.jpg"/>
+</METS:file>
+<METS:file ID="fi97_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000097.jpg"/>
+</METS:file>
+<METS:file ID="fi98_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000098.jpg"/>
+</METS:file>
+<METS:file ID="fi99_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000099.jpg"/>
+</METS:file>
+<METS:file ID="fi100_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000100.jpg"/>
+</METS:file>
+<METS:file ID="fi101_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000101.jpg"/>
+</METS:file>
+<METS:file ID="fi102_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000102.jpg"/>
+</METS:file>
+<METS:file ID="fi103_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000103.jpg"/>
+</METS:file>
+<METS:file ID="fi104_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000104.jpg"/>
+</METS:file>
+<METS:file ID="fi105_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000105.jpg"/>
+</METS:file>
+<METS:file ID="fi106_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000106.jpg"/>
+</METS:file>
+<METS:file ID="fi107_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000107.jpg"/>
+</METS:file>
+<METS:file ID="fi108_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000108.jpg"/>
+</METS:file>
+<METS:file ID="fi109_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000109.jpg"/>
+</METS:file>
+<METS:file ID="fi110_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000110.jpg"/>
+</METS:file>
+<METS:file ID="fi111_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000111.jpg"/>
+</METS:file>
+<METS:file ID="fi112_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000112.jpg"/>
+</METS:file>
+<METS:file ID="fi113_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000113.jpg"/>
+</METS:file>
+<METS:file ID="fi114_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000114.jpg"/>
+</METS:file>
+<METS:file ID="fi115_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000115.jpg"/>
+</METS:file>
+<METS:file ID="fi116_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000116.jpg"/>
+</METS:file>
+<METS:file ID="fi117_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000117.jpg"/>
+</METS:file>
+<METS:file ID="fi118_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000118.jpg"/>
+</METS:file>
+<METS:file ID="fi119_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000119.jpg"/>
+</METS:file>
+<METS:file ID="fi120_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000120.jpg"/>
+</METS:file>
+<METS:file ID="fi121_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000121.jpg"/>
+</METS:file>
+<METS:file ID="fi122_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000122.jpg"/>
+</METS:file>
+<METS:file ID="fi123_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000123.jpg"/>
+</METS:file>
+<METS:file ID="fi124_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000124.jpg"/>
+</METS:file>
+<METS:file ID="fi125_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000125.jpg"/>
+</METS:file>
+<METS:file ID="fi126_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000126.jpg"/>
+</METS:file>
+<METS:file ID="fi127_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000127.jpg"/>
+</METS:file>
+<METS:file ID="fi128_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000128.jpg"/>
+</METS:file>
+<METS:file ID="fi129_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000129.jpg"/>
+</METS:file>
+<METS:file ID="fi130_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000130.jpg"/>
+</METS:file>
+<METS:file ID="fi131_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000131.jpg"/>
+</METS:file>
+<METS:file ID="fi132_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000132.jpg"/>
+</METS:file>
+<METS:file ID="fi133_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000133.jpg"/>
+</METS:file>
+<METS:file ID="fi134_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000134.jpg"/>
+</METS:file>
+<METS:file ID="fi135_500" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/500/0/00000135.jpg"/>
+</METS:file>
+</METS:fileGrp>
+<METS:fileGrp USE="MAX">
+<METS:file ID="fi1_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000001.jpg"/>
+</METS:file>
+<METS:file ID="fi2_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000002.jpg"/>
+</METS:file>
+<METS:file ID="fi3_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000003.jpg"/>
+</METS:file>
+<METS:file ID="fi4_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000004.jpg"/>
+</METS:file>
+<METS:file ID="fi5_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000005.jpg"/>
+</METS:file>
+<METS:file ID="fi6_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000006.jpg"/>
+</METS:file>
+<METS:file ID="fi7_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000007.jpg"/>
+</METS:file>
+<METS:file ID="fi8_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000008.jpg"/>
+</METS:file>
+<METS:file ID="fi9_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000009.jpg"/>
+</METS:file>
+<METS:file ID="fi10_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000010.jpg"/>
+</METS:file>
+<METS:file ID="fi11_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000011.jpg"/>
+</METS:file>
+<METS:file ID="fi12_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000012.jpg"/>
+</METS:file>
+<METS:file ID="fi13_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000013.jpg"/>
+</METS:file>
+<METS:file ID="fi14_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000014.jpg"/>
+</METS:file>
+<METS:file ID="fi15_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000015.jpg"/>
+</METS:file>
+<METS:file ID="fi16_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000016.jpg"/>
+</METS:file>
+<METS:file ID="fi17_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000017.jpg"/>
+</METS:file>
+<METS:file ID="fi18_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000018.jpg"/>
+</METS:file>
+<METS:file ID="fi19_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000019.jpg"/>
+</METS:file>
+<METS:file ID="fi20_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000020.jpg"/>
+</METS:file>
+<METS:file ID="fi21_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000021.jpg"/>
+</METS:file>
+<METS:file ID="fi22_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000022.jpg"/>
+</METS:file>
+<METS:file ID="fi23_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000023.jpg"/>
+</METS:file>
+<METS:file ID="fi24_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000024.jpg"/>
+</METS:file>
+<METS:file ID="fi25_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000025.jpg"/>
+</METS:file>
+<METS:file ID="fi26_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000026.jpg"/>
+</METS:file>
+<METS:file ID="fi27_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000027.jpg"/>
+</METS:file>
+<METS:file ID="fi28_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000028.jpg"/>
+</METS:file>
+<METS:file ID="fi29_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000029.jpg"/>
+</METS:file>
+<METS:file ID="fi30_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000030.jpg"/>
+</METS:file>
+<METS:file ID="fi31_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000031.jpg"/>
+</METS:file>
+<METS:file ID="fi32_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000032.jpg"/>
+</METS:file>
+<METS:file ID="fi33_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000033.jpg"/>
+</METS:file>
+<METS:file ID="fi34_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000034.jpg"/>
+</METS:file>
+<METS:file ID="fi35_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000035.jpg"/>
+</METS:file>
+<METS:file ID="fi36_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000036.jpg"/>
+</METS:file>
+<METS:file ID="fi37_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000037.jpg"/>
+</METS:file>
+<METS:file ID="fi38_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000038.jpg"/>
+</METS:file>
+<METS:file ID="fi39_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000039.jpg"/>
+</METS:file>
+<METS:file ID="fi40_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000040.jpg"/>
+</METS:file>
+<METS:file ID="fi41_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000041.jpg"/>
+</METS:file>
+<METS:file ID="fi42_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000042.jpg"/>
+</METS:file>
+<METS:file ID="fi43_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000043.jpg"/>
+</METS:file>
+<METS:file ID="fi44_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000044.jpg"/>
+</METS:file>
+<METS:file ID="fi45_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000045.jpg"/>
+</METS:file>
+<METS:file ID="fi46_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000046.jpg"/>
+</METS:file>
+<METS:file ID="fi47_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000047.jpg"/>
+</METS:file>
+<METS:file ID="fi48_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000048.jpg"/>
+</METS:file>
+<METS:file ID="fi49_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000049.jpg"/>
+</METS:file>
+<METS:file ID="fi50_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000050.jpg"/>
+</METS:file>
+<METS:file ID="fi51_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000051.jpg"/>
+</METS:file>
+<METS:file ID="fi52_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000052.jpg"/>
+</METS:file>
+<METS:file ID="fi53_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000053.jpg"/>
+</METS:file>
+<METS:file ID="fi54_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000054.jpg"/>
+</METS:file>
+<METS:file ID="fi55_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000055.jpg"/>
+</METS:file>
+<METS:file ID="fi56_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000056.jpg"/>
+</METS:file>
+<METS:file ID="fi57_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000057.jpg"/>
+</METS:file>
+<METS:file ID="fi58_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000058.jpg"/>
+</METS:file>
+<METS:file ID="fi59_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000059.jpg"/>
+</METS:file>
+<METS:file ID="fi60_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000060.jpg"/>
+</METS:file>
+<METS:file ID="fi61_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000061.jpg"/>
+</METS:file>
+<METS:file ID="fi62_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000062.jpg"/>
+</METS:file>
+<METS:file ID="fi63_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000063.jpg"/>
+</METS:file>
+<METS:file ID="fi64_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000064.jpg"/>
+</METS:file>
+<METS:file ID="fi65_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000065.jpg"/>
+</METS:file>
+<METS:file ID="fi66_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000066.jpg"/>
+</METS:file>
+<METS:file ID="fi67_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000067.jpg"/>
+</METS:file>
+<METS:file ID="fi68_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000068.jpg"/>
+</METS:file>
+<METS:file ID="fi69_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000069.jpg"/>
+</METS:file>
+<METS:file ID="fi70_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000070.jpg"/>
+</METS:file>
+<METS:file ID="fi71_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000071.jpg"/>
+</METS:file>
+<METS:file ID="fi72_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000072.jpg"/>
+</METS:file>
+<METS:file ID="fi73_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000073.jpg"/>
+</METS:file>
+<METS:file ID="fi74_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000074.jpg"/>
+</METS:file>
+<METS:file ID="fi75_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000075.jpg"/>
+</METS:file>
+<METS:file ID="fi76_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000076.jpg"/>
+</METS:file>
+<METS:file ID="fi77_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000077.jpg"/>
+</METS:file>
+<METS:file ID="fi78_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000078.jpg"/>
+</METS:file>
+<METS:file ID="fi79_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000079.jpg"/>
+</METS:file>
+<METS:file ID="fi80_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000080.jpg"/>
+</METS:file>
+<METS:file ID="fi81_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000081.jpg"/>
+</METS:file>
+<METS:file ID="fi82_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000082.jpg"/>
+</METS:file>
+<METS:file ID="fi83_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000083.jpg"/>
+</METS:file>
+<METS:file ID="fi84_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000084.jpg"/>
+</METS:file>
+<METS:file ID="fi85_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000085.jpg"/>
+</METS:file>
+<METS:file ID="fi86_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000086.jpg"/>
+</METS:file>
+<METS:file ID="fi87_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000087.jpg"/>
+</METS:file>
+<METS:file ID="fi88_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000088.jpg"/>
+</METS:file>
+<METS:file ID="fi89_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000089.jpg"/>
+</METS:file>
+<METS:file ID="fi90_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000090.jpg"/>
+</METS:file>
+<METS:file ID="fi91_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000091.jpg"/>
+</METS:file>
+<METS:file ID="fi92_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000092.jpg"/>
+</METS:file>
+<METS:file ID="fi93_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000093.jpg"/>
+</METS:file>
+<METS:file ID="fi94_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000094.jpg"/>
+</METS:file>
+<METS:file ID="fi95_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000095.jpg"/>
+</METS:file>
+<METS:file ID="fi96_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000096.jpg"/>
+</METS:file>
+<METS:file ID="fi97_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000097.jpg"/>
+</METS:file>
+<METS:file ID="fi98_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000098.jpg"/>
+</METS:file>
+<METS:file ID="fi99_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000099.jpg"/>
+</METS:file>
+<METS:file ID="fi100_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000100.jpg"/>
+</METS:file>
+<METS:file ID="fi101_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000101.jpg"/>
+</METS:file>
+<METS:file ID="fi102_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000102.jpg"/>
+</METS:file>
+<METS:file ID="fi103_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000103.jpg"/>
+</METS:file>
+<METS:file ID="fi104_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000104.jpg"/>
+</METS:file>
+<METS:file ID="fi105_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000105.jpg"/>
+</METS:file>
+<METS:file ID="fi106_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000106.jpg"/>
+</METS:file>
+<METS:file ID="fi107_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000107.jpg"/>
+</METS:file>
+<METS:file ID="fi108_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000108.jpg"/>
+</METS:file>
+<METS:file ID="fi109_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000109.jpg"/>
+</METS:file>
+<METS:file ID="fi110_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000110.jpg"/>
+</METS:file>
+<METS:file ID="fi111_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000111.jpg"/>
+</METS:file>
+<METS:file ID="fi112_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000112.jpg"/>
+</METS:file>
+<METS:file ID="fi113_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000113.jpg"/>
+</METS:file>
+<METS:file ID="fi114_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000114.jpg"/>
+</METS:file>
+<METS:file ID="fi115_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000115.jpg"/>
+</METS:file>
+<METS:file ID="fi116_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000116.jpg"/>
+</METS:file>
+<METS:file ID="fi117_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000117.jpg"/>
+</METS:file>
+<METS:file ID="fi118_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000118.jpg"/>
+</METS:file>
+<METS:file ID="fi119_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000119.jpg"/>
+</METS:file>
+<METS:file ID="fi120_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000120.jpg"/>
+</METS:file>
+<METS:file ID="fi121_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000121.jpg"/>
+</METS:file>
+<METS:file ID="fi122_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000122.jpg"/>
+</METS:file>
+<METS:file ID="fi123_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000123.jpg"/>
+</METS:file>
+<METS:file ID="fi124_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000124.jpg"/>
+</METS:file>
+<METS:file ID="fi125_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000125.jpg"/>
+</METS:file>
+<METS:file ID="fi126_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000126.jpg"/>
+</METS:file>
+<METS:file ID="fi127_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000127.jpg"/>
+</METS:file>
+<METS:file ID="fi128_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000128.jpg"/>
+</METS:file>
+<METS:file ID="fi129_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000129.jpg"/>
+</METS:file>
+<METS:file ID="fi130_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000130.jpg"/>
+</METS:file>
+<METS:file ID="fi131_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000131.jpg"/>
+</METS:file>
+<METS:file ID="fi132_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000132.jpg"/>
+</METS:file>
+<METS:file ID="fi133_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000133.jpg"/>
+</METS:file>
+<METS:file ID="fi134_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000134.jpg"/>
+</METS:file>
+<METS:file ID="fi135_1000" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/1000/0/00000135.jpg"/>
+</METS:file>
+</METS:fileGrp>
+<METS:fileGrp USE="THUMBS">
+<METS:file ID="fi1_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000001.jpg"/>
+</METS:file>
+<METS:file ID="fi2_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000002.jpg"/>
+</METS:file>
+<METS:file ID="fi3_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000003.jpg"/>
+</METS:file>
+<METS:file ID="fi4_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000004.jpg"/>
+</METS:file>
+<METS:file ID="fi5_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000005.jpg"/>
+</METS:file>
+<METS:file ID="fi6_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000006.jpg"/>
+</METS:file>
+<METS:file ID="fi7_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000007.jpg"/>
+</METS:file>
+<METS:file ID="fi8_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000008.jpg"/>
+</METS:file>
+<METS:file ID="fi9_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000009.jpg"/>
+</METS:file>
+<METS:file ID="fi10_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000010.jpg"/>
+</METS:file>
+<METS:file ID="fi11_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000011.jpg"/>
+</METS:file>
+<METS:file ID="fi12_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000012.jpg"/>
+</METS:file>
+<METS:file ID="fi13_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000013.jpg"/>
+</METS:file>
+<METS:file ID="fi14_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000014.jpg"/>
+</METS:file>
+<METS:file ID="fi15_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000015.jpg"/>
+</METS:file>
+<METS:file ID="fi16_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000016.jpg"/>
+</METS:file>
+<METS:file ID="fi17_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000017.jpg"/>
+</METS:file>
+<METS:file ID="fi18_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000018.jpg"/>
+</METS:file>
+<METS:file ID="fi19_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000019.jpg"/>
+</METS:file>
+<METS:file ID="fi20_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000020.jpg"/>
+</METS:file>
+<METS:file ID="fi21_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000021.jpg"/>
+</METS:file>
+<METS:file ID="fi22_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000022.jpg"/>
+</METS:file>
+<METS:file ID="fi23_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000023.jpg"/>
+</METS:file>
+<METS:file ID="fi24_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000024.jpg"/>
+</METS:file>
+<METS:file ID="fi25_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000025.jpg"/>
+</METS:file>
+<METS:file ID="fi26_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000026.jpg"/>
+</METS:file>
+<METS:file ID="fi27_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000027.jpg"/>
+</METS:file>
+<METS:file ID="fi28_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000028.jpg"/>
+</METS:file>
+<METS:file ID="fi29_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000029.jpg"/>
+</METS:file>
+<METS:file ID="fi30_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000030.jpg"/>
+</METS:file>
+<METS:file ID="fi31_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000031.jpg"/>
+</METS:file>
+<METS:file ID="fi32_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000032.jpg"/>
+</METS:file>
+<METS:file ID="fi33_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000033.jpg"/>
+</METS:file>
+<METS:file ID="fi34_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000034.jpg"/>
+</METS:file>
+<METS:file ID="fi35_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000035.jpg"/>
+</METS:file>
+<METS:file ID="fi36_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000036.jpg"/>
+</METS:file>
+<METS:file ID="fi37_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000037.jpg"/>
+</METS:file>
+<METS:file ID="fi38_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000038.jpg"/>
+</METS:file>
+<METS:file ID="fi39_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000039.jpg"/>
+</METS:file>
+<METS:file ID="fi40_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000040.jpg"/>
+</METS:file>
+<METS:file ID="fi41_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000041.jpg"/>
+</METS:file>
+<METS:file ID="fi42_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000042.jpg"/>
+</METS:file>
+<METS:file ID="fi43_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000043.jpg"/>
+</METS:file>
+<METS:file ID="fi44_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000044.jpg"/>
+</METS:file>
+<METS:file ID="fi45_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000045.jpg"/>
+</METS:file>
+<METS:file ID="fi46_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000046.jpg"/>
+</METS:file>
+<METS:file ID="fi47_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000047.jpg"/>
+</METS:file>
+<METS:file ID="fi48_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000048.jpg"/>
+</METS:file>
+<METS:file ID="fi49_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000049.jpg"/>
+</METS:file>
+<METS:file ID="fi50_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000050.jpg"/>
+</METS:file>
+<METS:file ID="fi51_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000051.jpg"/>
+</METS:file>
+<METS:file ID="fi52_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000052.jpg"/>
+</METS:file>
+<METS:file ID="fi53_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000053.jpg"/>
+</METS:file>
+<METS:file ID="fi54_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000054.jpg"/>
+</METS:file>
+<METS:file ID="fi55_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000055.jpg"/>
+</METS:file>
+<METS:file ID="fi56_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000056.jpg"/>
+</METS:file>
+<METS:file ID="fi57_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000057.jpg"/>
+</METS:file>
+<METS:file ID="fi58_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000058.jpg"/>
+</METS:file>
+<METS:file ID="fi59_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000059.jpg"/>
+</METS:file>
+<METS:file ID="fi60_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000060.jpg"/>
+</METS:file>
+<METS:file ID="fi61_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000061.jpg"/>
+</METS:file>
+<METS:file ID="fi62_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000062.jpg"/>
+</METS:file>
+<METS:file ID="fi63_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000063.jpg"/>
+</METS:file>
+<METS:file ID="fi64_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000064.jpg"/>
+</METS:file>
+<METS:file ID="fi65_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000065.jpg"/>
+</METS:file>
+<METS:file ID="fi66_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000066.jpg"/>
+</METS:file>
+<METS:file ID="fi67_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000067.jpg"/>
+</METS:file>
+<METS:file ID="fi68_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000068.jpg"/>
+</METS:file>
+<METS:file ID="fi69_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000069.jpg"/>
+</METS:file>
+<METS:file ID="fi70_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000070.jpg"/>
+</METS:file>
+<METS:file ID="fi71_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000071.jpg"/>
+</METS:file>
+<METS:file ID="fi72_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000072.jpg"/>
+</METS:file>
+<METS:file ID="fi73_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000073.jpg"/>
+</METS:file>
+<METS:file ID="fi74_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000074.jpg"/>
+</METS:file>
+<METS:file ID="fi75_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000075.jpg"/>
+</METS:file>
+<METS:file ID="fi76_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000076.jpg"/>
+</METS:file>
+<METS:file ID="fi77_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000077.jpg"/>
+</METS:file>
+<METS:file ID="fi78_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000078.jpg"/>
+</METS:file>
+<METS:file ID="fi79_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000079.jpg"/>
+</METS:file>
+<METS:file ID="fi80_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000080.jpg"/>
+</METS:file>
+<METS:file ID="fi81_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000081.jpg"/>
+</METS:file>
+<METS:file ID="fi82_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000082.jpg"/>
+</METS:file>
+<METS:file ID="fi83_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000083.jpg"/>
+</METS:file>
+<METS:file ID="fi84_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000084.jpg"/>
+</METS:file>
+<METS:file ID="fi85_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000085.jpg"/>
+</METS:file>
+<METS:file ID="fi86_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000086.jpg"/>
+</METS:file>
+<METS:file ID="fi87_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000087.jpg"/>
+</METS:file>
+<METS:file ID="fi88_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000088.jpg"/>
+</METS:file>
+<METS:file ID="fi89_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000089.jpg"/>
+</METS:file>
+<METS:file ID="fi90_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000090.jpg"/>
+</METS:file>
+<METS:file ID="fi91_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000091.jpg"/>
+</METS:file>
+<METS:file ID="fi92_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000092.jpg"/>
+</METS:file>
+<METS:file ID="fi93_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000093.jpg"/>
+</METS:file>
+<METS:file ID="fi94_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000094.jpg"/>
+</METS:file>
+<METS:file ID="fi95_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000095.jpg"/>
+</METS:file>
+<METS:file ID="fi96_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000096.jpg"/>
+</METS:file>
+<METS:file ID="fi97_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000097.jpg"/>
+</METS:file>
+<METS:file ID="fi98_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000098.jpg"/>
+</METS:file>
+<METS:file ID="fi99_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000099.jpg"/>
+</METS:file>
+<METS:file ID="fi100_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000100.jpg"/>
+</METS:file>
+<METS:file ID="fi101_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000101.jpg"/>
+</METS:file>
+<METS:file ID="fi102_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000102.jpg"/>
+</METS:file>
+<METS:file ID="fi103_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000103.jpg"/>
+</METS:file>
+<METS:file ID="fi104_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000104.jpg"/>
+</METS:file>
+<METS:file ID="fi105_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000105.jpg"/>
+</METS:file>
+<METS:file ID="fi106_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000106.jpg"/>
+</METS:file>
+<METS:file ID="fi107_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000107.jpg"/>
+</METS:file>
+<METS:file ID="fi108_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000108.jpg"/>
+</METS:file>
+<METS:file ID="fi109_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000109.jpg"/>
+</METS:file>
+<METS:file ID="fi110_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000110.jpg"/>
+</METS:file>
+<METS:file ID="fi111_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000111.jpg"/>
+</METS:file>
+<METS:file ID="fi112_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000112.jpg"/>
+</METS:file>
+<METS:file ID="fi113_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000113.jpg"/>
+</METS:file>
+<METS:file ID="fi114_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000114.jpg"/>
+</METS:file>
+<METS:file ID="fi115_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000115.jpg"/>
+</METS:file>
+<METS:file ID="fi116_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000116.jpg"/>
+</METS:file>
+<METS:file ID="fi117_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000117.jpg"/>
+</METS:file>
+<METS:file ID="fi118_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000118.jpg"/>
+</METS:file>
+<METS:file ID="fi119_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000119.jpg"/>
+</METS:file>
+<METS:file ID="fi120_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000120.jpg"/>
+</METS:file>
+<METS:file ID="fi121_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000121.jpg"/>
+</METS:file>
+<METS:file ID="fi122_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000122.jpg"/>
+</METS:file>
+<METS:file ID="fi123_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000123.jpg"/>
+</METS:file>
+<METS:file ID="fi124_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000124.jpg"/>
+</METS:file>
+<METS:file ID="fi125_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000125.jpg"/>
+</METS:file>
+<METS:file ID="fi126_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000126.jpg"/>
+</METS:file>
+<METS:file ID="fi127_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000127.jpg"/>
+</METS:file>
+<METS:file ID="fi128_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000128.jpg"/>
+</METS:file>
+<METS:file ID="fi129_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000129.jpg"/>
+</METS:file>
+<METS:file ID="fi130_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000130.jpg"/>
+</METS:file>
+<METS:file ID="fi131_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000131.jpg"/>
+</METS:file>
+<METS:file ID="fi132_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000132.jpg"/>
+</METS:file>
+<METS:file ID="fi133_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000133.jpg"/>
+</METS:file>
+<METS:file ID="fi134_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000134.jpg"/>
+</METS:file>
+<METS:file ID="fi135_150" MIMETYPE="image/jpg">
+<METS:FLocat LOCTYPE="URL" xlink:href="http://gdz-srv1.sub.uni-goettingen.de/content/PPN338271201/150/0/00000135.jpg"/>
+</METS:file>
+</METS:fileGrp>
+<METS:fileGrp USE="PRESENTATION">
+<METS:file ID="fi1" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000001.tif"/>
+</METS:file>
+<METS:file ID="fi2" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000002.tif"/>
+</METS:file>
+<METS:file ID="fi3" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000003.tif"/>
+</METS:file>
+<METS:file ID="fi4" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000004.tif"/>
+</METS:file>
+<METS:file ID="fi5" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000005.tif"/>
+</METS:file>
+<METS:file ID="fi6" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000006.tif"/>
+</METS:file>
+<METS:file ID="fi7" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000007.tif"/>
+</METS:file>
+<METS:file ID="fi8" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000008.tif"/>
+</METS:file>
+<METS:file ID="fi9" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000009.tif"/>
+</METS:file>
+<METS:file ID="fi10" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000010.tif"/>
+</METS:file>
+<METS:file ID="fi11" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000011.tif"/>
+</METS:file>
+<METS:file ID="fi12" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000012.tif"/>
+</METS:file>
+<METS:file ID="fi13" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000013.tif"/>
+</METS:file>
+<METS:file ID="fi14" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000014.tif"/>
+</METS:file>
+<METS:file ID="fi15" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000015.tif"/>
+</METS:file>
+<METS:file ID="fi16" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000016.tif"/>
+</METS:file>
+<METS:file ID="fi17" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000017.tif"/>
+</METS:file>
+<METS:file ID="fi18" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000018.tif"/>
+</METS:file>
+<METS:file ID="fi19" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000019.tif"/>
+</METS:file>
+<METS:file ID="fi20" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000020.tif"/>
+</METS:file>
+<METS:file ID="fi21" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000021.tif"/>
+</METS:file>
+<METS:file ID="fi22" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000022.tif"/>
+</METS:file>
+<METS:file ID="fi23" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000023.tif"/>
+</METS:file>
+<METS:file ID="fi24" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000024.tif"/>
+</METS:file>
+<METS:file ID="fi25" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000025.tif"/>
+</METS:file>
+<METS:file ID="fi26" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000026.tif"/>
+</METS:file>
+<METS:file ID="fi27" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000027.tif"/>
+</METS:file>
+<METS:file ID="fi28" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000028.tif"/>
+</METS:file>
+<METS:file ID="fi29" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000029.tif"/>
+</METS:file>
+<METS:file ID="fi30" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000030.tif"/>
+</METS:file>
+<METS:file ID="fi31" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000031.tif"/>
+</METS:file>
+<METS:file ID="fi32" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000032.tif"/>
+</METS:file>
+<METS:file ID="fi33" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000033.tif"/>
+</METS:file>
+<METS:file ID="fi34" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000034.tif"/>
+</METS:file>
+<METS:file ID="fi35" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000035.tif"/>
+</METS:file>
+<METS:file ID="fi36" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000036.tif"/>
+</METS:file>
+<METS:file ID="fi37" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000037.tif"/>
+</METS:file>
+<METS:file ID="fi38" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000038.tif"/>
+</METS:file>
+<METS:file ID="fi39" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000039.tif"/>
+</METS:file>
+<METS:file ID="fi40" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000040.tif"/>
+</METS:file>
+<METS:file ID="fi41" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000041.tif"/>
+</METS:file>
+<METS:file ID="fi42" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000042.tif"/>
+</METS:file>
+<METS:file ID="fi43" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000043.tif"/>
+</METS:file>
+<METS:file ID="fi44" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000044.tif"/>
+</METS:file>
+<METS:file ID="fi45" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000045.tif"/>
+</METS:file>
+<METS:file ID="fi46" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000046.tif"/>
+</METS:file>
+<METS:file ID="fi47" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000047.tif"/>
+</METS:file>
+<METS:file ID="fi48" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000048.tif"/>
+</METS:file>
+<METS:file ID="fi49" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000049.tif"/>
+</METS:file>
+<METS:file ID="fi50" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000050.tif"/>
+</METS:file>
+<METS:file ID="fi51" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000051.tif"/>
+</METS:file>
+<METS:file ID="fi52" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000052.tif"/>
+</METS:file>
+<METS:file ID="fi53" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000053.tif"/>
+</METS:file>
+<METS:file ID="fi54" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000054.tif"/>
+</METS:file>
+<METS:file ID="fi55" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000055.tif"/>
+</METS:file>
+<METS:file ID="fi56" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000056.tif"/>
+</METS:file>
+<METS:file ID="fi57" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000057.tif"/>
+</METS:file>
+<METS:file ID="fi58" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000058.tif"/>
+</METS:file>
+<METS:file ID="fi59" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000059.tif"/>
+</METS:file>
+<METS:file ID="fi60" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000060.tif"/>
+</METS:file>
+<METS:file ID="fi61" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000061.tif"/>
+</METS:file>
+<METS:file ID="fi62" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000062.tif"/>
+</METS:file>
+<METS:file ID="fi63" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000063.tif"/>
+</METS:file>
+<METS:file ID="fi64" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000064.tif"/>
+</METS:file>
+<METS:file ID="fi65" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000065.tif"/>
+</METS:file>
+<METS:file ID="fi66" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000066.tif"/>
+</METS:file>
+<METS:file ID="fi67" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000067.tif"/>
+</METS:file>
+<METS:file ID="fi68" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000068.tif"/>
+</METS:file>
+<METS:file ID="fi69" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000069.tif"/>
+</METS:file>
+<METS:file ID="fi70" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000070.tif"/>
+</METS:file>
+<METS:file ID="fi71" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000071.tif"/>
+</METS:file>
+<METS:file ID="fi72" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000072.tif"/>
+</METS:file>
+<METS:file ID="fi73" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000073.tif"/>
+</METS:file>
+<METS:file ID="fi74" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000074.tif"/>
+</METS:file>
+<METS:file ID="fi75" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000075.tif"/>
+</METS:file>
+<METS:file ID="fi76" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000076.tif"/>
+</METS:file>
+<METS:file ID="fi77" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000077.tif"/>
+</METS:file>
+<METS:file ID="fi78" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000078.tif"/>
+</METS:file>
+<METS:file ID="fi79" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000079.tif"/>
+</METS:file>
+<METS:file ID="fi80" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000080.tif"/>
+</METS:file>
+<METS:file ID="fi81" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000081.tif"/>
+</METS:file>
+<METS:file ID="fi82" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000082.tif"/>
+</METS:file>
+<METS:file ID="fi83" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000083.tif"/>
+</METS:file>
+<METS:file ID="fi84" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000084.tif"/>
+</METS:file>
+<METS:file ID="fi85" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000085.tif"/>
+</METS:file>
+<METS:file ID="fi86" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000086.tif"/>
+</METS:file>
+<METS:file ID="fi87" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000087.tif"/>
+</METS:file>
+<METS:file ID="fi88" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000088.tif"/>
+</METS:file>
+<METS:file ID="fi89" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000089.tif"/>
+</METS:file>
+<METS:file ID="fi90" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000090.tif"/>
+</METS:file>
+<METS:file ID="fi91" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000091.tif"/>
+</METS:file>
+<METS:file ID="fi92" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000092.tif"/>
+</METS:file>
+<METS:file ID="fi93" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000093.tif"/>
+</METS:file>
+<METS:file ID="fi94" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000094.tif"/>
+</METS:file>
+<METS:file ID="fi95" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000095.tif"/>
+</METS:file>
+<METS:file ID="fi96" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000096.tif"/>
+</METS:file>
+<METS:file ID="fi97" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000097.tif"/>
+</METS:file>
+<METS:file ID="fi98" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000098.tif"/>
+</METS:file>
+<METS:file ID="fi99" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000099.tif"/>
+</METS:file>
+<METS:file ID="fi100" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000100.tif"/>
+</METS:file>
+<METS:file ID="fi101" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000101.tif"/>
+</METS:file>
+<METS:file ID="fi102" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000102.tif"/>
+</METS:file>
+<METS:file ID="fi103" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000103.tif"/>
+</METS:file>
+<METS:file ID="fi104" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000104.tif"/>
+</METS:file>
+<METS:file ID="fi105" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000105.tif"/>
+</METS:file>
+<METS:file ID="fi106" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000106.tif"/>
+</METS:file>
+<METS:file ID="fi107" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000107.tif"/>
+</METS:file>
+<METS:file ID="fi108" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000108.tif"/>
+</METS:file>
+<METS:file ID="fi109" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000109.tif"/>
+</METS:file>
+<METS:file ID="fi110" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000110.tif"/>
+</METS:file>
+<METS:file ID="fi111" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000111.tif"/>
+</METS:file>
+<METS:file ID="fi112" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000112.tif"/>
+</METS:file>
+<METS:file ID="fi113" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000113.tif"/>
+</METS:file>
+<METS:file ID="fi114" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000114.tif"/>
+</METS:file>
+<METS:file ID="fi115" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000115.tif"/>
+</METS:file>
+<METS:file ID="fi116" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000116.tif"/>
+</METS:file>
+<METS:file ID="fi117" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000117.tif"/>
+</METS:file>
+<METS:file ID="fi118" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000118.tif"/>
+</METS:file>
+<METS:file ID="fi119" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000119.tif"/>
+</METS:file>
+<METS:file ID="fi120" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000120.tif"/>
+</METS:file>
+<METS:file ID="fi121" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000121.tif"/>
+</METS:file>
+<METS:file ID="fi122" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000122.tif"/>
+</METS:file>
+<METS:file ID="fi123" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000123.tif"/>
+</METS:file>
+<METS:file ID="fi124" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000124.tif"/>
+</METS:file>
+<METS:file ID="fi125" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000125.tif"/>
+</METS:file>
+<METS:file ID="fi126" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000126.tif"/>
+</METS:file>
+<METS:file ID="fi127" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000127.tif"/>
+</METS:file>
+<METS:file ID="fi128" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000128.tif"/>
+</METS:file>
+<METS:file ID="fi129" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000129.tif"/>
+</METS:file>
+<METS:file ID="fi130" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000130.tif"/>
+</METS:file>
+<METS:file ID="fi131" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000131.tif"/>
+</METS:file>
+<METS:file ID="fi132" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000132.tif"/>
+</METS:file>
+<METS:file ID="fi133" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000133.tif"/>
+</METS:file>
+<METS:file ID="fi134" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000134.tif"/>
+</METS:file>
+<METS:file ID="fi135" MIMETYPE="image/tif">
+<METS:FLocat LOCTYPE="URL" xlink:href="file:///san.gdz-srv1/gdz/tiff/PPN338271201/00000135.tif"/>
+</METS:file>
+</METS:fileGrp>
+</METS:fileSec>
+<METS:structMap xmlns:METS="http://www.loc.gov/METS/" TYPE="LOGICAL">
+<METS:div ID="log1" ADMID="amd1" DMDID="dmdlog1" TYPE="Monograph" LABEL="D. Joh. Sal. Semlers Antwort auf das Bahrdische Glaubensbekenntnis  ">
+<METS:div ID="log2" DMDID="dmdlog2" TYPE="TitlePage" LABEL="Titelblatt"/>
+<METS:div ID="log3" DMDID="dmdlog3" TYPE="Preface" LABEL="Vorwort"/>
+<METS:div ID="log4" DMDID="dmdlog4" TYPE="Remarks" LABEL="Nachricht an den Leser.  "/>
+<METS:div ID="log5" DMDID="dmdlog5" TYPE="Chapter" LABEL="Ueber das Bekentnis selbst  "/>
+</METS:div>
+</METS:structMap>
+<METS:structMap xmlns:METS="http://www.loc.gov/METS/" TYPE="PHYSICAL">
+<METS:div ID="phys1" ADMID="amd1" DMDID="dmdlog1" TYPE="physSequence">
+<METS:div ID="phys2" ORDER="1" ORDERLABEL="1" TYPE="page">
+<METS:fptr FILEID="fi1_800"/>
+<METS:fptr FILEID="fi1_500"/>
+<METS:fptr FILEID="fi1_1000"/>
+<METS:fptr FILEID="fi1_150"/>
+<METS:fptr FILEID="fi1"/>
+</METS:div>
+<METS:div ID="phys3" ORDER="2" ORDERLABEL="2" TYPE="page">
+<METS:fptr FILEID="fi2_800"/>
+<METS:fptr FILEID="fi2_500"/>
+<METS:fptr FILEID="fi2_1000"/>
+<METS:fptr FILEID="fi2_150"/>
+<METS:fptr FILEID="fi2"/>
+</METS:div>
+<METS:div ID="phys4" ORDER="3" ORDERLABEL="3" TYPE="page">
+<METS:fptr FILEID="fi3_800"/>
+<METS:fptr FILEID="fi3_500"/>
+<METS:fptr FILEID="fi3_1000"/>
+<METS:fptr FILEID="fi3_150"/>
+<METS:fptr FILEID="fi3"/>
+</METS:div>
+<METS:div ID="phys5" ORDER="4" ORDERLABEL="4" TYPE="page">
+<METS:fptr FILEID="fi4_800"/>
+<METS:fptr FILEID="fi4_500"/>
+<METS:fptr FILEID="fi4_1000"/>
+<METS:fptr FILEID="fi4_150"/>
+<METS:fptr FILEID="fi4"/>
+</METS:div>
+<METS:div ID="phys6" ORDER="5" ORDERLABEL="5" TYPE="page">
+<METS:fptr FILEID="fi5_800"/>
+<METS:fptr FILEID="fi5_500"/>
+<METS:fptr FILEID="fi5_1000"/>
+<METS:fptr FILEID="fi5_150"/>
+<METS:fptr FILEID="fi5"/>
+</METS:div>
+<METS:div ID="phys7" ORDER="6" ORDERLABEL="6" TYPE="page">
+<METS:fptr FILEID="fi6_800"/>
+<METS:fptr FILEID="fi6_500"/>
+<METS:fptr FILEID="fi6_1000"/>
+<METS:fptr FILEID="fi6_150"/>
+<METS:fptr FILEID="fi6"/>
+</METS:div>
+<METS:div ID="phys8" ORDER="7" ORDERLABEL="7" TYPE="page">
+<METS:fptr FILEID="fi7_800"/>
+<METS:fptr FILEID="fi7_500"/>
+<METS:fptr FILEID="fi7_1000"/>
+<METS:fptr FILEID="fi7_150"/>
+<METS:fptr FILEID="fi7"/>
+</METS:div>
+<METS:div ID="phys9" ORDER="8" ORDERLABEL="8" TYPE="page">
+<METS:fptr FILEID="fi8_800"/>
+<METS:fptr FILEID="fi8_500"/>
+<METS:fptr FILEID="fi8_1000"/>
+<METS:fptr FILEID="fi8_150"/>
+<METS:fptr FILEID="fi8"/>
+</METS:div>
+<METS:div ID="phys10" ORDER="9" ORDERLABEL="9" TYPE="page">
+<METS:fptr FILEID="fi9_800"/>
+<METS:fptr FILEID="fi9_500"/>
+<METS:fptr FILEID="fi9_1000"/>
+<METS:fptr FILEID="fi9_150"/>
+<METS:fptr FILEID="fi9"/>
+</METS:div>
+<METS:div ID="phys11" ORDER="10" ORDERLABEL="10" TYPE="page">
+<METS:fptr FILEID="fi10_800"/>
+<METS:fptr FILEID="fi10_500"/>
+<METS:fptr FILEID="fi10_1000"/>
+<METS:fptr FILEID="fi10_150"/>
+<METS:fptr FILEID="fi10"/>
+</METS:div>
+<METS:div ID="phys12" ORDER="11" ORDERLABEL="11" TYPE="page">
+<METS:fptr FILEID="fi11_800"/>
+<METS:fptr FILEID="fi11_500"/>
+<METS:fptr FILEID="fi11_1000"/>
+<METS:fptr FILEID="fi11_150"/>
+<METS:fptr FILEID="fi11"/>
+</METS:div>
+<METS:div ID="phys13" ORDER="12" ORDERLABEL="12" TYPE="page">
+<METS:fptr FILEID="fi12_800"/>
+<METS:fptr FILEID="fi12_500"/>
+<METS:fptr FILEID="fi12_1000"/>
+<METS:fptr FILEID="fi12_150"/>
+<METS:fptr FILEID="fi12"/>
+</METS:div>
+<METS:div ID="phys14" ORDER="13" ORDERLABEL="13" TYPE="page">
+<METS:fptr FILEID="fi13_800"/>
+<METS:fptr FILEID="fi13_500"/>
+<METS:fptr FILEID="fi13_1000"/>
+<METS:fptr FILEID="fi13_150"/>
+<METS:fptr FILEID="fi13"/>
+</METS:div>
+<METS:div ID="phys15" ORDER="14" ORDERLABEL="14" TYPE="page">
+<METS:fptr FILEID="fi14_800"/>
+<METS:fptr FILEID="fi14_500"/>
+<METS:fptr FILEID="fi14_1000"/>
+<METS:fptr FILEID="fi14_150"/>
+<METS:fptr FILEID="fi14"/>
+</METS:div>
+<METS:div ID="phys16" ORDER="15" ORDERLABEL="15" TYPE="page">
+<METS:fptr FILEID="fi15_800"/>
+<METS:fptr FILEID="fi15_500"/>
+<METS:fptr FILEID="fi15_1000"/>
+<METS:fptr FILEID="fi15_150"/>
+<METS:fptr FILEID="fi15"/>
+</METS:div>
+<METS:div ID="phys17" ORDER="16" ORDERLABEL="16" TYPE="page">
+<METS:fptr FILEID="fi16_800"/>
+<METS:fptr FILEID="fi16_500"/>
+<METS:fptr FILEID="fi16_1000"/>
+<METS:fptr FILEID="fi16_150"/>
+<METS:fptr FILEID="fi16"/>
+</METS:div>
+<METS:div ID="phys18" ORDER="17" ORDERLABEL="1" TYPE="page">
+<METS:fptr FILEID="fi17_800"/>
+<METS:fptr FILEID="fi17_500"/>
+<METS:fptr FILEID="fi17_1000"/>
+<METS:fptr FILEID="fi17_150"/>
+<METS:fptr FILEID="fi17"/>
+</METS:div>
+<METS:div ID="phys19" ORDER="18" ORDERLABEL="2" TYPE="page">
+<METS:fptr FILEID="fi18_800"/>
+<METS:fptr FILEID="fi18_500"/>
+<METS:fptr FILEID="fi18_1000"/>
+<METS:fptr FILEID="fi18_150"/>
+<METS:fptr FILEID="fi18"/>
+</METS:div>
+<METS:div ID="phys20" ORDER="19" ORDERLABEL="3" TYPE="page">
+<METS:fptr FILEID="fi19_800"/>
+<METS:fptr FILEID="fi19_500"/>
+<METS:fptr FILEID="fi19_1000"/>
+<METS:fptr FILEID="fi19_150"/>
+<METS:fptr FILEID="fi19"/>
+</METS:div>
+<METS:div ID="phys21" ORDER="20" ORDERLABEL="4" TYPE="page">
+<METS:fptr FILEID="fi20_800"/>
+<METS:fptr FILEID="fi20_500"/>
+<METS:fptr FILEID="fi20_1000"/>
+<METS:fptr FILEID="fi20_150"/>
+<METS:fptr FILEID="fi20"/>
+</METS:div>
+<METS:div ID="phys22" ORDER="21" ORDERLABEL="5" TYPE="page">
+<METS:fptr FILEID="fi21_800"/>
+<METS:fptr FILEID="fi21_500"/>
+<METS:fptr FILEID="fi21_1000"/>
+<METS:fptr FILEID="fi21_150"/>
+<METS:fptr FILEID="fi21"/>
+</METS:div>
+<METS:div ID="phys23" ORDER="22" ORDERLABEL="6" TYPE="page">
+<METS:fptr FILEID="fi22_800"/>
+<METS:fptr FILEID="fi22_500"/>
+<METS:fptr FILEID="fi22_1000"/>
+<METS:fptr FILEID="fi22_150"/>
+<METS:fptr FILEID="fi22"/>
+</METS:div>
+<METS:div ID="phys24" ORDER="23" ORDERLABEL="7" TYPE="page">
+<METS:fptr FILEID="fi23_800"/>
+<METS:fptr FILEID="fi23_500"/>
+<METS:fptr FILEID="fi23_1000"/>
+<METS:fptr FILEID="fi23_150"/>
+<METS:fptr FILEID="fi23"/>
+</METS:div>
+<METS:div ID="phys25" ORDER="24" ORDERLABEL="8" TYPE="page">
+<METS:fptr FILEID="fi24_800"/>
+<METS:fptr FILEID="fi24_500"/>
+<METS:fptr FILEID="fi24_1000"/>
+<METS:fptr FILEID="fi24_150"/>
+<METS:fptr FILEID="fi24"/>
+</METS:div>
+<METS:div ID="phys26" ORDER="25" ORDERLABEL="9" TYPE="page">
+<METS:fptr FILEID="fi25_800"/>
+<METS:fptr FILEID="fi25_500"/>
+<METS:fptr FILEID="fi25_1000"/>
+<METS:fptr FILEID="fi25_150"/>
+<METS:fptr FILEID="fi25"/>
+</METS:div>
+<METS:div ID="phys27" ORDER="26" ORDERLABEL="10" TYPE="page">
+<METS:fptr FILEID="fi26_800"/>
+<METS:fptr FILEID="fi26_500"/>
+<METS:fptr FILEID="fi26_1000"/>
+<METS:fptr FILEID="fi26_150"/>
+<METS:fptr FILEID="fi26"/>
+</METS:div>
+<METS:div ID="phys28" ORDER="27" ORDERLABEL="11" TYPE="page">
+<METS:fptr FILEID="fi27_800"/>
+<METS:fptr FILEID="fi27_500"/>
+<METS:fptr FILEID="fi27_1000"/>
+<METS:fptr FILEID="fi27_150"/>
+<METS:fptr FILEID="fi27"/>
+</METS:div>
+<METS:div ID="phys29" ORDER="28" ORDERLABEL="12" TYPE="page">
+<METS:fptr FILEID="fi28_800"/>
+<METS:fptr FILEID="fi28_500"/>
+<METS:fptr FILEID="fi28_1000"/>
+<METS:fptr FILEID="fi28_150"/>
+<METS:fptr FILEID="fi28"/>
+</METS:div>
+<METS:div ID="phys30" ORDER="29" ORDERLABEL="13" TYPE="page">
+<METS:fptr FILEID="fi29_800"/>
+<METS:fptr FILEID="fi29_500"/>
+<METS:fptr FILEID="fi29_1000"/>
+<METS:fptr FILEID="fi29_150"/>
+<METS:fptr FILEID="fi29"/>
+</METS:div>
+<METS:div ID="phys31" ORDER="30" ORDERLABEL="14" TYPE="page">
+<METS:fptr FILEID="fi30_800"/>
+<METS:fptr FILEID="fi30_500"/>
+<METS:fptr FILEID="fi30_1000"/>
+<METS:fptr FILEID="fi30_150"/>
+<METS:fptr FILEID="fi30"/>
+</METS:div>
+<METS:div ID="phys32" ORDER="31" ORDERLABEL="15" TYPE="page">
+<METS:fptr FILEID="fi31_800"/>
+<METS:fptr FILEID="fi31_500"/>
+<METS:fptr FILEID="fi31_1000"/>
+<METS:fptr FILEID="fi31_150"/>
+<METS:fptr FILEID="fi31"/>
+</METS:div>
+<METS:div ID="phys33" ORDER="32" ORDERLABEL="16" TYPE="page">
+<METS:fptr FILEID="fi32_800"/>
+<METS:fptr FILEID="fi32_500"/>
+<METS:fptr FILEID="fi32_1000"/>
+<METS:fptr FILEID="fi32_150"/>
+<METS:fptr FILEID="fi32"/>
+</METS:div>
+<METS:div ID="phys34" ORDER="33" ORDERLABEL="17" TYPE="page">
+<METS:fptr FILEID="fi33_800"/>
+<METS:fptr FILEID="fi33_500"/>
+<METS:fptr FILEID="fi33_1000"/>
+<METS:fptr FILEID="fi33_150"/>
+<METS:fptr FILEID="fi33"/>
+</METS:div>
+<METS:div ID="phys35" ORDER="34" ORDERLABEL="18" TYPE="page">
+<METS:fptr FILEID="fi34_800"/>
+<METS:fptr FILEID="fi34_500"/>
+<METS:fptr FILEID="fi34_1000"/>
+<METS:fptr FILEID="fi34_150"/>
+<METS:fptr FILEID="fi34"/>
+</METS:div>
+<METS:div ID="phys36" ORDER="35" ORDERLABEL="19" TYPE="page">
+<METS:fptr FILEID="fi35_800"/>
+<METS:fptr FILEID="fi35_500"/>
+<METS:fptr FILEID="fi35_1000"/>
+<METS:fptr FILEID="fi35_150"/>
+<METS:fptr FILEID="fi35"/>
+</METS:div>
+<METS:div ID="phys37" ORDER="36" ORDERLABEL="20" TYPE="page">
+<METS:fptr FILEID="fi36_800"/>
+<METS:fptr FILEID="fi36_500"/>
+<METS:fptr FILEID="fi36_1000"/>
+<METS:fptr FILEID="fi36_150"/>
+<METS:fptr FILEID="fi36"/>
+</METS:div>
+<METS:div ID="phys38" ORDER="37" ORDERLABEL="21" TYPE="page">
+<METS:fptr FILEID="fi37_800"/>
+<METS:fptr FILEID="fi37_500"/>
+<METS:fptr FILEID="fi37_1000"/>
+<METS:fptr FILEID="fi37_150"/>
+<METS:fptr FILEID="fi37"/>
+</METS:div>
+<METS:div ID="phys39" ORDER="38" ORDERLABEL="22" TYPE="page">
+<METS:fptr FILEID="fi38_800"/>
+<METS:fptr FILEID="fi38_500"/>
+<METS:fptr FILEID="fi38_1000"/>
+<METS:fptr FILEID="fi38_150"/>
+<METS:fptr FILEID="fi38"/>
+</METS:div>
+<METS:div ID="phys40" ORDER="39" ORDERLABEL="23" TYPE="page">
+<METS:fptr FILEID="fi39_800"/>
+<METS:fptr FILEID="fi39_500"/>
+<METS:fptr FILEID="fi39_1000"/>
+<METS:fptr FILEID="fi39_150"/>
+<METS:fptr FILEID="fi39"/>
+</METS:div>
+<METS:div ID="phys41" ORDER="40" ORDERLABEL="24" TYPE="page">
+<METS:fptr FILEID="fi40_800"/>
+<METS:fptr FILEID="fi40_500"/>
+<METS:fptr FILEID="fi40_1000"/>
+<METS:fptr FILEID="fi40_150"/>
+<METS:fptr FILEID="fi40"/>
+</METS:div>
+<METS:div ID="phys42" ORDER="41" ORDERLABEL="25" TYPE="page">
+<METS:fptr FILEID="fi41_800"/>
+<METS:fptr FILEID="fi41_500"/>
+<METS:fptr FILEID="fi41_1000"/>
+<METS:fptr FILEID="fi41_150"/>
+<METS:fptr FILEID="fi41"/>
+</METS:div>
+<METS:div ID="phys43" ORDER="42" ORDERLABEL="26" TYPE="page">
+<METS:fptr FILEID="fi42_800"/>
+<METS:fptr FILEID="fi42_500"/>
+<METS:fptr FILEID="fi42_1000"/>
+<METS:fptr FILEID="fi42_150"/>
+<METS:fptr FILEID="fi42"/>
+</METS:div>
+<METS:div ID="phys44" ORDER="43" ORDERLABEL="27" TYPE="page">
+<METS:fptr FILEID="fi43_800"/>
+<METS:fptr FILEID="fi43_500"/>
+<METS:fptr FILEID="fi43_1000"/>
+<METS:fptr FILEID="fi43_150"/>
+<METS:fptr FILEID="fi43"/>
+</METS:div>
+<METS:div ID="phys45" ORDER="44" ORDERLABEL="28" TYPE="page">
+<METS:fptr FILEID="fi44_800"/>
+<METS:fptr FILEID="fi44_500"/>
+<METS:fptr FILEID="fi44_1000"/>
+<METS:fptr FILEID="fi44_150"/>
+<METS:fptr FILEID="fi44"/>
+</METS:div>
+<METS:div ID="phys46" ORDER="45" ORDERLABEL="29" TYPE="page">
+<METS:fptr FILEID="fi45_800"/>
+<METS:fptr FILEID="fi45_500"/>
+<METS:fptr FILEID="fi45_1000"/>
+<METS:fptr FILEID="fi45_150"/>
+<METS:fptr FILEID="fi45"/>
+</METS:div>
+<METS:div ID="phys47" ORDER="46" ORDERLABEL="30" TYPE="page">
+<METS:fptr FILEID="fi46_800"/>
+<METS:fptr FILEID="fi46_500"/>
+<METS:fptr FILEID="fi46_1000"/>
+<METS:fptr FILEID="fi46_150"/>
+<METS:fptr FILEID="fi46"/>
+</METS:div>
+<METS:div ID="phys48" ORDER="47" ORDERLABEL="31" TYPE="page">
+<METS:fptr FILEID="fi47_800"/>
+<METS:fptr FILEID="fi47_500"/>
+<METS:fptr FILEID="fi47_1000"/>
+<METS:fptr FILEID="fi47_150"/>
+<METS:fptr FILEID="fi47"/>
+</METS:div>
+<METS:div ID="phys49" ORDER="48" ORDERLABEL="32" TYPE="page">
+<METS:fptr FILEID="fi48_800"/>
+<METS:fptr FILEID="fi48_500"/>
+<METS:fptr FILEID="fi48_1000"/>
+<METS:fptr FILEID="fi48_150"/>
+<METS:fptr FILEID="fi48"/>
+</METS:div>
+<METS:div ID="phys50" ORDER="49" ORDERLABEL="33" TYPE="page">
+<METS:fptr FILEID="fi49_800"/>
+<METS:fptr FILEID="fi49_500"/>
+<METS:fptr FILEID="fi49_1000"/>
+<METS:fptr FILEID="fi49_150"/>
+<METS:fptr FILEID="fi49"/>
+</METS:div>
+<METS:div ID="phys51" ORDER="50" ORDERLABEL="34" TYPE="page">
+<METS:fptr FILEID="fi50_800"/>
+<METS:fptr FILEID="fi50_500"/>
+<METS:fptr FILEID="fi50_1000"/>
+<METS:fptr FILEID="fi50_150"/>
+<METS:fptr FILEID="fi50"/>
+</METS:div>
+<METS:div ID="phys52" ORDER="51" ORDERLABEL="35" TYPE="page">
+<METS:fptr FILEID="fi51_800"/>
+<METS:fptr FILEID="fi51_500"/>
+<METS:fptr FILEID="fi51_1000"/>
+<METS:fptr FILEID="fi51_150"/>
+<METS:fptr FILEID="fi51"/>
+</METS:div>
+<METS:div ID="phys53" ORDER="52" ORDERLABEL="36" TYPE="page">
+<METS:fptr FILEID="fi52_800"/>
+<METS:fptr FILEID="fi52_500"/>
+<METS:fptr FILEID="fi52_1000"/>
+<METS:fptr FILEID="fi52_150"/>
+<METS:fptr FILEID="fi52"/>
+</METS:div>
+<METS:div ID="phys54" ORDER="53" ORDERLABEL="37" TYPE="page">
+<METS:fptr FILEID="fi53_800"/>
+<METS:fptr FILEID="fi53_500"/>
+<METS:fptr FILEID="fi53_1000"/>
+<METS:fptr FILEID="fi53_150"/>
+<METS:fptr FILEID="fi53"/>
+</METS:div>
+<METS:div ID="phys55" ORDER="54" ORDERLABEL="38" TYPE="page">
+<METS:fptr FILEID="fi54_800"/>
+<METS:fptr FILEID="fi54_500"/>
+<METS:fptr FILEID="fi54_1000"/>
+<METS:fptr FILEID="fi54_150"/>
+<METS:fptr FILEID="fi54"/>
+</METS:div>
+<METS:div ID="phys56" ORDER="55" ORDERLABEL="39" TYPE="page">
+<METS:fptr FILEID="fi55_800"/>
+<METS:fptr FILEID="fi55_500"/>
+<METS:fptr FILEID="fi55_1000"/>
+<METS:fptr FILEID="fi55_150"/>
+<METS:fptr FILEID="fi55"/>
+</METS:div>
+<METS:div ID="phys57" ORDER="56" ORDERLABEL="40" TYPE="page">
+<METS:fptr FILEID="fi56_800"/>
+<METS:fptr FILEID="fi56_500"/>
+<METS:fptr FILEID="fi56_1000"/>
+<METS:fptr FILEID="fi56_150"/>
+<METS:fptr FILEID="fi56"/>
+</METS:div>
+<METS:div ID="phys58" ORDER="57" ORDERLABEL="41" TYPE="page">
+<METS:fptr FILEID="fi57_800"/>
+<METS:fptr FILEID="fi57_500"/>
+<METS:fptr FILEID="fi57_1000"/>
+<METS:fptr FILEID="fi57_150"/>
+<METS:fptr FILEID="fi57"/>
+</METS:div>
+<METS:div ID="phys59" ORDER="58" ORDERLABEL="42" TYPE="page">
+<METS:fptr FILEID="fi58_800"/>
+<METS:fptr FILEID="fi58_500"/>
+<METS:fptr FILEID="fi58_1000"/>
+<METS:fptr FILEID="fi58_150"/>
+<METS:fptr FILEID="fi58"/>
+</METS:div>
+<METS:div ID="phys60" ORDER="59" ORDERLABEL="43" TYPE="page">
+<METS:fptr FILEID="fi59_800"/>
+<METS:fptr FILEID="fi59_500"/>
+<METS:fptr FILEID="fi59_1000"/>
+<METS:fptr FILEID="fi59_150"/>
+<METS:fptr FILEID="fi59"/>
+</METS:div>
+<METS:div ID="phys61" ORDER="60" ORDERLABEL="44" TYPE="page">
+<METS:fptr FILEID="fi60_800"/>
+<METS:fptr FILEID="fi60_500"/>
+<METS:fptr FILEID="fi60_1000"/>
+<METS:fptr FILEID="fi60_150"/>
+<METS:fptr FILEID="fi60"/>
+</METS:div>
+<METS:div ID="phys62" ORDER="61" ORDERLABEL="45" TYPE="page">
+<METS:fptr FILEID="fi61_800"/>
+<METS:fptr FILEID="fi61_500"/>
+<METS:fptr FILEID="fi61_1000"/>
+<METS:fptr FILEID="fi61_150"/>
+<METS:fptr FILEID="fi61"/>
+</METS:div>
+<METS:div ID="phys63" ORDER="62" ORDERLABEL="46" TYPE="page">
+<METS:fptr FILEID="fi62_800"/>
+<METS:fptr FILEID="fi62_500"/>
+<METS:fptr FILEID="fi62_1000"/>
+<METS:fptr FILEID="fi62_150"/>
+<METS:fptr FILEID="fi62"/>
+</METS:div>
+<METS:div ID="phys64" ORDER="63" ORDERLABEL="47" TYPE="page">
+<METS:fptr FILEID="fi63_800"/>
+<METS:fptr FILEID="fi63_500"/>
+<METS:fptr FILEID="fi63_1000"/>
+<METS:fptr FILEID="fi63_150"/>
+<METS:fptr FILEID="fi63"/>
+</METS:div>
+<METS:div ID="phys65" ORDER="64" ORDERLABEL="48" TYPE="page">
+<METS:fptr FILEID="fi64_800"/>
+<METS:fptr FILEID="fi64_500"/>
+<METS:fptr FILEID="fi64_1000"/>
+<METS:fptr FILEID="fi64_150"/>
+<METS:fptr FILEID="fi64"/>
+</METS:div>
+<METS:div ID="phys66" ORDER="65" ORDERLABEL="49" TYPE="page">
+<METS:fptr FILEID="fi65_800"/>
+<METS:fptr FILEID="fi65_500"/>
+<METS:fptr FILEID="fi65_1000"/>
+<METS:fptr FILEID="fi65_150"/>
+<METS:fptr FILEID="fi65"/>
+</METS:div>
+<METS:div ID="phys67" ORDER="66" ORDERLABEL="50" TYPE="page">
+<METS:fptr FILEID="fi66_800"/>
+<METS:fptr FILEID="fi66_500"/>
+<METS:fptr FILEID="fi66_1000"/>
+<METS:fptr FILEID="fi66_150"/>
+<METS:fptr FILEID="fi66"/>
+</METS:div>
+<METS:div ID="phys68" ORDER="67" ORDERLABEL="51" TYPE="page">
+<METS:fptr FILEID="fi67_800"/>
+<METS:fptr FILEID="fi67_500"/>
+<METS:fptr FILEID="fi67_1000"/>
+<METS:fptr FILEID="fi67_150"/>
+<METS:fptr FILEID="fi67"/>
+</METS:div>
+<METS:div ID="phys69" ORDER="68" ORDERLABEL="52" TYPE="page">
+<METS:fptr FILEID="fi68_800"/>
+<METS:fptr FILEID="fi68_500"/>
+<METS:fptr FILEID="fi68_1000"/>
+<METS:fptr FILEID="fi68_150"/>
+<METS:fptr FILEID="fi68"/>
+</METS:div>
+<METS:div ID="phys70" ORDER="69" ORDERLABEL="53" TYPE="page">
+<METS:fptr FILEID="fi69_800"/>
+<METS:fptr FILEID="fi69_500"/>
+<METS:fptr FILEID="fi69_1000"/>
+<METS:fptr FILEID="fi69_150"/>
+<METS:fptr FILEID="fi69"/>
+</METS:div>
+<METS:div ID="phys71" ORDER="70" ORDERLABEL="54" TYPE="page">
+<METS:fptr FILEID="fi70_800"/>
+<METS:fptr FILEID="fi70_500"/>
+<METS:fptr FILEID="fi70_1000"/>
+<METS:fptr FILEID="fi70_150"/>
+<METS:fptr FILEID="fi70"/>
+</METS:div>
+<METS:div ID="phys72" ORDER="71" ORDERLABEL="55" TYPE="page">
+<METS:fptr FILEID="fi71_800"/>
+<METS:fptr FILEID="fi71_500"/>
+<METS:fptr FILEID="fi71_1000"/>
+<METS:fptr FILEID="fi71_150"/>
+<METS:fptr FILEID="fi71"/>
+</METS:div>
+<METS:div ID="phys73" ORDER="72" ORDERLABEL="56" TYPE="page">
+<METS:fptr FILEID="fi72_800"/>
+<METS:fptr FILEID="fi72_500"/>
+<METS:fptr FILEID="fi72_1000"/>
+<METS:fptr FILEID="fi72_150"/>
+<METS:fptr FILEID="fi72"/>
+</METS:div>
+<METS:div ID="phys74" ORDER="73" ORDERLABEL="57" TYPE="page">
+<METS:fptr FILEID="fi73_800"/>
+<METS:fptr FILEID="fi73_500"/>
+<METS:fptr FILEID="fi73_1000"/>
+<METS:fptr FILEID="fi73_150"/>
+<METS:fptr FILEID="fi73"/>
+</METS:div>
+<METS:div ID="phys75" ORDER="74" ORDERLABEL="58" TYPE="page">
+<METS:fptr FILEID="fi74_800"/>
+<METS:fptr FILEID="fi74_500"/>
+<METS:fptr FILEID="fi74_1000"/>
+<METS:fptr FILEID="fi74_150"/>
+<METS:fptr FILEID="fi74"/>
+</METS:div>
+<METS:div ID="phys76" ORDER="75" ORDERLABEL="59" TYPE="page">
+<METS:fptr FILEID="fi75_800"/>
+<METS:fptr FILEID="fi75_500"/>
+<METS:fptr FILEID="fi75_1000"/>
+<METS:fptr FILEID="fi75_150"/>
+<METS:fptr FILEID="fi75"/>
+</METS:div>
+<METS:div ID="phys77" ORDER="76" ORDERLABEL="60" TYPE="page">
+<METS:fptr FILEID="fi76_800"/>
+<METS:fptr FILEID="fi76_500"/>
+<METS:fptr FILEID="fi76_1000"/>
+<METS:fptr FILEID="fi76_150"/>
+<METS:fptr FILEID="fi76"/>
+</METS:div>
+<METS:div ID="phys78" ORDER="77" ORDERLABEL="61" TYPE="page">
+<METS:fptr FILEID="fi77_800"/>
+<METS:fptr FILEID="fi77_500"/>
+<METS:fptr FILEID="fi77_1000"/>
+<METS:fptr FILEID="fi77_150"/>
+<METS:fptr FILEID="fi77"/>
+</METS:div>
+<METS:div ID="phys79" ORDER="78" ORDERLABEL="62" TYPE="page">
+<METS:fptr FILEID="fi78_800"/>
+<METS:fptr FILEID="fi78_500"/>
+<METS:fptr FILEID="fi78_1000"/>
+<METS:fptr FILEID="fi78_150"/>
+<METS:fptr FILEID="fi78"/>
+</METS:div>
+<METS:div ID="phys80" ORDER="79" ORDERLABEL="63" TYPE="page">
+<METS:fptr FILEID="fi79_800"/>
+<METS:fptr FILEID="fi79_500"/>
+<METS:fptr FILEID="fi79_1000"/>
+<METS:fptr FILEID="fi79_150"/>
+<METS:fptr FILEID="fi79"/>
+</METS:div>
+<METS:div ID="phys81" ORDER="80" ORDERLABEL="64" TYPE="page">
+<METS:fptr FILEID="fi80_800"/>
+<METS:fptr FILEID="fi80_500"/>
+<METS:fptr FILEID="fi80_1000"/>
+<METS:fptr FILEID="fi80_150"/>
+<METS:fptr FILEID="fi80"/>
+</METS:div>
+<METS:div ID="phys82" ORDER="81" ORDERLABEL="65" TYPE="page">
+<METS:fptr FILEID="fi81_800"/>
+<METS:fptr FILEID="fi81_500"/>
+<METS:fptr FILEID="fi81_1000"/>
+<METS:fptr FILEID="fi81_150"/>
+<METS:fptr FILEID="fi81"/>
+</METS:div>
+<METS:div ID="phys83" ORDER="82" ORDERLABEL="66" TYPE="page">
+<METS:fptr FILEID="fi82_800"/>
+<METS:fptr FILEID="fi82_500"/>
+<METS:fptr FILEID="fi82_1000"/>
+<METS:fptr FILEID="fi82_150"/>
+<METS:fptr FILEID="fi82"/>
+</METS:div>
+<METS:div ID="phys84" ORDER="83" ORDERLABEL="67" TYPE="page">
+<METS:fptr FILEID="fi83_800"/>
+<METS:fptr FILEID="fi83_500"/>
+<METS:fptr FILEID="fi83_1000"/>
+<METS:fptr FILEID="fi83_150"/>
+<METS:fptr FILEID="fi83"/>
+</METS:div>
+<METS:div ID="phys85" ORDER="84" ORDERLABEL="68" TYPE="page">
+<METS:fptr FILEID="fi84_800"/>
+<METS:fptr FILEID="fi84_500"/>
+<METS:fptr FILEID="fi84_1000"/>
+<METS:fptr FILEID="fi84_150"/>
+<METS:fptr FILEID="fi84"/>
+</METS:div>
+<METS:div ID="phys86" ORDER="85" ORDERLABEL="69" TYPE="page">
+<METS:fptr FILEID="fi85_800"/>
+<METS:fptr FILEID="fi85_500"/>
+<METS:fptr FILEID="fi85_1000"/>
+<METS:fptr FILEID="fi85_150"/>
+<METS:fptr FILEID="fi85"/>
+</METS:div>
+<METS:div ID="phys87" ORDER="86" ORDERLABEL="70" TYPE="page">
+<METS:fptr FILEID="fi86_800"/>
+<METS:fptr FILEID="fi86_500"/>
+<METS:fptr FILEID="fi86_1000"/>
+<METS:fptr FILEID="fi86_150"/>
+<METS:fptr FILEID="fi86"/>
+</METS:div>
+<METS:div ID="phys88" ORDER="87" ORDERLABEL="71" TYPE="page">
+<METS:fptr FILEID="fi87_800"/>
+<METS:fptr FILEID="fi87_500"/>
+<METS:fptr FILEID="fi87_1000"/>
+<METS:fptr FILEID="fi87_150"/>
+<METS:fptr FILEID="fi87"/>
+</METS:div>
+<METS:div ID="phys89" ORDER="88" ORDERLABEL="72" TYPE="page">
+<METS:fptr FILEID="fi88_800"/>
+<METS:fptr FILEID="fi88_500"/>
+<METS:fptr FILEID="fi88_1000"/>
+<METS:fptr FILEID="fi88_150"/>
+<METS:fptr FILEID="fi88"/>
+</METS:div>
+<METS:div ID="phys90" ORDER="89" ORDERLABEL="73" TYPE="page">
+<METS:fptr FILEID="fi89_800"/>
+<METS:fptr FILEID="fi89_500"/>
+<METS:fptr FILEID="fi89_1000"/>
+<METS:fptr FILEID="fi89_150"/>
+<METS:fptr FILEID="fi89"/>
+</METS:div>
+<METS:div ID="phys91" ORDER="90" ORDERLABEL="74" TYPE="page">
+<METS:fptr FILEID="fi90_800"/>
+<METS:fptr FILEID="fi90_500"/>
+<METS:fptr FILEID="fi90_1000"/>
+<METS:fptr FILEID="fi90_150"/>
+<METS:fptr FILEID="fi90"/>
+</METS:div>
+<METS:div ID="phys92" ORDER="91" ORDERLABEL="75" TYPE="page">
+<METS:fptr FILEID="fi91_800"/>
+<METS:fptr FILEID="fi91_500"/>
+<METS:fptr FILEID="fi91_1000"/>
+<METS:fptr FILEID="fi91_150"/>
+<METS:fptr FILEID="fi91"/>
+</METS:div>
+<METS:div ID="phys93" ORDER="92" ORDERLABEL="76" TYPE="page">
+<METS:fptr FILEID="fi92_800"/>
+<METS:fptr FILEID="fi92_500"/>
+<METS:fptr FILEID="fi92_1000"/>
+<METS:fptr FILEID="fi92_150"/>
+<METS:fptr FILEID="fi92"/>
+</METS:div>
+<METS:div ID="phys94" ORDER="93" ORDERLABEL="77" TYPE="page">
+<METS:fptr FILEID="fi93_800"/>
+<METS:fptr FILEID="fi93_500"/>
+<METS:fptr FILEID="fi93_1000"/>
+<METS:fptr FILEID="fi93_150"/>
+<METS:fptr FILEID="fi93"/>
+</METS:div>
+<METS:div ID="phys95" ORDER="94" ORDERLABEL="78" TYPE="page">
+<METS:fptr FILEID="fi94_800"/>
+<METS:fptr FILEID="fi94_500"/>
+<METS:fptr FILEID="fi94_1000"/>
+<METS:fptr FILEID="fi94_150"/>
+<METS:fptr FILEID="fi94"/>
+</METS:div>
+<METS:div ID="phys96" ORDER="95" ORDERLABEL="79" TYPE="page">
+<METS:fptr FILEID="fi95_800"/>
+<METS:fptr FILEID="fi95_500"/>
+<METS:fptr FILEID="fi95_1000"/>
+<METS:fptr FILEID="fi95_150"/>
+<METS:fptr FILEID="fi95"/>
+</METS:div>
+<METS:div ID="phys97" ORDER="96" ORDERLABEL="80" TYPE="page">
+<METS:fptr FILEID="fi96_800"/>
+<METS:fptr FILEID="fi96_500"/>
+<METS:fptr FILEID="fi96_1000"/>
+<METS:fptr FILEID="fi96_150"/>
+<METS:fptr FILEID="fi96"/>
+</METS:div>
+<METS:div ID="phys98" ORDER="97" ORDERLABEL="81" TYPE="page">
+<METS:fptr FILEID="fi97_800"/>
+<METS:fptr FILEID="fi97_500"/>
+<METS:fptr FILEID="fi97_1000"/>
+<METS:fptr FILEID="fi97_150"/>
+<METS:fptr FILEID="fi97"/>
+</METS:div>
+<METS:div ID="phys99" ORDER="98" ORDERLABEL="82" TYPE="page">
+<METS:fptr FILEID="fi98_800"/>
+<METS:fptr FILEID="fi98_500"/>
+<METS:fptr FILEID="fi98_1000"/>
+<METS:fptr FILEID="fi98_150"/>
+<METS:fptr FILEID="fi98"/>
+</METS:div>
+<METS:div ID="phys100" ORDER="99" ORDERLABEL="83" TYPE="page">
+<METS:fptr FILEID="fi99_800"/>
+<METS:fptr FILEID="fi99_500"/>
+<METS:fptr FILEID="fi99_1000"/>
+<METS:fptr FILEID="fi99_150"/>
+<METS:fptr FILEID="fi99"/>
+</METS:div>
+<METS:div ID="phys101" ORDER="100" ORDERLABEL="84" TYPE="page">
+<METS:fptr FILEID="fi100_800"/>
+<METS:fptr FILEID="fi100_500"/>
+<METS:fptr FILEID="fi100_1000"/>
+<METS:fptr FILEID="fi100_150"/>
+<METS:fptr FILEID="fi100"/>
+</METS:div>
+<METS:div ID="phys102" ORDER="101" ORDERLABEL="85" TYPE="page">
+<METS:fptr FILEID="fi101_800"/>
+<METS:fptr FILEID="fi101_500"/>
+<METS:fptr FILEID="fi101_1000"/>
+<METS:fptr FILEID="fi101_150"/>
+<METS:fptr FILEID="fi101"/>
+</METS:div>
+<METS:div ID="phys103" ORDER="102" ORDERLABEL="86" TYPE="page">
+<METS:fptr FILEID="fi102_800"/>
+<METS:fptr FILEID="fi102_500"/>
+<METS:fptr FILEID="fi102_1000"/>
+<METS:fptr FILEID="fi102_150"/>
+<METS:fptr FILEID="fi102"/>
+</METS:div>
+<METS:div ID="phys104" ORDER="103" ORDERLABEL="87" TYPE="page">
+<METS:fptr FILEID="fi103_800"/>
+<METS:fptr FILEID="fi103_500"/>
+<METS:fptr FILEID="fi103_1000"/>
+<METS:fptr FILEID="fi103_150"/>
+<METS:fptr FILEID="fi103"/>
+</METS:div>
+<METS:div ID="phys105" ORDER="104" ORDERLABEL="88" TYPE="page">
+<METS:fptr FILEID="fi104_800"/>
+<METS:fptr FILEID="fi104_500"/>
+<METS:fptr FILEID="fi104_1000"/>
+<METS:fptr FILEID="fi104_150"/>
+<METS:fptr FILEID="fi104"/>
+</METS:div>
+<METS:div ID="phys106" ORDER="105" ORDERLABEL="89" TYPE="page">
+<METS:fptr FILEID="fi105_800"/>
+<METS:fptr FILEID="fi105_500"/>
+<METS:fptr FILEID="fi105_1000"/>
+<METS:fptr FILEID="fi105_150"/>
+<METS:fptr FILEID="fi105"/>
+</METS:div>
+<METS:div ID="phys107" ORDER="106" ORDERLABEL="90" TYPE="page">
+<METS:fptr FILEID="fi106_800"/>
+<METS:fptr FILEID="fi106_500"/>
+<METS:fptr FILEID="fi106_1000"/>
+<METS:fptr FILEID="fi106_150"/>
+<METS:fptr FILEID="fi106"/>
+</METS:div>
+<METS:div ID="phys108" ORDER="107" ORDERLABEL="91" TYPE="page">
+<METS:fptr FILEID="fi107_800"/>
+<METS:fptr FILEID="fi107_500"/>
+<METS:fptr FILEID="fi107_1000"/>
+<METS:fptr FILEID="fi107_150"/>
+<METS:fptr FILEID="fi107"/>
+</METS:div>
+<METS:div ID="phys109" ORDER="108" ORDERLABEL="92" TYPE="page">
+<METS:fptr FILEID="fi108_800"/>
+<METS:fptr FILEID="fi108_500"/>
+<METS:fptr FILEID="fi108_1000"/>
+<METS:fptr FILEID="fi108_150"/>
+<METS:fptr FILEID="fi108"/>
+</METS:div>
+<METS:div ID="phys110" ORDER="109" ORDERLABEL="93" TYPE="page">
+<METS:fptr FILEID="fi109_800"/>
+<METS:fptr FILEID="fi109_500"/>
+<METS:fptr FILEID="fi109_1000"/>
+<METS:fptr FILEID="fi109_150"/>
+<METS:fptr FILEID="fi109"/>
+</METS:div>
+<METS:div ID="phys111" ORDER="110" ORDERLABEL="94" TYPE="page">
+<METS:fptr FILEID="fi110_800"/>
+<METS:fptr FILEID="fi110_500"/>
+<METS:fptr FILEID="fi110_1000"/>
+<METS:fptr FILEID="fi110_150"/>
+<METS:fptr FILEID="fi110"/>
+</METS:div>
+<METS:div ID="phys112" ORDER="111" ORDERLABEL="95" TYPE="page">
+<METS:fptr FILEID="fi111_800"/>
+<METS:fptr FILEID="fi111_500"/>
+<METS:fptr FILEID="fi111_1000"/>
+<METS:fptr FILEID="fi111_150"/>
+<METS:fptr FILEID="fi111"/>
+</METS:div>
+<METS:div ID="phys113" ORDER="112" ORDERLABEL="96" TYPE="page">
+<METS:fptr FILEID="fi112_800"/>
+<METS:fptr FILEID="fi112_500"/>
+<METS:fptr FILEID="fi112_1000"/>
+<METS:fptr FILEID="fi112_150"/>
+<METS:fptr FILEID="fi112"/>
+</METS:div>
+<METS:div ID="phys114" ORDER="113" ORDERLABEL="97" TYPE="page">
+<METS:fptr FILEID="fi113_800"/>
+<METS:fptr FILEID="fi113_500"/>
+<METS:fptr FILEID="fi113_1000"/>
+<METS:fptr FILEID="fi113_150"/>
+<METS:fptr FILEID="fi113"/>
+</METS:div>
+<METS:div ID="phys115" ORDER="114" ORDERLABEL="98" TYPE="page">
+<METS:fptr FILEID="fi114_800"/>
+<METS:fptr FILEID="fi114_500"/>
+<METS:fptr FILEID="fi114_1000"/>
+<METS:fptr FILEID="fi114_150"/>
+<METS:fptr FILEID="fi114"/>
+</METS:div>
+<METS:div ID="phys116" ORDER="115" ORDERLABEL="99" TYPE="page">
+<METS:fptr FILEID="fi115_800"/>
+<METS:fptr FILEID="fi115_500"/>
+<METS:fptr FILEID="fi115_1000"/>
+<METS:fptr FILEID="fi115_150"/>
+<METS:fptr FILEID="fi115"/>
+</METS:div>
+<METS:div ID="phys117" ORDER="116" ORDERLABEL="100" TYPE="page">
+<METS:fptr FILEID="fi116_800"/>
+<METS:fptr FILEID="fi116_500"/>
+<METS:fptr FILEID="fi116_1000"/>
+<METS:fptr FILEID="fi116_150"/>
+<METS:fptr FILEID="fi116"/>
+</METS:div>
+<METS:div ID="phys118" ORDER="117" ORDERLABEL="101" TYPE="page">
+<METS:fptr FILEID="fi117_800"/>
+<METS:fptr FILEID="fi117_500"/>
+<METS:fptr FILEID="fi117_1000"/>
+<METS:fptr FILEID="fi117_150"/>
+<METS:fptr FILEID="fi117"/>
+</METS:div>
+<METS:div ID="phys119" ORDER="118" ORDERLABEL="102" TYPE="page">
+<METS:fptr FILEID="fi118_800"/>
+<METS:fptr FILEID="fi118_500"/>
+<METS:fptr FILEID="fi118_1000"/>
+<METS:fptr FILEID="fi118_150"/>
+<METS:fptr FILEID="fi118"/>
+</METS:div>
+<METS:div ID="phys120" ORDER="119" ORDERLABEL="103" TYPE="page">
+<METS:fptr FILEID="fi119_800"/>
+<METS:fptr FILEID="fi119_500"/>
+<METS:fptr FILEID="fi119_1000"/>
+<METS:fptr FILEID="fi119_150"/>
+<METS:fptr FILEID="fi119"/>
+</METS:div>
+<METS:div ID="phys121" ORDER="120" ORDERLABEL="104" TYPE="page">
+<METS:fptr FILEID="fi120_800"/>
+<METS:fptr FILEID="fi120_500"/>
+<METS:fptr FILEID="fi120_1000"/>
+<METS:fptr FILEID="fi120_150"/>
+<METS:fptr FILEID="fi120"/>
+</METS:div>
+<METS:div ID="phys122" ORDER="121" ORDERLABEL="105" TYPE="page">
+<METS:fptr FILEID="fi121_800"/>
+<METS:fptr FILEID="fi121_500"/>
+<METS:fptr FILEID="fi121_1000"/>
+<METS:fptr FILEID="fi121_150"/>
+<METS:fptr FILEID="fi121"/>
+</METS:div>
+<METS:div ID="phys123" ORDER="122" ORDERLABEL="106" TYPE="page">
+<METS:fptr FILEID="fi122_800"/>
+<METS:fptr FILEID="fi122_500"/>
+<METS:fptr FILEID="fi122_1000"/>
+<METS:fptr FILEID="fi122_150"/>
+<METS:fptr FILEID="fi122"/>
+</METS:div>
+<METS:div ID="phys124" ORDER="123" ORDERLABEL="107" TYPE="page">
+<METS:fptr FILEID="fi123_800"/>
+<METS:fptr FILEID="fi123_500"/>
+<METS:fptr FILEID="fi123_1000"/>
+<METS:fptr FILEID="fi123_150"/>
+<METS:fptr FILEID="fi123"/>
+</METS:div>
+<METS:div ID="phys125" ORDER="124" ORDERLABEL="108" TYPE="page">
+<METS:fptr FILEID="fi124_800"/>
+<METS:fptr FILEID="fi124_500"/>
+<METS:fptr FILEID="fi124_1000"/>
+<METS:fptr FILEID="fi124_150"/>
+<METS:fptr FILEID="fi124"/>
+</METS:div>
+<METS:div ID="phys126" ORDER="125" ORDERLABEL="109" TYPE="page">
+<METS:fptr FILEID="fi125_800"/>
+<METS:fptr FILEID="fi125_500"/>
+<METS:fptr FILEID="fi125_1000"/>
+<METS:fptr FILEID="fi125_150"/>
+<METS:fptr FILEID="fi125"/>
+</METS:div>
+<METS:div ID="phys127" ORDER="126" ORDERLABEL="110" TYPE="page">
+<METS:fptr FILEID="fi126_800"/>
+<METS:fptr FILEID="fi126_500"/>
+<METS:fptr FILEID="fi126_1000"/>
+<METS:fptr FILEID="fi126_150"/>
+<METS:fptr FILEID="fi126"/>
+</METS:div>
+<METS:div ID="phys128" ORDER="127" ORDERLABEL="111" TYPE="page">
+<METS:fptr FILEID="fi127_800"/>
+<METS:fptr FILEID="fi127_500"/>
+<METS:fptr FILEID="fi127_1000"/>
+<METS:fptr FILEID="fi127_150"/>
+<METS:fptr FILEID="fi127"/>
+</METS:div>
+<METS:div ID="phys129" ORDER="128" ORDERLABEL="112" TYPE="page">
+<METS:fptr FILEID="fi128_800"/>
+<METS:fptr FILEID="fi128_500"/>
+<METS:fptr FILEID="fi128_1000"/>
+<METS:fptr FILEID="fi128_150"/>
+<METS:fptr FILEID="fi128"/>
+</METS:div>
+<METS:div ID="phys130" ORDER="129" ORDERLABEL="113" TYPE="page">
+<METS:fptr FILEID="fi129_800"/>
+<METS:fptr FILEID="fi129_500"/>
+<METS:fptr FILEID="fi129_1000"/>
+<METS:fptr FILEID="fi129_150"/>
+<METS:fptr FILEID="fi129"/>
+</METS:div>
+<METS:div ID="phys131" ORDER="130" ORDERLABEL="114" TYPE="page">
+<METS:fptr FILEID="fi130_800"/>
+<METS:fptr FILEID="fi130_500"/>
+<METS:fptr FILEID="fi130_1000"/>
+<METS:fptr FILEID="fi130_150"/>
+<METS:fptr FILEID="fi130"/>
+</METS:div>
+<METS:div ID="phys132" ORDER="131" ORDERLABEL="115" TYPE="page">
+<METS:fptr FILEID="fi131_800"/>
+<METS:fptr FILEID="fi131_500"/>
+<METS:fptr FILEID="fi131_1000"/>
+<METS:fptr FILEID="fi131_150"/>
+<METS:fptr FILEID="fi131"/>
+</METS:div>
+<METS:div ID="phys133" ORDER="132" ORDERLABEL="116" TYPE="page">
+<METS:fptr FILEID="fi132_800"/>
+<METS:fptr FILEID="fi132_500"/>
+<METS:fptr FILEID="fi132_1000"/>
+<METS:fptr FILEID="fi132_150"/>
+<METS:fptr FILEID="fi132"/>
+</METS:div>
+<METS:div ID="phys134" ORDER="133" ORDERLABEL="117" TYPE="page">
+<METS:fptr FILEID="fi133_800"/>
+<METS:fptr FILEID="fi133_500"/>
+<METS:fptr FILEID="fi133_1000"/>
+<METS:fptr FILEID="fi133_150"/>
+<METS:fptr FILEID="fi133"/>
+</METS:div>
+<METS:div ID="phys135" ORDER="134" ORDERLABEL="118" TYPE="page">
+<METS:fptr FILEID="fi134_800"/>
+<METS:fptr FILEID="fi134_500"/>
+<METS:fptr FILEID="fi134_1000"/>
+<METS:fptr FILEID="fi134_150"/>
+<METS:fptr FILEID="fi134"/>
+</METS:div>
+<METS:div ID="phys136" ORDER="135" ORDERLABEL="119" TYPE="page">
+<METS:fptr FILEID="fi135_800"/>
+<METS:fptr FILEID="fi135_500"/>
+<METS:fptr FILEID="fi135_1000"/>
+<METS:fptr FILEID="fi135_150"/>
+<METS:fptr FILEID="fi135"/>
+</METS:div>
+</METS:div>
+</METS:structMap>
+<METS:structLink xmlns:METS="http://www.loc.gov/METS/" xmlns:xlink="http://www.w3.org/1999/xlink">
+<METS:smLink xlink:from="log1" xlink:to="phys1"/>
+<METS:smLink xlink:from="log1" xlink:to="phys2"/>
+<METS:smLink xlink:from="log1" xlink:to="phys3"/>
+<METS:smLink xlink:from="log1" xlink:to="phys4"/>
+<METS:smLink xlink:from="log1" xlink:to="phys5"/>
+<METS:smLink xlink:from="log1" xlink:to="phys6"/>
+<METS:smLink xlink:from="log1" xlink:to="phys7"/>
+<METS:smLink xlink:from="log1" xlink:to="phys8"/>
+<METS:smLink xlink:from="log1" xlink:to="phys9"/>
+<METS:smLink xlink:from="log1" xlink:to="phys10"/>
+<METS:smLink xlink:from="log1" xlink:to="phys11"/>
+<METS:smLink xlink:from="log1" xlink:to="phys12"/>
+<METS:smLink xlink:from="log1" xlink:to="phys13"/>
+<METS:smLink xlink:from="log1" xlink:to="phys14"/>
+<METS:smLink xlink:from="log1" xlink:to="phys15"/>
+<METS:smLink xlink:from="log1" xlink:to="phys16"/>
+<METS:smLink xlink:from="log1" xlink:to="phys17"/>
+<METS:smLink xlink:from="log1" xlink:to="phys18"/>
+<METS:smLink xlink:from="log1" xlink:to="phys19"/>
+<METS:smLink xlink:from="log1" xlink:to="phys20"/>
+<METS:smLink xlink:from="log1" xlink:to="phys21"/>
+<METS:smLink xlink:from="log1" xlink:to="phys22"/>
+<METS:smLink xlink:from="log1" xlink:to="phys23"/>
+<METS:smLink xlink:from="log1" xlink:to="phys24"/>
+<METS:smLink xlink:from="log1" xlink:to="phys25"/>
+<METS:smLink xlink:from="log1" xlink:to="phys26"/>
+<METS:smLink xlink:from="log1" xlink:to="phys27"/>
+<METS:smLink xlink:from="log1" xlink:to="phys28"/>
+<METS:smLink xlink:from="log1" xlink:to="phys29"/>
+<METS:smLink xlink:from="log1" xlink:to="phys30"/>
+<METS:smLink xlink:from="log1" xlink:to="phys31"/>
+<METS:smLink xlink:from="log1" xlink:to="phys32"/>
+<METS:smLink xlink:from="log1" xlink:to="phys33"/>
+<METS:smLink xlink:from="log1" xlink:to="phys34"/>
+<METS:smLink xlink:from="log1" xlink:to="phys35"/>
+<METS:smLink xlink:from="log1" xlink:to="phys36"/>
+<METS:smLink xlink:from="log1" xlink:to="phys37"/>
+<METS:smLink xlink:from="log1" xlink:to="phys38"/>
+<METS:smLink xlink:from="log1" xlink:to="phys39"/>
+<METS:smLink xlink:from="log1" xlink:to="phys40"/>
+<METS:smLink xlink:from="log1" xlink:to="phys41"/>
+<METS:smLink xlink:from="log1" xlink:to="phys42"/>
+<METS:smLink xlink:from="log1" xlink:to="phys43"/>
+<METS:smLink xlink:from="log1" xlink:to="phys44"/>
+<METS:smLink xlink:from="log1" xlink:to="phys45"/>
+<METS:smLink xlink:from="log1" xlink:to="phys46"/>
+<METS:smLink xlink:from="log1" xlink:to="phys47"/>
+<METS:smLink xlink:from="log1" xlink:to="phys48"/>
+<METS:smLink xlink:from="log1" xlink:to="phys49"/>
+<METS:smLink xlink:from="log1" xlink:to="phys50"/>
+<METS:smLink xlink:from="log1" xlink:to="phys51"/>
+<METS:smLink xlink:from="log1" xlink:to="phys52"/>
+<METS:smLink xlink:from="log1" xlink:to="phys53"/>
+<METS:smLink xlink:from="log1" xlink:to="phys54"/>
+<METS:smLink xlink:from="log1" xlink:to="phys55"/>
+<METS:smLink xlink:from="log1" xlink:to="phys56"/>
+<METS:smLink xlink:from="log1" xlink:to="phys57"/>
+<METS:smLink xlink:from="log1" xlink:to="phys58"/>
+<METS:smLink xlink:from="log1" xlink:to="phys59"/>
+<METS:smLink xlink:from="log1" xlink:to="phys60"/>
+<METS:smLink xlink:from="log1" xlink:to="phys61"/>
+<METS:smLink xlink:from="log1" xlink:to="phys62"/>
+<METS:smLink xlink:from="log1" xlink:to="phys63"/>
+<METS:smLink xlink:from="log1" xlink:to="phys64"/>
+<METS:smLink xlink:from="log1" xlink:to="phys65"/>
+<METS:smLink xlink:from="log1" xlink:to="phys66"/>
+<METS:smLink xlink:from="log1" xlink:to="phys67"/>
+<METS:smLink xlink:from="log1" xlink:to="phys68"/>
+<METS:smLink xlink:from="log1" xlink:to="phys69"/>
+<METS:smLink xlink:from="log1" xlink:to="phys70"/>
+<METS:smLink xlink:from="log1" xlink:to="phys71"/>
+<METS:smLink xlink:from="log1" xlink:to="phys72"/>
+<METS:smLink xlink:from="log1" xlink:to="phys73"/>
+<METS:smLink xlink:from="log1" xlink:to="phys74"/>
+<METS:smLink xlink:from="log1" xlink:to="phys75"/>
+<METS:smLink xlink:from="log1" xlink:to="phys76"/>
+<METS:smLink xlink:from="log1" xlink:to="phys77"/>
+<METS:smLink xlink:from="log1" xlink:to="phys78"/>
+<METS:smLink xlink:from="log1" xlink:to="phys79"/>
+<METS:smLink xlink:from="log1" xlink:to="phys80"/>
+<METS:smLink xlink:from="log1" xlink:to="phys81"/>
+<METS:smLink xlink:from="log1" xlink:to="phys82"/>
+<METS:smLink xlink:from="log1" xlink:to="phys83"/>
+<METS:smLink xlink:from="log1" xlink:to="phys84"/>
+<METS:smLink xlink:from="log1" xlink:to="phys85"/>
+<METS:smLink xlink:from="log1" xlink:to="phys86"/>
+<METS:smLink xlink:from="log1" xlink:to="phys87"/>
+<METS:smLink xlink:from="log1" xlink:to="phys88"/>
+<METS:smLink xlink:from="log1" xlink:to="phys89"/>
+<METS:smLink xlink:from="log1" xlink:to="phys90"/>
+<METS:smLink xlink:from="log1" xlink:to="phys91"/>
+<METS:smLink xlink:from="log1" xlink:to="phys92"/>
+<METS:smLink xlink:from="log1" xlink:to="phys93"/>
+<METS:smLink xlink:from="log1" xlink:to="phys94"/>
+<METS:smLink xlink:from="log1" xlink:to="phys95"/>
+<METS:smLink xlink:from="log1" xlink:to="phys96"/>
+<METS:smLink xlink:from="log1" xlink:to="phys97"/>
+<METS:smLink xlink:from="log1" xlink:to="phys98"/>
+<METS:smLink xlink:from="log1" xlink:to="phys99"/>
+<METS:smLink xlink:from="log1" xlink:to="phys100"/>
+<METS:smLink xlink:from="log1" xlink:to="phys101"/>
+<METS:smLink xlink:from="log1" xlink:to="phys102"/>
+<METS:smLink xlink:from="log1" xlink:to="phys103"/>
+<METS:smLink xlink:from="log1" xlink:to="phys104"/>
+<METS:smLink xlink:from="log1" xlink:to="phys105"/>
+<METS:smLink xlink:from="log1" xlink:to="phys106"/>
+<METS:smLink xlink:from="log1" xlink:to="phys107"/>
+<METS:smLink xlink:from="log1" xlink:to="phys108"/>
+<METS:smLink xlink:from="log1" xlink:to="phys109"/>
+<METS:smLink xlink:from="log1" xlink:to="phys110"/>
+<METS:smLink xlink:from="log1" xlink:to="phys111"/>
+<METS:smLink xlink:from="log1" xlink:to="phys112"/>
+<METS:smLink xlink:from="log1" xlink:to="phys113"/>
+<METS:smLink xlink:from="log1" xlink:to="phys114"/>
+<METS:smLink xlink:from="log1" xlink:to="phys115"/>
+<METS:smLink xlink:from="log1" xlink:to="phys116"/>
+<METS:smLink xlink:from="log1" xlink:to="phys117"/>
+<METS:smLink xlink:from="log1" xlink:to="phys118"/>
+<METS:smLink xlink:from="log1" xlink:to="phys119"/>
+<METS:smLink xlink:from="log1" xlink:to="phys120"/>
+<METS:smLink xlink:from="log1" xlink:to="phys121"/>
+<METS:smLink xlink:from="log1" xlink:to="phys122"/>
+<METS:smLink xlink:from="log1" xlink:to="phys123"/>
+<METS:smLink xlink:from="log1" xlink:to="phys124"/>
+<METS:smLink xlink:from="log1" xlink:to="phys125"/>
+<METS:smLink xlink:from="log1" xlink:to="phys126"/>
+<METS:smLink xlink:from="log1" xlink:to="phys127"/>
+<METS:smLink xlink:from="log1" xlink:to="phys128"/>
+<METS:smLink xlink:from="log1" xlink:to="phys129"/>
+<METS:smLink xlink:from="log1" xlink:to="phys130"/>
+<METS:smLink xlink:from="log1" xlink:to="phys131"/>
+<METS:smLink xlink:from="log1" xlink:to="phys132"/>
+<METS:smLink xlink:from="log1" xlink:to="phys133"/>
+<METS:smLink xlink:from="log1" xlink:to="phys134"/>
+<METS:smLink xlink:from="log1" xlink:to="phys135"/>
+<METS:smLink xlink:from="log1" xlink:to="phys136"/>
+<METS:smLink xlink:from="log2" xlink:to="phys2"/>
+<METS:smLink xlink:from="log3" xlink:to="phys4"/>
+<METS:smLink xlink:from="log3" xlink:to="phys5"/>
+<METS:smLink xlink:from="log3" xlink:to="phys6"/>
+<METS:smLink xlink:from="log3" xlink:to="phys7"/>
+<METS:smLink xlink:from="log3" xlink:to="phys8"/>
+<METS:smLink xlink:from="log3" xlink:to="phys9"/>
+<METS:smLink xlink:from="log3" xlink:to="phys10"/>
+<METS:smLink xlink:from="log3" xlink:to="phys11"/>
+<METS:smLink xlink:from="log3" xlink:to="phys12"/>
+<METS:smLink xlink:from="log3" xlink:to="phys13"/>
+<METS:smLink xlink:from="log3" xlink:to="phys14"/>
+<METS:smLink xlink:from="log3" xlink:to="phys15"/>
+<METS:smLink xlink:from="log3" xlink:to="phys16"/>
+<METS:smLink xlink:from="log3" xlink:to="phys17"/>
+<METS:smLink xlink:from="log4" xlink:to="phys18"/>
+<METS:smLink xlink:from="log4" xlink:to="phys19"/>
+<METS:smLink xlink:from="log4" xlink:to="phys20"/>
+<METS:smLink xlink:from="log4" xlink:to="phys21"/>
+<METS:smLink xlink:from="log4" xlink:to="phys22"/>
+<METS:smLink xlink:from="log4" xlink:to="phys23"/>
+<METS:smLink xlink:from="log4" xlink:to="phys24"/>
+<METS:smLink xlink:from="log4" xlink:to="phys25"/>
+<METS:smLink xlink:from="log4" xlink:to="phys26"/>
+<METS:smLink xlink:from="log5" xlink:to="phys27"/>
+<METS:smLink xlink:from="log5" xlink:to="phys28"/>
+<METS:smLink xlink:from="log5" xlink:to="phys29"/>
+<METS:smLink xlink:from="log5" xlink:to="phys30"/>
+<METS:smLink xlink:from="log5" xlink:to="phys31"/>
+<METS:smLink xlink:from="log5" xlink:to="phys32"/>
+<METS:smLink xlink:from="log5" xlink:to="phys33"/>
+<METS:smLink xlink:from="log5" xlink:to="phys34"/>
+<METS:smLink xlink:from="log5" xlink:to="phys35"/>
+<METS:smLink xlink:from="log5" xlink:to="phys36"/>
+<METS:smLink xlink:from="log5" xlink:to="phys37"/>
+<METS:smLink xlink:from="log5" xlink:to="phys38"/>
+<METS:smLink xlink:from="log5" xlink:to="phys39"/>
+<METS:smLink xlink:from="log5" xlink:to="phys40"/>
+<METS:smLink xlink:from="log5" xlink:to="phys41"/>
+<METS:smLink xlink:from="log5" xlink:to="phys42"/>
+<METS:smLink xlink:from="log5" xlink:to="phys43"/>
+<METS:smLink xlink:from="log5" xlink:to="phys44"/>
+<METS:smLink xlink:from="log5" xlink:to="phys45"/>
+<METS:smLink xlink:from="log5" xlink:to="phys46"/>
+<METS:smLink xlink:from="log5" xlink:to="phys47"/>
+<METS:smLink xlink:from="log5" xlink:to="phys48"/>
+<METS:smLink xlink:from="log5" xlink:to="phys49"/>
+<METS:smLink xlink:from="log5" xlink:to="phys50"/>
+<METS:smLink xlink:from="log5" xlink:to="phys51"/>
+<METS:smLink xlink:from="log5" xlink:to="phys52"/>
+<METS:smLink xlink:from="log5" xlink:to="phys53"/>
+<METS:smLink xlink:from="log5" xlink:to="phys54"/>
+<METS:smLink xlink:from="log5" xlink:to="phys55"/>
+<METS:smLink xlink:from="log5" xlink:to="phys56"/>
+<METS:smLink xlink:from="log5" xlink:to="phys57"/>
+<METS:smLink xlink:from="log5" xlink:to="phys58"/>
+<METS:smLink xlink:from="log5" xlink:to="phys59"/>
+<METS:smLink xlink:from="log5" xlink:to="phys60"/>
+<METS:smLink xlink:from="log5" xlink:to="phys61"/>
+<METS:smLink xlink:from="log5" xlink:to="phys62"/>
+<METS:smLink xlink:from="log5" xlink:to="phys63"/>
+<METS:smLink xlink:from="log5" xlink:to="phys64"/>
+<METS:smLink xlink:from="log5" xlink:to="phys65"/>
+<METS:smLink xlink:from="log5" xlink:to="phys66"/>
+<METS:smLink xlink:from="log5" xlink:to="phys67"/>
+<METS:smLink xlink:from="log5" xlink:to="phys68"/>
+<METS:smLink xlink:from="log5" xlink:to="phys69"/>
+<METS:smLink xlink:from="log5" xlink:to="phys70"/>
+<METS:smLink xlink:from="log5" xlink:to="phys71"/>
+<METS:smLink xlink:from="log5" xlink:to="phys72"/>
+<METS:smLink xlink:from="log5" xlink:to="phys73"/>
+<METS:smLink xlink:from="log5" xlink:to="phys74"/>
+<METS:smLink xlink:from="log5" xlink:to="phys75"/>
+<METS:smLink xlink:from="log5" xlink:to="phys76"/>
+<METS:smLink xlink:from="log5" xlink:to="phys77"/>
+<METS:smLink xlink:from="log5" xlink:to="phys78"/>
+<METS:smLink xlink:from="log5" xlink:to="phys79"/>
+<METS:smLink xlink:from="log5" xlink:to="phys80"/>
+<METS:smLink xlink:from="log5" xlink:to="phys81"/>
+<METS:smLink xlink:from="log5" xlink:to="phys82"/>
+<METS:smLink xlink:from="log5" xlink:to="phys83"/>
+<METS:smLink xlink:from="log5" xlink:to="phys84"/>
+<METS:smLink xlink:from="log5" xlink:to="phys85"/>
+<METS:smLink xlink:from="log5" xlink:to="phys86"/>
+<METS:smLink xlink:from="log5" xlink:to="phys87"/>
+<METS:smLink xlink:from="log5" xlink:to="phys88"/>
+<METS:smLink xlink:from="log5" xlink:to="phys89"/>
+<METS:smLink xlink:from="log5" xlink:to="phys90"/>
+<METS:smLink xlink:from="log5" xlink:to="phys91"/>
+<METS:smLink xlink:from="log5" xlink:to="phys92"/>
+<METS:smLink xlink:from="log5" xlink:to="phys93"/>
+<METS:smLink xlink:from="log5" xlink:to="phys94"/>
+<METS:smLink xlink:from="log5" xlink:to="phys95"/>
+<METS:smLink xlink:from="log5" xlink:to="phys96"/>
+<METS:smLink xlink:from="log5" xlink:to="phys97"/>
+<METS:smLink xlink:from="log5" xlink:to="phys98"/>
+<METS:smLink xlink:from="log5" xlink:to="phys99"/>
+<METS:smLink xlink:from="log5" xlink:to="phys100"/>
+<METS:smLink xlink:from="log5" xlink:to="phys101"/>
+<METS:smLink xlink:from="log5" xlink:to="phys102"/>
+<METS:smLink xlink:from="log5" xlink:to="phys103"/>
+<METS:smLink xlink:from="log5" xlink:to="phys104"/>
+<METS:smLink xlink:from="log5" xlink:to="phys105"/>
+<METS:smLink xlink:from="log5" xlink:to="phys106"/>
+<METS:smLink xlink:from="log5" xlink:to="phys107"/>
+<METS:smLink xlink:from="log5" xlink:to="phys108"/>
+<METS:smLink xlink:from="log5" xlink:to="phys109"/>
+<METS:smLink xlink:from="log5" xlink:to="phys110"/>
+<METS:smLink xlink:from="log5" xlink:to="phys111"/>
+<METS:smLink xlink:from="log5" xlink:to="phys112"/>
+<METS:smLink xlink:from="log5" xlink:to="phys113"/>
+<METS:smLink xlink:from="log5" xlink:to="phys114"/>
+<METS:smLink xlink:from="log5" xlink:to="phys115"/>
+<METS:smLink xlink:from="log5" xlink:to="phys116"/>
+<METS:smLink xlink:from="log5" xlink:to="phys117"/>
+<METS:smLink xlink:from="log5" xlink:to="phys118"/>
+<METS:smLink xlink:from="log5" xlink:to="phys119"/>
+<METS:smLink xlink:from="log5" xlink:to="phys120"/>
+<METS:smLink xlink:from="log5" xlink:to="phys121"/>
+<METS:smLink xlink:from="log5" xlink:to="phys122"/>
+<METS:smLink xlink:from="log5" xlink:to="phys123"/>
+<METS:smLink xlink:from="log5" xlink:to="phys124"/>
+<METS:smLink xlink:from="log5" xlink:to="phys125"/>
+<METS:smLink xlink:from="log5" xlink:to="phys126"/>
+<METS:smLink xlink:from="log5" xlink:to="phys127"/>
+<METS:smLink xlink:from="log5" xlink:to="phys128"/>
+<METS:smLink xlink:from="log5" xlink:to="phys129"/>
+<METS:smLink xlink:from="log5" xlink:to="phys130"/>
+<METS:smLink xlink:from="log5" xlink:to="phys131"/>
+<METS:smLink xlink:from="log5" xlink:to="phys132"/>
+<METS:smLink xlink:from="log5" xlink:to="phys133"/>
+<METS:smLink xlink:from="log5" xlink:to="phys134"/>
+<METS:smLink xlink:from="log5" xlink:to="phys135"/>
+<METS:smLink xlink:from="log5" xlink:to="phys136"/>
+</METS:structLink>
+</METS:mets>

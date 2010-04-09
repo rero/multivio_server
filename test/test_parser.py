@@ -17,52 +17,164 @@ __license__ = "Internal Use Only"
 import sys
 import os
 import unittest
-import ConfigParser
-import json
 
 # local modules
 import multivio
+from multivio.pdf_parser import PdfParser
+from multivio.dc_parser import DublinCoreParser
+from multivio.mets_parser import MetsParser
 
 # add the current path to the python path, so we can execute this test
 # from any place
 sys.path.append (os.getcwd ())
+pdf_file_name = 'examples/document.pdf'
+mets_file_name = 'examples/test.mets'
+marc_file_name = 'examples/test.marc'
+dc_file_name = 'examples/test.xd'
 
-mods_file_name = 'test/test.mods'
-marc_file_name = 'test/test.marc'
-dc_file_name = 'test/test.xd'
-
-class ParserOK (unittest.TestCase):
+class PdfParserOK (unittest.TestCase):
     """
-    Test Parser Class.
+    Test DocumentParser Class.
     """
 
-    def testParser(self):
-        """Check logger instance."""
-        parser = multivio.parser.ParserSelector()
-        self.assert_ (parser, "Can not create simple Parser Object")
+    def testPdfParser(self):
+        """Check PdfParser instance."""
+        pdf_file = file(pdf_file_name)
+        pdf_parser = PdfParser(pdf_file, "file://%s" %
+                        pdf_file_name, pdf_file_name)
+        self.assert_ (pdf_parser, "Can not create simple Parser Object")
     
-#    def testMarcParser(self):
-#        """Check a Marc parser."""
-#        parser = multivio.parser.ParserSelector()
-#        marc = parser.parseFile(marc_file_name)
-#        marc.display()
-#        
-#    
-#    def testModsParser(self):
-#        """Check a Mods parser."""
-#        parser = multivio.parser.ParserSelector()
-#        mods = parser.parseFile(mods_file_name)
-#        mods.display()
+    def testPdfBadParser(self):
+        """Check PdfParser instance with a bad file."""
+        pdf_file = file(mets_file_name)
+        self.assertRaises(multivio.parser.ParserError.InvalidDocument,
+                PdfParser, pdf_file, "file://%s" %
+                mets_file_name, mets_file_name)
+
+    def testPdfParserMeta(self):
+        """Get Pdf Metadata."""
+        pdf_file = file(pdf_file_name, )
+        pdf_parser = PdfParser(pdf_file, "file://%s" %
+                        pdf_file_name, pdf_file_name)
+        meta = pdf_parser.getMetaData()
+        title = meta['title']
+        self.assertEqual(title, u'Multivio: Project description', "Metadata has "\
+                        "not been correctly detected %s != %s" % 
+                        (title, u'Multivio: Project description'))
     
-    def testDcParser(self):
-        """Check a Dublin Core parser."""
-        parser = multivio.parser.ParserSelector()
-        mods = parser.parseFile(dc_file_name)
-        mods.display()
-    
+    def testPdfParserLogical(self):
+        """Get Pdf logical structure."""
+        pdf_file = file(pdf_file_name)
+        pdf_parser = PdfParser(pdf_file, "file://%s" %
+                        pdf_file_name, pdf_file_name)
+        logic = pdf_parser.getLogicalStructure()
+        first_section = logic[0]['label']
+        self.assertEqual (first_section, 'Introduction', "TOC is not well "\
+                "detected: %s != %s" %(first_section, 'Introduction')) 
+
+    def testPdfParserPhysical(self):
+        """Get Pdf physical structure."""
+        pdf_file = file(pdf_file_name)
+        url = "file://%s" % pdf_file_name
+        pdf_parser = PdfParser(pdf_file, url, pdf_file_name)
+        phys = pdf_parser.getPhysicalStructure()
+        self.assertEqual(phys[0]['label'], pdf_file_name, "Physical Structure "\
+                        "missmatch: %s != %s" % (phys[0]['label'], pdf_file_name))
+
     def tearDown(self):
         pass
         
+class DublinCoreParserOK (unittest.TestCase):
+    """
+    Test DocumentParser Class.
+    """
+
+    def testDcParser(self):
+        """Check DublinCoreParser instance."""
+        dc_file = file(dc_file_name)
+        dc_parser = DublinCoreParser(dc_file, 'http://doc.rero.ch')
+        self.assert_ (dc_parser, "Can not create simple DublinCoreParser Object")
+    
+    def testDcBadParser(self):
+        """Check DCParser instance with a bad file."""
+        dc_file = file(pdf_file_name)
+        self.assertRaises(multivio.parser.ParserError.InvalidDocument,
+                DublinCoreParser, dc_file, 'http://doc.rero.ch')
+
+    def testDcParserMeta(self):
+        """Get DublinCore Metadata."""
+        dc_file = file(dc_file_name)
+        dc_parser = DublinCoreParser(dc_file, 'http://doc.rero.ch')
+        meta = dc_parser.getMetaData()
+        title = meta['title']
+        self.assertEqual(title, u'Un super titre fait par Johnny Mariéthoz', "Metadata has "\
+                        "not been correctly detected %s != %s" % 
+                        (title, u'Un super titre fait par Johnny Mariéthoz'))
+    
+    def testDcParserLogical(self):
+        """Get Dc logical structure."""
+        dc_file = file(dc_file_name)
+        dc_parser = DublinCoreParser(dc_file, 'http://doc.rero.ch')
+        logic = dc_parser.getLogicalStructure()
+        self.assertEqual (logic, None)
+
+    def testDcParserPhysical(self):
+        """Get Dc physical structure."""
+        dc_file = file(dc_file_name)
+        dc_parser = DublinCoreParser(dc_file, 'http://doc.rero.ch')
+        phys = dc_parser.getPhysicalStructure()
+        desired_out =  u"Bartholin_AB_titre.jpg"
+        obtained_out = phys[0]['label']
+        self.assertEqual(desired_out, obtained_out,  "Physical Structure "\
+                "missmatch: %s != %s" % (desired_out, obtained_out))
+
+class MetsParserOK (unittest.TestCase):
+    """
+    Test DocumentParser Class.
+    """
+
+    def testMetsParser(self):
+        """Check MetsParser instance."""
+        mets_file = file(mets_file_name)
+        mets_parser = MetsParser(mets_file, 'http://doc.rero.ch')
+        self.assert_ (mets_parser, "Can not create simple MetsParser Object")
+    
+    def testMetsBadParser(self):
+        """Check Mets instance with a bad file."""
+        mets_file = file(pdf_file_name)
+        self.assertRaises(multivio.parser.ParserError.InvalidDocument,
+                MetsParser, mets_file, 'http://doc.rero.ch')
+
+    def testMetsParserMeta(self):
+        """Get Mets Metadata."""
+        mets_file = file(mets_file_name)
+        mets_parser = MetsParser(mets_file, 'http://doc.rero.ch')
+        meta = mets_parser.getMetaData()
+        title = meta['title']
+        ref_title = 'D. Joh. Sal. Semlers Antwort auf das Bahrdische Glaubensbekenntnis'
+        self.assertEqual(title, ref_title, "Metadata has not been "\
+            "correctly detected '%s' != '%s'" % (title, 
+            u"D. Joh. Sal. Semlers Antwort auf das Bahrdische "\
+            "Glaubensbekenntnis"))
+    
+    def testMetsParserLogical(self):
+        """Get Mets logical structure."""
+        mets_file = file(mets_file_name)
+        mets_parser = MetsParser(mets_file, 'http://doc.rero.ch')
+        logic = mets_parser.getLogicalStructure()
+        sect1_obtained = logic[0]['label']
+        sect1_desired = 'Titelblatt'
+        self.assertEqual (sect1_desired, sect1_obtained, "TOC is not valid %s != %s" % (sect1_desired, sect1_obtained) )
+
+    def testMetsParserPhysical(self):
+        """Get Mets physical structure."""
+        mets_file = file(mets_file_name)
+        mets_parser = MetsParser(mets_file, 'http://doc.rero.ch')
+        phys = mets_parser.getPhysicalStructure()
+        desired_out =  u"00000001.jpg"
+        obtained_out = phys[0]['label']
+        self.assertEqual(desired_out, obtained_out,  "Physical Structure "\
+                "missmatch: '%s' != '%s'" % (desired_out, obtained_out))
 
 if __name__ == '__main__':
     # the main program if we execute directly this module

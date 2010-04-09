@@ -17,50 +17,56 @@ __license__ = "Internal Use Only"
 import sys
 import os
 import unittest
-import ConfigParser
-import json
 
 # local modules
-import multivio
+from mvo_config import MVOConfig
+if os.path.isfile(MVOConfig.Logger.file_name):
+    os.remove(MVOConfig.Logger.file_name)
 
 # add the current path to the python path, so we can execute this test
 # from any place
 sys.path.append (os.getcwd ())
+import multivio.logger
+import logging
 
-file_name = '/tmp/multivio.log'
 
 class LoggerOK (unittest.TestCase):
     """
     Test Logger Class.
     """
+    #def setUp(self):
+    #    if os.path.isfile(MVOConfig.Logger.file_name):
+    #        os.remove(MVOConfig.Logger.file_name)
 
     def testLogger(self):
         """Check logger instance."""
-        logger = multivio.Logger(file_name)
+        logger = logging.getLogger(MVOConfig.Logger.name + "." + "Test")
         self.assert_ (logger, "Can not create simple Logger Object")
     
-    def testLoggerBadFile(self):
-        """Check logger instance with bad file."""
-        bad_file_name = '/cannotexists/this/file.log'
-        self.assertRaises(multivio.logger.LoggerError.InvalidLogFile,
-            multivio.Logger, file_name=bad_file_name)
+    #def testLoggerBadFile(self):
+    #    """Check logger instance with bad file."""
+    #    bad_file_name = '/cannotexists/this/file.log'
+    #    MVOConfig.Logger.file_name = bad_file_name
+    #    self.assertRaises(multivio.logger.LoggerError.InvalidFileName,
+    #        reload, multivio.logger)
     
     def testAddLog(self):
         """Add a simple log."""
-        header = 'Header'
-        content = {'msg': 'test'}
-        body_in_json = json.dumps(content)
-        logger = multivio.Logger(file_name)
-        current_size = os.path.getsize(file_name)
-        new_supposed_size = current_size + len(header) + len(body_in_json) + 8
-        logger.addLog(header, body_in_json)
-        new_size = os.path.getsize(file_name)
-        self.assertEqual(new_supposed_size, new_size, "The log has not be written in"\
-                        "the file. (%s != %s)" % (new_size, new_supposed_size))
+        before_n_lines = len(file(MVOConfig.Logger.file_name).readlines())
+        logger = logging.getLogger(MVOConfig.Logger.name + "." + "Test")
+        logger.info("Info1")
+        logger.info("Info2")
+        logger.debug("Debug1")
+        logger.debug("Debug2")
+        after_n_lines = len(file(MVOConfig.Logger.file_name).readlines())
+        #lines = file(MVOConfig.Logger.file_name).readlines()
+        n_lines = after_n_lines - before_n_lines
+        self.assertEqual(4, n_lines, "The log has not be written in"\
+                        "the file. (%s != %s)" % (4, n_lines))
     
-    def tearDown(self):
-        if os.path.isfile(file_name):
-            os.unlink(file_name)
+    #def tearDown(self):
+    #    if os.path.isfile(MVOConfig.Logger.file_name):
+    #        os.remove(MVOConfig.Logger.file_name)
         
 
 if __name__ == '__main__':

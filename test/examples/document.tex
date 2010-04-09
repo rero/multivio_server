@@ -1,0 +1,143 @@
+\documentclass [a4paper]{article}
+\usepackage[english]{babel}
+\usepackage[
+	pdftex,
+	pdftitle={Multivio: Project description},
+	pdfauthor={Miguel Moreira},
+	pdfsubject={Multivio a new project.}, 
+	pdfkeywords={PDF, Multivio},
+	pdfdisplaydoctitle=true,
+	colorlinks=true,
+	urlcolor=blue
+	]
+{hyperref}
+\usepackage{url}
+
+\title{Multivio: Project description}
+\author{Miguel Moreira}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+
+Multivio is an Internet-based application for browsing and accessing digital
+documents.
+
+It was originally motivated by the requirements of the
+\href{http://doc.rero.ch/}{digital library RERO DOC}. However, it is meant to
+be open and adjustable in order to smoothly integrate with other document
+servers. It is also modular and extensible in order to cope with the continuous
+evolution of digital formats.
+
+The application is built in-house by \href{http://www.rero.ch/}{RERO} (the
+'''Library Network of Western Switzerland''') under an open-source license (to
+be defined), and integrates existing open-source software components. Its
+development is co-sponsored in the framework of the project '''E-lib.ch: Swiss
+Electronic library''' (see below).
+
+\section{Context}
+
+In general, when users access the contents of digital libraries, they usually
+dependent on particular software tools installed in their computer system,
+suitable to each kind of content being accessed. These multiple tools offer a
+scattered view of the available content since they consider the digital files
+individually without taking into account logical relations between groups of
+files belonging to specific titles or collections. This situation implies a
+fracture between the phase when users search or navigate the object
+descriptions and the moment when they access the objects themselves.
+
+Indeed, the approach applied by most catalogues or document servers allowing
+access to digital content is to simply provide a hypertext link allowing the
+corresponding files to be downloaded. Then, on the user's side, a suitable tool
+(that must be installed beforehand) allows the file to be viewed after
+download. This approach is relatively satisfying in certain contexts,
+particularly in the case of single volume monographs, for example in PDF
+format, given that the large majority of Internet users possess PDF-viewing
+software such as \href{http://www.adobe.com/products/reader/}{Adobe Reader} or alike
+installed in his/her system. The same principle applies for other file types,
+each relying on a specific and adequate software tool. But it has limitations
+in the presence of documents of higher complex structure demanding navigation
+capabilities across several files, such as serials, collections, multivolume
+monographs and other aggregates. In addition, even in the case of plain,
+single-file documents the simple download option is not always the most
+appropriate, especially when the document has been found after a query operated
+by the user in a search engine, in which case the queried expression should be
+pointed out or highlighted inside the displayed full-text, in order to show the
+user the places where it appears.
+
+The solution proposed by Multivio responds to an increasing necessity following
+the current boom of repositories of online documentation, stimulated among
+other things by the
+\href{http://en.wikipedia.org/w/index.php?title=Open_access_(publishing)&oldid=271257177}
+{Open Access movement}, by the \href{http://www.openarchives.org/}{OAI-PMH}
+interoperability and by the growing digitization efforts of the libraries. In
+this way it concerns existing document servers such as \href{http://doc.rero.ch/}
+{RERO DOC} and alike, including long-term archiving repositories allowing public
+access to their contents.
+
+\section{Goals}
+
+\subsection{Generic}
+
+Multivio allows the user to access different kinds of media, not only textual
+but also images, audio, video and others, supporting several file types.
+Emphasis is put particularly on those adopted by the Convention on Electronic
+Theses by the Conference of Swiss University Libraries (CBU)
+(\href{http://www.kub-cbu.ch/navi.cfm?st1=400&st2=200&st3=&st4=&w=1600&status=2}
+{up-to-date version of the document}).
+
+The retrieved documents may be simply structured, such as a book, an image or
+an audio stream, or otherwise contain a complex structure such as a journal, an
+image collection, a multi-volume work, a dictionary or encyclopedia, etc. which
+demands the possibility of a hierarchical navigation by chapters, sections,
+years, months, editions, volumes, articles, headings and other kinds of
+partitioning depending on the nature of the document.
+
+\section{Functional and complete}
+
+The user interface is expected to be simple and intuitive yet sufficiently
+complete in order to allow a nice user experience. It is composed of a set of
+blocs disposed in the screen each providing a group of functionalities,
+particularly: main content display area; navigation tree for structured
+documents (year, month, volume, chapter, section, page...); table of contents;
+page or image thumbnails; navigation commands (next, previous, first, last,
+play, stop, forwards, backwards…); visualization commands (zoom, pan...).
+
+Whenever the document is retrieved after a query, either in an external search
+engine (like the document source's catalog) or through Multivio's own search
+tool, it is important to highlight the queried expression inside the full-text
+as well as to show the corresponding list of occurrences.
+
+\section{Flexible}
+
+The holders or trustees of the contents made available through Multivio should
+have the possibility, if desired, of preventing users from printing or
+downloading the files locally, allowing these to only be displayed inside
+Multivio's own interface.
+
+\section{Extensible and autonomous}
+
+Multivio is an open-source project. It relies on an open and modular
+architecture based on an appropriate articulation between graphical components
+(representing the groups of functionalities) and connectors/plug-ins
+(representing the different kinds of media). This aspect allows the tool to be
+extensible and adaptable to different contexts, especially by the addition of
+new features and the possibility of handling new document types and file
+formats. The open character is reinforced by the use of established standards
+and open protocols.
+
+Multivio takes the form of an independent and adaptable module capable of
+working together with different document servers, search engines or catalogues
+using multiple and varied technologies.
+
+\section{Sponsorship}
+
+This project has been initiated by RERO in 2007, in partnership with the CDROM
+- ''Conseil des directeurs des grandes bibliothèques de Suisse occidentale''.
+In 2008 it received a 3-year funding pack in the framework of the innovation
+and cooperation project \href{http://www.e-lib.ch/}{E-lib.ch: Swiss Electronic
+library}, which is itself funded by the Swiss University Conference (SUK/CUS).
+
+\end{document}

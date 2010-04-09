@@ -17,14 +17,15 @@ from optparse import OptionParser
 # third party modules
 import logger
 import logging
-import mvo_parser
-import document
+#import mvo_parser
+import processor
+import parser_app
 
-from application import Application
+from web_app import WebApplication
 from mvo_config import MVOConfig
 
 
-class Dispatcher(Application):
+class Dispatcher(WebApplication):
     """ Dispach http request to several applications given the URI.
     
         This is the entry point of the server application. This class is
@@ -34,16 +35,16 @@ class Dispatcher(Application):
     def __init__(self):
         "Simple constructor." 
         
-        Application.__init__(self)
+        WebApplication.__init__(self)
 
         #application configuration
         self._apps = {}
         #Client logger
         self._apps['.*?/log/post'] = logger.LoggerApp()
-        self._apps['.*?/cdm/get'] = \
-            mvo_parser.CdmParserApp(temp_dir=MVOConfig.General.temp_dir)
+        self._apps['.*?/get'] = \
+            parser_app.DocParserApp(temp_dir=MVOConfig.General.temp_dir)
         self._apps['.*?/document/get'] = \
-            document.DocumentApp(temp_dir=MVOConfig.General.temp_dir)
+            processor.DocumentApp(temp_dir=MVOConfig.General.temp_dir)
         self.usage = """<br><h1>Welcome to the multivio server.</h1><br>"""
         self.logger = logging.getLogger(MVOConfig.Logger.name+".Dispatcher")
         
