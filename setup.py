@@ -2,15 +2,15 @@
 from distutils.core import setup, Extension
 
 poppler_install_path = '/usr/local'
+import multivio
 
 setup(
     name='multivio',
-    version='0.0.1b',
+    version=multivio.__multivio__,
     description='Multivio server.',
     long_description='''Multivio is a project...''',
-    license='Internal',
-    author='Johnny Mariethoz',
-    author_email='Johnny do Mariethoz at rero do ch',
+    license=multivio.__license__,
+    author=multivio.__author__,
     url='http://www.multivio.org',
     ext_modules=[Extension('multivio/_mypoppler', ['multivio/mypoppler.i'],
         swig_opts=['-c++', '-modern', '-I%s/include' % poppler_install_path],
@@ -31,4 +31,4 @@ setup(
     'Intended Audience :: Science/Research',
     'License :: OSI Approved :: Internal',
     ],
-    )
+)

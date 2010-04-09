@@ -2,20 +2,7 @@
 Multivio Python package.
 """
 
-# list of all the sub-modules
-#__all__ = [
-#    'urn',
-#    'resource'
-#    ]
-
-# load all the sub-modules
-
-from logger import *
-from dispatcher_app import *
-from processor import *
-from parser_app import *
-from pdf_parser import *
-from dc_parser import *
-from mets_parser import *
-
-
+__author__ = "Johnny Mariethoz <Johnny.Mariethoz@rero.ch>"
+__version__ = "0.1.2010-04-09 12:14:37"
+__copyright__ = "Copyright (c) 2009,2010 RERO, Johnny Mariethoz"
+__license__ = "Internal Use Only"

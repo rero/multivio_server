@@ -1,6 +1,6 @@
 #!/usr/bin/env python
-"""Document Parser module for Multivio"""
 # -*- coding: utf-8 -*-
+"""Document Parser module for Multivio"""
 
 __author__ = "Johnny Mariethoz <Johnny.Mariethoz@rero.ch>"
 __version__ = "0.0.0"
