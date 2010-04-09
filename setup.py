@@ -6,7 +6,7 @@ import multivio
 
 setup(
     name='multivio',
-    version=multivio.__multivio__,
+    version=multivio.__version__,
     description='Multivio server.',
     long_description='''Multivio is a project...''',
     license=multivio.__license__,

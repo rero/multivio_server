@@ -20,6 +20,7 @@ import logging
 #import mvo_parser
 import processor
 import parser_app
+import version_app
 
 from web_app import WebApplication
 from mvo_config import MVOConfig
@@ -41,6 +42,7 @@ class Dispatcher(WebApplication):
         self._apps = {}
         #Client logger
         self._apps['.*?/log/post'] = logger.LoggerApp()
+        self._apps['.*?/version'] = version_app.VersionApp()
         self._apps['.*?/get'] = \
             parser_app.DocParserApp(temp_dir=MVOConfig.General.temp_dir)
         self._apps['.*?/document/get'] = \
