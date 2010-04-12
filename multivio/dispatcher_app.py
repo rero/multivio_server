@@ -26,7 +26,7 @@ from web_app import WebApplication
 from mvo_config import MVOConfig
 
 
-class Dispatcher(WebApplication):
+class DispatcherApp(WebApplication):
     """ Dispach http request to several applications given the URI.
     
         This is the entry point of the server application. This class is
@@ -97,7 +97,7 @@ def main():
     if len(args) != 0:
         parser.error("Error: incorrect number of arguments, try --help")
     from wsgiref.simple_server import make_server
-    application = Dispatcher()
+    application = DispatcherApp()
     server = make_server('', options.port, application)
     server.serve_forever()
 

@@ -13,6 +13,9 @@ class MVOConfig:
 
     class General:
         temp_dir = '/var/www/multivio/temp' 
+        lib_dir = '/var/www/multivio/lib/python'
+        sys_pathes = ['/var/www/multivio/lib/python',
+                '/var/www/mutlivio/bin']
 
     class Url:
         user_agent = 'Firefox/3.5.2'

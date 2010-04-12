@@ -1,5 +1,4 @@
 #!/usr/bin/python
-
 # -*- coding: utf-8 -*-
 
 __author__ = "Johnny Mariethoz <Johnny.Mariethoz@rero.ch>"
@@ -13,7 +12,9 @@ __license__ = "Internal Use Only"
 import sys
 sys.stdout = sys.stderr
 
-import multivio
+[sys.path.insert(0,p) for p in MVOConfig.General.sys_pathes]
 
-application = multivio.Dispatcher()
 
+import multivio.dispatcher_app
+
+application = multivio.dispatcher_app.DispatcherApp()
