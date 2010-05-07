@@ -199,6 +199,7 @@ class WebApplication(object):
         	try:
                     (filename, headers) = self._urlopener.retrieve(url)
         	except Exception:
+                    os.remove(lock_file)
             	    raise ApplicationError.InvalidURL("Invalid URL: %s" % url)
 		mime = headers['Content-Type']
 		if re.match('.*?/x-download', mime):

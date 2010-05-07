@@ -30,7 +30,9 @@ from web_app import WebApplication
 
 from pdf_parser import PdfParser
 from dc_parser import DublinCoreParser
+from img_parser import ImgParser
 from mets_parser import MetsParser
+from web_app import ApplicationError
 
 
 #------------------ Classes ----------------------------
@@ -143,22 +145,40 @@ Core with Pdfs inside..</b></a>
         self.logger.debug("Accessing: %s with opts: %s" % (path, opts))
 
         if re.search(r'metadata/get', path) is not None:
+            self.logger.debug("Get Metadata with opts: %s" % opts)
             if opts.has_key('url'):
-                metadata = self.getMetaData(opts['url'])
+                try:
+                    metadata = self.getMetaData(opts['url'])
+                except Exception:
+                    start_response('400 Bad Request', [('content-type',
+                           'text/html')])
+                    return ["Invalid arguments."]
                 start_response('200 OK', [('content-type',
                     'application/json')])
                 return ["%s" % metadata]
 
         if re.search(r'structure/get_logical', path) is not None:
+            self.logger.debug("Get Logical with opts: %s" % opts)
             if opts.has_key('url'):
-                logical = self.getLogicalStructure(opts['url'])
+                try:
+                    logical = self.getLogicalStructure(opts['url'])
+                except Exception:
+                    start_response('400 Bad Request', [('content-type',
+                           'text/html')])
+                    return ["Invalid arguments."]
                 start_response('200 OK', [('content-type',
                     'application/json')])
                 return ["%s" % logical]
 
         if re.search(r'structure/get_physical', path) is not None:
+            self.logger.debug("Get Physical with opts: %s" % opts)
             if opts.has_key('url'):
-                physical = self.getPhysicalStructure(opts['url'])
+                try:
+                    physical = self.getPhysicalStructure(opts['url'])
+                except Exception:
+                    start_response('400 Bad Request', [('content-type',
+                           'text/html')])
+                    return ["Invalid arguments."]
                 start_response('200 OK', [('content-type',
                     'application/json')])
                 return ["%s" % physical]
@@ -170,6 +190,9 @@ Core with Pdfs inside..</b></a>
 
         if re.match('.*?/pdf.*?', mime):
             return PdfParser(content, url, url.split('/')[-1])
+        
+        if re.match('image/.*?', mime):
+            return ImgParser(content, url, mime)
 
         if re.match('.*?/xml.*?', mime):
             #some METS files contain uppercase mets directive
@@ -193,6 +216,7 @@ Core with Pdfs inside..</b></a>
 
     def getMetaData(self, url):
         (local_file, mime) = self.getRemoteFile(url)
+            
         content = file(local_file,'r')
 
         #check the mime type

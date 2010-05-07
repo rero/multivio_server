@@ -13,6 +13,7 @@ __license__ = "Internal Use Only"
 # import of standard modules
 import sys
 import os
+import re
 from optparse import OptionParser
 import pyPdf
 if sys.version_info < (2, 6):
@@ -71,9 +72,11 @@ http://stackoverflow.com/questions/1918420/split-a-pdf-based-on-outline
 
     def getMetaData(self):
         """Get pdf infos."""
+        self.logger.debug("Get Metadata")
         try:
             self.__initpdf__(self._file_stream)
         except Exception:
+            self.logger.debug("Cannot extract page from pdf.")
             raise ParserError.InvalidDocument("Cannot extract page from pdf.")
 
         metadata = {}
@@ -81,13 +84,14 @@ http://stackoverflow.com/questions/1918420/split-a-pdf-based-on-outline
         try:
             info = self.getDocumentInfo()
         except:
+            self.logger.debug("Do not find info in pdf.")
             pass
         if info and info.title is not None and len(info.title) > 0 \
                 and self.hasToc(self.getOutlines()):
             metadata['title'] = info.title
         else:
             metadata['title'] = 'PDF Document'
-            pdf_file_parts = query_url.split('/')
+            pdf_file_parts = self._url.split('/')
             if len(pdf_file_parts) > 0:
                 if re.match('.*?\.pdf', pdf_file_parts[-1]):
                     metadata['title'] = pdf_file_parts[-1]
@@ -142,7 +146,9 @@ http://stackoverflow.com/questions/1918420/split-a-pdf-based-on-outline
                                         }
                                     })
                 elif isinstance(obj, list):
-                    to_return[-1]['childs'] =  get_parts(obj, space + "  ")
+                    parts =  get_parts(obj, space + "  ")
+                    if len(parts) > 0:
+                        to_return[-1]['childs'] = parts
             return to_return
         try:
             outlines = self.getOutlines()
