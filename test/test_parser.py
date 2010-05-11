@@ -23,6 +23,7 @@ import multivio
 from multivio.pdf_parser import PdfParser
 from multivio.dc_parser import DublinCoreParser
 from multivio.mets_parser import MetsParser
+from multivio.marc_parser import MarcParser
 
 # add the current path to the python path, so we can execute this test
 # from any place
@@ -172,6 +173,52 @@ class MetsParserOK (unittest.TestCase):
         mets_parser = MetsParser(mets_file, 'http://doc.rero.ch')
         phys = mets_parser.getPhysicalStructure()
         desired_out =  u"00000001.jpg"
+        obtained_out = phys[0]['label']
+        self.assertEqual(desired_out, obtained_out,  "Physical Structure "\
+                "missmatch: '%s' != '%s'" % (desired_out, obtained_out))
+
+class MarcParserOK (unittest.TestCase):
+    """
+    Test ParchParser Class.
+    """
+
+    def testMarcParser(self):
+        """Check MarcParser instance."""
+        marc_file = file(marc_file_name)
+        marc_parser = MarcParser(marc_file, 'http://doc.rero.ch')
+        self.assert_ (marc_parser, "Can not create simple MarcParser Object")
+    
+    def testMarcBadParser(self):
+        """Check Marc instance with a bad file."""
+        marc_file = file(pdf_file_name)
+        self.assertRaises(multivio.parser.ParserError.InvalidDocument,
+                MarcParser, marc_file, 'http://doc.rero.ch')
+
+    def testMarcParserMeta(self):
+        """Get Marc Metadata."""
+        marc_file = file(marc_file_name)
+        marc_parser = MarcParser(marc_file, 'http://doc.rero.ch')
+        meta = marc_parser.getMetaData()
+        title = meta['title']
+        ref_title = 'Phylogeography of Populus alba (L.) and Populus tremula '\
+            '(L.) in Central Europe: secondary contact and hybridisation during '\
+            'recolonisation from disconnected refugia'
+        self.assertEqual(title, ref_title, "Metadata has not been "\
+            "correctly detected '%s' != '%s'" % (title, ref_title))
+    
+    def testMarcParserLogical(self):
+        """Get Marc logical structure."""
+        marc_file = file(marc_file_name)
+        marc_parser = MarcParser(marc_file, 'http://doc.rero.ch')
+        logic = marc_parser.getLogicalStructure()
+        self.assertEqual (logic, None)
+
+    def testMetsParserPhysical(self):
+        """Get Marc physical structure."""
+        marc_file = file(marc_file_name)
+        marc_parser = MarcParser(marc_file, 'http://doc.rero.ch')
+        phys = marc_parser.getPhysicalStructure()
+        desired_out =  u"pdf"
         obtained_out = phys[0]['label']
         self.assertEqual(desired_out, obtained_out,  "Physical Structure "\
                 "missmatch: '%s' != '%s'" % (desired_out, obtained_out))

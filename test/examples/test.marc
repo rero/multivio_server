@@ -1,73 +1,110 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <collection xmlns="http://www.loc.gov/MARC21/slim">
 <record>
-  <controlfield tag="001">12852</controlfield>
-  <datafield tag="695" ind1=" " ind2=" ">
-    <subfield code="a">communication ; linguistique appliquée ; linguistique ; langue ; périodique</subfield>
-    <subfield code="9">fre</subfield>
-  </datafield>
-  <datafield tag="982" ind1=" " ind2=" ">
-    <subfield code="a">TRANEL</subfield>
-  </datafield>
-  <datafield tag="980" ind1=" " ind2=" ">
-    <subfield code="a">JOURNAL</subfield>
-    <subfield code="b">UNINE</subfield>
-  </datafield>
-  <datafield tag="310" ind1=" " ind2=" ">
-    <subfield code="a">Bi-annuelle</subfield>
-  </datafield>
-  <datafield tag="245" ind1=" " ind2=" ">
-    <subfield code="a">Revue Tranel</subfield>
-    <subfield code="9">fre</subfield>
+  <controlfield tag="001">18171</controlfield>
+  <datafield tag="024" ind1="8" ind2=" ">
+    <subfield code="a">oai:doc.rero.ch:20100507110345-LD</subfield>
+    <subfield code="p">postprint</subfield>
   </datafield>
   <datafield tag="024" ind1="8" ind2=" ">
-    <subfield code="p">journal</subfield>
+    <subfield code="p">unifr</subfield>
   </datafield>
-  <datafield tag="260" ind1=" " ind2=" ">
-    <subfield code="a">Neuchâtel</subfield>
-    <subfield code="b">Institut des sciences du langage et de la communication</subfield>
-    <subfield code="c">1980 -></subfield>
-  </datafield>
-  <datafield tag="919" ind1=" " ind2=" ">
-    <subfield code="a">Université de Neuchâtel</subfield>
-    <subfield code="b">Neuchâtel</subfield>
-    <subfield code="d">doc.support@rero.ch</subfield>
-  </datafield>
-  <datafield tag="918" ind1=" " ind2=" ">
-    <subfield code="c">Centre de Linguistique Appliquée (CLA)</subfield>
-  </datafield>
-  <datafield tag="362" ind1=" " ind2=" ">
-    <subfield code="a">N°1 (1980) -></subfield>
-  </datafield>
-  <datafield tag="041" ind1=" " ind2=" ">
-    <subfield code="a">fre</subfield>
-  </datafield>
-  <datafield tag="041" ind1=" " ind2=" ">
-    <subfield code="a">ger</subfield>
+  <datafield tag="024" ind1="8" ind2=" ">
+    <subfield code="p">cdu58</subfield>
   </datafield>
   <datafield tag="041" ind1=" " ind2=" ">
     <subfield code="a">eng</subfield>
   </datafield>
-  <datafield tag="856" ind1="4" ind2=" ">
-    <subfield code="u">http://doc.rero.ch/lm.php?url=1000,20,13,tranel_n_48_2008.pdf</subfield>
-    <subfield code="f">tranel_n_48_2008.pdf</subfield>
-    <subfield code="q">pdf</subfield>
-    <subfield code="s">1794896</subfield>
-    <subfield code="z">No. 48, 2008</subfield>
+  <datafield tag="080" ind1=" " ind2=" ">
+    <subfield code="a">58</subfield>
+  </datafield>
+  <datafield tag="100" ind1=" " ind2=" ">
+    <subfield code="a">Fussi, Barbara</subfield>
+    <subfield code="u">Department of Genetics, Federal Research and Training Centre for Forests, Natural Hazards and Landscape, Vienna, Austria</subfield>
+  </datafield>
+  <datafield tag="245" ind1=" " ind2=" ">
+    <subfield code="a">Phylogeography of Populus alba (L.) and Populus tremula (L.) in Central Europe: secondary contact and hybridisation during recolonisation from disconnected refugia</subfield>
+    <subfield code="9">eng</subfield>
+  </datafield>
+  <datafield tag="269" ind1=" " ind2=" ">
+    <subfield code="c">2010-01-14</subfield>
+  </datafield>
+  <datafield tag="520" ind1=" " ind2=" ">
+    <subfield code="a">The central aim of this paper is to clarify the picture of postglacial recolonisation and the reconstruction of refugia of Populus alba (L.) and Populus tremula (L.) in the light of hybridisation of the two species. We focussed our study on Central and Southeastern Europe including reference samples from Spain, Sweden and Northern Africa.We investigated 414 individuals of 26 populations using restriction fragment length polymorphisms (PCR-RFLPs) in six maternally inherited chloroplast markers. Altogether, 57 haplotypes were analysed of which four indicated hybridisation events in the past. Phylogeographic structure was found for P. alba with low diversity in Eastern Europe versus high diversity in Italy and Central Europe. A lack of phylogeographic structure was assessed for P. tremula as expected for a boreal forest tree, and diversity was evenly distributed in the studied populations. Two main refugia were identified for P. alba in Italy and Romania. A previously described hybrid zone between species in Central Europe turned out also to be a zone of contact between southern and eastern chloroplast lineages in P. alba. In contrast, P. tremula recolonised its present habitats in Central Europe from several refugia near the former ice cap. We assume separate disconnected refugia for P. alba and P. tremula and suggest an immigration scenario involving the mixing of colonisation routes and interspecific introgression to be responsible for the observed patterns.</subfield>
+    <subfield code="9">eng</subfield>
+  </datafield>
+  <datafield tag="695" ind1=" " ind2=" ">
+    <subfield code="a">Postglacial recolonisation ; Hybridisation ; PCR-RFLPs ; cpDNA ; Populus alba ; Populus tremula</subfield>
+    <subfield code="9">eng</subfield>
+  </datafield>
+  <datafield tag="700" ind1=" " ind2=" ">
+    <subfield code="a">Lexer, Christian</subfield>
+    <subfield code="u">Unit of Ecology and Evolution, Department of Biology, University of Fribourg, Switzerland</subfield>
+  </datafield>
+  <datafield tag="700" ind1=" " ind2=" ">
+    <subfield code="a">Heinze, Berthold</subfield>
+    <subfield code="u">Department of Genetics, Federal Research and Training Centre for Forests, Natural Hazards and Landscape, Vienna, Austria</subfield>
+  </datafield>
+  <datafield tag="773" ind1=" " ind2=" ">
+    <subfield code="t">Tree Genetics &amp; Genomes</subfield>
+    <subfield code="g">2010/6/3/439-450</subfield>
+  </datafield>
+  <datafield tag="775" ind1=" " ind2=" ">
+    <subfield code="g">Published version</subfield>
+    <subfield code="o">http://dx.doi.org/10.1007/s11295-009-0262-5</subfield>
+  </datafield>
+  <datafield tag="918" ind1=" " ind2=" ">
+    <subfield code="a">Faculté des sciences</subfield>
+    <subfield code="b">Décanat, Ch. du Musée 6A, 1700 Fribourg</subfield>
+    <subfield code="c">Biologie</subfield>
+  </datafield>
+  <datafield tag="919" ind1=" " ind2=" ">
+    <subfield code="a">Université de Fribourg</subfield>
+    <subfield code="b">Fribourg</subfield>
+    <subfield code="d">doc.support@rero.ch</subfield>
+  </datafield>
+  <datafield tag="930" ind1=" " ind2=" ">
+    <subfield code="a">4</subfield>
+  </datafield>
+  <datafield tag="980" ind1=" " ind2=" ">
+    <subfield code="a">POSTPRINT</subfield>
+    <subfield code="b">UNIFR</subfield>
+    <subfield code="f">ART_JOURNAL</subfield>
+  </datafield>
+  <datafield tag="990" ind1=" " ind2=" ">
+    <subfield code="a">20100507110345-LD</subfield>
   </datafield>
   <datafield tag="856" ind1="4" ind2=" ">
-    <subfield code="u">http://doc.rero.ch/lm.php?url=1000,20,13,tranel_n_47_2007.pdf</subfield>
-    <subfield code="f">tranel_n_47_2007.pdf</subfield>
-    <subfield code="q">pdf</subfield>
-    <subfield code="s">3056193</subfield>
-    <subfield code="z">No. 47, 2007</subfield>
+    <subfield code="f">lexer_ppp.pdf</subfield>
+    <subfield code="q">application/pdf</subfield>
+    <subfield code="s">449373</subfield>
+    <subfield code="u">http://doc.rero.ch/lm.php?url=1000,43,2,20100507110345-LD/lexer_ppp.pdf</subfield>
+    <subfield code="y">2010-05-07 11:04:49</subfield>
+    <subfield code="z">pdf</subfield>
   </datafield>
   <datafield tag="856" ind1="4" ind2=" ">
-    <subfield code="u">http://doc.rero.ch/lm.php?url=1000,20,13,tranel_n_46_2007.pdf</subfield>
-    <subfield code="f">tranel_n_46_2007.pdf</subfield>
-    <subfield code="q">pdf</subfield>
-    <subfield code="s">1685617</subfield>
-    <subfield code="z">No. 46, 2007</subfield>
+    <subfield code="f">lexer_ppp_sm1.pdf</subfield>
+    <subfield code="q">application/pdf</subfield>
+    <subfield code="s">110209</subfield>
+    <subfield code="u">http://doc.rero.ch/lm.php?url=1000,43,2,20100507110345-LD/lexer_ppp_sm1.pdf</subfield>
+    <subfield code="y">2010-05-07 11:04:59</subfield>
+    <subfield code="z">Supplementary materials 1: Sampling locations and number of haplotypes per population</subfield>
+  </datafield>
+  <datafield tag="856" ind1="4" ind2=" ">
+    <subfield code="f">lexer_ppp_sm2.pdf</subfield>
+    <subfield code="q">application/pdf</subfield>
+    <subfield code="s">38810</subfield>
+    <subfield code="u">http://doc.rero.ch/lm.php?url=1000,43,2,20100507110345-LD/lexer_ppp_sm2.pdf</subfield>
+    <subfield code="y">2010-05-07 11:06:21</subfield>
+    <subfield code="z">Supplementary materials 2: appendix S2 Haplotype definition of eight variable fragments</subfield>
+  </datafield>
+  <datafield tag="856" ind1="4" ind2=" ">
+    <subfield code="f">lexer_ppp_sm3.pdf</subfield>
+    <subfield code="q">application/pdf</subfield>
+    <subfield code="s">499318</subfield>
+    <subfield code="u">http://doc.rero.ch/lm.php?url=1000,43,2,20100507110345-LD/lexer_ppp_sm3.pdf</subfield>
+    <subfield code="y">2010-05-07 11:07:24</subfield>
+    <subfield code="z">Supplementary materials 3: Haplotype distribution in Europe and Northern Africa</subfield>
   </datafield>
 </record>
 </collection>

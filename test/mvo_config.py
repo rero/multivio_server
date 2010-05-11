@@ -20,7 +20,7 @@ class MVOConfig:
     class Logger:
         name = "multivio"
         file_name = "./multivio.log"
-        console = False
+        console = True
         level = logging.DEBUG
         
         											

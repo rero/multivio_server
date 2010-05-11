@@ -32,6 +32,8 @@ from pdf_parser import PdfParser
 from dc_parser import DublinCoreParser
 from img_parser import ImgParser
 from mets_parser import MetsParser
+from marc_parser import MarcParser
+import parser
 from web_app import ApplicationError
 
 
@@ -189,13 +191,16 @@ Core with Pdfs inside..</b></a>
     def _chooseParser(self, content, url, mime):
 
         if re.match('.*?/pdf.*?', mime):
+            self.logger.debug("Pdf parser found!")
             return PdfParser(content, url, url.split('/')[-1])
         
         if re.match('image/.*?', mime):
+            self.logger.debug("Image parser found!")
             return ImgParser(content, url, mime)
 
         if re.match('.*?/xml.*?', mime):
             #some METS files contain uppercase mets directive
+            self.logger.debug("XML parser found!")
             content_str = content.read()
             content.seek(0)
             content_str = content_str.replace('METS=', 'mets=')
@@ -205,14 +210,28 @@ Core with Pdfs inside..</b></a>
             doc = parseString(content_str)
             
             #METS parser
-            mets = doc.getElementsByTagName('mets:mets')
-            if len(mets) > 0 and re.match('http://www.loc.gov/METS',
-                    mets[0].namespaceURI):
-                return MetsParser(content, url)
-            
-            dc = doc.getElementsByTagName('dc:dc')
-            if len(dc) and dc[0].namespaceURI == 'http://purl.org/dc/elements/1.1/':
-                return DublinCoreParser(content, url)
+            selected_parser = None
+            try:
+                self.logger.debug("Try Mets parser!")
+                selected_parser = MetsParser(content, url)
+                self.logger.debug("Mets parser found!")
+            except parser.ParserError.InvalidDocument:
+                self.logger.debug('Cannot be parsed by Mets parser')
+            try:
+                self.logger.debug("Try DC parser!")
+                selected_parser = DublinCoreParser(content, url)
+                self.logger.debug("DubinCore parser found!")
+            except parser.ParserError.InvalidDocument:
+                self.logger.debug('Cannot be parsed by DC parser')
+
+            try:
+                self.logger.debug("Try Marc parser!")
+                selected_parser = MarcParser(content, url)
+                self.logger.debug("Marc parser found!")
+            except parser.ParserError.InvalidDocument:
+                self.logger.debug('Cannot be parsed by Marc parser')
+
+            return selected_parser
 
     def getMetaData(self, url):
         (local_file, mime) = self.getRemoteFile(url)

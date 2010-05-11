@@ -30,6 +30,7 @@ test_suite = (
     unittest.makeSuite (test_parser.PdfParserOK),
     unittest.makeSuite (test_parser.DublinCoreParserOK),
     unittest.makeSuite (test_parser.MetsParserOK),
+    unittest.makeSuite (test_parser.MarcParserOK),
     unittest.makeSuite (test_logger.LoggerOK),
     )
 
