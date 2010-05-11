@@ -140,7 +140,7 @@ http://stackoverflow.com/questions/1918420/split-a-pdf-based-on-outline
                     #print "%s%s %s" % (space, title, pagenr)
                     to_return.append({
                                         'label' : title,
-                                        'file_postition' : {
+                                        'file_position' : {
                                             'index' : pagenr,
                                             'url'   : self._url
                                         }
