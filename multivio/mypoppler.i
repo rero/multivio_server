@@ -17,6 +17,7 @@
 #include "splash/SplashBitmap.h"
 #include "splash/Splash.h"
 #include "SplashOutputDev.h"
+#include "TextOutputDev.h"
 %}
 %include "typemaps.i"
 
@@ -92,10 +93,15 @@ public:
   GooString(const char *sA);
 };
 
+//should ignore inline method!
+%ignore TextWord::primaryCmp(TextWord *word);
+
 %include "poppler/splash/SplashBitmap.h"
 %include "poppler/PDFDoc.h"
 %include "poppler/OutputDev.h"
 %include "poppler/Catalog.h"
 %include "poppler/Page.h"
 %include "poppler/SplashOutputDev.h"
+%include "poppler/TextOutputDev.h"
+
 %include "poppler/GlobalParams.h"
