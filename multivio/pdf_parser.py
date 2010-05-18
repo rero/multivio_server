@@ -148,7 +148,10 @@ http://stackoverflow.com/questions/1918420/split-a-pdf-based-on-outline
                 elif isinstance(obj, list):
                     parts =  get_parts(obj, space + "  ")
                     if len(parts) > 0:
-                        to_return[-1]['childs'] = parts
+                        if len(to_return) > 0:
+                            to_return[-1]['childs'] = parts
+                        else:
+                            to_return = parts
             return to_return
         try:
             outlines = self.getOutlines()
@@ -171,6 +174,43 @@ http://stackoverflow.com/questions/1918420/split-a-pdf-based-on-outline
         self.logger.debug("Physical Structure: %s"% json.dumps(phys_struct,
                 sort_keys=True, indent=4))
         return phys_struct
+    
+    def displayToc(self):
+        """ Print on stdout the Table of content with the page number.
+        """
+        self.logger.debug("Get TOC")
+        try:
+            self.__initpdf__(self._file_stream)
+        except Exception:
+            self.logger.debug("Cannot extract page from pdf.")
+            raise ParserError.InvalidDocument("Cannot extract page from pdf.")
+        #print "Title: %s" % self.getDocumentInfo().title
+        #print "Author: %s" % self.getDocumentInfo().author
+        #print "Number of pages: %s" % self.getNumPages()
+        res = {}
+        #recursive fnct
+        def print_part(data, space=' '):
+            for obj in data:
+                if isinstance(obj, pyPdf.pdf.Destination) and not \
+                    isinstance(obj.page, pyPdf.generic.NullObject):
+                    title = obj.title
+                    if not isinstance(title, unicode):
+                        import chardet
+                        encoding = chardet.detect(title)['encoding']
+                        if not re.match('ascii', encoding):
+                            title = title.decode(encoding)
+                            title = title.encode('utf-8')
+                    pagenr = self._page_id_to_page_numbers.get(obj.page.idnum, '???')
+                    print "%s%s %s" % (space, title, pagenr)
+                elif isinstance(obj, list):
+                    print_part(obj, space + "  ")
+        try:
+            outlines = self.getOutlines()
+        except:
+            outlines = None
+        outlines = self.getOutlines()
+        if outlines is not None:
+            print_part(self.getOutlines())
 
 
 #---------------------------- Main Part ---------------------------------------
@@ -192,14 +232,14 @@ def main():
 
     (options, args) = parser.parse_args()
 
-    if len(args) != 0:
+    if len(args) != 1:
         parser.error("Error: incorrect number of arguments, try --help")
 
-    from wsgiref.simple_server import make_server
-    application = LoggerApp()
-    server = make_server('', options.port, application)
-    server.serve_forever()
-
+    pdf_file = file(args[0])    
+    parser = PdfParser(pdf_file, '', '')
+    #parser.displayToc()
+    toc = parser.getLogicalStructure()
+    #print toc
 if __name__ == '__main__':
     main()
 
