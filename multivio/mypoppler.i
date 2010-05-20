@@ -21,8 +21,6 @@
 %}
 %include "typemaps.i"
 
-//%include "poppler/goo/gtypes.h"
-//%include "poppler/splash/SplashTypes.h"
 enum SplashColorMode {
   splashModeMono1,    // 1 bit per component, 8 pixels per byte,
         //   MSbit is on the left
@@ -86,12 +84,37 @@ void init();
   $result = PyString_FromStringAndSize((char*) $1, 3*arg1->getWidth()*arg1->getHeight());
 }
 
+%typemap(in) (GooString*) 
+{
+  if (PyString_Check($input)) {
+    $1 = new GooString(PyString_AsString($input),
+        PyString_Size($input));
+  }else{
+    PyErr_SetString(PyExc_TypeError,"not a string type");
+    return NULL; 
+  }
+}
 
-class GooString {
-public:
-  // Create a string from a C string.
-  GooString(const char *sA);
+%typemap(out) (GooString*)
+{
+  $result = PyString_FromStringAndSize($1->getCString(), $1->getLength());
+}
+
+%inline
+%{
+extern GooString* test_goo_string(GooString* test, GooString* fifi)
+{
+  printf("%s \n", test->getCString());
+  fflush(stdout);
+  return test;
 };
+%}
+
+//class GooString {
+//public:
+//  // Create a string from a C string.
+//  GooString(const char *sA);
+//};
 
 //should ignore inline method!
 %ignore TextWord::primaryCmp(TextWord *word);
