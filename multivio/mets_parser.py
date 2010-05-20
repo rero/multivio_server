@@ -109,7 +109,7 @@ class MetsParser(DocumentParser):
                         url = self._file_list[f]
                 to_return.append({
                                     'label' : logic_struct[n]['label'],
-                                    'file_postition' : {
+                                    'file_position' : {
                                         'index' : None,
                                         'url'   : url
                                     }
