@@ -81,11 +81,22 @@ void init();
 } 
 %typemap(out) SplashColorPtr
 {
+  printf("Out\n");
+  fflush(stdout);
   $result = PyString_FromStringAndSize((char*) $1, 3*arg1->getWidth()*arg1->getHeight());
 }
 
+/************* GooString **************/
+
+%typecheck (SWIG_TYPECHECK_STRING) (GooString*)
+{
+    $1 = PyString_AsString($input) ? 1 : 0;
+
+}
 %typemap(in) (GooString*) 
 {
+  printf("In\n");
+  fflush(stdout);
   if (PyString_Check($input)) {
     $1 = new GooString(PyString_AsString($input),
         PyString_Size($input));
@@ -102,7 +113,13 @@ void init();
 
 %inline
 %{
-extern GooString* test_goo_string(GooString* test, GooString* fifi)
+extern GooString* test_goo_string(GooString* test, GooString* fifi=NULL)
+{
+  printf("%s \n", test->getCString());
+  fflush(stdout);
+  return test;
+};
+extern GooString* test_goo_string_new(GooString* test, GooString* fifi)
 {
   printf("%s \n", test->getCString());
   fflush(stdout);
