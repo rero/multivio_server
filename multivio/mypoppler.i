@@ -107,9 +107,9 @@ void init();
   if (PyUnicode_Check($input)) {
     size_t len = PyUnicode_GET_SIZE($input);
     if (len) {
-         wchar_t * tmp = (wchar_t*) malloc(len*sizeof(char));
+         wchar_t * tmp = (wchar_t*) malloc(PyUnicode_GET_DATA_SIZE($input)); // malloc(len*sizeof(char));
          $2 = PyUnicode_AsWideChar((PyUnicodeObject*)$input, tmp, len);
-        $1 = (Unicode*)tmp;
+         $1 = (Unicode*)tmp;
      }
   }else{
     PyErr_SetString(PyExc_TypeError,"not a string type");
@@ -117,9 +117,9 @@ void init();
   }
 }
 
-//%typemap(freearg) Unicode* {
-//  free($1);
-//}
+%typemap(freearg) Unicode* {
+  free($1);
+}
 
 %typemap(in) (GooString*) 
 {
@@ -132,15 +132,15 @@ void init();
   }
 }
 
-//%typemap(freearg) GooString* {
-//  delete($1);
-//}
+%typemap(freearg) GooString* {
+  delete($1);
+}
 
 %typemap(out) (GooString*)
 {
   $result = PyString_FromStringAndSize($1->getCString(), $1->getLength());
 }
-
+ 
 %inline
 %{
 extern GooString* test_goo_string(GooString* test, GooString* fifi=NULL)
@@ -171,3 +171,4 @@ extern GooString* test_goo_string_new(GooString* test, GooString* fifi)
 %include "poppler/TextOutputDev.h"
 
 %include "poppler/GlobalParams.h"
+
