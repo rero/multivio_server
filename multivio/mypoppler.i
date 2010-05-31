@@ -132,9 +132,9 @@ void init();
   }
 }
 
-%typemap(freearg) GooString* {
-  delete($1);
-}
+//%typemap(freearg) GooString* {
+//  delete($1);
+//}
 
 %typemap(out) (GooString*)
 {
