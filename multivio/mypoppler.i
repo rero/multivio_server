@@ -1,6 +1,7 @@
 
 %module mypoppler
 %{
+#include "poppler-config.h"
 #include "PDFDoc.h"
 #include "goo/GooString.h"
 #include "goo/gtypes.h"
@@ -20,6 +21,9 @@
 #include "TextOutputDev.h"
 %}
 %include "typemaps.i"
+
+//for TextWord::getBBox()
+%apply double *OUTPUT { double *xMinA, double *yMinA, double *xMaxA, double *yMaxA};
 
 enum SplashColorMode {
   splashModeMono1,    // 1 bit per component, 8 pixels per byte,
@@ -91,8 +95,8 @@ void init();
 %typecheck (SWIG_TYPECHECK_STRING) (GooString*)
 {
     $1 = PyString_AsString($input) ? 1 : 0;
-
 }
+
 %typemap(in) (GooString*) 
 {
   printf("In\n");
@@ -127,12 +131,8 @@ extern GooString* test_goo_string_new(GooString* test, GooString* fifi)
 };
 %}
 
-//class GooString {
-//public:
-//  // Create a string from a C string.
-//  GooString(const char *sA);
-//};
 
+%include "poppler/poppler-config.h"
 //should ignore inline method!
 %ignore TextWord::primaryCmp(TextWord *word);
 

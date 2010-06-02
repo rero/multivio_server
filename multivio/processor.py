@@ -75,11 +75,10 @@ example.</b></a>"""
 
     def getImageFromPdf(self, filename_, pagenr=1, width=400):
         start = time.clock()
-        filename = mypoppler.GooString(filename_)
         mypoppler.cvar.globalParams.setEnableFreeType("yes")
         mypoppler.cvar.globalParams.setAntialias("yes")
         mypoppler.cvar.globalParams.setVectorAntialias("yes")
-        doc = mypoppler.PDFDoc(filename)
+        doc = mypoppler.PDFDoc(filename_)
         splash = mypoppler.SplashOutputDev(mypoppler.splashModeRGB8, 3, False,
         (255, 255, 255), True, True)
         splash.startDoc(doc.getXRef())
