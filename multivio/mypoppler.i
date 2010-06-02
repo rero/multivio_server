@@ -23,7 +23,8 @@
 %include "typemaps.i"
 
 //for TextWord::getBBox()
-%apply double *OUTPUT { double *xMinA, double *yMinA, double *xMaxA, double *yMaxA};
+%apply double *OUTPUT {double *xMinA, double *yMinA, double *xMaxA, double *yMaxA};
+%apply double *OUTPUT {double *xMin, double *yMin, double *xMax, double *yMax};
 
 enum SplashColorMode {
   splashModeMono1,    // 1 bit per component, 8 pixels per byte,
@@ -85,8 +86,8 @@ void init();
 } 
 %typemap(out) SplashColorPtr
 {
-  printf("Out\n");
-  fflush(stdout);
+  //printf("Out\n");
+  //fflush(stdout);
   $result = PyString_FromStringAndSize((char*) $1, 3*arg1->getWidth()*arg1->getHeight());
 }
 
@@ -97,10 +98,31 @@ void init();
     $1 = PyString_AsString($input) ? 1 : 0;
 }
 
+
+%typemap(in) (Unicode *s, int len) 
+{
+  size_t len = PyUnicode_GET_SIZE($input);
+    //printf("String memory size: %d", len);
+    //fflush(stdout);
+  if (PyUnicode_Check($input)) {
+    size_t len = PyUnicode_GET_SIZE($input);
+    if (len) {
+         wchar_t * tmp = (wchar_t*) malloc(len*sizeof(char));
+         $2 = PyUnicode_AsWideChar((PyUnicodeObject*)$input, tmp, len);
+        $1 = (Unicode*)tmp;
+     }
+  }else{
+    PyErr_SetString(PyExc_TypeError,"not a string type");
+    return NULL; 
+  }
+}
+
+//%typemap(freearg) Unicode* {
+//  free($1);
+//}
+
 %typemap(in) (GooString*) 
 {
-  printf("In\n");
-  fflush(stdout);
   if (PyString_Check($input)) {
     $1 = new GooString(PyString_AsString($input),
         PyString_Size($input));
@@ -109,6 +131,10 @@ void init();
     return NULL; 
   }
 }
+
+//%typemap(freearg) GooString* {
+//  delete($1);
+//}
 
 %typemap(out) (GooString*)
 {
