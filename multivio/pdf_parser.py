@@ -163,6 +163,11 @@ http://stackoverflow.com/questions/1918420/split-a-pdf-based-on-outline
             to_return = get_parts(self.getOutlines())
             self.logger.debug("Table Of Content: %s"% json.dumps(to_return, 
                     sort_keys=True, indent=4))
+        # to solve empty TOC for
+        # ex:http://www.fr.ch/bcu/n/genealogies/Banquetaz_description.pdf
+
+        if len(to_return) == 0:
+            return None
         return to_return
 
     def getPhysicalStructure(self):
