@@ -22,6 +22,9 @@
 %}
 %include "typemaps.i"
 
+typedef bool GBool;
+typedef unsigned char SplashColor[4];
+
 //for TextWord::getBBox()
 %apply double *OUTPUT {double *xMinA, double *yMinA, double *xMaxA, double *yMaxA};
 %apply double *OUTPUT {double *xMin, double *yMin, double *xMax, double *yMax};
@@ -42,8 +45,9 @@ enum SplashColorMode {
         //   CMYKCMYK...
 #endif
 };
-typedef bool GBool;
-typedef unsigned char SplashColor[4];
+
+/***************** SplashColorPtr *****************/
+
 %typemap(typecheck) (SplashColorPtr)
 {
  $1 = PyTuple_Check($input);
@@ -55,8 +59,8 @@ typedef unsigned char SplashColor[4];
   }
 %}
 void init();
-%typemap(in) SplashColorPtr
-{ 
+
+%typemap(in) SplashColorPtr { 
   if (PyTuple_Check($input)) 
   { 
     //SplashColor temp;
@@ -84,6 +88,7 @@ void init();
     } 
   } 
 } 
+
 %typemap(out) SplashColorPtr
 {
   //printf("Out\n");
@@ -98,29 +103,6 @@ void init();
     $1 = PyString_AsString($input) ? 1 : 0;
 }
 
-
-%typemap(in) (Unicode *s, int len) 
-{
-  size_t len = PyUnicode_GET_SIZE($input);
-    //printf("String memory size: %d", len);
-    //fflush(stdout);
-  if (PyUnicode_Check($input)) {
-    size_t len = PyUnicode_GET_SIZE($input);
-    if (len) {
-         wchar_t * tmp = (wchar_t*) malloc(PyUnicode_GET_DATA_SIZE($input)); // malloc(len*sizeof(char));
-         $2 = PyUnicode_AsWideChar((PyUnicodeObject*)$input, tmp, len);
-         $1 = (Unicode*)tmp;
-     }
-  }else{
-    PyErr_SetString(PyExc_TypeError,"not a string type");
-    return NULL; 
-  }
-}
-
-%typemap(freearg) Unicode* {
-  free($1);
-}
-
 %typemap(in) (GooString*) 
 {
   if (PyString_Check($input)) {
@@ -132,9 +114,9 @@ void init();
   }
 }
 
-//%typemap(freearg) GooString* {
-//  delete($1);
-//}
+%typemap(newfree) GooString* {
+  delete $1;
+}
 
 %typemap(out) (GooString*)
 {
@@ -156,6 +138,37 @@ extern GooString* test_goo_string_new(GooString* test, GooString* fifi)
   return test;
 };
 %}
+
+/************** Unicode *******************/
+
+%typemap(in) (Unicode *s, int len) 
+{
+  size_t len = PyUnicode_GET_SIZE($input);
+    //printf("String memory size: %d", len);
+    //fflush(stdout);
+  if (PyUnicode_Check($input)) {
+    size_t len = PyUnicode_GET_SIZE($input);
+    if (len > 0) {
+         wchar_t * tmp = (wchar_t*) malloc(PyUnicode_GET_DATA_SIZE($input)); // malloc(len*sizeof(char));
+         $2 = PyUnicode_AsWideChar((PyUnicodeObject*)$input, tmp, len);
+         $1 = (Unicode*)tmp;
+     }
+  }else{
+    PyErr_SetString(PyExc_TypeError,"not a string type");
+    return NULL; 
+  }
+}
+
+
+%typemap(freearg) (Unicode *s)
+//%typemap(freearg) (Unicode *s, int len)
+{
+  printf("free unicode\n");
+  fflush(stdout);
+  //gfree($1);
+  free($1);
+  //delete($1);
+}
 
 
 %include "poppler/poppler-config.h"
