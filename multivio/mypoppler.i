@@ -19,6 +19,8 @@
 #include "splash/Splash.h"
 #include "SplashOutputDev.h"
 #include "TextOutputDev.h"
+#include <stdio.h>
+#include <wchar.h>
 %}
 %include "typemaps.i"
 
@@ -115,7 +117,11 @@ void init();
 }
 
 %typemap(newfree) GooString* {
-  delete $1;
+  if ($1 != NULL)
+  {
+    delete($1);
+    $1 = NULL;
+    }
 }
 
 %typemap(out) (GooString*)
@@ -150,8 +156,13 @@ extern GooString* test_goo_string_new(GooString* test, GooString* fifi)
     size_t len = PyUnicode_GET_SIZE($input);
     if (len > 0) {
          wchar_t * tmp = (wchar_t*) malloc(PyUnicode_GET_DATA_SIZE($input)); // malloc(len*sizeof(char));
-         $2 = PyUnicode_AsWideChar((PyUnicodeObject*)$input, tmp, len);
+         $2 = PyUnicode_AsWideChar((PyUnicodeObject*)$input, tmp, len+1) + 1;
+         printf("Len: %d, res: %d\n", int(len), int($2));
+         tmp[len] = L'\0';
          $1 = (Unicode*)tmp;
+         wprintf(L"test: %S\n", L"Test");
+         wprintf(L"wchar: <%S>\n", tmp);
+         fflush(stdout);
      }
   }else{
     PyErr_SetString(PyExc_TypeError,"not a string type");
@@ -160,14 +171,16 @@ extern GooString* test_goo_string_new(GooString* test, GooString* fifi)
 }
 
 
-//%typemap(freearg) (Unicode *s)
 %typemap(freearg) (Unicode *s, int len)
 {
   printf("free unicode\n");
   fflush(stdout);
   //gfree($1);
   if ($1 != NULL)
+  {
     free($1);
+    $1 = NULL;
+    }
   //delete($1);
 }
 
