@@ -160,15 +160,18 @@ extern GooString* test_goo_string_new(GooString* test, GooString* fifi)
 }
 
 
-%typemap(freearg) (Unicode *s)
-//%typemap(freearg) (Unicode *s, int len)
+//%typemap(freearg) (Unicode *s)
+%typemap(freearg) (Unicode *s, int len)
 {
   printf("free unicode\n");
   fflush(stdout);
   //gfree($1);
-  free($1);
+  if ($1 != NULL)
+    free($1);
   //delete($1);
 }
+
+
 
 
 %include "poppler/poppler-config.h"
@@ -181,7 +184,12 @@ extern GooString* test_goo_string_new(GooString* test, GooString* fifi)
 %include "poppler/Catalog.h"
 %include "poppler/Page.h"
 %include "poppler/SplashOutputDev.h"
-%include "poppler/TextOutputDev.h"
-
 %include "poppler/GlobalParams.h"
 
+%newobject TextPage::makeWordList;
+%newobject TextOutputDev::takeText;
+%newobject TextWord::getText;
+%include "poppler/TextOutputDev.h"
+%extend TextPage {
+  ~TextPage(){self->decRefCnt();printf("free\n");};
+};
