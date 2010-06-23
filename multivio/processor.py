@@ -52,12 +52,16 @@ example.</b></a>"""
         #print environ
         if opts.has_key('url'):
             width = 400
+            angle = 0
             url = opts['url'][0]
+            self.logger.debug("Opts: %s" % opts)
             if opts.has_key('width'):
                 width = int(opts['width'][0])
+            if opts.has_key('angle'):
+                angle = int(opts['angle'][0])
             (image_file, mime) = self.getRemoteFile(url)
             if re.match('image/', mime):
-                (header, content) = self.resize(image_file, width)
+                (header, content) = self.resize(image_file, width, angle)
                 start_response('200 OK', header)
                 return [content]
             if re.match('.*?/pdf', mime):
@@ -108,10 +112,12 @@ example.</b></a>"""
         return(header, content)
     
     
-    def resize(self, file_name, width=100):
+    def resize(self, file_name, width=100, angle=0):
         width = int(width)
         img = Image.open(file_name)
         img.thumbnail((width, width), Image.ANTIALIAS)
+        self.logger.debug("Rotate the image: %s degree" % angle)
+        img = img.rotate(int(angle))
         f = cStringIO.StringIO()
         #img.save(f, "PNG")
         img.save(f, "JPEG", quality=90)
