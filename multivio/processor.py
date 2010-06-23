@@ -68,7 +68,7 @@ example.</b></a>"""
                 pagenr = 1
                 if opts.has_key('pagenr'):
                     pagenr = int(opts['pagenr'][0])
-                (header, content) = self.getImageFromPdf(image_file, pagenr, width)
+                (header, content) = self.getImageFromPdf(image_file, pagenr, width, angle)
                 start_response('200 OK', header)
                 return [content]
             start_response('400 Bad Request', [('content-type', 'text/html')])
@@ -77,7 +77,7 @@ example.</b></a>"""
             start_response('400 Bad Request', [('content-type', 'text/html')])
             return ["Missing url options."]
 
-    def getImageFromPdf(self, filename_, pagenr=1, width=400):
+    def getImageFromPdf(self, filename_, pagenr=1, width=400, angle=0):
         start = time.clock()
         mypoppler.cvar.globalParams.setEnableFreeType("yes")
         mypoppler.cvar.globalParams.setAntialias("yes")
@@ -96,9 +96,9 @@ example.</b></a>"""
         new_width = bitmap.getWidth()
         new_height = bitmap.getHeight()
         data = bitmap.getDataPtr()
-        filename.thisown = 0
         import Image
         pil = Image.fromstring('RGB', (new_width, new_height), data)
+        pil = pil.rotate(int(angle))
         
         f = cStringIO.StringIO()
         #pil.save(f, "PNG", optimized=True)
