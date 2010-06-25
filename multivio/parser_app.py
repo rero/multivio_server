@@ -30,7 +30,7 @@ from web_app import WebApplication
 
 from pdf_parser import PdfParser
 from dc_parser import DublinCoreParser
-from img_parser import ImgParser
+from image_parser import ImgParser
 from mets_parser import MetsParser
 from marc_parser import MarcParser
 import parser
