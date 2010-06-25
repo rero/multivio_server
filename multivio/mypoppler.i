@@ -55,8 +55,12 @@ enum SplashColorMode {
  $1 = PyTuple_Check($input);
 }
 %{
+  GlobalParams *globalParams = NULL;
   void init()
   {
+    if (globalParams != NULL){
+      delete(globalParams);
+    }
     globalParams = new GlobalParams();
   }
 %}
@@ -156,13 +160,8 @@ extern GooString* test_goo_string_new(GooString* test, GooString* fifi)
     size_t len = PyUnicode_GET_SIZE($input);
     if (len > 0) {
          wchar_t * tmp = (wchar_t*) malloc(PyUnicode_GET_DATA_SIZE($input)); // malloc(len*sizeof(char));
-         $2 = PyUnicode_AsWideChar((PyUnicodeObject*)$input, tmp, len+1) + 1;
-         printf("Len: %d, res: %d\n", int(len), int($2));
-         tmp[len] = L'\0';
+         $2 = PyUnicode_AsWideChar((PyUnicodeObject*)$input, tmp, len) ;
          $1 = (Unicode*)tmp;
-         wprintf(L"test: %S\n", L"Test");
-         wprintf(L"wchar: <%S>\n", tmp);
-         fflush(stdout);
      }
   }else{
     PyErr_SetString(PyExc_TypeError,"not a string type");
@@ -173,14 +172,11 @@ extern GooString* test_goo_string_new(GooString* test, GooString* fifi)
 
 %typemap(freearg) (Unicode *s, int len)
 {
-  printf("free unicode\n");
-  fflush(stdout);
-  //gfree($1);
   if ($1 != NULL)
   {
     free($1);
     $1 = NULL;
-    }
+  }
   //delete($1);
 }
 
@@ -204,5 +200,7 @@ extern GooString* test_goo_string_new(GooString* test, GooString* fifi)
 %newobject TextWord::getText;
 %include "poppler/TextOutputDev.h"
 %extend TextPage {
-  ~TextPage(){self->decRefCnt();printf("free\n");};
+  ~TextPage(){ 
+    self->decRefCnt(); 
+  };
 };
