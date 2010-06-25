@@ -18,7 +18,7 @@ from optparse import OptionParser
 import logger
 import logging
 #import mvo_parser
-import processor
+import processor_app
 import parser_app
 import version_app
 
@@ -43,10 +43,10 @@ class DispatcherApp(WebApplication):
         #Client logger
         self._apps['.*?/log/post'] = logger.LoggerApp()
         self._apps['.*?/version'] = version_app.VersionApp()
-        self._apps['.*?/get'] = \
+        self._apps['.*?/get.*?'] = \
             parser_app.DocParserApp(temp_dir=MVOConfig.General.temp_dir)
-        self._apps['.*?/document/get'] = \
-            processor.DocumentApp(temp_dir=MVOConfig.General.temp_dir)
+        self._apps['.*?/document/render'] = \
+            processor_app.DocProcessorApp(temp_dir=MVOConfig.General.temp_dir)
         self.usage = """<br><h1>Welcome to the multivio server.</h1><br>"""
         self.logger = logging.getLogger(MVOConfig.Logger.name+".Dispatcher")
         

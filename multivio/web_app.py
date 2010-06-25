@@ -164,6 +164,7 @@ class WebApplication(object):
 
     def getRemoteFile(self, url):
         url_md5 = hashlib.sha224(url).hexdigest()
+        self.logger.debug('Temp dir: %s' % self._tmp_dir)
         local_file = os.path.join(self._tmp_dir, url_md5)
 
 	#file in the local file system
