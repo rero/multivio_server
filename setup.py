@@ -12,11 +12,11 @@ setup(
     license=multivio.__license__,
     author=multivio.__author__,
     url='http://www.multivio.org',
-    ext_modules=[Extension('multivio/_mypoppler', ['multivio/mypoppler.i'],
+    ext_modules=[Extension('multivio/poppler/_mypoppler', ['multivio/poppler/mypoppler.i'],
         swig_opts=['-c++', '-modern', '-I%s/include' % poppler_install_path],
         extra_compile_args=['-I%s/include/poppler' % poppler_install_path],
         extra_link_args=['-lpoppler'])], 
-    py_modules=['multivio/mypoppler'],
+    py_modules=['multivio.poppler.mypoppler'],
     packages=[
     'multivio'
     ],
