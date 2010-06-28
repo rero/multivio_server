@@ -31,6 +31,9 @@ class ImgParser(DocumentParser):
         DocumentParser.__init__(self, file_stream)
         self._url = url
         self._mime = mime
+        import Image
+        img = Image.open(file_stream)
+        (self._width, self._height) = img.size
 
     def _check(self):
         """Check if the pdf is valid."""
@@ -42,6 +45,9 @@ class ImgParser(DocumentParser):
         metadata = {}
         metadata['title'] = self._url.split('/')[-1]
         metadata['mime'] = self._mime
+        metadata['width'] = self._width
+        metadata['height'] = self._height
+
         self.logger.debug("Metadata: %s"% json.dumps(metadata, sort_keys=True, 
                         indent=4))
         return metadata

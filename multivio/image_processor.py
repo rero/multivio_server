@@ -20,33 +20,33 @@ if sys.version_info < (2, 6):
 else:
     import json
 import re
+import cStringIO
 
 # local modules
 import logger
 import logging
+from processor import DocumentProcessor
 from mvo_config import MVOConfig
+import Image
 
 #----------------------------------- Exceptions --------------------------------
 
 #----------------------------------- Classes -----------------------------------
 
 #_______________________________________________________________________________
-class DocumentProcessor(object):
-    """Base class to process document"""
+class ImageProcessor(DocumentProcessor):
+    """Class to process pdf document"""
 #_______________________________________________________________________________
     def __init__(self, file_name):
-        self._file_name = file_name
-        self.logger = logging.getLogger(MVOConfig.Logger.name + "."
-                        + self.__class__.__name__) 
-        if self._check() is not True:
-            raise ProcessorError.InvalidDocument("The file is invalid. (is it" \
-                    "corrupted?)")
+        DocumentProcessor.__init__(self, file_name)
+        self._img = Image.open(file_name)
 
     def _check(self):
         """Check if the document is valid."""
         return True
 
-    def render(self, max_output_size=None, angle=0, index=None, output_format=None):
+    def render(self, max_output_size=None, angle=0, index=None,
+        output_format=None):
         """Render the document content.
 
             max_output_size -- tupple: maximum dimension of the output
@@ -58,25 +58,24 @@ class DocumentProcessor(object):
             mime_type -- string: output mime type
             data -- string: output data
         """
-        return (None, None)
+        output_format = output_format or 'image/jpeg'
+        self.logger.debug("Render Image")
+        max_width = max_output_size[0] or self._img.size[0]
+        max_height = max_output_size[1] or self._img.size[1]
 
-    def search(self, query, from_=None, to_=None, max_results=None, sort=None):
-        """Search parts of the document that match the given query.
-
-            from_ -- dict: start the search at from_
-            to_ -- dict: end the search at to_
-            max_results -- int: limit the number of the returned results
-            sort -- string: sort the results given the sort criterion
-        return:
-            a dictionary with the founded results
-        """
-        return None
-
-    def indexing(self, output_file):
-        """Batch indexing of the document.
-        return:
-            True if everything is ok.
-        """
-        return None
-
-
+        self._img.thumbnail((max_width, max_height), Image.ANTIALIAS)
+        self.logger.debug("Rotate the image: %s degree" % angle)
+        if angle != 0:
+            self._img = self._img.rotate(angle)
+        f = cStringIO.StringIO()
+        #img.save(f, "PNG")
+        self.logger.debug("Out format: %s", output_format)
+        if re.match(r'.*?/jpeg', output_format):
+            self._img.save(f, "JPEG", quality=90)
+            mime_type = 'image/jpeg'
+        else:
+            self._img.save(f, "PNG")
+            mime_type = 'image/png'
+        f.seek(0)
+        content = f.read()
+        return(mime_type, content)
