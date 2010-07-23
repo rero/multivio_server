@@ -27,8 +27,7 @@ import logger
 import logging
 from processor import DocumentProcessor
 from mvo_config import MVOConfig
-import mypoppler
-mypoppler.init()
+import poppler
 
 #----------------------------------- Exceptions --------------------------------
 
@@ -40,10 +39,10 @@ class PdfProcessor(DocumentProcessor):
 #_______________________________________________________________________________
     def __init__(self, file_name):
         DocumentProcessor.__init__(self, file_name)
-        mypoppler.cvar.globalParams.setEnableFreeType("yes")
-        mypoppler.cvar.globalParams.setAntialias("yes")
-        mypoppler.cvar.globalParams.setVectorAntialias("yes")
-        self._doc = mypoppler.PDFDoc(self._file_name)
+        poppler.cvar.globalParams.setEnableFreeType("yes")
+        poppler.cvar.globalParams.setAntialias("yes")
+        poppler.cvar.globalParams.setVectorAntialias("yes")
+        self._doc = poppler.PDFDoc(self._file_name)
 
     def _check(self):
         """Check if the document is valid."""
@@ -104,7 +103,7 @@ class PdfProcessor(DocumentProcessor):
         import time
         self.logger.debug("Render image from pdf with opts width=%s, height=%s, angle=%s, page_nr=%s." % (max_width, max_height, angle, page_nr))
         start = time.clock()
-        splash = mypoppler.SplashOutputDev(mypoppler.splashModeRGB8, 3, False,
+        splash = poppler.SplashOutputDev(poppler.splashModeRGB8, 3, False,
             (255, 255, 255), True, True)
         splash.startDoc(self._doc.getXRef())
 
