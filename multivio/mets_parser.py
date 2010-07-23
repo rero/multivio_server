@@ -103,10 +103,12 @@ class MetsParser(DocumentParser):
             nodes.sort()
             for n in nodes:
                 url = None
-                phys_id = self._relation[logic_struct[n]['id']][0]
-                for f in self._physical_structure[phys_id]['files']:
-                    if self._file_list.has_key(f):
-                        url = self._file_list[f]
+                self.logger.debug('Node: %s', logic_struct[n]['id'])
+                if self._relation.has_key(logic_struct[n]['id']):
+                    phys_id = self._relation[logic_struct[n]['id']][0]
+                    for f in self._physical_structure[phys_id]['files']:
+                        if self._file_list.has_key(f):
+                            url = self._file_list[f]
                 to_return.append({
                                     'label' : logic_struct[n]['label'],
                                     'file_position' : {
@@ -119,7 +121,10 @@ class MetsParser(DocumentParser):
             return to_return
 
         #print self._logical_structure
-        logical_struct = get_parts(self._logical_structure[1]['child'])
+        if self._logical_structure[1].has_key('child'):
+            logical_struct = get_parts(self._logical_structure[1]['child'])
+        else:
+            return None
         self.logger.debug("Logical Structure: %s"% json.dumps(logical_struct,
                 sort_keys=True, indent=4))
         #self.logger.debug("Physical Structure: %s"%

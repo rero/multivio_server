@@ -99,7 +99,10 @@ newspaper_collections = {
             '13' : 'etrennes_fribourgeoises',
             '14' : 'rameau_de_sapin',
             '15' : 'l_express',
-            '16' : 'l_impartial'
+            '16' : 'l_impartial',
+            '17' : 'bulletin_sng',
+            '18' : 'federation_horlogere',
+            '19' : 'bibliotheques_et_musees'
 }
 
 
