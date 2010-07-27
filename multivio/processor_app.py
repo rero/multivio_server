@@ -94,14 +94,6 @@ example.</b></a>"""
                 (mime_type, data) = self.render(url=opts['url'],
                         max_output_size=(max_width, max_height), angle=angle,
                         index={'page_number':page_nr}, output_format=output_format)
-                try:
-                    (mime_type, data) = self.render(url=opts['url'],
-                        max_output_size=(max_width, max_height), angle=angle,
-                        index={'page_number':page_nr}, output_format=output_format)
-                except Exception:
-                    start_response('400 Bad Request', [('content-type',
-                           'text/html')])
-                    return ["Invalid arguments."]
                 start_response('200 OK', [('content-type',
                     mime_type),('content-length', str(len(data)))])
                 return [data]
@@ -119,8 +111,8 @@ example.</b></a>"""
         if re.match('image/.*?', mime):
             self.logger.debug("Image processor found!")
             return ImageProcessor(file_name)
-
-        return None
+        self.logger.debug("Cannot process file with %s mime type." % mime)
+        raise ApplicationError.UnsupportedFormat("Cannot process file with %s mime type." % mime)
 
     def render(self, url, max_output_size=None, angle=0, index=None, output_format=None):
         (file_name, mime) = self.getRemoteFile(url)

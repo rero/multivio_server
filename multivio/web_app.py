@@ -19,6 +19,7 @@ import hashlib
 import urllib
 import shutil
 import time
+import datetime
 import logging
 
 from mvo_config import MVOConfig
@@ -106,32 +107,96 @@ newspaper_collections = {
 }
 
 
+def get_internal_file(url):
+    mime = None
+    local_file = None
+    if re.match('http://doc.rero.ch/lm.php', url):
+        print url
+        parts = url.split(',')
+        if parts[0].endswith('1000'):
+            doc_type = document_type[parts[1]]
+            if doc_type == 'journal':
+                collection = journal_collections[parts[2]]
+            elif doc_type == 'newspaper':
+                collection = newspaper_collections[parts[2]]
+            else:
+                collection = localisations[parts[2]]
+            local_file = '/rerodoc/public/%s/%s/%s' % (doc_type, collection, parts[3])
+            print local_file
+	    mime = "application/pdf"
+	    if re.match(".*?\.(jpg|jpeg)", local_file):
+		mime = "image/jpeg"
+	    if re.match(".*?\.png", local_file):
+		mime = "image/png"
+	    if re.match(".*?\.gif", local_file):
+		mime = "image/gif"
+	else:
+            raise ApplicationError.PermissionDenied("Your are not allowed to see this document.")
+    return (mime, local_file)
+
+#------------- Exceptions -------------------------
 class ApplicationError:
     """Base class for errors in the Urn packages."""
-    class InvalidURL(Exception):
-        """The configuration is not valid."""
-        pass
+
+    class UnableToRetrieveRemoteDocument(Exception):
+        """Problem with the remote server.
+            HTTP: 502
+        """
+        def __init__(self, value=None):
+            self.value = value
+            self.http_code = "502 Bad Gateway"
+        def __str__(self):
+            return repr(self.value)
+
+    class UnsupportedFormat(Exception):
+        """Unsupported file format.
+            HTTP: 415
+        """
+        def __init__(self, value=None):
+            self.value = value
+            self.http_code = "415 Unsupported Media Type"
+        def __str__(self):
+            return repr(self.value)
+
     class PermissionDenied(Exception):
-	pass
+        """
+            HTTP: 403
+        """
+        def __init__(self, value=None):
+            self.value = value
+            self.http_code = "403 Forbidden"
+        def __str__(self):
+            return repr(self.value)
+
+#-------------------- Utils ------------------------ 
+class MyFancyURLopener(urllib.FancyURLopener):
+  def http_error_default(self, url, fp, errcode, errmsg, headers):
+      if errcode == 404:
+          raise ApplicationError.UnableToRetrieveRemoteDocument(errmsg)
 
 class InputProcessed(object):
     def read(self, *args):
         raise EOFError('The wsgi.input stream has already been consumed')
     readline = readlines = __iter__ = read
 
+#-------------------- Main Classes ------------------------ 
 class WebApplication(object):
     def __init__(self, temp_dir=MVOConfig.General.temp_dir):
         self.usage = """<br><h1>Welcome to the multivio server.</h1>
         This is an abstract base class. Do not use it!
 """
         self._tmp_dir = temp_dir
-        self._tmp_files = []
-	#import socket
-	#socket.setdefaulttimeout(1)
-        self._urlopener = urllib.FancyURLopener()
+        self._timeout = MVOConfig.Url.timeout
+	import socket
+	socket.setdefaulttimeout(self._timeout)
+        self._urlopener = MyFancyURLopener()
         self._urlopener.version = MVOConfig.Url.user_agent
         self.logger = logging.getLogger(MVOConfig.Logger.name + "."
                         + self.__class__.__name__) 
+        self._supported_mime = [
+            r".*?/pdf.*?",
+            r".*?/xml.*?",
+            r"image/.*?"]
 
     def get(self, environ, start_response):
         start_response('405 Method Not Allowed', [('content-type',
@@ -165,94 +230,108 @@ class WebApplication(object):
                         'text/html')])
         return ["%s is not allowed." % environ['REQUEST_METHOD'].upper()]
 
+    def checkMime(self, mime):
+        if not [ re.match(regex, mime) for regex in self._supported_mime
+                if re.match(regex, mime)]:
+            raise ApplicationError.UnsupportedFormat("Mime type: %s is not supported" % mime)
+
     def getRemoteFile(self, url):
+	#file in RERO DOC nfs volume
+	(local_file, mime) = get_internal_file(url)
+        if local_file is not None and os.path.isfile(local_file):
+            self.checkMime(mime)
+            return (local_file, mime)
+        
         url_md5 = hashlib.sha224(url).hexdigest()
         self.logger.debug('Temp dir: %s' % self._tmp_dir)
         local_file = os.path.join(self._tmp_dir, url_md5)
 
-	#file in the local file system
-        if url.startswith("file://"):
-            mime = 'image/jpeg'
-            local_file = url.replace('file://','')
-            return (local_file, mime)
-	
-	#file in RERO DOC nfs volume
-	rero_local_file = self.lm(url)
-	if rero_local_file is not None and os.path.isfile(rero_local_file):
-	    local_file = rero_local_file
-            self.logger.debug("File: %s" % local_file)
-	    mime = "application/pdf"
-	    if re.match(".*?\.(jpg|jpeg)", rero_local_file):
-		mime = "image/jpeg"
-	    if re.match(".*?\.png", rero_local_file):
-		mime = "image/png"
-	    if re.match(".*?\.gif", rero_local_file):
-		mime = "image/gif"
-	    return (local_file, mime)
-	
 	#remote file
-        lock_file = local_file + ".lock"
 	mime_file = local_file + ".mime"
+        to_download = False
+        try:
+	    #file exists: ATOMIC?
+            f_lock = os.open(local_file, os.O_CREAT|os.O_EXCL|os.O_RDWR)
+            to_download = True
+        except:
+            pass
 
-	#already downloaded?
-        if not os.path.isfile(local_file):
-            if not os.path.isfile(lock_file):
-                self.logger.debug("Create lock file: %s" % lock_file)
-                open(lock_file, 'w').close() 
-                self.logger.debug("Try to retrieve %s file" % url)
-        	try:
-                    (filename, headers) = self._urlopener.retrieve(url)
-        	except Exception:
-                    os.remove(lock_file)
-            	    raise ApplicationError.InvalidURL("Invalid URL: %s" % url)
-		mime = headers['Content-Type']
-		if re.match('.*?/x-download', mime):
-		    mime = 'application/pdf'
-                shutil.move(filename, local_file)
-                self._tmp_files.append(local_file)
-                os.remove(lock_file)
-                self.logger.debug("Remove: %s" % lock_file)
-		output_mime_file = file(mime_file, "w")
-		output_mime_file.write(mime)
-		output_mime_file.close()
+        if to_download:
+            self.logger.debug("Try to retrieve %s file" % url)
+            try:
+                (filename, headers) = self._urlopener.retrieve(url, local_file+".tmp")
+                self.logger.debug("File: %s downloaded" % local_file)
+            except Exception, e:
+                os.remove(local_file)
+                raise ApplicationError.UnableToRetrieveRemoteDocument(str(e))
+                
+            #save mime type in cache
+            mime = headers['Content-Type']
+            if re.match('.*?/x-download', mime):
+                mime = 'application/pdf'
+            output_mime_file = file(mime_file, "w")
+            output_mime_file.write(mime)
+            output_mime_file.close()
 
+            #file in cache
+            os.rename(filename, local_file)
+        else:
 	    #downloading by an other process?
-            else:
-                while os.path.isfile(lock_file):
-                    self.logger.debug("Wait for file %s" % lock_file)
-                    time.sleep(.2)
+            start_time_wait = time.time() 
+            time_out_counter = 0
+            while os.path.getsize(local_file) == 0L and time_out_counter < self._timeout:
+                self.logger.debug("Wait for file: %s" % local_file )
+                time.sleep(.5)
+                time_out_counter = time.time() - start_time
+            if time_out_counter >= self._timeout:
+                raise ApplicationError.UnableToRetrieveDocument("Uploading process timeout: %s" % url)
+        
+        #load mime type
 	output_mime_file = file(mime_file, "r")
 	mime = output_mime_file.read()
 	output_mime_file.close()
+
+        self.checkMime(mime)
+
 	self.logger.debug("Url: %s Mime: %s LocalFile: %s" % (url, mime,
                 local_file))
-        if re.match('.*?/pdf.*?', mime) or \
-      	    re.match('.*?/xml.*?', mime) or \
-      	    re.match('image/.*?', mime):
-            return (local_file, mime)
-	else:
-	    return (None, mime)
 
+        return (local_file, mime)
+        
+#---------------------- to update when the remote file is modified ---------
+        #is file exists?
+        #if os.path.isfile(local_file):
+        #    stats = os.stat(local_file)
+        #    diff_last_access = datetime.timedelta(seconds=now -
+        #            stats[7])
+        #    diff_last_modif = datetime.timedelta(seconds=now -
+        #            stats[8])
+        #    self.logger.debug("Last access: %s, last_modif: %s" %
+        #        (diff_last_access, diff_last_modif))
 
-    def lm(self, url):
-        if re.match('http://doc.rero.ch/lm.php', url):
-            parts = url.split(',')
-            if parts[0].endswith('1000'):
-                doc_type = document_type[parts[1]]
-                if doc_type == 'journal':
-                    collection = journal_collections[parts[2]]
-                elif doc_type == 'newspaper':
-                    collection = newspaper_collections[parts[2]]
-                else:
-                    collection = localisations[parts[2]]
-                return '/rerodoc/public/%s/%s/%s' % (doc_type, collection, parts[3])
-    	    else:
-                raise ApplicationError.PermissionDenied("Your are not allowed to see this document.")
-        return None
+        #    #check for update every xx seconds
+        #    if diff_last_modif > datetime.timedelta(seconds=20):
+        #        #get remote file size
+        #        url_f = self._urlopener.open(url)
+        #        http_header = url_f.info()
+        #        remote_file_size = -1
+        #        self.logger.debug("Header: %s" % http_header.keys())
+        #        if http_header.has_key('content-length'):
+        #            remote_file_size = int(http_header['content-length'])
+        #        url_f.close()
 
-    def cleanTmpFiles(self):
-        for f in self._tmp_files:
-            os.remove(f)
+        #        self.logger.debug("Remote file_size: %s local file size: %s" %
+        #            (remote_file_size, stats[6]))
+        #        #check if size has changed
+        #        if remote_file_size != int(stats[6]) and \
+        #            diff_last_access > datetime.timedelta(seconds=10):
+        #                #check if someone did an access xx seconds ago
+        #                #!!Not atomic
+        #                os.rename(local_file, local_file+".to_remove")
+        #                os.remove(local_file+".to_remove")
+        #                self.logger.debug("Update file.")
+        #os.utime(local_file, (now, os.stat(local_file)[8]))
+
 
     def getPostForm(self, environ):
         input = environ['wsgi.input']

@@ -149,12 +149,7 @@ Core with Pdfs inside..</b></a>
         if re.search(r'metadata/get', path) is not None:
             self.logger.debug("Get Metadata with opts: %s" % opts)
             if opts.has_key('url'):
-                try:
-                    metadata = self.getMetaData(opts['url'])
-                except Exception:
-                    start_response('400 Bad Request', [('content-type',
-                           'text/html')])
-                    return ["Invalid arguments."]
+                metadata = self.getMetaData(opts['url'])
                 start_response('200 OK', [('content-type',
                     'application/json')])
                 return ["%s" % metadata]
@@ -162,12 +157,7 @@ Core with Pdfs inside..</b></a>
         if re.search(r'structure/get_logical', path) is not None:
             self.logger.debug("Get Logical with opts: %s" % opts)
             if opts.has_key('url'):
-                try:
-                    logical = self.getLogicalStructure(opts['url'])
-                except Exception:
-                    start_response('400 Bad Request', [('content-type',
-                           'text/html')])
-                    return ["Invalid arguments."]
+                logical = self.getLogicalStructure(opts['url'])
                 start_response('200 OK', [('content-type',
                     'application/json')])
                 return ["%s" % logical]
@@ -175,16 +165,10 @@ Core with Pdfs inside..</b></a>
         if re.search(r'structure/get_physical', path) is not None:
             self.logger.debug("Get Physical with opts: %s" % opts)
             if opts.has_key('url'):
-                try:
-                    physical = self.getPhysicalStructure(opts['url'])
-                except Exception:
-                    start_response('400 Bad Request', [('content-type',
-                           'text/html')])
-                    return ["Invalid arguments."]
+                physical = self.getPhysicalStructure(opts['url'])
                 start_response('200 OK', [('content-type',
                     'application/json')])
                 return ["%s" % physical]
-
         start_response('400 Bad Request', [('content-type', 'text/html')])
         return ["Invalid arguments."]
 
@@ -230,8 +214,11 @@ Core with Pdfs inside..</b></a>
                 self.logger.debug("Marc parser found!")
             except parser.ParserError.InvalidDocument:
                 self.logger.debug('Cannot be parsed by Marc parser')
-
-            return selected_parser
+            if selected_parser:
+                return selected_parser
+            else:
+                self.logger.debug("XML format not supported for %s" % url)
+                raise ApplicationError.UnsupportedFormat("XML format not supported for %s" % url)
 
     def getMetaData(self, url):
         (local_file, mime) = self.getRemoteFile(url)
