@@ -168,6 +168,15 @@ class ApplicationError:
         def __str__(self):
             return repr(self.value)
 
+    class InvalidArgument(Exception):
+        """
+            HTTP: 400
+        """
+        def __init__(self, value=None):
+            self.value = value
+            self.http_code = "400 Bad Request"
+        def __str__(self):
+            return repr(self.value)
 #-------------------- Utils ------------------------ 
 class MyFancyURLopener(urllib.FancyURLopener):
   def http_error_default(self, url, fp, errcode, errmsg, headers):

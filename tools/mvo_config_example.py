@@ -19,6 +19,7 @@ class MVOConfig:
 
     class Url:
         user_agent = 'Firefox/3.5.2'
+        timeout = 120 #2 minutes
 
     class Logger:
         name = "multivio"

@@ -169,8 +169,7 @@ Core with Pdfs inside..</b></a>
                 start_response('200 OK', [('content-type',
                     'application/json')])
                 return ["%s" % physical]
-        start_response('400 Bad Request', [('content-type', 'text/html')])
-        return ["Invalid arguments."]
+        raise ApplicationError.InvalidArgument("Invalid Argument")
 
     def _chooseParser(self, content, url, mime):
 

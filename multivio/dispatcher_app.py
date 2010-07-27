@@ -71,7 +71,8 @@ class DispatcherApp(WebApplication):
                     return self._apps[k](environ, start_response)
                 except (ApplicationError.PermissionDenied,
                     ApplicationError.UnableToRetrieveRemoteDocument,
-                    ApplicationError.UnsupportedFormat), e:
+                    ApplicationError.UnsupportedFormat,
+                    ApplicationError.InvalidArgument), e:
                     start_response(e.http_code, [('content-type',
                            'text/html')])
                     return ["%s: %s" % (type(e).__name__, str(e))]

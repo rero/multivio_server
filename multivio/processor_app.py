@@ -82,7 +82,6 @@ example.</b></a>"""
                 max_width = max_height = output_format = None
                 page_nr = 1
                 angle = 0
-                print opts
                 if opts.has_key('max_height'):
                     max_height = int(opts['max_height'])
                 if opts.has_key('max_width'):
@@ -98,8 +97,7 @@ example.</b></a>"""
                     mime_type),('content-length', str(len(data)))])
                 return [data]
             else:
-                start_response('400 Bad Request', [('content-type', 'text/html')])
-                return ["Invalid arguments."]
+                raise ApplicationError.InvalidArgument('Invalid Argument')
 
     def _chooseProcessor(self, file_name, mime):
 

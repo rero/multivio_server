@@ -28,6 +28,7 @@ import logging
 from processor import DocumentProcessor
 from mvo_config import MVOConfig
 import poppler
+from web_app import ApplicationError
 
 #----------------------------------- Exceptions --------------------------------
 
@@ -100,6 +101,9 @@ class PdfProcessor(DocumentProcessor):
         return scale
 
     def _getImageFromPdf(self, page_nr=1, max_width=None, max_height=None, angle=0, output_format='JPEG'):
+        if self._doc.getNumPages() < page_nr:
+            raise ApplicationError.InvalidArgument("Bad page number: it should be < %s."
+                % self._doc.getNumPages())
         import time
         self.logger.debug("Render image from pdf with opts width=%s, height=%s, angle=%s, page_nr=%s." % (max_width, max_height, angle, page_nr))
         start = time.clock()
