@@ -24,6 +24,7 @@ import version_app
 
 from web_app import WebApplication
 from mvo_config import MVOConfig
+from web_app import ApplicationError
 
 
 class DispatcherApp(WebApplication):
@@ -66,7 +67,18 @@ class DispatcherApp(WebApplication):
             return response
         for k in self._apps.keys():
             if re.match(k, path):
-                return self._apps[k](environ, start_response)
+                try:
+                    return self._apps[k](environ, start_response)
+                except (ApplicationError.PermissionDenied,
+                    ApplicationError.UnableToRetrieveRemoteDocument,
+                    ApplicationError.UnsupportedFormat), e:
+                    start_response(e.http_code, [('content-type',
+                           'text/html')])
+                    return ["%s: %s" % (type(e).__name__, str(e))]
+                except Exception, e:
+                    start_response('200 OK', [('content-type',
+                           'text/html')])
+                    return ["%s: %s" % (type(e).__name__, str(e))]
         else:
             start_response('404 File Not Found', [('content-type',
                             'text/html')])
