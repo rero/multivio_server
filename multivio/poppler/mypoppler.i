@@ -55,7 +55,7 @@ enum SplashColorMode {
  $1 = PyTuple_Check($input);
 }
 %{
-  GlobalParams *globalParams = NULL;
+  //globalParams = NULL;
   void init()
   {
     if (globalParams != NULL){
