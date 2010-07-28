@@ -85,7 +85,7 @@ class MarcParser(DocumentParser):
         urls = self._get_fields(record, tag='856', code='u')
         labels = self._get_fields(record, tag='856', code='z')
         if len(urls) != len(labels):
-            self.logger.debug('Length of labels is different that urls!')
+            self.logger.warning('Length of labels is different that urls!')
         for i in range(len(urls)):
             phys_struct.append({
                 'url': urls[i].decode('utf-8'),

@@ -76,14 +76,19 @@ class DispatcherApp(WebApplication):
                     ApplicationError.InvalidArgument), exception:
                     start_response(exception.http_code, [('content-type',
                            'text/html')])
+                    self.logger.error("Exception: %s occurs with message: %s" %
+                        (type(exception).__name__, str(exception)))
                     return ["%s: %s" % (type(exception).__name__, 
                         str(exception))]
                 except Exception, exception:
                     start_response('200 OK', [('content-type',
                            'text/html')])
+                    self.logger.error("Exception: %s occurs with message: %s" %
+                        (type(exception).__name__, str(exception)))
                     return ["%s: %s" % (type(exception).__name__, 
                         str(exception))]
         else:
+            self.logger.error("HTTP: 404 for %s" % path)
             start_response('404 File Not Found', [('content-type',
                             'text/html')])
             return ["Invalid URL."]

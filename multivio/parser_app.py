@@ -139,7 +139,7 @@ Core with Pdfs inside..</b></a>
         (path, opts) = self.get_params(environ)
 
         #check if is valid
-        self.logger.debug("Accessing: %s with opts: %s" % (path, opts))
+        self.logger.info("Accessing: %s with opts: %s" % (path, opts))
 
         if re.search(r'metadata/get', path) is not None:
             self.logger.debug("Get Metadata with opts: %s" % opts)
@@ -169,16 +169,16 @@ Core with Pdfs inside..</b></a>
     def _choose_parser(self, content, url, mime):
         """Select the right parser given the mime type."""
         if re.match('.*?/pdf.*?', mime):
-            self.logger.debug("Pdf parser found!")
+            self.logger.info("Pdf parser found!")
             return PdfParser(content, url, url.split('/')[-1])
         
         if re.match('image/.*?', mime):
-            self.logger.debug("Image parser found!")
+            self.logger.info("Image parser found!")
             return ImgParser(content, url, mime)
 
         if re.match('.*?/xml.*?', mime):
             #some METS files contain uppercase mets directive
-            self.logger.debug("XML parser found!")
+            self.logger.info("XML parser found!")
             content_str = content.read()
             content.seek(0)
             content_str = content_str.replace('METS=', 'mets=')
@@ -191,26 +191,26 @@ Core with Pdfs inside..</b></a>
             try:
                 self.logger.debug("Try Mets parser!")
                 selected_parser = MetsParser(content, url)
-                self.logger.debug("Mets parser found!")
+                self.logger.info("Mets parser found!")
             except parser.ParserError.InvalidDocument:
                 self.logger.debug('Cannot be parsed by Mets parser')
             try:
                 self.logger.debug("Try DC parser!")
                 selected_parser = DublinCoreParser(content, url)
-                self.logger.debug("DubinCore parser found!")
+                self.logger.info("DubinCore parser found!")
             except parser.ParserError.InvalidDocument:
                 self.logger.debug('Cannot be parsed by DC parser')
 
             try:
                 self.logger.debug("Try Marc parser!")
                 selected_parser = MarcParser(content, url)
-                self.logger.debug("Marc parser found!")
+                self.logger.info("Marc parser found!")
             except parser.ParserError.InvalidDocument:
                 self.logger.debug('Cannot be parsed by Marc parser')
             if selected_parser:
                 return selected_parser
             else:
-                self.logger.debug("XML format not supported for %s" % url)
+                self.logger.warn("XML format not supported for %s" % url)
                 raise ApplicationError.UnsupportedFormat(
                     "XML format not supported for %s" % url)
 
@@ -235,7 +235,6 @@ Core with Pdfs inside..</b></a>
         content = file(local_file,'r')
 
         #check the mime type
-        self.logger.debug("Url: %s Detected Mime: %s" % (url, mime))
         selected_parser = self._choose_parser(content, url, mime)
         logic = selected_parser.get_logical_structure()
         #logic['mime'] = mime
@@ -248,7 +247,6 @@ Core with Pdfs inside..</b></a>
         content = file(local_file,'r')
 
         #check the mime type
-        self.logger.debug("Url: %s Detected Mime: %s" % (url, mime))
         selected_parser = self._choose_parser(content, url, mime)
         physic = selected_parser.get_physical_structure()
         #physic['mime'] = mime

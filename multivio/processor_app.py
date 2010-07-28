@@ -63,7 +63,7 @@ example.</b></a>"""
         (path, opts) = self.get_params(environ)
 
         #check if is valid
-        self.logger.debug("Accessing: %s with opts: %s" % (path, opts))
+        self.logger.info("Accessing: %s with opts: %s" % (path, opts))
 
         if re.search(r'document/render', path) is not None:
             self.logger.debug("Render file with opts: %s" % opts)
@@ -92,14 +92,14 @@ example.</b></a>"""
         """Select the right processor given the mime type."""
 
         if re.match('.*?/pdf.*?', mime):
-            self.logger.debug("Pdf processor found!")
+            self.logger.info("Pdf processor found!")
             pdf = PdfProcessor(file_name)
             return pdf
         
         if re.match('image/.*?', mime):
-            self.logger.debug("Image processor found!")
+            self.logger.info("Image processor found!")
             return ImageProcessor(file_name)
-        self.logger.debug("Cannot process file with %s mime type." % mime)
+        self.logger.error("Cannot process file with %s mime type." % mime)
         raise ApplicationError.UnsupportedFormat(
             "Cannot process file with %s mime type." % mime)
 
@@ -109,7 +109,6 @@ example.</b></a>"""
         (file_name, mime) = self.get_remote_file(url)
             
         #check the mime type
-        self.logger.debug("Url: %s Detected Mime: %s" % (url, mime))
         processor = self._choose_processor(file_name, mime)
         return processor.render(max_output_size, angle, index, output_format)
 

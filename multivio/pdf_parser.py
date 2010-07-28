@@ -76,7 +76,7 @@ class PdfParser(DocumentParser, pyPdf.PdfFileReader):
         try:
             self.__initpdf__(self._file_stream)
         except:
-            self.logger.debug("Cannot extract page from pdf.")
+            self.logger.error("Cannot extract page from pdf.")
             raise ParserError.InvalidDocument("Cannot extract page from pdf.")
 
         metadata = {}
@@ -84,7 +84,7 @@ class PdfParser(DocumentParser, pyPdf.PdfFileReader):
         try:
             info = self.getDocumentInfo()
         except Exception:
-            self.logger.debug("Do not find info in pdf.")
+            self.logger.info("Do not find info in pdf.")
         if info and info.title is not None and len(info.title) > 0 \
                 and self.has_toc(self.getOutlines()):
             metadata['title'] = info.title
@@ -156,10 +156,10 @@ class PdfParser(DocumentParser, pyPdf.PdfFileReader):
             return to_return
         try:
             outlines = self.getOutlines()
-            self.logger.debug("TOC found.")
+            self.logger.info("TOC found.")
         except:
             outlines = None
-            self.logger.debug("No TOC found.")
+            self.logger.info("No TOC found.")
         if outlines is not None:
             to_return = get_parts(self.getOutlines())
             self.logger.debug("Table Of Content: %s"% json.dumps(to_return, 
@@ -188,7 +188,7 @@ class PdfParser(DocumentParser, pyPdf.PdfFileReader):
         try:
             self.__initpdf__(self._file_stream)
         except Exception:
-            self.logger.debug("Cannot extract page from pdf.")
+            self.logger.error("Cannot extract page from pdf.")
             raise ParserError.InvalidDocument("Cannot extract page from pdf.")
         
         #recursive fnct

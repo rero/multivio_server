@@ -198,10 +198,11 @@ class WebApplication(object):
             time_out_counter = 0
             while os.path.getsize(local_file) == 0L \
                 and time_out_counter < self._timeout:
-                self.logger.debug("Wait for file: %s" % local_file )
+                self.logger.info("Wait for file: %s" % local_file )
                 time.sleep(.5)
                 time_out_counter = time.time() - start_time_wait
             if time_out_counter >= self._timeout:
+                self.logger.warn("Uploading process timeout")
                 raise ApplicationError.UnableToRetrieveRemoteDocument(
                     "Uploading process timeout: %s" % url)
         

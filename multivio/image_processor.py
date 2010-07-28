@@ -48,7 +48,7 @@ class ImageProcessor(DocumentProcessor):
             data -- string: output data
         """
         output_format = output_format or 'image/jpeg'
-        self.logger.debug("Render Image")
+        self.logger.info("Render Image: %s" % self._file_name)
         max_width = max_output_size[0] or self._img.size[0]
         max_height = max_output_size[1] or self._img.size[1]
 

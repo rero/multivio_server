@@ -20,7 +20,7 @@ else:
     import json
 
 # local modules
-from web_app import WebApplication
+from web_app import WebApplication, ApplicationError
 
 
 #---------------------------- Classes -----------------------------------------
@@ -51,8 +51,6 @@ class VersionApp(WebApplication):
         (path, opts) = self.get_params(environ)
 
         #check if is valid
-        self.logger.debug("Accessing: %s with opts: %s" % (path, opts))
-
         if re.search(r'version', path) is not None:
             to_return = {
                 "name": self._name,
@@ -63,8 +61,7 @@ class VersionApp(WebApplication):
                 'application/json')])
             return ["%s" % json.dumps(to_return,  sort_keys=True, indent=2)]
 
-        start_response('400 Bad Request', [('content-type', 'text/html')])
-        return ["Invalid arguments."]
+        raise ApplicationError.InvalidArgument("Invalid Argument")
 
 
 #---------------------------- Main Part ---------------------------------------
