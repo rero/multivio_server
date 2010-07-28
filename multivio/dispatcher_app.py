@@ -12,7 +12,12 @@ __license__ = "Internal Use Only"
 
 # import of standard modules
 import re
+import sys 
 from optparse import OptionParser
+if sys.version_info < (2, 6):
+    import simplejson as json
+else:
+    import json
 
 # third party modules
 import logger
@@ -75,18 +80,24 @@ class DispatcherApp(WebApplication):
                     ApplicationError.UnsupportedFormat,
                     ApplicationError.InvalidArgument), exception:
                     start_response(exception.http_code, [('content-type',
-                           'text/html')])
+                           'application/json')])
                     self.logger.error("Exception: %s occurs with message: %s" %
                         (type(exception).__name__, str(exception)))
-                    return ["%s: %s" % (type(exception).__name__, 
-                        str(exception))]
+                    result = {
+                        'err_name': type(exception).__name__,
+                        'err_msg' : str(exception)
+                    }
+                    return [json.dumps(result, sort_keys=True, indent=4)]
                 except Exception, exception:
                     start_response('200 OK', [('content-type',
-                           'text/html')])
+                           'application/json')])
                     self.logger.error("Exception: %s occurs with message: %s" %
                         (type(exception).__name__, str(exception)))
-                    return ["%s: %s" % (type(exception).__name__, 
-                        str(exception))]
+                    result = {
+                        'err_name': type(exception).__name__,
+                        'err_msg' : str(exception)
+                    }
+                    return [json.dumps(result, sort_keys=True, indent=4)]
         else:
             self.logger.error("HTTP: 404 for %s" % path)
             start_response('404 File Not Found', [('content-type',
