@@ -95,7 +95,6 @@ def get_internal_file(url):
     mime = None
     local_file = None
     if re.match('http://doc.rero.ch/lm.php', url):
-        print url
         parts = url.split(',')
         if parts[0].endswith('1000'):
             doc_type = document_type[parts[1]]
@@ -107,7 +106,6 @@ def get_internal_file(url):
                 collection = localisations[parts[2]]
             local_file = '/rerodoc/public/%s/%s/%s' \
                 % (doc_type, collection, parts[3])
-            print local_file
             mime = "application/pdf"
             if re.match(".*?\.(jpg|jpeg)", local_file):
                 mime = "image/jpeg"
@@ -126,10 +124,10 @@ class MVOConfig:
 
     class General:
         """General config."""
-        temp_dir = '/tmp' 
-        lib_dir = '/var/www/multivio/lib/python'
-        sys_pathes = ['/var/www/multivio/lib/python',
-                '/var/www/mutlivio/bin']
+        temp_dir = '/var/tmp/multivio' 
+        lib_dir = '/rero/multivio/lib/python'
+        sys_pathes = ['/rero/multivio/lib/python',
+                '/www/mutlivio-test/bin']
 
     class Url:
         """Configuration for uploads."""
@@ -139,6 +137,6 @@ class MVOConfig:
     class Logger:
         """Config for logging."""
         name = "multivio"
-        file_name = "/tmp/multivio.log"
+        file_name = "/var/log/multivio/multivio.log"
         console = True
-        level = logging.DEBUG
+        level = logging.INFO
