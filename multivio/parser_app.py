@@ -12,19 +12,14 @@ __license__ = "Internal Use Only"
 
 # import of standard modules
 import sys
-import os
 from optparse import OptionParser
-import pyPdf
 if sys.version_info < (2, 6):
     import simplejson as json
 else:
     import json
 import re
-from xml.dom.minidom import parseString
 
 # local modules
-import logger
-import logging
 from mvo_config import MVOConfig
 from web_app import WebApplication
 
@@ -141,7 +136,7 @@ Core with Pdfs inside..</b></a>
         
         """
         #get parameters from the URI
-        (path, opts) = self.getParams(environ)
+        (path, opts) = self.get_params(environ)
 
         #check if is valid
         self.logger.debug("Accessing: %s with opts: %s" % (path, opts))
@@ -149,7 +144,7 @@ Core with Pdfs inside..</b></a>
         if re.search(r'metadata/get', path) is not None:
             self.logger.debug("Get Metadata with opts: %s" % opts)
             if opts.has_key('url'):
-                metadata = self.getMetaData(opts['url'])
+                metadata = self.get_metadata(opts['url'])
                 start_response('200 OK', [('content-type',
                     'application/json')])
                 return ["%s" % metadata]
@@ -157,7 +152,7 @@ Core with Pdfs inside..</b></a>
         if re.search(r'structure/get_logical', path) is not None:
             self.logger.debug("Get Logical with opts: %s" % opts)
             if opts.has_key('url'):
-                logical = self.getLogicalStructure(opts['url'])
+                logical = self.get_logical_structure(opts['url'])
                 start_response('200 OK', [('content-type',
                     'application/json')])
                 return ["%s" % logical]
@@ -165,14 +160,14 @@ Core with Pdfs inside..</b></a>
         if re.search(r'structure/get_physical', path) is not None:
             self.logger.debug("Get Physical with opts: %s" % opts)
             if opts.has_key('url'):
-                physical = self.getPhysicalStructure(opts['url'])
+                physical = self.get_physical_structure(opts['url'])
                 start_response('200 OK', [('content-type',
                     'application/json')])
                 return ["%s" % physical]
         raise ApplicationError.InvalidArgument("Invalid Argument")
 
-    def _chooseParser(self, content, url, mime):
-
+    def _choose_parser(self, content, url, mime):
+        """Select the right parser given the mime type."""
         if re.match('.*?/pdf.*?', mime):
             self.logger.debug("Pdf parser found!")
             return PdfParser(content, url, url.split('/')[-1])
@@ -190,7 +185,6 @@ Core with Pdfs inside..</b></a>
             content_str = content_str.replace('METS:', 'mets:')
             content_str = content_str.replace('MODS=', 'mods=')
             content_str = content_str.replace('MODS:', 'mods:')
-            doc = parseString(content_str)
             
             #METS parser
             selected_parser = None
@@ -217,46 +211,51 @@ Core with Pdfs inside..</b></a>
                 return selected_parser
             else:
                 self.logger.debug("XML format not supported for %s" % url)
-                raise ApplicationError.UnsupportedFormat("XML format not supported for %s" % url)
+                raise ApplicationError.UnsupportedFormat(
+                    "XML format not supported for %s" % url)
 
-    def getMetaData(self, url):
-        (local_file, mime) = self.getRemoteFile(url)
+    def get_metadata(self, url):
+        """Get the internal metadata of a document."""
+        (local_file, mime) = self.get_remote_file(url)
             
         content = file(local_file,'r')
 
         #check the mime type
         self.logger.debug("Url: %s Detected Mime: %s" % (url, mime))
-        parser = self._chooseParser(content, url, mime)
-        metadata = parser.getMetaData()
+        selected_parser = self._choose_parser(content, url, mime)
+        metadata = selected_parser.get_metadata()
         metadata['mime'] = mime
             
         return json.dumps(metadata,  sort_keys=True, indent=2)
 
-    def getLogicalStructure(self, url):
-        (local_file, mime) = self.getRemoteFile(url)
+    def get_logical_structure(self, url):
+        """Get the internal structure of a document such as Table of
+        content."""
+        (local_file, mime) = self.get_remote_file(url)
         content = file(local_file,'r')
 
         #check the mime type
         self.logger.debug("Url: %s Detected Mime: %s" % (url, mime))
-        parser = self._chooseParser(content, url, mime)
-        logic = parser.getLogicalStructure()
+        selected_parser = self._choose_parser(content, url, mime)
+        logic = selected_parser.get_logical_structure()
         #logic['mime'] = mime
             
         return json.dumps(logic,  sort_keys=True, indent=2)
 
-    def getPhysicalStructure(self, url):
-        (local_file, mime) = self.getRemoteFile(url)
+    def get_physical_structure(self, url):
+        """Get the list of physical files such as pdf or images."""
+        (local_file, mime) = self.get_remote_file(url)
         content = file(local_file,'r')
 
         #check the mime type
         self.logger.debug("Url: %s Detected Mime: %s" % (url, mime))
-        parser = self._chooseParser(content, url, mime)
-        physic = parser.getPhysicalStructure()
+        selected_parser = self._choose_parser(content, url, mime)
+        physic = selected_parser.get_physical_structure()
         #physic['mime'] = mime
             
         return json.dumps(physic,  sort_keys=True, indent=2)
 
-    def getParams(self, environ):
+    def get_params(self, environ):
         """ Overload the default method to allow cgi url.
             
             The url parameter should be at the end of the url.
@@ -274,10 +273,10 @@ Core with Pdfs inside..</b></a>
             #replace all until the first occurence of url=
             opts['url'] = res.pop()
             if len(res) > 0:
-                for v in res:
-                    args = v.split('&')
-                    for a in args:
-                        res_args = list(re.match(r'(.*?)=(.*)', a).groups())
+                for val in res:
+                    args = val.split('&')
+                    for arg in args:
+                        res_args = list(re.match(r'(.*?)=(.*)', arg).groups())
                         opts[res_args[0]] = res_args[1]
                     
         return (path, opts)
@@ -289,22 +288,22 @@ def main():
     """Main function"""
     usage = "usage: %prog [options]"
 
-    parser = OptionParser(usage)
+    opt_parser = OptionParser(usage)
 
-    parser.set_description ("To test the Logger class.")
+    opt_parser.set_description ("To test the Logger class.")
 
-    parser.add_option ("-v", "--verbose", dest="verbose",
+    opt_parser.add_option ("-v", "--verbose", dest="verbose",
                        help="Verbose mode",
                        action="store_true", default=False)
 
-    parser.add_option ("-p", "--port", dest="port",
+    opt_parser.add_option ("-p", "--port", dest="port",
                        help="Http Port (Default: 4041)",
                        type="int", default=4041)
 
-    (options, args) = parser.parse_args()
+    (options, args) = opt_parser.parse_args()
 
     if len(args) != 0:
-        parser.error("Error: incorrect number of arguments, try --help")
+        opt_parser.error("Error: incorrect number of arguments, try --help")
 
     from wsgiref.simple_server import make_server
     application = DocParserApp()

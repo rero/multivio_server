@@ -11,19 +11,10 @@ __license__ = "Internal Use Only"
 #---------------------------- Modules ---------------------------------------
 
 # import of standard modules
-import sys
-import os
-from optparse import OptionParser
-import pyPdf
-if sys.version_info < (2, 6):
-    import simplejson as json
-else:
-    import json
-import re
+import logging
 
 # local modules
 import logger
-import logging
 from mvo_config import MVOConfig
 
 #----------------------------------- Exceptions --------------------------------
@@ -42,8 +33,9 @@ class ParserError:
 #_______________________________________________________________________________
 class DocumentParser(object):
     """Base class to parse document"""
-#_______________________________________________________________________________
+
     def __init__(self, file_stream):
+        """Constructor."""
         self._file_stream = file_stream
         self.logger = logging.getLogger(MVOConfig.Logger.name + "."
                         + self.__class__.__name__) 
@@ -55,19 +47,19 @@ class DocumentParser(object):
         """Check if the document is valid."""
         return True
 
-    def getMetaData(self):
+    def get_metadata(self):
         """Get the Metadata of the document.
         Such as title, author, etc.
         """
         return None
 
-    def getLogicalStructure(self):
+    def get_logical_structure(self):
         """Get the logical structure of the document.
         Such as Table of Contents.
         """
         return None
 
-    def getPhysicalStructure(self):
+    def get_physical_structure(self):
         """Get the physical structure of the document.
         Such as list of images.
         """

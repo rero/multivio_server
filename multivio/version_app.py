@@ -48,7 +48,7 @@ class VersionApp(WebApplication):
         
         """
         #get parameters from the URI
-        (path, opts) = self.getParams(environ)
+        (path, opts) = self.get_params(environ)
 
         #check if is valid
         self.logger.debug("Accessing: %s with opts: %s" % (path, opts))

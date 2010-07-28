@@ -57,7 +57,7 @@ class PdfParserOK (unittest.TestCase):
         pdf_file = file(pdf_file_name, )
         pdf_parser = PdfParser(pdf_file, "file://%s" %
                         pdf_file_name, pdf_file_name)
-        meta = pdf_parser.getMetaData()
+        meta = pdf_parser.get_metadata()
         title = meta['title']
         self.assertEqual(title, u'Multivio: Project description', "Metadata has "\
                         "not been correctly detected %s != %s" % 
@@ -68,7 +68,7 @@ class PdfParserOK (unittest.TestCase):
         pdf_file = file(pdf_file_name)
         pdf_parser = PdfParser(pdf_file, "file://%s" %
                         pdf_file_name, pdf_file_name)
-        logic = pdf_parser.getLogicalStructure()
+        logic = pdf_parser.get_logical_structure()
         first_section = logic[0]['label']
         self.assertEqual (first_section, 'Introduction', "TOC is not well "\
                 "detected: %s != %s" %(first_section, 'Introduction')) 
@@ -78,7 +78,7 @@ class PdfParserOK (unittest.TestCase):
         pdf_file = file(pdf_file_name)
         url = "file://%s" % pdf_file_name
         pdf_parser = PdfParser(pdf_file, url, pdf_file_name)
-        phys = pdf_parser.getPhysicalStructure()
+        phys = pdf_parser.get_physical_structure()
         self.assertEqual(phys[0]['label'], pdf_file_name, "Physical Structure "\
                         "missmatch: %s != %s" % (phys[0]['label'], pdf_file_name))
 
@@ -106,7 +106,7 @@ class DublinCoreParserOK (unittest.TestCase):
         """Get DublinCore Metadata."""
         dc_file = file(dc_file_name)
         dc_parser = DublinCoreParser(dc_file, 'http://doc.rero.ch')
-        meta = dc_parser.getMetaData()
+        meta = dc_parser.get_metadata()
         title = meta['title']
         self.assertEqual(title, u'Un super titre fait par Johnny Mariéthoz', "Metadata has "\
                         "not been correctly detected %s != %s" % 
@@ -116,14 +116,14 @@ class DublinCoreParserOK (unittest.TestCase):
         """Get Dc logical structure."""
         dc_file = file(dc_file_name)
         dc_parser = DublinCoreParser(dc_file, 'http://doc.rero.ch')
-        logic = dc_parser.getLogicalStructure()
+        logic = dc_parser.get_logical_structure()
         self.assertEqual (logic, None)
 
     def testDcParserPhysical(self):
         """Get Dc physical structure."""
         dc_file = file(dc_file_name)
         dc_parser = DublinCoreParser(dc_file, 'http://doc.rero.ch')
-        phys = dc_parser.getPhysicalStructure()
+        phys = dc_parser.get_physical_structure()
         desired_out =  u"Bartholin_AB_titre.jpg"
         obtained_out = phys[0]['label']
         self.assertEqual(desired_out, obtained_out,  "Physical Structure "\
@@ -150,7 +150,7 @@ class MetsParserOK (unittest.TestCase):
         """Get Mets Metadata."""
         mets_file = file(mets_file_name)
         mets_parser = MetsParser(mets_file, 'http://doc.rero.ch')
-        meta = mets_parser.getMetaData()
+        meta = mets_parser.get_metadata()
         title = meta['title']
         ref_title = 'D. Joh. Sal. Semlers Antwort auf das Bahrdische Glaubensbekenntnis'
         self.assertEqual(title, ref_title, "Metadata has not been "\
@@ -162,7 +162,7 @@ class MetsParserOK (unittest.TestCase):
         """Get Mets logical structure."""
         mets_file = file(mets_file_name)
         mets_parser = MetsParser(mets_file, 'http://doc.rero.ch')
-        logic = mets_parser.getLogicalStructure()
+        logic = mets_parser.get_logical_structure()
         sect1_obtained = logic[0]['label']
         sect1_desired = 'Titelblatt'
         self.assertEqual (sect1_desired, sect1_obtained, "TOC is not valid %s != %s" % (sect1_desired, sect1_obtained) )
@@ -171,7 +171,7 @@ class MetsParserOK (unittest.TestCase):
         """Get Mets physical structure."""
         mets_file = file(mets_file_name)
         mets_parser = MetsParser(mets_file, 'http://doc.rero.ch')
-        phys = mets_parser.getPhysicalStructure()
+        phys = mets_parser.get_physical_structure()
         desired_out =  u"00000001.jpg"
         obtained_out = phys[0]['label']
         self.assertEqual(desired_out, obtained_out,  "Physical Structure "\
@@ -198,7 +198,7 @@ class MarcParserOK (unittest.TestCase):
         """Get Marc Metadata."""
         marc_file = file(marc_file_name)
         marc_parser = MarcParser(marc_file, 'http://doc.rero.ch')
-        meta = marc_parser.getMetaData()
+        meta = marc_parser.get_metadata()
         title = meta['title']
         ref_title = 'Phylogeography of Populus alba (L.) and Populus tremula '\
             '(L.) in Central Europe: secondary contact and hybridisation during '\
@@ -210,14 +210,14 @@ class MarcParserOK (unittest.TestCase):
         """Get Marc logical structure."""
         marc_file = file(marc_file_name)
         marc_parser = MarcParser(marc_file, 'http://doc.rero.ch')
-        logic = marc_parser.getLogicalStructure()
+        logic = marc_parser.get_logical_structure()
         self.assertEqual (logic, None)
 
     def testMetsParserPhysical(self):
         """Get Marc physical structure."""
         marc_file = file(marc_file_name)
         marc_parser = MarcParser(marc_file, 'http://doc.rero.ch')
-        phys = marc_parser.getPhysicalStructure()
+        phys = marc_parser.get_physical_structure()
         desired_out =  u"pdf"
         obtained_out = phys[0]['label']
         self.assertEqual(desired_out, obtained_out,  "Physical Structure "\

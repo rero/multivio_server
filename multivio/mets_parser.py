@@ -71,7 +71,7 @@ class MetsParser(DocumentParser):
     def getRecord(self):
         pass
 
-    def getMetaData(self):
+    def get_metadata(self):
         """Get pdf infos."""
         metadata = {}
         self._getLogicalStructure(self._doc)
@@ -89,7 +89,7 @@ class MetsParser(DocumentParser):
                         indent=4))
         return metadata
     
-    def getLogicalStructure(self):
+    def get_logical_structure(self):
         """Get the logical structure of the Mets."""
         self._getLogicalStructure(self._doc)
         self._getPhysicalStructure(self._doc)
@@ -137,7 +137,7 @@ class MetsParser(DocumentParser):
         #        sort_keys=True, indent=4))
         return logical_struct
     
-    def getPhysicalStructure(self):
+    def get_physical_structure(self):
         """Get the physical structure of the pdf."""
         self._getPhysicalStructure(self._doc)
         self._getFileList(self._doc)

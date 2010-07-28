@@ -11,26 +11,15 @@ __license__ = "Internal Use Only"
 #---------------------------- Modules ---------------------------------------
 
 # import of standard modules
-import sys
-import os
 from optparse import OptionParser
-import pyPdf
-if sys.version_info < (2, 6):
-    import simplejson as json
-else:
-    import json
 import re
-from xml.dom.minidom import parseString
 
 # local modules
-import logger
-import logging
 from mvo_config import MVOConfig
 from web_app import WebApplication
 
 from pdf_processor import PdfProcessor
 from image_processor import ImageProcessor
-import processor
 from web_app import ApplicationError
 
 
@@ -71,7 +60,7 @@ example.</b></a>"""
         
         """
         #get parameters from the URI
-        (path, opts) = self.getParams(environ)
+        (path, opts) = self.get_params(environ)
 
         #check if is valid
         self.logger.debug("Accessing: %s with opts: %s" % (path, opts))
@@ -91,15 +80,16 @@ example.</b></a>"""
                 if opts.has_key('page_nr'):
                     page_nr = int(opts['page_nr'])
                 (mime_type, data) = self.render(url=opts['url'],
-                        max_output_size=(max_width, max_height), angle=angle,
-                        index={'page_number':page_nr}, output_format=output_format)
+                    max_output_size=(max_width, max_height), angle=angle,
+                    index={'page_number':page_nr}, output_format=output_format)
                 start_response('200 OK', [('content-type',
                     mime_type),('content-length', str(len(data)))])
                 return [data]
             else:
                 raise ApplicationError.InvalidArgument('Invalid Argument')
 
-    def _chooseProcessor(self, file_name, mime):
+    def _choose_processor(self, file_name, mime):
+        """Select the right processor given the mime type."""
 
         if re.match('.*?/pdf.*?', mime):
             self.logger.debug("Pdf processor found!")
@@ -110,17 +100,20 @@ example.</b></a>"""
             self.logger.debug("Image processor found!")
             return ImageProcessor(file_name)
         self.logger.debug("Cannot process file with %s mime type." % mime)
-        raise ApplicationError.UnsupportedFormat("Cannot process file with %s mime type." % mime)
+        raise ApplicationError.UnsupportedFormat(
+            "Cannot process file with %s mime type." % mime)
 
-    def render(self, url, max_output_size=None, angle=0, index=None, output_format=None):
-        (file_name, mime) = self.getRemoteFile(url)
+    def render(self, url, max_output_size=None, angle=0, 
+        index=None, output_format=None):
+        """Generate a content to display for a given document."""
+        (file_name, mime) = self.get_remote_file(url)
             
         #check the mime type
         self.logger.debug("Url: %s Detected Mime: %s" % (url, mime))
-        processor = self._chooseProcessor(file_name, mime)
+        processor = self._choose_processor(file_name, mime)
         return processor.render(max_output_size, angle, index, output_format)
 
-    def getParams(self, environ):
+    def get_params(self, environ):
         """ Overload the default method to allow cgi url.
             
             The url parameter should be at the end of the url.
@@ -140,10 +133,10 @@ example.</b></a>"""
             #replace all until the first occurence of url=
             opts['url'] = res.pop()
             if len(res) > 0:
-                for v in res:
-                    args = v.split('&')
-                    for a in args:
-                        res_args = list(re.match(r'(.*?)=(.*)', a).groups())
+                for val in res:
+                    args = val.split('&')
+                    for arg in args:
+                        res_args = list(re.match(r'(.*?)=(.*)', arg).groups())
                         opts[res_args[0]] = res_args[1]
                     
         return (path, opts)

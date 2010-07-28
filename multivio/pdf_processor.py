@@ -11,22 +11,10 @@ __license__ = "Internal Use Only"
 #---------------------------- Modules ---------------------------------------
 
 # import of standard modules
-import sys
-import os
-from optparse import OptionParser
-import pyPdf
-if sys.version_info < (2, 6):
-    import simplejson as json
-else:
-    import json
-import re
 import cStringIO
 
 # local modules
-import logger
-import logging
 from processor import DocumentProcessor
-from mvo_config import MVOConfig
 import poppler
 from web_app import ApplicationError
 
@@ -49,7 +37,8 @@ class PdfProcessor(DocumentProcessor):
         """Check if the document is valid."""
         return True
 
-    def render(self, max_output_size=None, angle=0, index=None, output_format=None):
+    def render(self, max_output_size=None, angle=0, index=None,
+        output_format=None):
         """Render the document content.
 
             max_output_size -- tupple: maximum dimension of the output
@@ -62,7 +51,7 @@ class PdfProcessor(DocumentProcessor):
             data -- string: output data
         """
         self.logger.debug("Render")
-        return self._getImageFromPdf(page_nr=index['page_number'],
+        return self._get_image_from_pdf(page_nr=index['page_number'],
             max_width=max_output_size[0], max_height=max_output_size[1],
             angle=angle, output_format=output_format)
 
@@ -85,7 +74,8 @@ class PdfProcessor(DocumentProcessor):
         """
         return None
 
-    def _getOptimalScale(self, max_width, max_height, page_nr):
+    def _get_optimal_scale(self, max_width, max_height, page_nr):
+        """Compute the optimal scale factor."""
         if max_width is None and max_height is None:
             return 1.0
         page_width = self._doc.getPageMediaWidth(page_nr)
@@ -100,19 +90,25 @@ class PdfProcessor(DocumentProcessor):
             scale = max_height/page_height
         return scale
 
-    def _getImageFromPdf(self, page_nr=1, max_width=None, max_height=None, angle=0, output_format='JPEG'):
+    def _get_image_from_pdf(self, page_nr=1, max_width=None, max_height=None,
+        angle=0, output_format='JPEG'):
+        """Render a pdf page as image."""
         if self._doc.getNumPages() < page_nr:
-            raise ApplicationError.InvalidArgument("Bad page number: it should be < %s."
-                % self._doc.getNumPages())
+            raise ApplicationError.InvalidArgument(
+                "Bad page number: it should be < %s." %
+                self._doc.getNumPages())
         import time
-        self.logger.debug("Render image from pdf with opts width=%s, height=%s, angle=%s, page_nr=%s." % (max_width, max_height, angle, page_nr))
+        self.logger.debug("Render image from pdf with opts width=%s, "\
+            "height=%s, angle=%s, page_nr=%s." % (max_width, max_height, angle,
+            page_nr))
         start = time.clock()
         splash = poppler.SplashOutputDev(poppler.splashModeRGB8, 3, False,
             (255, 255, 255), True, True)
         splash.startDoc(self._doc.getXRef())
 
-        scale = self._getOptimalScale(max_width, max_height, page_nr)
-        self._doc.displayPage(splash, page_nr, 72*scale, 72*scale, 0, True, True, False)
+        scale = self._get_optimal_scale(max_width, max_height, page_nr)
+        self._doc.displayPage(splash, page_nr, 72*scale, 72*scale, 0, True,
+            True, False)
 
         bitmap = splash.getBitmap()
         new_width = bitmap.getWidth()
@@ -122,10 +118,10 @@ class PdfProcessor(DocumentProcessor):
         pil = Image.fromstring('RGB', (new_width, new_height), data)
         if angle != 0:
             pil = pil.rotate(int(angle))
-        f = cStringIO.StringIO()
-        pil.save(f, "JPEG", quality=90)
-        f.seek(0)
-        content = f.read()
+        temp_file = cStringIO.StringIO()
+        pil.save(temp_file, "JPEG", quality=90)
+        temp_file.seek(0)
+        content = temp_file.read()
         self.logger.debug("Total Process Time: %s", (time.clock() - start))
         #header = [('content-type', 'image/jpeg'), ('content-length',
         #str(len(content)))]

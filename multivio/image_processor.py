@@ -11,22 +11,11 @@ __license__ = "Internal Use Only"
 #---------------------------- Modules ---------------------------------------
 
 # import of standard modules
-import sys
-import os
-from optparse import OptionParser
-import pyPdf
-if sys.version_info < (2, 6):
-    import simplejson as json
-else:
-    import json
 import re
 import cStringIO
 
 # local modules
-import logger
-import logging
 from processor import DocumentProcessor
-from mvo_config import MVOConfig
 import Image
 
 #----------------------------------- Exceptions --------------------------------
@@ -67,15 +56,15 @@ class ImageProcessor(DocumentProcessor):
         self.logger.debug("Rotate the image: %s degree" % angle)
         if angle != 0:
             self._img = self._img.rotate(angle)
-        f = cStringIO.StringIO()
+        temp_file = cStringIO.StringIO()
         #img.save(f, "PNG")
         self.logger.debug("Out format: %s", output_format)
         if re.match(r'.*?/jpeg', output_format):
-            self._img.save(f, "JPEG", quality=90)
+            self._img.save(temp_file, "JPEG", quality=90)
             mime_type = 'image/jpeg'
         else:
-            self._img.save(f, "PNG")
+            self._img.save(temp_file, "PNG")
             mime_type = 'image/png'
-        f.seek(0)
-        content = f.read()
+        temp_file.seek(0)
+        content = temp_file.read()
         return(mime_type, content)

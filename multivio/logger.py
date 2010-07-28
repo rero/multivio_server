@@ -77,7 +77,7 @@ class LoggerApp(WebApplication):
         """Get the log message from the client in forward it into the loggging
         system of the server.
         """
-        content = self.getPostForm(environ)
+        content = self.get_post_form(environ)
         body = content.value
         if isinstance(content.value, list):
             body = str(content.value)

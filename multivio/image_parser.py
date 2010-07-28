@@ -12,8 +12,6 @@ __license__ = "Internal Use Only"
 
 # import of standard modules
 import sys
-import os
-from optparse import OptionParser
 if sys.version_info < (2, 6):
     import simplejson as json
 else:
@@ -39,7 +37,7 @@ class ImgParser(DocumentParser):
         """Check if the pdf is valid."""
         return True
 
-    def getMetaData(self):
+    def get_metadata(self):
         """Get pdf infos."""
 
         metadata = {}
@@ -51,37 +49,3 @@ class ImgParser(DocumentParser):
         self.logger.debug("Metadata: %s"% json.dumps(metadata, sort_keys=True, 
                         indent=4))
         return metadata
-    
-
-
-
-#---------------------------- Main Part ---------------------------------------
-def main():
-    """Main function"""
-    usage = "usage: %prog [options]"
-
-    parser = OptionParser(usage)
-
-    parser.set_description ("To test the Logger class.")
-
-    parser.add_option ("-v", "--verbose", dest="verbose",
-                       help="Verbose mode",
-                       action="store_true", default=False)
-
-    parser.add_option ("-p", "--port", dest="port",
-                       help="Http Port (Default: 4041)",
-                       type="int", default=4041)
-
-    (options, args) = parser.parse_args()
-
-    if len(args) != 0:
-        parser.error("Error: incorrect number of arguments, try --help")
-
-    from wsgiref.simple_server import make_server
-    application = LoggerApp()
-    server = make_server('', options.port, application)
-    server.serve_forever()
-
-if __name__ == '__main__':
-    main()
-

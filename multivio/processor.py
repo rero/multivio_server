@@ -11,24 +11,18 @@ __license__ = "Internal Use Only"
 #---------------------------- Modules ---------------------------------------
 
 # import of standard modules
-import sys
-import os
-from optparse import OptionParser
-import pyPdf
-if sys.version_info < (2, 6):
-    import simplejson as json
-else:
-    import json
-import re
+import logging
 
 # local modules
 import logger
-import logging
 from mvo_config import MVOConfig
 
-#----------------------------------- Exceptions --------------------------------
-
 #----------------------------------- Classes -----------------------------------
+class ProcessorError:
+    """Base class for Processor exception"""
+    class InvalidDocument(Exception):
+        """Input document is not valid."""
+        pass
 
 #_______________________________________________________________________________
 class DocumentProcessor(object):
@@ -46,7 +40,8 @@ class DocumentProcessor(object):
         """Check if the document is valid."""
         return True
 
-    def render(self, max_output_size=None, angle=0, index=None, output_format=None):
+    def render(self, max_output_size=None, angle=0, index=None,
+        output_format=None):
         """Render the document content.
 
             max_output_size -- tupple: maximum dimension of the output

@@ -41,7 +41,8 @@ class DispatcherApp(WebApplication):
 
         #application configuration
         self._apps = {}
-        #Client logger
+
+        #server applications
         self._apps['.*?/log/post'] = logger.LoggerApp()
         self._apps['.*?/version'] = version_app.VersionApp()
         self._apps['.*?/get.*?'] = \
@@ -54,7 +55,7 @@ class DispatcherApp(WebApplication):
     def __call__(self, environ, start_response):
         """Main method to dispatch HTTP requests."""
 
-        (path, opts) = self.getParams(environ)
+        (path, opts) = self.get_params(environ)
         self.logger.debug("Request: %s", path)
         if re.match('.*?/help', path) or len(path) == 0:
             start_response('200 OK', [('content-type', 'text/html')])
@@ -72,14 +73,16 @@ class DispatcherApp(WebApplication):
                 except (ApplicationError.PermissionDenied,
                     ApplicationError.UnableToRetrieveRemoteDocument,
                     ApplicationError.UnsupportedFormat,
-                    ApplicationError.InvalidArgument), e:
-                    start_response(e.http_code, [('content-type',
+                    ApplicationError.InvalidArgument), exception:
+                    start_response(exception.http_code, [('content-type',
                            'text/html')])
-                    return ["%s: %s" % (type(e).__name__, str(e))]
-                except Exception, e:
+                    return ["%s: %s" % (type(exception).__name__, 
+                        str(exception))]
+                except Exception, exception:
                     start_response('200 OK', [('content-type',
                            'text/html')])
-                    return ["%s: %s" % (type(e).__name__, str(e))]
+                    return ["%s: %s" % (type(exception).__name__, 
+                        str(exception))]
         else:
             start_response('404 File Not Found', [('content-type',
                             'text/html')])

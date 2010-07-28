@@ -12,7 +12,6 @@ __license__ = "Internal Use Only"
 
 # import of standard modules
 import sys
-import os
 import re
 from optparse import OptionParser
 import pyPdf
@@ -22,7 +21,7 @@ else:
     import json
 
 # local modules
-from parser import DocumentParser
+from parser import DocumentParser, ParserError
 
 #----------------------------------- Classes -----------------------------------
 
@@ -33,6 +32,7 @@ class PdfParser(DocumentParser, pyPdf.PdfFileReader):
         DocumentParser.__init__(self, file_stream)
         self._url = url
         self._label = label
+        self._page_id_to_page_numbers = None
 
     def __initpdf__(self, stream):
         """Initialize the PdfFileReader with a new file stream"""
@@ -41,7 +41,7 @@ class PdfParser(DocumentParser, pyPdf.PdfFileReader):
 
         def _setup_page_id_to_num(pages=None, _result=None, _num_pages=None):
             """to link page number with TOC entries. Stolen from:
-http://stackoverflow.com/questions/1918420/split-a-pdf-based-on-outline
+            http://stackoverflow.com/questions/1918420/split-a-pdf-based-on-outline
             """
             if _result is None:
                 _result = {}
@@ -70,12 +70,12 @@ http://stackoverflow.com/questions/1918420/split-a-pdf-based-on-outline
             return True
         return False
 
-    def getMetaData(self):
+    def get_metadata(self):
         """Get pdf infos."""
         self.logger.debug("Get Metadata")
         try:
             self.__initpdf__(self._file_stream)
-        except Exception:
+        except:
             self.logger.debug("Cannot extract page from pdf.")
             raise ParserError.InvalidDocument("Cannot extract page from pdf.")
 
@@ -83,11 +83,10 @@ http://stackoverflow.com/questions/1918420/split-a-pdf-based-on-outline
         info = None
         try:
             info = self.getDocumentInfo()
-        except:
+        except Exception:
             self.logger.debug("Do not find info in pdf.")
-            pass
         if info and info.title is not None and len(info.title) > 0 \
-                and self.hasToc(self.getOutlines()):
+                and self.has_toc(self.getOutlines()):
             metadata['title'] = info.title
         else:
             metadata['title'] = 'PDF Document'
@@ -106,7 +105,7 @@ http://stackoverflow.com/questions/1918420/split-a-pdf-based-on-outline
                         indent=4))
         return metadata
     
-    def hasToc(self, outlines):
+    def has_toc(self, outlines):
         """Return True if the pdf contains a Table of Contents."""
         if outlines is None:
             return False
@@ -115,15 +114,17 @@ http://stackoverflow.com/questions/1918420/split-a-pdf-based-on-outline
                 return True
         return False
 
-    def getLogicalStructure(self):
+    def get_logical_structure(self):
         """Get the logical structure of the pdf, basically the TOC."""
         try:
             self.__initpdf__(self._file_stream)
         except Exception:
             raise ParserError.InvalidDocument("Cannot extract page from pdf.")
         to_return = None
+
         #recursive fnct
         def get_parts(data, space=' '):
+            """Recursive function to go through the TOC of the pdf."""
             to_return = []
             for obj in data:
                 if isinstance(obj, pyPdf.pdf.Destination) and not \
@@ -170,7 +171,7 @@ http://stackoverflow.com/questions/1918420/split-a-pdf-based-on-outline
             return None
         return to_return
 
-    def getPhysicalStructure(self):
+    def get_physical_structure(self):
         """Get the physical structure of the pdf."""
         phys_struct = [{
                           'url': self._url,
@@ -180,7 +181,7 @@ http://stackoverflow.com/questions/1918420/split-a-pdf-based-on-outline
                 sort_keys=True, indent=4))
         return phys_struct
     
-    def displayToc(self):
+    def display_toc(self):
         """ Print on stdout the Table of content with the page number.
         """
         self.logger.debug("Get TOC")
@@ -189,10 +190,7 @@ http://stackoverflow.com/questions/1918420/split-a-pdf-based-on-outline
         except Exception:
             self.logger.debug("Cannot extract page from pdf.")
             raise ParserError.InvalidDocument("Cannot extract page from pdf.")
-        #print "Title: %s" % self.getDocumentInfo().title
-        #print "Author: %s" % self.getDocumentInfo().author
-        #print "Number of pages: %s" % self.getNumPages()
-        res = {}
+        
         #recursive fnct
         def print_part(data, space=' '):
             for obj in data:
@@ -205,8 +203,8 @@ http://stackoverflow.com/questions/1918420/split-a-pdf-based-on-outline
                         if not re.match('ascii', encoding):
                             title = title.decode(encoding)
                             title = title.encode('utf-8')
-                    pagenr = self._page_id_to_page_numbers.get(obj.page.idnum, '???')
-                    print "%s%s %s" % (space, title, pagenr)
+                    pagenr = self._page_id_to_page_numbers.get(obj.page.idnum,
+                        '???')
                 elif isinstance(obj, list):
                     print_part(obj, space + "  ")
         try:
@@ -242,9 +240,9 @@ def main():
 
     pdf_file = file(args[0])    
     parser = PdfParser(pdf_file, '', '')
-    #parser.displayToc()
-    toc = parser.getLogicalStructure()
-    #print toc
+    parser.display_toc()
+    toc = parser.get_logical_structure()
+    print toc
 if __name__ == '__main__':
     main()
 

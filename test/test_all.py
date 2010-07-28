@@ -24,6 +24,7 @@ sys.path.append (os.getcwd ())
 # import all the specific test modules
 import test_logger
 import test_parser
+import test_processor
 
 # create a big test suite
 test_suite = (
@@ -32,6 +33,7 @@ test_suite = (
     unittest.makeSuite (test_parser.MetsParserOK),
     unittest.makeSuite (test_parser.MarcParserOK),
     unittest.makeSuite (test_logger.LoggerOK),
+    unittest.makeSuite (test_processor.PdfProcessorOK),
     )
 
 # create the runner for the tests

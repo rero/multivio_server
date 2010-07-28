@@ -12,9 +12,6 @@ __license__ = "Internal Use Only"
 
 # import of standard modules
 import sys
-import os
-from optparse import OptionParser
-import pyPdf
 if sys.version_info < (2, 6):
     import simplejson as json
 else:
@@ -22,7 +19,7 @@ else:
 from xml.dom.minidom import parseString
 
 # local modules
-from parser import DocumentParser
+from parser import DocumentParser, ParserError
 
 #----------------------------------- Classes -----------------------------------
 
@@ -42,11 +39,13 @@ class MarcParser(DocumentParser):
         except Exception:
             return False
         marc = doc.getElementsByTagName('collection')
-        if len(marc) and marc[0].namespaceURI == 'http://www.loc.gov/MARC21/slim':
+        if len(marc) and marc[0].namespaceURI == \
+            'http://www.loc.gov/MARC21/slim':
             return True
         return False
 
-    def getRecord(self):
+    def _get_record(self):
+        """Get the record object in the xml file."""
         self._file_stream.seek(0)
         content_str = self._file_stream.read()
         doc = parseString(content_str)
@@ -55,31 +54,36 @@ class MarcParser(DocumentParser):
 
         # get the id number of the first record
         if len(records) == 0:
-                raise PaserError.InvalidDublinCore("XML/Marc Core document should contains at lease one record!")
+            raise ParserError.InvalidDocument(
+                "XML/Marc Core document should contains at lease one record!")
         if len(records) > 1:
-                raise PaserError.InvalidDublinCore("XML/Marc Core document should not contains more than one record!")
+            raise ParserError.InvalidDocument(
+                "XML/Marc Core document should not contains more than "\
+                "one record!")
         return records[0]
 
-    def getMetaData(self):
+    def get_metadata(self):
         """Get pdf infos."""
-        record = self.getRecord()
+        record = self._get_record()
         metadata = {}
-        metadata['title'] = self.getFields(record, tag='245', code='a')[0].decode('utf-8')
+        metadata['title'] = self._get_fields(record, tag='245',
+            code='a')[0].decode('utf-8')
         metadata['creator'] = [v.decode('utf-8') for v in
-            self.getFields(record, tag='100', code='a')]
+            self._get_fields(record, tag='100', code='a')]
         metadata['creator'].extend([v.decode('utf-8') for v in
-            self.getFields(record, tag='700', code='a')])
-        metadata['language'] = self.getFields(record, tag='041', code='a')[0].decode('utf-8')
+            self._get_fields(record, tag='700', code='a')])
+        metadata['language'] = self._get_fields(record, tag='041',
+            code='a')[0].decode('utf-8')
         self.logger.debug("Metadata: %s"% json.dumps(metadata, sort_keys=True, 
                         indent=4))
         return metadata
     
-    def getPhysicalStructure(self):
+    def get_physical_structure(self):
         """Get the physical structure of the pdf."""
         phys_struct = []
-        record = self.getRecord()
-        urls = self.getFields(record, tag='856', code='u')
-        labels = self.getFields(record, tag='856', code='z')
+        record = self._get_record()
+        urls = self._get_fields(record, tag='856', code='u')
+        labels = self._get_fields(record, tag='856', code='z')
         if len(urls) != len(labels):
             self.logger.debug('Length of labels is different that urls!')
         for i in range(len(urls)):
@@ -92,44 +96,17 @@ class MarcParser(DocumentParser):
         return phys_struct
 
 
-    def getFields(self, record, tag, code):
+    def _get_fields(self, record, tag, code):
+        """Get fields content given the tag name."""
         values = []
         for data_field in record.getElementsByTagName('datafield'):
-            if  data_field.hasAttributes() and \
+            if data_field.hasAttributes() and \
                 data_field.getAttribute('tag') == tag:
                 for sub_field in data_field.getElementsByTagName('subfield'):
-                    if  sub_field.hasAttributes() and \
+                    if sub_field.hasAttributes() and \
                            sub_field.getAttribute('code') == code:
-                        values.append(sub_field.firstChild.nodeValue.encode('utf-8'))
+                        values.append(
+                            sub_field.firstChild.nodeValue.encode('utf-8'))
         return values
 
-#---------------------------- Main Part ---------------------------------------
-def main():
-    """Main function"""
-    usage = "usage: %prog [options]"
-
-    parser = OptionParser(usage)
-
-    parser.set_description ("To test the Logger class.")
-
-    parser.add_option ("-v", "--verbose", dest="verbose",
-                       help="Verbose mode",
-                       action="store_true", default=False)
-
-    parser.add_option ("-p", "--port", dest="port",
-                       help="Http Port (Default: 4041)",
-                       type="int", default=4041)
-
-    (options, args) = parser.parse_args()
-
-    if len(args) != 0:
-        parser.error("Error: incorrect number of arguments, try --help")
-
-    from wsgiref.simple_server import make_server
-    application = LoggerApp()
-    server = make_server('', options.port, application)
-    server.serve_forever()
-
-if __name__ == '__main__':
-    main()
 
