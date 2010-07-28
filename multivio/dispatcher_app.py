@@ -78,7 +78,8 @@ class DispatcherApp(WebApplication):
                 except (ApplicationError.PermissionDenied,
                     ApplicationError.UnableToRetrieveRemoteDocument,
                     ApplicationError.UnsupportedFormat,
-                    ApplicationError.InvalidArgument), exception:
+                    ApplicationError.InvalidArgument,
+                    ApplicationError.HttpMethodNotAllowed), exception:
                     start_response(exception.http_code, [('content-type',
                            'application/json')])
                     self.logger.error("Exception: %s occurs with message: %s" %
@@ -101,8 +102,12 @@ class DispatcherApp(WebApplication):
         else:
             self.logger.error("HTTP: 404 for %s" % path)
             start_response('404 File Not Found', [('content-type',
-                            'text/html')])
-            return ["Invalid URL."]
+                            'application/json')])
+            result = {
+                'err_name': "FileNotFound",
+                'err_msg' : "File not found"
+            }
+            return [json.dumps(result, sort_keys=True, indent=4)]
 
 
 #---------------------------- Main Part ---------------------------------------

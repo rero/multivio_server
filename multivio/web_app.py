@@ -66,6 +66,14 @@ class ApplicationError:
         def __init__(self, value=None):
             WebException.__init__(self, value)
             self.http_code = "502 Bad Gateway"
+    
+    class HttpMethodNotAllowed(WebException):
+        """
+            HTTP: 405 Method Not Allowed
+        """
+        def __init__(self, value=None):
+            WebException.__init__(self, value)
+            self.http_code = "405 Method Not Allowed"
 
 #-------------------- Utils ------------------------ 
 class MyFancyURLopener(urllib.FancyURLopener):
@@ -107,16 +115,12 @@ class WebApplication(object):
 
     def get(self, environ, start_response):
         """Methods to call when a GET HTTP request should be served."""
-        start_response('405 Method Not Allowed', [('content-type',
-                        'text/html')])
-        return ["GET is not allowed."]
+        raise ApplicationError.HttpMethodNotAllowed("GET method is not allowed.")
 
     def post(self, environ, start_response):
         """Methods to call when a POST HTTP request should be served."""
         post_form = self.get_post_form(environ)
-        start_response('405 Method Not Allowed', [('content-type',
-                        'text/html')])
-        return ["POST is not allowed."]
+        raise ApplicationError.HttpMethodNotAllowed("POST method is not allowed.")
     
     def get_params(self, environ):
         """Parse cgi parameters."""
