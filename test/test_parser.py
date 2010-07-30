@@ -24,6 +24,7 @@ from multivio.pdf_parser import PdfParser
 from multivio.dc_parser import DublinCoreParser
 from multivio.mets_parser import MetsParser
 from multivio.marc_parser import MarcParser
+from multivio.mods_parser import ModsParser
 
 # add the current path to the python path, so we can execute this test
 # from any place
@@ -32,6 +33,7 @@ pdf_file_name = 'examples/document.pdf'
 mets_file_name = 'examples/test.mets'
 marc_file_name = 'examples/test.marc'
 dc_file_name = 'examples/test.xd'
+mods_file_name = 'examples/test.mods'
 
 class PdfParserOK (unittest.TestCase):
     """
@@ -218,6 +220,52 @@ class MarcParserOK (unittest.TestCase):
         marc_file = file(marc_file_name)
         marc_parser = MarcParser(marc_file, 'http://doc.rero.ch')
         phys = marc_parser.get_physical_structure()
+        desired_out =  u"pdf"
+        obtained_out = phys[0]['label']
+        self.assertEqual(desired_out, obtained_out,  "Physical Structure "\
+                "missmatch: '%s' != '%s'" % (desired_out, obtained_out))
+
+class ModsParserOK (unittest.TestCase):
+    """
+    Test ModsParser Class.
+    """
+
+    def testModsParser(self):
+        """Check ModsParser instance."""
+        mods_file = file(mods_file_name)
+        mods_parser = ModsParser(mods_file, 'http://doc.rero.ch')
+        self.assert_ (mods_parser, "Can not create simple ModsParser Object")
+    
+    def testModsBadParser(self):
+        """Check Mods instance with a bad file."""
+        mods_file = file(pdf_file_name)
+        self.assertRaises(multivio.parser.ParserError.InvalidDocument,
+                ModsParser, mods_file, 'http://doc.rero.ch')
+
+    def testModsParserMeta(self):
+        """Get Mods Metadata."""
+        mods_file = file(mods_file_name)
+        mods_parser = ModsParser(mods_file, 'http://doc.rero.ch')
+        meta = mods_parser.get_metadata()
+        title = meta['title']
+        ref_title = 'Phylogeography of Populus alba (L.) and Populus tremula '\
+            '(L.) in Central Europe: secondary contact and hybridisation during '\
+            'recolonisation from disconnected refugia'
+        self.assertEqual(title, ref_title, "Metadata has not been "\
+            "correctly detected '%s' != '%s'" % (title, ref_title))
+    
+    def testModsParserLogical(self):
+        """Get Mods logical structure."""
+        mods_file = file(mods_file_name)
+        mods_parser = ModsParser(mods_file, 'http://doc.rero.ch')
+        logic = mods_parser.get_logical_structure()
+        self.assertEqual (logic, None)
+
+    def testModsParserPhysical(self):
+        """Get Mods physical structure."""
+        mods_file = file(mods_file_name)
+        mods_parser = ModsParser(mods_file, 'http://doc.rero.ch')
+        phys = mods_parser.get_physical_structure()
         desired_out =  u"pdf"
         obtained_out = phys[0]['label']
         self.assertEqual(desired_out, obtained_out,  "Physical Structure "\

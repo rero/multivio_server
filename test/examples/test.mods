@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modsCollection xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.loc.gov/mods/v3" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-3.xsd">
+<mods xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.loc.gov/mods/v3" version="3.3" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-3.xsd">
+  <titleInfo>
+    <title>Phylogeography of Populus alba (L.) and Populus tremula (L.) in Central Europe: secondary contact and hybridisation during recolonisation from disconnected refugia</title>
+  </titleInfo>
+  <name type="personal">
+    <namePart>Fussi, Barbara</namePart>
+    <affiliation>Department of Genetics, Federal Research and Training Centre for Forests, Natural Hazards and Landscape, Vienna, Austria</affiliation>
+  </name>
+  <name type="personal">
+    <namePart>Lexer, Christian</namePart>
+    <affiliation>Unit of Ecology and Evolution, Department of Biology, University of Fribourg, Switzerland</affiliation>
+  </name>
+  <name type="personal">
+    <namePart>Heinze, Berthold</namePart>
+    <affiliation>Department of Genetics, Federal Research and Training Centre for Forests, Natural Hazards and Landscape, Vienna, Austria</affiliation>
+  </name>
+  <typeOfResource>text</typeOfResource>
+  <genre authority="marcgt">article</genre>
+  <genre authority="local">journalArticle</genre>
+  <originInfo>
+    <publisher>Université de Fribourg</publisher>
+    <place>
+      <placeTerm type="text">Fribourg</placeTerm>
+    </place>
+    <dateIssued>2010-01-14</dateIssued>
+  </originInfo>
+  <language>
+    <languageTerm authority="iso639-2b" type="code">eng</languageTerm>
+  </language>
+  <abstract lang="eng">The central aim of this paper is to clarify the picture of postglacial recolonisation and the reconstruction of refugia of Populus alba (L.) and Populus tremula (L.) in the light of hybridisation of the two species. We focussed our study on Central and Southeastern Europe including reference samples from Spain, Sweden and Northern Africa.We investigated 414 individuals of 26 populations using restriction fragment length polymorphisms (PCR-RFLPs) in six maternally inherited chloroplast markers. Altogether, 57 haplotypes were analysed of which four indicated hybridisation events in the past. Phylogeographic structure was found for P. alba with low diversity in Eastern Europe versus high diversity in Italy and Central Europe. A lack of phylogeographic structure was assessed for P. tremula as expected for a boreal forest tree, and diversity was evenly distributed in the studied populations. Two main refugia were identified for P. alba in Italy and Romania. A previously described hybrid zone between species in Central Europe turned out also to be a zone of contact between southern and eastern chloroplast lineages in P. alba. In contrast, P. tremula recolonised its present habitats in Central Europe from several refugia near the former ice cap. We assume separate disconnected refugia for P. alba and P. tremula and suggest an immigration scenario involving the mixing of colonisation routes and interspecific introgression to be responsible for the observed patterns.</abstract>
+  <subject lang="eng">
+    <topic>Postglacial recolonisation ; Hybridisation ; PCR-RFLPs ; cpDNA ; Populus alba ; Populus tremula</topic>
+  </subject>
+  <classification authority="udc">58</classification>
+  <relatedItem type="otherVersion" displayLabel="Published version">
+    <location>
+      <url>http://dx.doi.org/10.1007/s11295-009-0262-5</url>
+    </location>
+  </relatedItem>
+  <relatedItem type="host">
+    <titleInfo>
+      <title>Tree Genetics &amp; Genomes</title>
+    </titleInfo>
+    <originInfo>
+      <dateIssued>2010</dateIssued>
+    </originInfo>
+    <part>
+      <detail type="volume">
+        <text>6</text>
+      </detail>
+      <detail type="issue">
+        <text>3</text>
+      </detail>
+      <extent unit="page">
+        <start>439-450</start>
+      </extent>
+    </part>
+  </relatedItem>
+  <location>
+    <url access="raw object" displayLabel="pdf" note="application/pdf">http://doc.rero.ch/lm.php?url=1000,43,2,20100507110345-LD/lexer_ppp.pdf</url>
+  </location>
+  <location>
+    <url access="raw object" displayLabel="Supplementary materials 1: Sampling locations and number of haplotypes per population" note="application/pdf">http://doc.rero.ch/lm.php?url=1000,43,2,20100507110345-LD/lexer_ppp_sm1.pdf</url>
+  </location>
+  <location>
+    <url access="raw object" displayLabel="Supplementary materials 2: appendix S2 Haplotype definition of eight variable fragments" note="application/pdf">http://doc.rero.ch/lm.php?url=1000,43,2,20100507110345-LD/lexer_ppp_sm2.pdf</url>
+  </location>
+  <location>
+    <url access="raw object" displayLabel="Supplementary materials 3: Haplotype distribution in Europe and Northern Africa" note="application/pdf">http://doc.rero.ch/lm.php?url=1000,43,2,20100507110345-LD/lexer_ppp_sm3.pdf</url>
+  </location>
+  <location>
+    <url access="object in context">http://doc.rero.ch/record/18171</url>
+  </location>
+  <recordInfo>
+    <recordIdentifier>18171</recordIdentifier>
+  </recordInfo>
+</mods>
+
+</modsCollection>
