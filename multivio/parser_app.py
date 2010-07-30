@@ -28,6 +28,7 @@ from dc_parser import DublinCoreParser
 from image_parser import ImgParser
 from mets_parser import MetsParser
 from marc_parser import MarcParser
+from mods_parser import ModsParser
 import parser
 from web_app import ApplicationError
 
@@ -207,6 +208,13 @@ Core with Pdfs inside..</b></a>
                 self.logger.info("Marc parser found!")
             except parser.ParserError.InvalidDocument:
                 self.logger.debug('Cannot be parsed by Marc parser')
+            try:
+                self.logger.debug("Try Mods parser!")
+                selected_parser = ModsParser(content, url)
+                self.logger.info("Mods parser found!")
+            except parser.ParserError.InvalidDocument:
+                self.logger.debug('Cannot be parsed by Mods parser')
+
             if selected_parser:
                 return selected_parser
             else:

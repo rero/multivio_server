@@ -82,7 +82,7 @@ class ModsParser(DocumentParser):
                     creator.append(
                         first_and_last_name[0].firstChild.nodeValue.encode('utf-8'))
         if len(creator) > 0:
-            metadata['creator'] = " ".join(creator)
+            metadata['creator'] = creator
         language_info = record.getElementsByTagName('language')
         if len(language_info) > 0:
             language = language_info[0].getElementsByTagName('languageTerm')
