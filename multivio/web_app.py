@@ -66,6 +66,14 @@ class ApplicationError:
         def __init__(self, value=None):
             WebException.__init__(self, value)
             self.http_code = "502 Bad Gateway"
+    
+    class HttpMethodNotAllowed(WebException):
+        """
+            HTTP: 405 Method Not Allowed
+        """
+        def __init__(self, value=None):
+            WebException.__init__(self, value)
+            self.http_code = "405 Method Not Allowed"
 
 #-------------------- Utils ------------------------ 
 class MyFancyURLopener(urllib.FancyURLopener):
@@ -107,16 +115,12 @@ class WebApplication(object):
 
     def get(self, environ, start_response):
         """Methods to call when a GET HTTP request should be served."""
-        start_response('405 Method Not Allowed', [('content-type',
-                        'text/html')])
-        return ["GET is not allowed."]
+        raise ApplicationError.HttpMethodNotAllowed("GET method is not allowed.")
 
     def post(self, environ, start_response):
         """Methods to call when a POST HTTP request should be served."""
         post_form = self.get_post_form(environ)
-        start_response('405 Method Not Allowed', [('content-type',
-                        'text/html')])
-        return ["POST is not allowed."]
+        raise ApplicationError.HttpMethodNotAllowed("POST method is not allowed.")
     
     def get_params(self, environ):
         """Parse cgi parameters."""
@@ -151,9 +155,10 @@ class WebApplication(object):
         """Get a remote file if needed and download it in a cache directory."""
         #file in RERO DOC nfs volume
         try:
-            (local_file, mime) = mvo_config.get_internal_file(url)
+            (mime, local_file) = mvo_config.get_internal_file(url)
             if local_file is not None and os.path.isfile(local_file):
                 self.check_mime(mime)
+                self.logger.info("Found local file: %s" % local_file)
                 return (local_file, mime)
         except NameError:
             pass
@@ -177,7 +182,7 @@ class WebApplication(object):
             try:
                 (filename, headers) = self._urlopener.retrieve(url,
                     local_file+".tmp")
-                self.logger.debug("File: %s downloaded" % local_file)
+                self.logger.info("%s downloaded into %s" % (url, local_file))
             except Exception, e:
                 os.remove(local_file)
                 raise ApplicationError.UnableToRetrieveRemoteDocument(str(e))
