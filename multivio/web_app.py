@@ -48,7 +48,7 @@ class ApplicationError:
             HTTP: 415
         """
         def __init__(self, value=None):
-            WebException.__init__(self.value)
+            WebException.__init__(self, value)
             self.http_code = "502 Bad Gateway"
 
     class PermissionDenied(WebException):
