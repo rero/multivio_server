@@ -12,7 +12,6 @@ __license__ = "Internal Use Only"
 
 # import of standard modules
 import cStringIO
-import sys
 
 # local modules
 from processor import DocumentProcessor
@@ -70,7 +69,7 @@ class PdfProcessor(DocumentProcessor):
 
         return size
 
-    def search(self, query, from_=None, to_=None, max_results=None, sort=None):
+    def search(self, query, from_=None, to_=None, max_results=None, sort=None, context_size=None):
         """Search parts of the document that match the given query.
 
             from_ -- dict: start the search at from_
@@ -78,7 +77,7 @@ class PdfProcessor(DocumentProcessor):
             max_results -- int: limit the number of the returned results
             sort -- string: sort the results given the sort criterion
         return:
-            a dictionary with the founded results
+            a dictionary with the found results
         """    
         # number of results
         num_results = 0
@@ -102,7 +101,9 @@ class PdfProcessor(DocumentProcessor):
         # param check TODO report errors
         if (from_ is None): from_ = 1
         if (to_ is None): to_ = num_pages + 1   
-        if (max_results in [0, None]): max_results = sys.maxint
+        if (max_results in [0, None]):
+            import sys 
+            max_results = sys.maxint
 
         # calculate page range [1, num_pages+1]
         (from_, to_) = (max(from_, 1), min(to_ + 1, num_pages + 1))
@@ -142,11 +143,18 @@ class PdfProcessor(DocumentProcessor):
             while found is True:
                 #print "%s word found at page %s, bbx: (%s, %s, %s, %s)" % (query, np, x1, y1, x2, y2)
                 # build structure for the found word
+
+                bbox = {'x1':x1, 'y1':y1, 'x2':x2, 'y2':y2}
+
+                # TODO context, TODO CONFIG
+                CFG_CONTEXT_CHARS = 10
+                prw = self._get_context(np, bbox, text_page, CFG_CONTEXT_CHARS)
+
                 cur_res = {
-                  'preview': 'TODO: %s'%query,
+                  'preview': prw,
                   'index': {
                     'page': np, 
-                    'bounding_box': {'x1':x1, 'y1':y1, 'x2':x2, 'y2':y2}
+                    'bounding_box': bbox
                   }
                 }
                 
@@ -161,6 +169,41 @@ class PdfProcessor(DocumentProcessor):
                 (found, x1, y1, x2, y2) = text_page.findText(query, startAtTop, stopAtBottom, startAtLast, stopAtLast, caseSensitive, backward)
 
         return result
+
+
+    ## context/preview: get text left and right from found word
+    def _get_context(self, page_nr, bbox, text_page, context_chars = None):
+    
+
+        if (context_chars in [0, None]): 
+            return ''
+
+        # this allows us to get the words before and after
+        # but we need to know the found word number first ...
+        # words = text_page.makeWordList(True)
+        # w = words.get(i)
+        # word = w.getText()
+        # (x1, y1, x2, y2) = w.getBBox()
+
+        # get page dimensions
+        (page_width, page_height) = self.get_size(index={'page_number': page_nr})
+
+        # estimate font size
+        font_size = abs(bbox['y2']-bbox['y1'])
+
+        #INFO: context_chars: approximate number of characters of context on each side of found word
+        
+        # define width according to font size
+        context_width = 0.7*font_size*context_chars
+        (x_before, x_after) = (max(0, bbox['x1']-context_width), min(page_width, bbox['x2']+context_width))
+        
+        # get preview text and convert it to unicode (TODO ok ?)
+        prw = text_page.getText(x_before, bbox['y1'], x_after, bbox['y2'])
+        prw = unicode(prw.decode('utf-8'))
+        
+        print "found a match, preview: [%s]" % prw
+
+        return prw
 
     def indexing(self, output_file):
         """Batch indexing of the document.
@@ -222,7 +265,7 @@ class PdfProcessor(DocumentProcessor):
 
 # TODO: test
 p = PdfProcessor('/examples/d05.pdf')
-r = p.search(query='alors', from_=2, to_=100, max_results=0, sort=None)
+r = p.search(query='alors', from_=88, to_=97, max_results=0, sort=None)
 
 if r:
     print "# results: %s"%(len(r['file_position']['results']))
