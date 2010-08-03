@@ -31,6 +31,8 @@ typedef unsigned char SplashColor[4];
 %apply double *OUTPUT {double *xMinA, double *yMinA, double *xMaxA, double *yMaxA};
 %apply double *OUTPUT {double *xMin, double *yMin, double *xMax, double *yMax};
 
+/***************** SplashColorPtr *****************/
+
 enum SplashColorMode {
   splashModeMono1,    // 1 bit per component, 8 pixels per byte,
         //   MSbit is on the left
@@ -47,8 +49,6 @@ enum SplashColorMode {
         //   CMYKCMYK...
 #endif
 };
-
-/***************** SplashColorPtr *****************/
 
 %typemap(typecheck) (SplashColorPtr)
 {
@@ -79,6 +79,7 @@ void init();
         return NULL; 
     } 
     */
+    // TODO: To be changed: values are static
     temp[0] = 255;
     temp[1] = 255;
     temp[2] = 255;
@@ -151,6 +152,7 @@ extern GooString* test_goo_string_new(GooString* test, GooString* fifi)
 
 /************** Unicode *******************/
 
+
 %typemap(in) (Unicode *s, int len) 
 {
   size_t len = PyUnicode_GET_SIZE($input);
@@ -159,6 +161,7 @@ extern GooString* test_goo_string_new(GooString* test, GooString* fifi)
   if (PyUnicode_Check($input)) {
     size_t len = PyUnicode_GET_SIZE($input);
     if (len > 0) {
+        //check if it is work with all version of python
          wchar_t * tmp = (wchar_t*) malloc(PyUnicode_GET_DATA_SIZE($input)); // malloc(len*sizeof(char));
          $2 = PyUnicode_AsWideChar((PyUnicodeObject*)$input, tmp, len) ;
          $1 = (Unicode*)tmp;

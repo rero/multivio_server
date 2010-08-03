@@ -140,5 +140,5 @@ class MVOConfig:
         """Config for logging."""
         name = "multivio"
         file_name = "/tmp/multivio.log"
-        console = True
+        console = False
         level = logging.DEBUG
