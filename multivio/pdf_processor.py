@@ -107,17 +107,15 @@ class PdfProcessor(DocumentProcessor):
         splash.startDoc(self._doc.getXRef())
 
         scale = self._get_optimal_scale(max_width, max_height, page_nr)
-        self._doc.displayPage(splash, page_nr, 72*scale, 72*scale, 0, True,
+        self._doc.displayPage(splash, page_nr, 72*scale, 72*scale, -angle, True,
             True, False)
 
         bitmap = splash.getBitmap()
         new_width = bitmap.getWidth()
         new_height = bitmap.getHeight()
-        data = bitmap.getDataPtr()
         import Image
-        pil = Image.fromstring('RGB', (new_width, new_height), data)
-        if angle != 0:
-            pil = pil.rotate(int(angle))
+        pil = Image.fromstring('RGB', (new_width, new_height),
+            bitmap.getDataPtr())
         temp_file = cStringIO.StringIO()
         pil.save(temp_file, "JPEG", quality=90)
         temp_file.seek(0)
