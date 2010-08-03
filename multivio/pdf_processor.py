@@ -76,19 +76,20 @@ class PdfProcessor(DocumentProcessor):
             to_ -- dict: end the search at to_
             max_results -- int: limit the number of the returned results
             sort -- string: sort the results given the sort criterion
+            context_size: approximate number of characters of context around found words (left & right)
         return:
             a dictionary with the found results
-        """    
+        """  
+
         # number of results
         num_results = 0
 
         # number of pages in document
         num_pages = self._doc.getNumPages()        
 
-        print "%d pages detected" % num_pages
-    
-        # conversion of text to search to unicode
-        query = unicode(query.decode('utf-8'))
+        # conversion of search text to unicode
+        query = unicode(query, 'utf-8')
+        self.logger.debug("pdf_processor: searching term: [%s]"%query)
 
         ## findText options: perform find from top to bottom of page
         startAtTop = True
@@ -98,7 +99,7 @@ class PdfProcessor(DocumentProcessor):
         caseSensitive = False
         backward = False
 
-        # param check TODO report errors
+        # param check TODO report errors ?
         if (from_ is None): from_ = 1
         if (to_ is None): to_ = num_pages + 1   
         if (max_results in [0, None]):
@@ -112,7 +113,7 @@ class PdfProcessor(DocumentProcessor):
         result = {
           'context': 'text',
           'file_position': {
-            'url':'TODO://%s' % self._file_name,
+            'url':self._file_name, # will be replaced by remote URL by processor app, if necessary
             'results':[ # results for that file go here
             ] 
           }
@@ -125,13 +126,14 @@ class PdfProcessor(DocumentProcessor):
         done = False
         for np in range(from_, to_):
             # debug
-            print "searching on page %d" % np
+            #self.logger.debug("pdf_processor: searching on page %d"%np)
 
             if done is True:
                 break
 
             td = poppler.TextOutputDev(None, True, False, False)
             self._doc.displayPage(td, np, 72, 72, 0, True, True, False)
+
             text_page = td.takeText()
             (found, x1, y1, x2, y2) = text_page.findText(query, startAtTop, stopAtBottom, startAtLast, stopAtLast, caseSensitive, backward)
         
@@ -141,14 +143,11 @@ class PdfProcessor(DocumentProcessor):
             startAtLast = True
   
             while found is True:
-                #print "%s word found at page %s, bbx: (%s, %s, %s, %s)" % (query, np, x1, y1, x2, y2)
                 # build structure for the found word
-
                 bbox = {'x1':x1, 'y1':y1, 'x2':x2, 'y2':y2}
 
-                # TODO context, TODO CONFIG
-                CFG_CONTEXT_CHARS = 10
-                prw = self._get_context(np, bbox, text_page, CFG_CONTEXT_CHARS)
+                # get context
+                prw = self._get_context(np, bbox, text_page, context_size)
 
                 cur_res = {
                   'preview': prw,
@@ -170,11 +169,10 @@ class PdfProcessor(DocumentProcessor):
 
         return result
 
-
     ## context/preview: get text left and right from found word
+    # INFO: context_chars: approximate number of characters of context on each side of found word
     def _get_context(self, page_nr, bbox, text_page, context_chars = None):
     
-
         if (context_chars in [0, None]): 
             return ''
 
@@ -188,20 +186,18 @@ class PdfProcessor(DocumentProcessor):
         # get page dimensions
         (page_width, page_height) = self.get_size(index={'page_number': page_nr})
 
-        # estimate font size
+        # estimate of font size
         font_size = abs(bbox['y2']-bbox['y1'])
 
         #INFO: context_chars: approximate number of characters of context on each side of found word
         
         # define width according to font size
-        context_width = 0.7*font_size*context_chars
+        context_width = 0.5*font_size*context_chars
         (x_before, x_after) = (max(0, bbox['x1']-context_width), min(page_width, bbox['x2']+context_width))
         
-        # get preview text and convert it to unicode (TODO ok ?)
+        # get preview text
         prw = text_page.getText(x_before, bbox['y1'], x_after, bbox['y2'])
-        prw = unicode(prw.decode('utf-8'))
-        
-        print "found a match, preview: [%s]" % prw
+        # note: normally, prw is in utf-8 here. If not, do prw.encode('utf-8')
 
         return prw
 
@@ -264,10 +260,9 @@ class PdfProcessor(DocumentProcessor):
         return('image/jpeg', content)
 
 # TODO: test
-p = PdfProcessor('/examples/d05.pdf')
-r = p.search(query='alors', from_=88, to_=97, max_results=0, sort=None)
+p = PdfProcessor('/examples/d04.pdf')
+r = p.search(query='été', from_=1, to_=50, max_results=0, sort=None, context_size=10)
 
 if r:
     print "# results: %s"%(len(r['file_position']['results']))
-else:
-    print r
+

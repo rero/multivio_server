@@ -106,6 +106,40 @@ example.</b></a>"""
             else:
                 raise ApplicationError.InvalidArgument('Invalid Argument')
 
+        if re.search(r'document/search', path) is not None:
+            self.logger.debug("Search document with opts: %s" % opts)
+            if opts.has_key('url'):
+                if not opts.has_key('query'):
+                    raise ApplicationError.InvalidArgument('Invalid Argument: param query missing')
+
+                # note: unquote query string, useful for getting right accents and special chars
+                url = opts['url']
+                import urllib
+                query = urllib.unquote(opts['query'])
+                from_ = 1
+                to_ = max_results = sort = context_size = None
+                
+                if opts.has_key('from'):
+                    from_ = int(opts['from'])
+                if opts.has_key('to'):
+                    to_ = int(opts['to'])
+                if opts.has_key('max_results'):
+                    max_results = int(opts['max_results'])
+                if opts.has_key('sort'):
+                    sort = int(opts['sort'])
+                if opts.has_key('context_size'):
+                    context_size = int(opts['context_size'])
+
+                results = self.search(url, query, from_, to_, max_results, sort, context_size)
+                # add url to 'file_position' of results
+                results['file_position']['url'] = url
+                start_response('200 OK', [('content-type',
+                    'application/json')])
+                return [json.dumps(results, sort_keys=True, indent=2, encoding='utf-8')]
+            else:
+                raise ApplicationError.InvalidArgument('Invalid Argument')
+
+
     def _choose_processor(self, file_name, mime):
         """Select the right processor given the mime type."""
 
@@ -137,6 +171,16 @@ example.</b></a>"""
         #check the mime type
         processor = self._choose_processor(file_name, mime)
         return processor.get_size(index)
+
+    def search(self, url, query, from_=None, to_=None, max_results=None, sort=None, context_size=None):
+        """Search text in a document"""
+        (file_name, mime) = self.get_remote_file(url)
+
+        #check the mime type
+        processor = self._choose_processor(file_name, mime)
+        return processor.search(query, from_, to_, max_results, sort, context_size)
+
+
 
     def get_params(self, environ):
         """ Overload the default method to allow cgi url.
