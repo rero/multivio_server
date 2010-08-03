@@ -179,9 +179,14 @@ class WebApplication(object):
 
         if to_download:
             self.logger.debug("Try to retrieve %s file" % url)
+            start = time.time()
             try:
                 (filename, headers) = self._urlopener.retrieve(url,
                     local_file+".tmp")
+                end = time.time()
+                self.logger.info("Total Downloading Time: %s,"\
+                    " Connection speed: %s KB/s " % (end-start,
+                    os.path.getsize(filename)/((end-start)*1024.)))
                 self.logger.info("%s downloaded into %s" % (url, local_file))
             except Exception, e:
                 os.remove(local_file)
