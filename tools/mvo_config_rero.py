@@ -92,7 +92,7 @@ def get_internal_file(url):
             '19' : 'bibliotheques_et_musees'
     }
 
-    mime = None
+    mime = 'unknown'
     local_file = None
     if re.match('http://doc.rero.ch/lm.php', url):
         parts = url.split(',')
@@ -114,8 +114,6 @@ def get_internal_file(url):
                 mime = "image/png"
             if re.match(".*?\.gif", local_file):
                 mime = "image/gif"
-            else:
-                mime = None
         else:
             from multivio.web_app import ApplicationError
             raise ApplicationError.PermissionDenied(
@@ -141,5 +139,5 @@ class MVOConfig:
         """Config for logging."""
         name = "multivio"
         file_name = "/var/log/multivio/multivio.log"
-        console = True
+        console = False
         level = logging.INFO
