@@ -90,7 +90,7 @@ class DispatcherApp(WebApplication):
                     }
                     return [json.dumps(result, sort_keys=True, indent=4)]
                 except Exception, exception:
-                    start_response('200 OK', [('content-type',
+                    start_response('500 Internal Server Error', [('content-type',
                            'application/json')])
                     self.logger.error("Exception: %s occurs with message: %s" %
                         (type(exception).__name__, str(exception)))
