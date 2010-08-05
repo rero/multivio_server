@@ -106,13 +106,16 @@ def get_internal_file(url):
                 collection = localisations[parts[2]]
             local_file = '/rerodoc/public/%s/%s/%s' \
                 % (doc_type, collection, parts[3])
-            mime = "application/pdf"
+            if re.match(".*?\.(pdf)", local_file):
+                mime = "application/pdf"
             if re.match(".*?\.(jpg|jpeg)", local_file):
                 mime = "image/jpeg"
             if re.match(".*?\.png", local_file):
                 mime = "image/png"
             if re.match(".*?\.gif", local_file):
                 mime = "image/gif"
+            else:
+                mime = None
         else:
             from multivio.web_app import ApplicationError
             raise ApplicationError.PermissionDenied(

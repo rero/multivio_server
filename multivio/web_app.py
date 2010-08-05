@@ -160,7 +160,7 @@ class WebApplication(object):
                 self.check_mime(mime)
                 self.logger.info("Found local file: %s" % local_file)
                 return (local_file, mime)
-        except NameError:
+        except (NameError, AttributeError):
             pass
         
         url_md5 = hashlib.sha224(url).hexdigest()
