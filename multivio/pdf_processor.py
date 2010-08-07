@@ -142,7 +142,7 @@ class PdfProcessor(DocumentProcessor):
 
         # note: to_ is not included in range
         done = False
-        for np in range(from_, to_):
+        for np in xrange(from_, to_):
             # debug
             #self.logger.debug("pdf_processor: searching on page %d"%np)
 
@@ -219,11 +219,48 @@ class PdfProcessor(DocumentProcessor):
 
         return prw
 
-    def get_indexing(self, page_nr=1):
+
+    def get_indexing(self, index=None, from_=None, to_=None):
+        """Returns index of a range of pages of the document.
+        return:
+            index structure of the page(s)
+        """
+        import time
+        start = time.clock()
+
+        result = {'pages':[]}
+
+        # number of pages in document
+        num_pages = self._doc.getNumPages()
+
+        # if range specified, use it and ignore index['page_number']
+        page_range = xrange(1,num_pages)
+        if (None not in [from_, to_] and \
+            '' not in [from_, to_]):
+
+            # adapt to pages' range [1, num_pages]
+            (from_, to_) = (max(from_, 1), min(to_, num_pages))
+
+            for np in xrange(from_,to_+1):
+                result['pages'].append(self._get_indexing(np))
+
+        # else, try to use page_number in index
+        else:
+            page_nr = index['page_number']
+            if (page_nr is not None and page_nr != '' and page_nr in page_range):
+                result['pages'].append(self._get_indexing(page_nr))
+
+        self.logger.debug("get_indexing: Total Process Time: %s", (time.clock() - start))
+
+        return result
+
+    def _get_indexing(self, page_nr=1):
         """Returns index of a page of the document.
         return:
             index structure of the page
         """
+
+        #page_nr = index['page_number']
 
         # get words' list for a page
         td = poppler.TextOutputDev(None, True, False, False)
@@ -244,12 +281,14 @@ class PdfProcessor(DocumentProcessor):
         import sys
         prev = {'y2':-1}
         x1 = y1 = x2 = y2 = 0
-        for i in range(words.getLength()):
+        for i in xrange(words.getLength()):
 
             # get current word
             w = words.get(i)
-            (x1, y1, x2, y2) = w.getBBox()
-            self.logger.debug("new word [%s], coord:[%s,%s/%s,%s]"%(w.getText(), x1,y1,x2,y2))
+            coords = (x1, y1, x2, y2) = w.getBBox()
+            # round values
+            (x1, y1, x2, y2) = [round(x,0) for x in coords] 
+            #self.logger.debug("new word [%s], coord:[%s,%s/%s,%s]"%(w.getText(), x1,y1,x2,y2))
 
             # detect new line based on line height
             if (y2 > prev['y2']):
@@ -261,7 +300,7 @@ class PdfProcessor(DocumentProcessor):
                     line['w'] = abs(prev['x2'] - line_start_x)
                     # store line in list
                     page['lines'].append(line)
-                    self.logger.debug("finished line: [%s]"%line['text'])
+                    #self.logger.debug("finished line: [%s]"%line['text'])
 
                 # start a new line
                 line = {'t':y1, 'l':x1, 'w':-1, 'h':abs(y2-y1), 'x':[], 'text':''}

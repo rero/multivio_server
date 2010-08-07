@@ -73,7 +73,7 @@ class DocumentProcessor(object):
         """
         return None
 
-    def get_indexing(self, index=None):
+    def get_indexing(self, index=None, from_=None, to_=None):
         """Return the indexation of the document content.
             index -- dict: index in the document, including selection bounding box
 
