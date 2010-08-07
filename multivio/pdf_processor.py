@@ -69,6 +69,24 @@ class PdfProcessor(DocumentProcessor):
 
         return size
 
+    def get_text(self, index=None):
+        """Return the text contained inside the selected box.
+            index -- dict: index in the document, including bounding box
+
+        return:
+            data -- string: output text
+        """
+        page_nr = index['page_number']
+
+        td = poppler.TextOutputDev(None, True, False, False)
+        self._doc.displayPage(td, page_nr, 72, 72, 0, True, True, False)
+        text_page = td.takeText()        
+
+        text = {}
+        b = index['bounding_box']
+        text['text'] = text_page.getText(b['x1'],b['y1'],b['x2'],b['y2'])
+        return text
+
     def search(self, query, from_=None, to_=None, max_results=None, sort=None, context_size=None):
         """Search parts of the document that match the given query.
 
@@ -201,12 +219,62 @@ class PdfProcessor(DocumentProcessor):
 
         return prw
 
+    def get_page_index(self, page_nr=1):
+        """Returns index of a page of the document.
+        return:
+            index structure of the page
+        """
+
+        # get words' list for a page
+        td = poppler.TextOutputDev(None, True, False, False)
+        self._doc.displayPage(td, page_nr, 72, 72, 0, True, True, False)
+        text_page = td.takeText()
+        words = text_page.makeWordList(True)
+
+        # get page dimension
+        (page_width, page_height) = self.get_size(index={'page_number': page_nr})
+
+        # page structure
+        page = {'page_number': page_nr, 'w': page_width, 'h': page_height, 'lines': []}
+
+        #f = open(output_file, 'w')
+        words_text = []
+        
+        for i in range(words.getLength()):
+
+            # get current word
+            w = words.get(i)
+            (x1, y1, x2, y2) = w.getBBox()
+
+            # start a new line
+            #if (x1 < prev_x1):            
+            #    line = {'t':0, 'l':0, 'w':0, 'h':0, 'x':[], 'text':''}
+            # continue existing line
+            #else:
+            #    line = {}
+
+            w = words.get(i)
+            word_text = w.getText()
+            words_text.append(word_text)
+            (x1, y1, x2, y2) = w.getBBox()
+            #boxes = [{x1: x1, y1: y1, x2: x2, y2:y2}]
+            if False:  #word[-1] in line_break_chars:
+                # append next word
+                w2 = words.get(i+1)
+                (x1, y1, x2, y2) = w.getBBox()
+                #boxes.append({x1: x1, y1: y1, x2: x2, y2:y2})
+                word = word[:-1] + w2.getText()
+                # skip next word
+                #skip = True
+
+        print "PDF text: " + ' '.join(words_text)
+        return True
+
     def indexing(self, output_file):
         """Batch indexing of the document.
         return:
             True if everything is ok.
         """
-        return None
 
     def _get_optimal_scale(self, max_width, max_height, page_nr):
         """Compute the optimal scale factor."""
@@ -261,8 +329,9 @@ class PdfProcessor(DocumentProcessor):
 
 # TODO: test
 p = PdfProcessor('/examples/d04.pdf')
-r = p.search(query='été', from_=1, to_=50, max_results=0, sort=None, context_size=10)
+#r = p.search(query='été', from_=1, to_=50, max_results=0, sort=None, context_size=10)
+#
+#if r:
+#    print "# results: %s"%(len(r['file_position']['results']))
 
-if r:
-    print "# results: %s"%(len(r['file_position']['results']))
-
+#p.indexing('/tmp/index_output')

@@ -106,6 +106,30 @@ example.</b></a>"""
             else:
                 raise ApplicationError.InvalidArgument('Invalid Argument')
 
+        if re.search(r'document/get_text', path) is not None:
+            self.logger.debug("Get text with opts: %s" % opts)
+            if opts.has_key('url'):
+                page_nr = 1
+                x1 = x2 = y1 = y2 = 0
+                if opts.has_key('page_nr'):
+                    page_nr = int(opts['page_nr'])
+                if opts.has_key('x1'):
+                    x1 = int(opts['x1'])
+                if opts.has_key('x2'):
+                    x2 = int(opts['x2'])
+                if opts.has_key('y1'):
+                    y1 = int(opts['y1'])
+                if opts.has_key('y2'):
+                    y2 = int(opts['y2'])
+
+                text_result = self.get_text(url=opts['url'],
+                    index={'page_number':page_nr, 'bounding_box':{'x1':x1,'x2':x2,'y1':y1,'y2':y2}})
+                start_response('200 OK', [('content-type',
+                    'application/json')])
+                return [json.dumps(text_result, sort_keys=True, indent=2)]
+            else:
+                raise ApplicationError.InvalidArgument('Invalid Argument')
+
         if re.search(r'document/search', path) is not None:
             self.logger.debug("Search document with opts: %s" % opts)
             if opts.has_key('url'):
@@ -171,6 +195,14 @@ example.</b></a>"""
         #check the mime type
         processor = self._choose_processor(file_name, mime)
         return processor.get_size(index)
+
+    def get_text(self, url, index=None):
+        """Generate a content to display for a given document."""
+        (file_name, mime) = self.get_remote_file(url)
+
+        #check the mime type
+        processor = self._choose_processor(file_name, mime)
+        return processor.get_text(index)
 
     def search(self, url, query, from_=None, to_=None, max_results=None, sort=None, context_size=None):
         """Search text in a document"""
