@@ -130,6 +130,20 @@ example.</b></a>"""
             else:
                 raise ApplicationError.InvalidArgument('Invalid Argument')
 
+        if re.search(r'document/get_indexing', path) is not None:
+            self.logger.debug("Get page index with opts: %s" % opts)
+            if opts.has_key('url'):
+                page_nr = 1
+                if opts.has_key('page_nr'):
+                    page_nr = int(opts['page_nr'])
+                page_index = self.get_indexing(url=opts['url'],
+                    index={'page_number':page_nr})
+                start_response('200 OK', [('content-type',
+                    'application/json')])
+                return [json.dumps(page_index, sort_keys=True, indent=2)]
+            else:
+                raise ApplicationError.InvalidArgument('Invalid Argument')
+
         if re.search(r'document/search', path) is not None:
             self.logger.debug("Search document with opts: %s" % opts)
             if opts.has_key('url'):
@@ -197,12 +211,20 @@ example.</b></a>"""
         return processor.get_size(index)
 
     def get_text(self, url, index=None):
-        """Generate a content to display for a given document."""
+        """Get the text in the selected zone in the document"""
         (file_name, mime) = self.get_remote_file(url)
 
         #check the mime type
         processor = self._choose_processor(file_name, mime)
         return processor.get_text(index)
+
+    def get_indexing(self, url, index=None):
+        """Get index of the positions of words on a given page"""
+        (file_name, mime) = self.get_remote_file(url)
+
+        #check the mime type
+        processor = self._choose_processor(file_name, mime)
+        return processor.get_indexing(index['page_number'])
 
     def search(self, url, query, from_=None, to_=None, max_results=None, sort=None, context_size=None):
         """Search text in a document"""

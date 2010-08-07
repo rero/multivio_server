@@ -65,7 +65,16 @@ class DocumentProcessor(object):
         return None
 
     def get_text(self, index=None):
-        """Return the size of the document content.
+        """Return the text content of some part of the document.
+            index -- dict: index in the document, including selection bounding box
+
+        return:
+            data -- string: output data
+        """
+        return None
+
+    def get_indexing(self, index=None):
+        """Return the indexation of the document content.
             index -- dict: index in the document, including selection bounding box
 
         return:

@@ -202,7 +202,7 @@ class PdfProcessor(DocumentProcessor):
         # (x1, y1, x2, y2) = w.getBBox()
 
         # get page dimensions
-        (page_width, page_height) = self.get_size(index={'page_number': page_nr})
+        page_size = self.get_size(index={'page_number': page_nr})
 
         # estimate of font size
         font_size = abs(bbox['y2']-bbox['y1'])
@@ -211,7 +211,7 @@ class PdfProcessor(DocumentProcessor):
         
         # define width according to font size
         context_width = 0.5*font_size*context_chars
-        (x_before, x_after) = (max(0, bbox['x1']-context_width), min(page_width, bbox['x2']+context_width))
+        (x_before, x_after) = (max(0, bbox['x1']-context_width), min(page_size['width'], bbox['x2']+context_width))
         
         # get preview text
         prw = text_page.getText(x_before, bbox['y1'], x_after, bbox['y2'])
@@ -219,7 +219,7 @@ class PdfProcessor(DocumentProcessor):
 
         return prw
 
-    def get_page_index(self, page_nr=1):
+    def get_indexing(self, page_nr=1):
         """Returns index of a page of the document.
         return:
             index structure of the page
@@ -232,43 +232,63 @@ class PdfProcessor(DocumentProcessor):
         words = text_page.makeWordList(True)
 
         # get page dimension
-        (page_width, page_height) = self.get_size(index={'page_number': page_nr})
+        page_size = self.get_size(index={'page_number': page_nr})
 
         # page structure
-        page = {'page_number': page_nr, 'w': page_width, 'h': page_height, 'lines': []}
+        page = {'page_number': page_nr, 'w': page_size['width'], 'h': page_size['height'], 'lines': []}
+        #self.logger.debug("page dimensions: [%s,%s]"%(page_size['width'], page_size['height'] ))
 
-        #f = open(output_file, 'w')
-        words_text = []
-        
+        line = None            # current line structure
+        line_start_x = -1      # horizontal position of the beginning of the line
+        words_text = []        # list of words in current line
+        import sys
+        prev = {'y2':-1}
+        x1 = y1 = x2 = y2 = 0
         for i in range(words.getLength()):
 
             # get current word
             w = words.get(i)
             (x1, y1, x2, y2) = w.getBBox()
+            self.logger.debug("new word [%s], coord:[%s,%s/%s,%s]"%(w.getText(), x1,y1,x2,y2))
 
-            # start a new line
-            #if (x1 < prev_x1):            
-            #    line = {'t':0, 'l':0, 'w':0, 'h':0, 'x':[], 'text':''}
-            # continue existing line
-            #else:
-            #    line = {}
+            # detect new line based on line height
+            if (y2 > prev['y2']):
+                if (line is not None):
+                    # separate each word by a space
+                    line['text'] = ' '.join(words_text)
+                    words_text = []
+                    # compute line width
+                    line['w'] = abs(prev['x2'] - line_start_x)
+                    # store line in list
+                    page['lines'].append(line)
+                    self.logger.debug("finished line: [%s]"%line['text'])
 
-            w = words.get(i)
-            word_text = w.getText()
-            words_text.append(word_text)
-            (x1, y1, x2, y2) = w.getBBox()
-            #boxes = [{x1: x1, y1: y1, x2: x2, y2:y2}]
-            if False:  #word[-1] in line_break_chars:
-                # append next word
-                w2 = words.get(i+1)
-                (x1, y1, x2, y2) = w.getBBox()
-                #boxes.append({x1: x1, y1: y1, x2: x2, y2:y2})
-                word = word[:-1] + w2.getText()
-                # skip next word
-                #skip = True
+                # start a new line
+                line = {'t':y1, 'l':x1, 'w':-1, 'h':abs(y2-y1), 'x':[], 'text':''}
+                # keep line start, used to compute line width
+                line_start_x = x1
 
-        print "PDF text: " + ' '.join(words_text)
-        return True
+
+            # store left and right coordinates of word
+            line['x'].append({'l':x1,'r':x2})
+            # store word in text list
+            words_text.append(w.getText())
+
+            # detect last word, and thus last line
+            if (i == words.getLength()-1):
+                # separate each word by a space
+                line['text'] = ' '.join(words_text)
+                words_text = []
+                # compute line width
+                line['w'] = abs(x2 - line_start_x)
+                # store line in list
+                page['lines'].append(line)
+                #self.logger.debug("finished last line: [%s]"%line['text'])
+
+            # update previous position
+            prev = {'x1':x1,'y1':y1,'x2':x2,'y2':y2}
+        
+        return page
 
     def indexing(self, output_file):
         """Batch indexing of the document.
@@ -328,10 +348,11 @@ class PdfProcessor(DocumentProcessor):
         return('image/jpeg', content)
 
 # TODO: test
-p = PdfProcessor('/examples/d04.pdf')
+#p = PdfProcessor('/examples/d04.pdf')
 #r = p.search(query='été', from_=1, to_=50, max_results=0, sort=None, context_size=10)
 #
 #if r:
 #    print "# results: %s"%(len(r['file_position']['results']))
 
 #p.indexing('/tmp/index_output')
+#page = p.get_indexing(page_nr=1)
