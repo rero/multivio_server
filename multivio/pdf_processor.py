@@ -32,6 +32,7 @@ class PdfProcessor(DocumentProcessor):
         poppler.cvar.globalParams.setAntialias("yes")
         poppler.cvar.globalParams.setVectorAntialias("yes")
         self._doc = poppler.PDFDoc(self._file_name)
+        self._index = None
 
     def _check(self):
         """Check if the document is valid."""
@@ -260,8 +261,6 @@ class PdfProcessor(DocumentProcessor):
             index structure of the page
         """
 
-        #page_nr = index['page_number']
-
         # get words' list for a page
         td = poppler.TextOutputDev(None, True, False, False)
         self._doc.displayPage(td, page_nr, 72, 72, 0, True, True, False)
@@ -334,6 +333,85 @@ class PdfProcessor(DocumentProcessor):
         return:
             True if everything is ok.
         """
+        # format : {'word': {page_number, bbx}}
+        index = {}
+ 
+        import time
+        start = time.clock()
+
+        # number of pages in document
+        num_pages = self._doc.getNumPages()
+
+        self.logger.debug("indexing %s pages to file: %s"%(num_pages,output_file))
+
+        # process each page
+        for np in xrange(1,num_pages):
+
+            #self.logger.debug("processing page number %s"%np)
+
+            # get words' list for a page
+            td = poppler.TextOutputDev(None, True, False, False)
+            self._doc.displayPage(td, np, 72, 72, 0, True, True, False)
+            text_page = td.takeText()
+            words = text_page.makeWordList(True)
+            
+            # process each word
+            for wi in xrange(words.getLength()):
+                ww = words.get(wi)
+                wt= ww.getText()
+                coords = (x1,y1,x2,y2) = ww.getBBox()
+                (x1,y1,x2,y2) = [round(x,0) for x in coords]
+
+                # TODO: preprocess words, ie put everything to lower case, replace some characters...
+                # remove punctuation
+                wt = self._strip_punctuation(wt.lower())
+
+                if (len(wt.strip())==0): 
+                    continue
+
+                # check for existing entry of word in index
+                if index.has_key(wt):
+                    index[wt].append({'page_number':np, 'bbx':{'x1':x1,'y1':y1,'x2':x2,'y2':y2}})
+                else:
+                    index[wt] = [{'page_number':np, 'bbx':{'x1':x1,'y1':y1,'x2':x2,'y2':y2}}]
+
+        # store index in processor instance
+        self._index = index 
+
+        self.logger.debug("Total Indexing Time: %s", (time.clock() - start))
+
+        import sys
+        if sys.version_info < (2, 6):
+            import simplejson as json
+        else:
+            import json
+
+        self.logger.debug("writing to file: %s"%output_file)
+
+        start = time.clock()
+
+        # output to file
+        f = open(output_file,'w')
+        data = json.dumps(index, sort_keys=True, encoding='utf-8', indent=2)
+        f.write(data)
+        f.close()
+
+        self.logger.debug("Total Save Index to File Time: %s", (time.clock() - start))
+
+        return True
+
+    def _strip_punctuation(self, text):
+        import string
+        not_letters_or_digits = string.punctuation  # '!"#%\'()*+,-./:;<=>?@[\]^_`{|}~'
+        if isinstance(text, unicode):
+            translate_table = dict((ord(c), u'')
+                               for c in unicode(not_letters_or_digits))
+            return text.translate(translate_table)
+        else:
+            assert isinstance(text, str)
+            translate_table = string.maketrans("","")
+            return text.translate(translate_table, not_letters_or_digits)
+
 
     def _get_optimal_scale(self, max_width, max_height, page_nr):
         """Compute the optimal scale factor."""
@@ -387,11 +465,11 @@ class PdfProcessor(DocumentProcessor):
         return('image/jpeg', content)
 
 # TODO: test
-#p = PdfProcessor('/examples/d04.pdf')
+p = PdfProcessor('/examples/d04.pdf')
 #r = p.search(query='été', from_=1, to_=50, max_results=0, sort=None, context_size=10)
 #
 #if r:
 #    print "# results: %s"%(len(r['file_position']['results']))
 
-#p.indexing('/tmp/index_output')
+p.indexing('/tmp/index_output')
 #page = p.get_indexing(page_nr=1)
