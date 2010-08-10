@@ -52,7 +52,7 @@ class DispatcherApp(WebApplication):
         self._apps['.*?/version'] = version_app.VersionApp()
         self._apps['.*?/get.*?'] = \
             parser_app.DocParserApp(temp_dir=MVOConfig.General.temp_dir)
-        self._apps['.*?/document/render'] = \
+        self._apps['.*?/document/.*?'] = \
             processor_app.DocProcessorApp(temp_dir=MVOConfig.General.temp_dir)
         self.usage = """<br><h1>Welcome to the multivio server.</h1><br>"""
         self.logger = logging.getLogger(MVOConfig.Logger.name+".Dispatcher")
@@ -90,7 +90,7 @@ class DispatcherApp(WebApplication):
                     }
                     return [json.dumps(result, sort_keys=True, indent=4)]
                 except Exception, exception:
-                    start_response('200 OK', [('content-type',
+                    start_response('500 Internal Server Error', [('content-type',
                            'application/json')])
                     self.logger.error("Exception: %s occurs with message: %s" %
                         (type(exception).__name__, str(exception)))
