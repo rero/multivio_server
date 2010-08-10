@@ -38,7 +38,7 @@ class VersionApp(WebApplication):
             "api_version" " : "0.1"
         }
 <br>"""
-        self._api_version = "0.1"
+        self._api_version = "0.2"
         self._name = "Multivio Server"
         import __init__
         self._version = __init__.__version__
