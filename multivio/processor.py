@@ -55,6 +55,15 @@ class DocumentProcessor(object):
         """
         return (None, None)
 
+    def get_size(self, index=None):
+        """Return the size of the document content.
+            index -- dict: index in the document
+            
+        return:
+            data -- string: output data
+        """
+        return None
+
     def search(self, query, from_=None, to_=None, max_results=None, sort=None):
         """Search parts of the document that match the given query.
 

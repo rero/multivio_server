@@ -13,6 +13,11 @@ __license__ = "Internal Use Only"
 # import of standard modules
 from optparse import OptionParser
 import re
+import sys
+if sys.version_info < (2, 6):
+    import simplejson as json
+else:
+    import json
 
 # local modules
 from mvo_config import MVOConfig
@@ -87,6 +92,19 @@ example.</b></a>"""
                 return [data]
             else:
                 raise ApplicationError.InvalidArgument('Invalid Argument')
+        if re.search(r'document/get_size', path) is not None:
+            self.logger.debug("Get file size with opts: %s" % opts)
+            if opts.has_key('url'):
+                page_nr = 1
+                if opts.has_key('page_nr'):
+                    page_nr = int(opts['page_nr'])
+                size = self.get_size(url=opts['url'],
+                    index={'page_number':page_nr})
+                start_response('200 OK', [('content-type',
+                    'application/json')])
+                return [json.dumps(size, sort_keys=True, indent=2)]
+            else:
+                raise ApplicationError.InvalidArgument('Invalid Argument')
 
     def _choose_processor(self, file_name, mime):
         """Select the right processor given the mime type."""
@@ -112,6 +130,14 @@ example.</b></a>"""
         processor = self._choose_processor(file_name, mime)
         return processor.render(max_output_size, angle, index, output_format)
 
+    def get_size(self, url, index=None):
+        """Generate a content to display for a given document."""
+        (file_name, mime) = self.get_remote_file(url)
+            
+        #check the mime type
+        processor = self._choose_processor(file_name, mime)
+        return processor.get_size(index)
+
     def get_params(self, environ):
         """ Overload the default method to allow cgi url.
             
@@ -128,10 +154,9 @@ example.</b></a>"""
         self.logger.debug("To parse: %s" % to_parse)
         if len(to_parse) > 0:
             res = list(re.match(r'(.*?)&{0,1}url=(.*)', to_parse).groups())
-            #print res.groups()
             #replace all until the first occurence of url=
             opts['url'] = res.pop()
-            if len(res) > 0:
+            if len(res) > 0 and len(res[0]) > 0:
                 for val in res:
                     args = val.split('&')
                     for arg in args:

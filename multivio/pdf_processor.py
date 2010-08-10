@@ -54,6 +54,20 @@ class PdfProcessor(DocumentProcessor):
         return self._get_image_from_pdf(page_nr=index['page_number'],
             max_width=max_output_size[0], max_height=max_output_size[1],
             angle=angle, output_format=output_format)
+    
+    def get_size(self, index=None):
+        """Return the size of the document content.
+            index -- dict: index in the document
+            
+        return:
+            data -- string: output data
+        """
+        page_nr = index['page_number']
+        size = {}
+        size['width'] = self._doc.getPageMediaWidth(page_nr)
+        size['height'] = self._doc.getPageMediaHeight(page_nr)
+
+        return size
 
     def search(self, query, from_=None, to_=None, max_results=None, sort=None):
         """Search parts of the document that match the given query.

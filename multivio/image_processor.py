@@ -68,3 +68,16 @@ class ImageProcessor(DocumentProcessor):
         temp_file.seek(0)
         content = temp_file.read()
         return(mime_type, content)
+    
+    def get_size(self, index=None):
+        """Return the size of the document content.
+            index -- dict: index in the document
+            
+        return:
+            data -- string: output data
+        """
+        size = {}
+        size['width'] = self._img.size[0]
+        size['height'] = self._img.size[1]
+
+        return size

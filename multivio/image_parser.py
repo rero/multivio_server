@@ -43,8 +43,8 @@ class ImgParser(DocumentParser):
         metadata = {}
         metadata['title'] = self._url.split('/')[-1]
         metadata['mime'] = self._mime
-        metadata['width'] = self._width
-        metadata['height'] = self._height
+        #metadata['width'] = self._width
+        #metadata['height'] = self._height
 
         self.logger.debug("Metadata: %s"% json.dumps(metadata, sort_keys=True, 
                         indent=4))
