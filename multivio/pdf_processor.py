@@ -94,6 +94,11 @@ class PdfProcessor(DocumentProcessor):
             return 1.0
         page_width = self._doc.getPageMediaWidth(page_nr)
         page_height = self._doc.getPageMediaHeight(page_nr)
+        if(int(self._doc.getPageRotate(page_nr)) % 180 == 90 ):
+            page_width, page_height = page_height, page_width
+            
+        self.logger.debug("Width: %s, Height: %s, page_nr: %s, rotation: %s" %(page_width,
+            page_height, page_nr, self._doc.getPageRotate(page_nr)))
         page_ratio = page_height/float(page_width)
         if max_width is None:
             max_width = max_height/page_ratio
