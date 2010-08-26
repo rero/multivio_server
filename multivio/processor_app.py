@@ -178,7 +178,7 @@ example.</b></a>"""
                 results['file_position']['url'] = url
                 start_response('200 OK', [('content-type',
                     'application/json')])
-                return [json.dumps(results, sort_keys=True, indent=2, encoding='utf-8')]
+                return [json.dumps(results, sort_keys=False, indent=2, encoding='utf-8')]
             else:
                 raise ApplicationError.InvalidArgument('Invalid Argument')
 

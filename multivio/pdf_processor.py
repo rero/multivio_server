@@ -12,6 +12,7 @@ __license__ = "Internal Use Only"
 
 # import of standard modules
 import cStringIO
+import os.path
 
 # local modules
 from processor import DocumentProcessor
@@ -33,6 +34,11 @@ class PdfProcessor(DocumentProcessor):
         poppler.cvar.globalParams.setVectorAntialias("yes")
         self._doc = poppler.PDFDoc(self._file_name)
         self._index = None
+
+        # store url md5
+        # NOTE: assuming the name of the file given is the md5 of the url
+        self._url_md5 = os.path.split(self._file_name)[1]
+        #self.logger.debug("PDFProcessor, got url_md5=[%s]"%self._url_md5)
 
     def _check(self):
         """Check if the document is valid."""
@@ -154,15 +160,19 @@ class PdfProcessor(DocumentProcessor):
             self._doc.displayPage(td, np, 72, 72, 0, True, True, False)
 
             text_page = td.takeText()
-            (found, x1, y1, x2, y2) = text_page.findText(query, startAtTop, stopAtBottom, startAtLast, stopAtLast, caseSensitive, backward)
-        
+            # store coordinates
+            coords = (found, x1, y1, x2, y2) = text_page.findText(query, startAtTop, stopAtBottom, startAtLast, stopAtLast, caseSensitive, backward)
+            coords = coords[1:] # don't keep found boolean        
+
             ## findText options: find from last find to bottom of page
             startAtTop = False
             stopAtBottom = True 
             startAtLast = True
   
+            # keep searching on this page
             while found is True:
-                # build structure for the found word
+                # build structure for the found word (round coordinates)
+                (x1, y1, x2, y2) = [round(x,0) for x in coords]
                 bbox = {'x1':x1, 'y1':y1, 'x2':x2, 'y2':y2}
 
                 # get context
@@ -184,15 +194,16 @@ class PdfProcessor(DocumentProcessor):
                     done = True
                     break
                 # find additional words on page
-                (found, x1, y1, x2, y2) = text_page.findText(query, startAtTop, stopAtBottom, startAtLast, stopAtLast, caseSensitive, backward)
+                coords = (found, x1, y1, x2, y2) = text_page.findText(query, startAtTop, stopAtBottom, startAtLast, stopAtLast, caseSensitive, backward)
+                coords = coords[1:] # don't keep found boolean
 
         return result
 
     ## context/preview: get text left and right from found word
-    # INFO: context_chars: approximate number of characters of context on each side of found word
-    def _get_context(self, page_nr, bbox, text_page, context_chars = None):
+    # INFO: num_chars: approximate number of characters of context on each side of found word
+    def _get_context(self, page_nr, bbox, text_page, num_chars = None):
     
-        if (context_chars in [0, None]): 
+        if (num_chars in [0, None]): 
             return ''
 
         # this allows us to get the words before and after
@@ -208,10 +219,10 @@ class PdfProcessor(DocumentProcessor):
         # estimate of font size
         font_size = abs(bbox['y2']-bbox['y1'])
 
-        #INFO: context_chars: approximate number of characters of context on each side of found word
+        #INFO: num_chars: approximate number of characters of context on each side of found word
         
         # define width according to font size
-        context_width = 0.5*font_size*context_chars
+        context_width = 0.5*font_size*num_chars
         (x_before, x_after) = (max(0, bbox['x1']-context_width), min(page_size['width'], bbox['x2']+context_width))
         
         # get preview text
@@ -360,6 +371,7 @@ class PdfProcessor(DocumentProcessor):
                 ww = words.get(wi)
                 wt= ww.getText()
                 coords = (x1,y1,x2,y2) = ww.getBBox()
+                # round values
                 (x1,y1,x2,y2) = [round(x,0) for x in coords]
 
                 # TODO: preprocess words, ie put everything to lower case, replace some characters...
@@ -465,11 +477,11 @@ class PdfProcessor(DocumentProcessor):
         return('image/jpeg', content)
 
 # TODO: test
-p = PdfProcessor('/examples/d04.pdf')
+#p = PdfProcessor('/examples/d04.pdf')
 #r = p.search(query='été', from_=1, to_=50, max_results=0, sort=None, context_size=10)
 #
 #if r:
 #    print "# results: %s"%(len(r['file_position']['results']))
 
-p.indexing('/tmp/index_output')
+#p.indexing('/tmp/index_output')
 #page = p.get_indexing(page_nr=1)
