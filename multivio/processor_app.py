@@ -69,6 +69,7 @@ example.</b></a>"""
 
         #check if is valid
         self.logger.info("Accessing: %s with opts: %s" % (path, opts))
+        self.logger.debug("Cookie: %s" % self.cookies)
 
         if re.search(r'document/render', path) is not None:
             self.logger.debug("Render file with opts: %s" % opts)

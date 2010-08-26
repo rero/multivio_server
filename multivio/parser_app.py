@@ -175,7 +175,7 @@ Core with Pdfs inside..</b></a>
         
         if re.match('image/.*?', mime):
             self.logger.info("Image parser found!")
-            return ImgParser(content, url, mime)
+            return ImgParser(content, url, url.split('/')[-1], mime)
 
         if re.match('.*?/xml.*?', mime):
             #some METS files contain uppercase mets directive

@@ -25,9 +25,10 @@ from parser import DocumentParser
 class ImgParser(DocumentParser):
     """To parse PDF document"""
 
-    def __init__(self, file_stream, url, mime):
+    def __init__(self, file_stream, url, label, mime):
         DocumentParser.__init__(self, file_stream)
         self._url = url
+        self._label = label
         self._mime = mime
         import Image
         img = Image.open(file_stream)
@@ -49,3 +50,13 @@ class ImgParser(DocumentParser):
         self.logger.debug("Metadata: %s"% json.dumps(metadata, sort_keys=True, 
                         indent=4))
         return metadata
+    
+    def get_physical_structure(self):
+        """Get the physical structure of the pdf."""
+        phys_struct = [{
+                          'url': self._url,
+                          'label': self._label
+                      }]
+        self.logger.debug("Physical Structure: %s"% json.dumps(phys_struct,
+                sort_keys=True, indent=4))
+        return phys_struct

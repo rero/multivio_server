@@ -112,6 +112,7 @@ class WebApplication(object):
             r".*?/pdf.*?",
             r".*?/xml.*?",
             r"image/.*?"]
+        self.cookies = None
 
     def get(self, environ, start_response):
         """Methods to call when a GET HTTP request should be served."""
@@ -130,6 +131,8 @@ class WebApplication(object):
 
     def __call__(self, environ, start_response):
         """Main wsgi method."""
+        self.cookies = environ.get('HTTP_COOKIE', None)
+
         if re.match('.*?help.*?', environ['PATH_INFO']):
             start_response('200 OK', [('content-type', 'text/html')])
             return [self.usage]
@@ -180,6 +183,8 @@ class WebApplication(object):
         if to_download:
             self.logger.debug("Try to retrieve %s file" % url)
             start = time.time()
+            if self.cookies is not None:
+                self._urlopener.addheaders.append(("Cookie", self.cookies))
             try:
                 (filename, headers) = self._urlopener.retrieve(url,
                     local_file+".tmp")
