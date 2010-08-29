@@ -126,7 +126,7 @@ class PdfProcessor(DocumentProcessor):
 
         # param check TODO report errors ?
         if (from_ is None): from_ = 1
-        if (to_ is None): to_ = num_pages + 1   
+        if (to_ is None or to_ == -1): to_ = num_pages + 1   
         if (max_results in [0, None]):
             import sys 
             max_results = sys.maxint
