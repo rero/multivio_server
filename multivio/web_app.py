@@ -79,10 +79,46 @@ class ApplicationError:
 class MyFancyURLopener(urllib.FancyURLopener):
     """Class to intercept 404 HTTP error."""
 
+    def __init__(self):
+        urllib.FancyURLopener.__init__(self)
+        self.cookies = []
+
     def http_error_default(self, url, fp, errcode, errmsg, headers):
         """To catch HTTP Errors."""
         if errcode == 404:
             raise ApplicationError.UnableToRetrieveRemoteDocument(errmsg)
+
+    def open_http(self, url, data=None):
+        """Handle an HTTP open request.  We pass this to FancyURLopener
+to do
+           the real work.  Afterwards, we scan the info() for
+cookies."""
+        result = urllib.FancyURLopener.open_http(self, url, data)
+        self.eatCookies(result.info())
+        return result
+
+    def http_error_302(self, url, fp, errcode, errmsg, headers, data=None):
+        """Handle an HTTP redirect.  First we get the cookies from the headers
+           off of the initial URL.  Then hand it off to the super-class, which
+           will call back into our open_http method, where we can pick up
+           more cookies."""
+        self.eatCookies(headers)
+        result = urllib.FancyURLopener.http_error_302(self, url, fp, errcode, errmsg,
+                        headers, data=None)
+        return result
+
+    def eatCookies(self, headers):
+        """Scan a set of response headers for cookies.  We add each cookie to
+           our list."""
+        cookies = headers.getallmatchingheaders('set-cookie')
+        for c in cookies:
+            self.addCookie(":".join(c.split(':')[1:]))        # "set-cookie: " is 11 characters
+
+    def addCookie(self, cookie):
+        """Add a cookie to our cache of them and call addheaders of our parent."""
+        self.cookies.append(cookie)
+        self.addheader('Cookie', cookie)
+
 
 class InputProcessed(object):
     """To read the body of a post HTTP message."""
