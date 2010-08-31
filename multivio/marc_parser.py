@@ -72,8 +72,9 @@ class MarcParser(DocumentParser):
             self._get_fields(record, tag='100', code='a')]
         metadata['creator'].extend([v.decode('utf-8') for v in
             self._get_fields(record, tag='700', code='a')])
-        metadata['language'] = self._get_fields(record, tag='041',
-            code='a')[0].decode('utf-8')
+        lang =  self._get_fields(record, tag='041', code='a')
+        if len(lang) == 1:
+            metadata['language'] = lang[0].decode('utf-8')
         self.logger.debug("Metadata: %s"% json.dumps(metadata, sort_keys=True, 
                         indent=4))
         return metadata
