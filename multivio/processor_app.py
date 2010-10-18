@@ -113,15 +113,15 @@ example.</b></a>"""
                 page_nr = 1
                 x1 = x2 = y1 = y2 = 0
                 if opts.has_key('page_nr'):
-                    page_nr = int(opts['page_nr'])
+                    page_nr = int(opts['page_nr'] or 1)
                 if opts.has_key('x1'):
-                    x1 = int(opts['x1'])
+                    x1 = int(opts['x1'] or 0)
                 if opts.has_key('x2'):
-                    x2 = int(opts['x2'])
+                    x2 = int(opts['x2'] or 0)
                 if opts.has_key('y1'):
-                    y1 = int(opts['y1'])
+                    y1 = int(opts['y1'] or 0)
                 if opts.has_key('y2'):
-                    y2 = int(opts['y2'])
+                    y2 = int(opts['y2'] or 0)
 
                 text_result = self.get_text(url=opts['url'],
                     index={'page_number':page_nr, 'bounding_box':{'x1':x1,'x2':x2,'y1':y1,'y2':y2}})
@@ -136,11 +136,11 @@ example.</b></a>"""
             if opts.has_key('url'):
                 page_nr = from_ = to_ = None
                 if opts.has_key('page_nr'):
-                    page_nr = int(opts['page_nr'])
+                    page_nr = int(opts['page_nr'] or 1)
                 if opts.has_key('from'):
-                    from_ = int(opts['from'])
+                    from_ = int(opts['from'] or 0)
                 if opts.has_key('to'):
-                    to_ = int(opts['to'])
+                    to_ = int(opts['to'] or 0)
 
                 pages_index = self.get_indexing(url=opts['url'],
                     index={'page_number':page_nr}, from_=from_, to_=to_)
@@ -162,19 +162,22 @@ example.</b></a>"""
                 query = urllib.unquote(opts['query'])
                 from_ = 1
                 to_ = max_results = sort = context_size = None
-                
-                if opts.has_key('from'):
-                    from_ = int(opts['from'])
-                if opts.has_key('to'):
-                    to_ = int(opts['to'])
-                if opts.has_key('max_results'):
-                    max_results = int(opts['max_results'])
-                if opts.has_key('sort'):
-                    sort = int(opts['sort'])
-                if opts.has_key('context_size'):
-                    context_size = int(opts['context_size'])
+                angle = 0                
 
-                results = self.search(url, query, from_, to_, max_results, sort, context_size)
+                if opts.has_key('from'):
+                    from_ = int(opts['from'] or 0)
+                if opts.has_key('to'):
+                    to_ = int(opts['to'] or 0)
+                if opts.has_key('max_results'):
+                    max_results = int(opts['max_results'] or 0)
+                if opts.has_key('sort'):
+                    sort = int(opts['sort'] or 0)
+                if opts.has_key('context_size'):
+                    context_size = int(opts['context_size'] or 0)
+                if opts.has_key('angle'):
+                    angle = int(opts['angle'] or 0)
+
+                results = self.search(url, query, from_, to_, max_results, sort, context_size, angle)
                 # add url to 'file_position' of results
                 results['file_position']['url'] = url
                 start_response('200 OK', [('content-type',
@@ -233,13 +236,13 @@ example.</b></a>"""
         #self.logger.debug("processor_app: calling get_indexing with opts: %s, [%s,%s]"%(index, from_, to_))
         return processor.get_indexing(index, from_, to_)
 
-    def search(self, url, query, from_=None, to_=None, max_results=None, sort=None, context_size=None):
+    def search(self, url, query, from_=None, to_=None, max_results=None, sort=None, context_size=None, angle=0):
         """Search text in a document"""
         (file_name, mime) = self.get_remote_file(url)
 
         #check the mime type
         processor = self._choose_processor(file_name, mime)
-        return processor.search(query, from_, to_, max_results, sort, context_size)
+        return processor.search(query, from_, to_, max_results, sort, context_size, angle)
 
 
 

@@ -94,7 +94,7 @@ class PdfProcessor(DocumentProcessor):
         text['text'] = text_page.getText(b['x1'],b['y1'],b['x2'],b['y2'])
         return text
 
-    def search(self, query, from_=None, to_=None, max_results=None, sort=None, context_size=None):
+    def search(self, query, from_=None, to_=None, max_results=None, sort=None, context_size=None, angle=0):
         """Search parts of the document that match the given query.
 
             from_ -- dict: start the search at from_
@@ -102,6 +102,7 @@ class PdfProcessor(DocumentProcessor):
             max_results -- int: limit the number of the returned results
             sort -- string: sort the results given the sort criterion
             context_size: approximate number of characters of context around found words (left & right)
+            angle: angle of display in degrees
         return:
             a dictionary with the found results
         """  
@@ -126,10 +127,11 @@ class PdfProcessor(DocumentProcessor):
 
         # param check TODO report errors ?
         if (from_ is None): from_ = 1
-        if (to_ is None or to_ == -1): to_ = num_pages + 1   
+        if (to_ in [0, -1, None]): to_ = num_pages + 1   
         if (max_results in [0, None]):
-            import sys 
-            max_results = sys.maxint
+            # TODO: config for upper limit
+            #import sys 
+            max_results = 50 #sys.maxint
 
         # calculate page range [1, num_pages+1]
         (from_, to_) = (max(from_, 1), min(to_ + 1, num_pages + 1))
@@ -157,7 +159,12 @@ class PdfProcessor(DocumentProcessor):
                 break
 
             td = poppler.TextOutputDev(None, True, False, False)
+            # NOTE: always do search and context retrieval without rotation,
+            # and compute final coordinates at the end
             self._doc.displayPage(td, np, 72, 72, 0, True, True, False)
+
+            # get page dimensions
+            page_size = self.get_size(index={'page_number': np})
 
             text_page = td.takeText()
             # store coordinates
@@ -178,11 +185,12 @@ class PdfProcessor(DocumentProcessor):
                 # get context
                 prw = self._get_context(np, bbox, text_page, context_size)
 
+                # store coordinates, taking angle into account
                 cur_res = {
                   'preview': prw,
                   'index': {
                     'page': np, 
-                    'bounding_box': bbox
+                    'bounding_box': self._get_coords(bbox, angle, page_size)
                   }
                 }
                 
@@ -199,8 +207,41 @@ class PdfProcessor(DocumentProcessor):
 
         return result
 
+    def _get_coords(self, bbox, angle, page_size):
+
+       # get coordinates
+       (x1, y1, x2, y2) = (bbox['x1'], bbox['y1'], bbox['x2'], bbox['y2'],)
+
+       # rotation to the right
+       if (angle in [-90, 270]):
+           bbox['x1'] = max(0, page_size['height'] - y2)
+           bbox['y1'] = x1
+           bbox['x2'] = max(0, page_size['height'] - y1)
+           bbox['y2'] = x2
+
+       # rotation to the left
+       elif (angle in [90, -270]):
+           bbox['x1'] = y1
+           bbox['y1'] = max(0, page_size['width'] - x2)
+           bbox['x2'] = y2
+           bbox['y2'] = max(0, page_size['width'] - x1)
+
+       # rotation upside-down
+       elif (angle in [-180, 180]):
+           bbox['x1'] = max(0, page_size['width'] - x2)
+           bbox['y1'] = max(0, page_size['height'] - y2)
+           bbox['x2'] = max(0, page_size['width'] - x1)
+           bbox['y2'] = max(0, page_size['height'] - y1)
+       
+       self.logger.debug('get_coords: angle: %d, (%d,%d), (%d,%d), w: %d, h:%d' % (angle, x1, y1, x2, y2, page_size['width'],page_size['height']))
+
+       return bbox
+
+
+
     ## context/preview: get text left and right from found word
     # INFO: num_chars: approximate number of characters of context on each side of found word
+    # NOTE: text_page given as param should have no rotation
     def _get_context(self, page_nr, bbox, text_page, num_chars = None):
     
         if (num_chars in [0, None]): 
@@ -216,17 +257,22 @@ class PdfProcessor(DocumentProcessor):
         # get page dimensions
         page_size = self.get_size(index={'page_number': page_nr})
 
-        # estimate of font size
-        font_size = abs(bbox['y2']-bbox['y1'])
+        # get coordinates
+        (x1, y1, x2, y2) = (bbox['x1'], bbox['y1'], bbox['x2'], bbox['y2'],)
 
-        #INFO: num_chars: approximate number of characters of context on each side of found word
-        
-        # define width according to font size
-        context_width = 0.5*font_size*num_chars
-        (x_before, x_after) = (max(0, bbox['x1']-context_width), min(page_size['width'], bbox['x2']+context_width))
+        #self.logger.debug("get_context: %s, %s, %s, %s" % (x1, y1, x2, y2))
+
+        # content not rotated or upside down
+        # estimate of font size
+        font_size = abs(y2-y1)
+    
+        # define width/height according to font size
+        context_size = 0.5*font_size*num_chars
+        (x1c, y1c, x2c, y2c) = (max(0, x1-context_size), y1,\
+                                min(page_size['width'], x2+context_size), y2)
         
         # get preview text
-        prw = text_page.getText(x_before, bbox['y1'], x_after, bbox['y2'])
+        prw = text_page.getText(x1c, y1c, x2c, y2c)
         # note: normally, prw is in utf-8 here. If not, do prw.encode('utf-8')
 
         return prw
