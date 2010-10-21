@@ -78,17 +78,20 @@ class PdfProcessor(DocumentProcessor):
 
     def get_text(self, index=None):
         """Return the text contained inside the selected box.
-            index -- dict: index in the document, including bounding box
+            index -- dict: index in the document, including 'bounding_box'
 
         return:
             data -- string: output text
         """
+
         page_nr = index['page_number']
 
+        # get page text
         td = poppler.TextOutputDev(None, True, False, False)
         self._doc.displayPage(td, page_nr, 72, 72, 0, True, True, False)
-        text_page = td.takeText()        
-
+        text_page = td.takeText()    
+    
+        # get text inside given bounding box
         text = {}
         b = index['bounding_box']
         text['text'] = text_page.getText(b['x1'],b['y1'],b['x2'],b['y2'])
@@ -97,8 +100,8 @@ class PdfProcessor(DocumentProcessor):
     def search(self, query, from_=None, to_=None, max_results=None, sort=None, context_size=None, angle=0):
         """Search parts of the document that match the given query.
 
-            from_ -- dict: start the search at from_
-            to_ -- dict: end the search at to_
+            from_ -- dict: start the search at page from_
+            to_ -- dict: end the search at page to_
             max_results -- int: limit the number of the returned results
             sort -- string: sort the results given the sort criterion
             context_size: approximate number of characters of context around found words (left & right)
@@ -125,7 +128,7 @@ class PdfProcessor(DocumentProcessor):
         caseSensitive = False
         backward = False
 
-        # param check TODO report errors ?
+        # param check. TODO report errors ?
         if (from_ is None): from_ = 1
         if (to_ in [0, -1, None]): to_ = num_pages + 1   
         if (max_results in [0, None]):
@@ -140,7 +143,7 @@ class PdfProcessor(DocumentProcessor):
         result = {
           'context': 'text',
           'file_position': {
-            'url':self._file_name, # will be replaced by remote URL by processor app, if necessary
+            'url':self._file_name, # will be replaced by remote URL by processor_app, if necessary
             'results':[ # results for that file go here
             ] 
           }
@@ -178,7 +181,7 @@ class PdfProcessor(DocumentProcessor):
   
             # keep searching on this page
             while found is True:
-                # build structure for the found word (round coordinates)
+                # build structure for the found word (round coordinates to ints)
                 (x1, y1, x2, y2) = [round(x,0) for x in coords]
                 bbox = {'x1':x1, 'y1':y1, 'x2':x2, 'y2':y2}
 
@@ -208,6 +211,16 @@ class PdfProcessor(DocumentProcessor):
         return result
 
     def _get_coords(self, bbox, angle, page_size):
+       """Adapt coordinates according to given rotation angle and page size.
+          Only orthogonal rotations are supported: 
+                                0, +-90, +-180, +-270 degrees.
+
+           bbox -- dict: bounding box coordinates
+           angle -- int: rotation angle in degrees
+           page_size -- dict: page size (with 'width' and 'height')
+       return:
+           data -- dict: a dictionary with the adapted bounding box
+       """
 
        # get coordinates
        (x1, y1, x2, y2) = (bbox['x1'], bbox['y1'], bbox['x2'], bbox['y2'],)
@@ -233,17 +246,27 @@ class PdfProcessor(DocumentProcessor):
            bbox['x2'] = max(0, page_size['width'] - x1)
            bbox['y2'] = max(0, page_size['height'] - y1)
        
-       self.logger.debug('get_coords: angle: %d, (%d,%d), (%d,%d), w: %d, h:%d' % (angle, x1, y1, x2, y2, page_size['width'],page_size['height']))
+       self.logger.debug('get_coords: angle: %d, (%d,%d), (%d,%d), w:%d, h:%d'\
+               % (angle, x1,y1,x2,y2, page_size['width'], page_size['height']))
 
        return bbox
 
-
-
-    ## context/preview: get text left and right from found word
-    # INFO: num_chars: approximate number of characters of context on each side of found word
-    # NOTE: text_page given as param should have no rotation
     def _get_context(self, page_nr, bbox, text_page, num_chars = None):
-    
+        """Context/preview: get text left and right from found word.
+           'num_chars' are taken on the left and right sides of the word
+           specified by the bounding box 'bbox'. This number is approximate
+           and can vary, depending on font size and page dimensions.
+
+           NOTE: the given 'text_page' must have a rotation angle of 0!
+
+            page_nr -- int: page number
+            bbox -- dict: bounding box coordinates of word
+            text_page -- poppler text page instance
+            num_chars -- int: number of context chars on each side of the word
+        return:
+            data -- string: output text
+        """    
+
         if (num_chars in [0, None]): 
             return ''
 
@@ -262,8 +285,7 @@ class PdfProcessor(DocumentProcessor):
 
         #self.logger.debug("get_context: %s, %s, %s, %s" % (x1, y1, x2, y2))
 
-        # content not rotated or upside down
-        # estimate of font size
+        # estimate font size (assuming content is not rotated or upside down)
         font_size = abs(y2-y1)
     
         # define width/height according to font size
@@ -280,9 +302,16 @@ class PdfProcessor(DocumentProcessor):
 
     def get_indexing(self, index=None, from_=None, to_=None):
         """Returns index of a range of pages of the document.
+           If a range of pages is specified with 'from_' and 'to_',
+           'index' is ignored. Else, page number in index is used.
+
+            index -- dict: index indicating a page number
+            from_ -- int: page number start
+            to_ -- int: page number end
         return:
-            index structure of the page(s)
+            data -- dict: index structure of the page(s)
         """
+
         import time
         start = time.clock()
 
@@ -305,17 +334,22 @@ class PdfProcessor(DocumentProcessor):
         # else, try to use page_number in index
         else:
             page_nr = index['page_number']
-            if (page_nr is not None and page_nr != '' and page_nr in page_range):
+            if (page_nr is not None and page_nr != ''\
+                      and page_nr in page_range):
                 result['pages'].append(self._get_indexing(page_nr))
 
-        self.logger.debug("get_indexing: Total Process Time: %s", (time.clock() - start))
+        self.logger.debug("get_indexing: Total Process Time: %s",\
+                                            (time.clock() - start))
 
         return result
 
     def _get_indexing(self, page_nr=1):
         """Returns index of a page of the document.
+
+            page_nr -- int: number of the page
+
         return:
-            index structure of the page
+            data -- dict: index structure of the page
         """
 
         # get words' list for a page
@@ -328,11 +362,15 @@ class PdfProcessor(DocumentProcessor):
         page_size = self.get_size(index={'page_number': page_nr})
 
         # page structure
-        page = {'page_number': page_nr, 'w': page_size['width'], 'h': page_size['height'], 'lines': []}
-        #self.logger.debug("page dimensions: [%s,%s]"%(page_size['width'], page_size['height'] ))
+        page = {'page_number': page_nr, \
+                'w': page_size['width'],\
+                'h': page_size['height'],\
+                'lines': []}
+        #self.logger.debug("page dimensions: [%s,%s]"\
+        #                   %(page_size['width'], page_size['height'] ))
 
         line = None            # current line structure
-        line_start_x = -1      # horizontal position of the beginning of the line
+        line_start_x = -1      # horizontal position of beginning of the line
         words_text = []        # list of words in current line
         import sys
         prev = {'y2':-1}
@@ -344,7 +382,8 @@ class PdfProcessor(DocumentProcessor):
             coords = (x1, y1, x2, y2) = w.getBBox()
             # round values
             (x1, y1, x2, y2) = [round(x,0) for x in coords] 
-            #self.logger.debug("new word [%s], coord:[%s,%s/%s,%s]"%(w.getText(), x1,y1,x2,y2))
+            #self.logger.debug("new word [%s], coord:[%s,%s/%s,%s]"\
+            #                                %(w.getText(), x1,y1,x2,y2))
 
             # detect new line based on line height
             if (y2 > prev['y2']):
@@ -359,7 +398,9 @@ class PdfProcessor(DocumentProcessor):
                     #self.logger.debug("finished line: [%s]"%line['text'])
 
                 # start a new line
-                line = {'t':y1, 'l':x1, 'w':-1, 'h':abs(y2-y1), 'x':[], 'text':''}
+                line = {'t':y1, 'l':x1, 'w':-1,\
+                        'h':abs(y2-y1), 'x':[], 'text':''}
+
                 # keep line start, used to compute line width
                 line_start_x = x1
 
@@ -387,6 +428,9 @@ class PdfProcessor(DocumentProcessor):
 
     def indexing(self, output_file):
         """Batch indexing of the document.
+
+           output_file -- string: path of file to save indexing to
+ 
         return:
             True if everything is ok.
         """
@@ -420,8 +464,8 @@ class PdfProcessor(DocumentProcessor):
                 # round values
                 (x1,y1,x2,y2) = [round(x,0) for x in coords]
 
-                # TODO: preprocess words, ie put everything to lower case, replace some characters...
-                # remove punctuation
+                # TODO?: preprocess words, ie put everything to lower case,
+                # replace some characters, remove punctuation
                 wt = self._strip_punctuation(wt.lower())
 
                 if (len(wt.strip())==0): 
@@ -429,9 +473,11 @@ class PdfProcessor(DocumentProcessor):
 
                 # check for existing entry of word in index
                 if index.has_key(wt):
-                    index[wt].append({'page_number':np, 'bbx':{'x1':x1,'y1':y1,'x2':x2,'y2':y2}})
+                    index[wt].append({'page_number':np, \
+                                      'bbx':{'x1':x1,'y1':y1,'x2':x2,'y2':y2}})
                 else:
-                    index[wt] = [{'page_number':np, 'bbx':{'x1':x1,'y1':y1,'x2':x2,'y2':y2}}]
+                    index[wt] = [{'page_number':np, \
+                                  'bbx':{'x1':x1,'y1':y1,'x2':x2,'y2':y2}}]
 
         # store index in processor instance
         self._index = index 
@@ -454,13 +500,24 @@ class PdfProcessor(DocumentProcessor):
         f.write(data)
         f.close()
 
-        self.logger.debug("Total Save Index to File Time: %s", (time.clock() - start))
+        self.logger.debug("Total Save Index to File Time: %s",\
+                                            (time.clock() - start))
 
         return True
 
     def _strip_punctuation(self, text):
+        """Strip punctuation characters from given text.
+
+            text -- string: text to remove punctuation from
+
+        return:
+            text -- string: text without punctuation
+        """
+
         import string
-        not_letters_or_digits = string.punctuation  # '!"#%\'()*+,-./:;<=>?@[\]^_`{|}~'
+        not_letters_or_digits = string.punctuation  
+        # '!"#%\'()*+,-./:;<=>?@[\]^_`{|}~'
+
         if isinstance(text, unicode):
             translate_table = dict((ord(c), u'')
                                for c in unicode(not_letters_or_digits))
@@ -527,12 +584,3 @@ class PdfProcessor(DocumentProcessor):
         #str(len(content)))]
         return('image/jpeg', content)
 
-# TODO: test
-#p = PdfProcessor('/examples/d04.pdf')
-#r = p.search(query='été', from_=1, to_=50, max_results=0, sort=None, context_size=10)
-#
-#if r:
-#    print "# results: %s"%(len(r['file_position']['results']))
-
-#p.indexing('/tmp/index_output')
-#page = p.get_indexing(page_nr=1)

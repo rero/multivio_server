@@ -156,7 +156,8 @@ example.</b></a>"""
                 if not opts.has_key('query'):
                     raise ApplicationError.InvalidArgument('Invalid Argument: param query missing')
 
-                # note: unquote query string, useful for getting right accents and special chars
+                # note: unquote query string, useful for getting right
+                # accents and special chars
                 url = opts['url']
                 import urllib
                 query = urllib.unquote(opts['query'])
@@ -176,7 +177,7 @@ example.</b></a>"""
                     context_size = int(opts['context_size'] or 0)
                 if opts.has_key('angle'):
                     angle = int(opts['angle'] or 0)
-
+                # get results
                 results = self.search(url, query, from_, to_, max_results, sort, context_size, angle)
                 # add url to 'file_position' of results
                 results['file_position']['url'] = url
@@ -243,8 +244,6 @@ example.</b></a>"""
         #check the mime type
         processor = self._choose_processor(file_name, mime)
         return processor.search(query, from_, to_, max_results, sort, context_size, angle)
-
-
 
     def get_params(self, environ):
         """ Overload the default method to allow cgi url.
