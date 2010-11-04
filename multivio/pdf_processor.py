@@ -141,6 +141,7 @@ class PdfProcessor(DocumentProcessor):
 
         # results for the current file
         result = {
+          'max_reached': 0,
           'context': 'text',
           'file_position': {
             'url':self._file_name, # will be replaced by remote URL by processor_app, if necessary
@@ -203,6 +204,7 @@ class PdfProcessor(DocumentProcessor):
                 num_results = num_results + 1
                 if (num_results >= max_results):
                     done = True
+                    result['max_reached'] = max_results
                     break
                 # find additional words on page
                 coords = (found, x1, y1, x2, y2) = text_page.findText(query, startAtTop, stopAtBottom, startAtLast, stopAtLast, caseSensitive, backward)
