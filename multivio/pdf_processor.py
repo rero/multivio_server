@@ -100,12 +100,13 @@ class PdfProcessor(DocumentProcessor):
     def search(self, query, from_=None, to_=None, max_results=None, sort=None, context_size=None, angle=0):
         """Search parts of the document that match the given query.
 
-            from_ -- dict: start the search at page from_
-            to_ -- dict: end the search at page to_
-            max_results -- int: limit the number of the returned results
+            query -- string: text to find in the document
+            from_ -- integer: start the search at page from_
+            to_ -- integer : end the search at page to_
+            max_results -- integer: limit the number of the returned results
             sort -- string: sort the results given the sort criterion
-            context_size: approximate number of characters of context around found words (left & right)
-            angle: angle of display in degrees
+            context_size -- integer: approximate number of characters of context around found words (left & right)
+            angle -- integer: angle of display in degrees
         return:
             a dictionary with the found results
         """  

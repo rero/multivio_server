@@ -42,7 +42,7 @@ class DocProcessorApp(WebApplication):
         """
         WebApplication.__init__(self, temp_dir)
 
-        self.usage = """Using the GET method it return a thumbnail in PNG format of a given size for a given
+        self.usage = """<h4>render</h4>Using the GET method it return a thumbnail in PNG format of a given size for a given
 image.<br>
 <b>Arguments:</b>
 <ul>
@@ -57,7 +57,48 @@ href="/server/document/render?max_width=400&max_height=400&angle=0&url=http://do
 example.</b></a><br>
 <a
 href="/server/document/render?max_width=800&max_height=400&angle=0&page_nr=2&url=http://doc.rero.ch/lm.php?url=1000,43,4,20070117103715-FR/Dufaux_Alain_-_Automatic_sound_detection_and_recognition_20070117.pdf"><b>PDF
-example.</b></a>"""
+example.</b></a>
+
+<h4>search</h4>Search a PDF file and return results in a dictionary structure.<br>
+<b>Arguments:</b>
+<ul>
+<li><em>url --string--</em>  url of a pdf file. Required.
+<li><em>query --string--</em>  text to find in the document. Required.
+<li><em>from --integer--</em> start the search at page from. Default(1).
+<li><em>to --integer--</em> end the search at page to. Default(&lt;number_of_pages&gt;).
+<li><em>max_results --integer--</em> limit the number of the returned results. Default(50).
+<li><em>context_size --integer--</em> approximate number of characters of context around found words (left & right).
+Default(0).
+<li><em>angle --integer--</em> angle of display in degrees. Default(0).
+</ul>
+<a
+href="/server/document/search?query=test&angle=0&max_results=15&context_size=10&url=http://doc.rero.ch/lm.php?url=1000,43,2,20100916082754-BW/cel_mas.pdf"><b>Search example.</b></a><br>
+
+<h4>get_text</h4>Return the text contained inside the selected area.<br>
+<b>Arguments:</b>
+<ul>
+<li><em>url --string--</em>  url of a pdf file. Required.
+<li><em>page_nr --integer--</em> Number of the page to get text from. Default(1).
+<li><em>x1 --integer--</em> x-coordinate of upper-left point of selected area. Default(0).
+<li><em>y1 --integer--</em> y-coordinate of upper-left point of selected area. Default(0).
+<li><em>x2 --integer--</em> x-coordinate of bottom-right point of selected area. Default(0).
+<li><em>y2 --integer--</em> y-coordinate of bottom-right point of selected area. Default(0).
+</ul>
+<a href="/server/document/get_text?page_nr=68&x1=395&y1=347&x2=600&y2=358&url=http://doc.rero.ch/lm.php?url=1000,10,38,20100803165622-EB/2008_-_Rapport_du_groupe_de_travail_du_cio_pour_acceptation_des_candidatures_-_fre.pdf"><b>Get text example.</b></a>
+
+<h4>get_indexing</h4>Returns index of a range of pages of the document.<br>
+If a range of pages is specified with 'from' and 'to', 'page_nr' is ignored. Else, page number is used.<br/>
+<b>Arguments:</b>
+<ul>
+<li><em>url --string--</em>  url of a pdf file. Required.
+<li><em>page_nr --integer--</em> Number of the page to get the indexing from. Default(1).
+<li><em>from --integer--</em> start page to get indexing of a range of pages. Default(1).
+<li><em>to --integer--</em> end page to get indexing of a range of pages. Default(&lt;number_of_pages&gt;).
+</ul>
+<a href="/server/document/get_indexing?page_nr=1&url=http://doc.rero.ch/lm.php?url=1000,10,38,20100803165622-EB/2008_-_Rapport_du_groupe_de_travail_du_cio_pour_acceptation_des_candidatures_-_fre.pdf"><b>Example with a page.</b></a><br/>
+<a href="/server/document/get_indexing?from=3&to=6&url=http://doc.rero.ch/lm.php?url=1000,10,38,20100803165622-EB/2008_-_Rapport_du_groupe_de_travail_du_cio_pour_acceptation_des_candidatures_-_fre.pdf"><b>Example with a range of pages.</b></a>
+
+"""
 
     
     def get(self, environ, start_response):
