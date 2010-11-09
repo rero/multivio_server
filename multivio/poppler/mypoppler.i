@@ -21,6 +21,8 @@
 #include "TextOutputDev.h"
 #include <stdio.h>
 #include <wchar.h>
+
+#include "Link.h"
 %}
 %include "typemaps.i"
 
@@ -183,6 +185,98 @@ extern GooString* test_goo_string_new(GooString* test, GooString* fifi)
   //delete($1);
 }
 
+%inline %{
+GBool newOutlineLevel(Object *node, Catalog* catalog, PyObject* dic, int level=1)
+{
+  Object curr, next;
+  GBool atLeastOne = gFalse;
+  int page_number = -1;
+  GooString * label = NULL;
+  PyObject* childs = PyList_New(0);
+  PyObject * local_dic =  PyDict_New();
+  PyDict_SetItemString(local_dic, "childs", childs);
+
+  if (node->dictLookup("First", &curr)->isDict()) {
+    do {
+      // get title, give up if not found
+      Object title;
+      if (curr.dictLookup("Title", &title)->isNull()) {
+        title.free();
+        break;
+      }
+
+      label = new GooString(title.getString());
+
+      // get corresponding link
+      GooString *linkName = NULL;;
+      Object dest;
+      curr.dictLookup("A", &dest);
+
+      if (!dest.isNull())
+      {
+        LinkGoTo* action = (LinkGoTo *)LinkAction::parseAction(&dest);
+        LinkDest* link_dest = catalog->findDest(action->getNamedDest());
+        int page_number = 0;
+
+        if (link_dest){
+          if (link_dest->isPageRef()){
+            Ref pageref = link_dest->getPageRef();
+            page_number = catalog->findPage(pageref.num, pageref.gen);
+          }
+          else {
+            page_number = link_dest->getPageNum();
+          }
+          printf("%d\n", page_number);
+        }
+        delete(link_dest);
+        delete(action);
+      }
+
+      if (!curr.dictLookup("Dest", &dest)->isNull())
+      {
+        //printf("Dest not Null");
+        LinkGoTo *link = new LinkGoTo(&dest);
+        LinkDest *linkdest=NULL;
+        if (link->getDest()!=NULL)
+          linkdest=link->getDest()->copy();
+        else if (link->getNamedDest()!=NULL)
+          linkdest=catalog->findDest(link->getNamedDest());
+
+        delete link;
+        if (linkdest) {
+          int page;
+          if (linkdest->isPageRef()) {
+            Ref pageref=linkdest->getPageRef();
+            page=catalog->findPage(pageref.num,pageref.gen);
+          } else {
+            page=linkdest->getPageNum();
+          }
+          printf("%d\n", page);
+          delete linkdest;
+        }
+      }
+      dest.free();
+
+      if (linkName)
+        printf("%s", linkName->getCString());
+
+      newOutlineLevel( &curr, catalog, local_dic, level+1);
+      curr.dictLookup("Next", &next);
+      curr.free();
+      curr = next;
+    } while(curr.isDict());
+  }
+  curr.free();
+  if (label != NULL){
+         PyDict_SetItemString(local_dic, "label", PyString_FromStringAndSize(label->getCString(), label->getLength()));
+         PyDict_SetItemString(local_dic, "page_number", PyInt_FromLong(page_number));
+        //label.free();
+}
+        PyObject* to_append = PyDict_GetItemString(dic, "childs");
+        PyList_Append(to_append, local_dic);
+  return atLeastOne;
+};
+%}
 
 
 
@@ -197,6 +291,17 @@ extern GooString* test_goo_string_new(GooString* test, GooString* fifi)
 %include "poppler/Page.h"
 %include "poppler/SplashOutputDev.h"
 %include "poppler/GlobalParams.h"
+
+%extend PDFDoc {
+  PyObject* getToc(){ 
+        printf("Test\n");
+       PyObject * dic =  PyDict_New();
+  PyObject* childs = PyList_New(0);
+  PyDict_SetItemString(dic, "childs", childs);
+        newOutlineLevel(self->getCatalog()->getOutline(), self->getCatalog(), dic);
+        return dic;
+  };
+};
 
 %newobject TextPage::makeWordList;
 %newobject TextOutputDev::takeText;
