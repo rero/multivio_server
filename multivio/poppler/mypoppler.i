@@ -192,9 +192,6 @@ GBool newOutlineLevel(Object *node, Catalog* catalog, PyObject* dic, int level=1
   GBool atLeastOne = gFalse;
   int page_number = -1;
   GooString * label = NULL;
-  PyObject* childs = PyList_New(0);
-  PyObject * local_dic =  PyDict_New();
-  PyDict_SetItemString(local_dic, "childs", childs);
 
   if (node->dictLookup("First", &curr)->isDict()) {
     do {
@@ -260,6 +257,14 @@ GBool newOutlineLevel(Object *node, Catalog* catalog, PyObject* dic, int level=1
       if (linkName)
         printf("%s", linkName->getCString());
 
+      PyObject * local_dic =  PyDict_New();
+      PyDict_SetItemString(local_dic, "label", PyString_FromStringAndSize(label->getCString(), label->getLength()));
+      PyDict_SetItemString(local_dic, "page_number", PyInt_FromLong(page_number));
+      PyObject* childs = PyList_New(0);
+      PyDict_SetItemString(local_dic, "childs", childs);
+      PyObject* to_append = PyDict_GetItemString(dic, "childs");
+      PyList_Append(to_append, local_dic);
+
       newOutlineLevel( &curr, catalog, local_dic, level+1);
       curr.dictLookup("Next", &next);
       curr.free();
@@ -267,13 +272,6 @@ GBool newOutlineLevel(Object *node, Catalog* catalog, PyObject* dic, int level=1
     } while(curr.isDict());
   }
   curr.free();
-  if (label != NULL){
-         PyDict_SetItemString(local_dic, "label", PyString_FromStringAndSize(label->getCString(), label->getLength()));
-         PyDict_SetItemString(local_dic, "page_number", PyInt_FromLong(page_number));
-        //label.free();
-}
-        PyObject* to_append = PyDict_GetItemString(dic, "childs");
-        PyList_Append(to_append, local_dic);
   return atLeastOne;
 };
 %}
