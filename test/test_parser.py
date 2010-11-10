@@ -31,6 +31,7 @@ from multivio.mods_parser import ModsParser
 sys.path.append (os.getcwd ())
 pdf_file_name = 'examples/document.pdf'
 mets_file_name = 'examples/test.mets'
+mets_file_name = 'examples/test.mets'
 marc_file_name = 'examples/test.marc'
 dc_file_name = 'examples/test.xd'
 mods_file_name = 'examples/test.mods'
@@ -168,6 +169,15 @@ class MetsParserOK (unittest.TestCase):
         sect1_obtained = logic[0]['label']
         sect1_desired = 'Titelblatt'
         self.assertEqual (sect1_desired, sect1_obtained, "TOC is not valid %s != %s" % (sect1_desired, sect1_obtained) )
+
+    def testMetsParserSimpleAuthor(self):
+        """Get Mets authors simple."""
+        mets_file = file("examples/document_author_simple.mets")
+        mets_parser = MetsParser(mets_file, 'http://doc.rero.ch')
+        metadata = mets_parser.get_metadata()
+        sect1_obtained = metadata['creator'][0]
+        sect1_desired = 'Hunt, Robert'
+        self.assertEqual (sect1_desired, sect1_obtained, "Author is not valid %s != %s" % (sect1_desired, sect1_obtained) )
 
     def testMetsParserPhysical(self):
         """Get Mets physical structure."""

@@ -43,6 +43,7 @@ class PdfProcessorOK (unittest.TestCase):
         pdf_processor = PdfProcessor(pdf_file_name)
         (mime, content)  = pdf_processor.render(index={'page_number':1},
         max_output_size = (100,100))
+<<<<<<< HEAD
         print mime
 
     def testPdfGetText(self):

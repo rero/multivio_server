@@ -1,0 +1,2372 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<OAI-PMH xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:mods="http://www.loc.gov/mods/v3" xmlns:mets="http://www.loc.gov/METS/" xmlns:epicur="urn:nbn:de:1111-2004033116" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:marcxml="http://www.loc.gov/MARC21/slim" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.openarchives.org/OAI/2.0/" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">
+	<responseDate>2010-11-10T15:27:45Z</responseDate>
+	<request verb="GetRecord" metadataPrefix="mets" identifier="oai:www.e-rara.ch:34314">http://www.e-rara.ch/oai/</request>
+	<GetRecord>
+		<record>
+			<header>
+				<identifier>oai:www.e-rara.ch:34314</identifier>
+				<datestamp>2009-11-10T09:38:31Z</datestamp>
+				<setSpec>zut</setSpec>
+			</header>
+			<metadata>
+				<mets:mets xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:vls="http://semantics.de/vls" xsi:schemaLocation="http://www.loc.gov/METS/ http://www.loc.gov/standards/mets/version18/mets.xsd" OBJID="0" LABEL="Alle Bibliotheken">
+					<mets:metsHdr CREATEDATE="2010-11-10T16:27:45">
+						<mets:agent TYPE="OTHER" ROLE="OTHER" OTHERTYPE="SOFTWARE">
+							<mets:name>vls/2.9</mets:name>
+						</mets:agent>
+						<mets:agent TYPE="OTHER" ROLE="OTHER" OTHERTYPE="INSTANCE">
+							<mets:name>elibch-server</mets:name>
+						</mets:agent>
+						<mets:agent TYPE="OTHER" ROLE="OTHER" OTHERTYPE="REPOSITORY">
+							<mets:name>www.e-rara.ch</mets:name>
+						</mets:agent>
+						<mets:agent TYPE="OTHER" ROLE="OTHER" OTHERTYPE="BUILDER">
+							<mets:name>vd</mets:name>
+						</mets:agent>
+					</mets:metsHdr>
+					<mets:dmdSec ID="md34314">
+						<mets:mdWrap MIMETYPE="text/xml" MDTYPE="MODS">
+							<mets:xmlData>
+								<mods:mods version="3.3" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-3.xsd">
+									<mods:titleInfo>
+										<mods:title>&lt;&lt;A&gt;&gt; popular treatise on the art of photography</mods:title>
+										<mods:subTitle>including daguerréotype and all the new methods of producing pictures by the chemical agency of light</mods:subTitle>
+									</mods:titleInfo>
+									<mods:titleInfo type="alternative">
+										<mods:title>Art of photography</mods:title>
+									</mods:titleInfo>
+									<mods:titleInfo type="alternative">
+										<mods:title>Hunt's photography</mods:title>
+									</mods:titleInfo>
+									<mods:name type="personal">
+										<mods:namePart>Hunt, Robert</mods:namePart>
+									</mods:name>
+									<mods:typeOfResource>text</mods:typeOfResource>
+									<mods:originInfo>
+										<mods:place>
+											<mods:placeTerm type="code" authority="marccountry">xxk</mods:placeTerm>
+										</mods:place>
+										<mods:place>
+											<mods:placeTerm type="text">Glasgow</mods:placeTerm>
+										</mods:place>
+										<mods:publisher>Griffin</mods:publisher>
+										<mods:dateIssued>1841</mods:dateIssued>
+										<mods:issuance>monographic</mods:issuance>
+									</mods:originInfo>
+									<mods:language>
+										<mods:languageTerm authority="iso639-2b" type="code">eng</mods:languageTerm>
+									</mods:language>
+									<mods:physicalDescription>
+										<mods:form authority="marcform">print</mods:form>
+										<mods:extent>VIII, 96 S. 23 cm Ill.</mods:extent>
+									</mods:physicalDescription>
+									<mods:note type="statement of responsibility">by Robert Hunt</mods:note>
+									<mods:note>Rückentitel: Hunt's photography</mods:note>
+									<mods:identifier type="doi">10.3931/e-rara-74</mods:identifier>
+									<mods:location>
+										<mods:physicalLocation>E01</mods:physicalLocation>
+										<mods:shelfLocator>RAR 1300</mods:shelfLocator>
+									</mods:location>
+									<mods:recordInfo>
+										<mods:descriptionStandard>ETHICS-ISBD</mods:descriptionStandard>
+										<mods:recordContentSource authority="marcorg">ETH-BIB</mods:recordContentSource>
+										<mods:recordCreationDate encoding="marc">920312</mods:recordCreationDate>
+										<mods:recordChangeDate encoding="iso8601">20080505153407.0</mods:recordChangeDate>
+										<mods:recordIdentifier source="zut">000627012</mods:recordIdentifier>
+										<mods:languageOfCataloging>
+											<mods:languageTerm authority="iso639-2b" type="code">ger</mods:languageTerm>
+										</mods:languageOfCataloging>
+									</mods:recordInfo>
+								</mods:mods>
+							</mets:xmlData>
+						</mets:mdWrap>
+					</mets:dmdSec>
+					<mets:amdSec ID="amd34314">
+						<mets:rightsMD ID="rights34314">
+							<mets:mdWrap MIMETYPE="text/xml" MDTYPE="OTHER" OTHERMDTYPE="DVRIGHTS">
+								<mets:xmlData>
+									<dv:rights xmlns:dv="http://dfg-viewer.de/">
+										<dv:ownerLogo>http://www.e-rara.ch/domainresource/static/graphics/connectors/viewerLogo.gif</dv:ownerLogo>
+										<dv:owner>ETH-Bibliothek Zürich</dv:owner>
+										<dv:ownerSiteURL>http://www.library.ethz.ch</dv:ownerSiteURL>
+									</dv:rights>
+								</mets:xmlData>
+							</mets:mdWrap>
+						</mets:rightsMD>
+						<mets:digiprovMD ID="digiprov34314">
+							<mets:mdWrap MIMETYPE="text/xml" MDTYPE="OTHER" OTHERMDTYPE="DVLINKS">
+								<mets:xmlData>
+									<dv:links xmlns:dv="http://dfg-viewer.de/">
+										<dv:reference>http://opac.nebis.ch/F?local_base=nebis&amp;con_lng=GER&amp;find_code=SYS&amp;func=find-b&amp;request=000627012</dv:reference>
+										<dv:presentation>http://www.e-rara.ch/id/34314</dv:presentation>
+									</dv:links>
+								</mets:xmlData>
+							</mets:mdWrap>
+						</mets:digiprovMD>
+					</mets:amdSec>
+					<mets:fileSec>
+						<mets:fileGrp USE="DOWNLOAD">
+							<mets:file MIMETYPE="application/pdf" ID="PDF_34314">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/pdf/34314" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="application/pdf" ID="PDF_35616">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/pdf/35616" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="application/pdf" ID="PDF_35620">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/pdf/35620" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="application/pdf" ID="PDF_35623">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/pdf/35623" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="application/pdf" ID="PDF_35621">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/pdf/35621" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="application/pdf" ID="PDF_35624">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/pdf/35624" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="application/pdf" ID="PDF_35625">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/pdf/35625" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="application/pdf" ID="PDF_35626">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/pdf/35626" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="application/pdf" ID="PDF_35627">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/pdf/35627" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="application/pdf" ID="PDF_35628">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/pdf/35628" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="application/pdf" ID="PDF_35629">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/pdf/35629" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="application/pdf" ID="PDF_35617">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/pdf/35617" LOCTYPE="URL"/>
+							</mets:file>
+						</mets:fileGrp>
+						<mets:fileGrp USE="DEFAULT">
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34316">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34316" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34317">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34317" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34318">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34318" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34319">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34319" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34320">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34320" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34321">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34321" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34322">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34322" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34323">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34323" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34324">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34324" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34325">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34325" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34326">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34326" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34327">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34327" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34328">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34328" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34329">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34329" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34330">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34330" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34331">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34331" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34332">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34332" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34333">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34333" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34334">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34334" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34335">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34335" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34336">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34336" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34337">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34337" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34338">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34338" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34339">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34339" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34340">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34340" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34341">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34341" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34342">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34342" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34343">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34343" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34344">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34344" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34345">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34345" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34346">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34346" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34347">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34347" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34348">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34348" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34349">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34349" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34350">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34350" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34351">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34351" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34352">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34352" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34353">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34353" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34354">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34354" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34355">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34355" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34356">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34356" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34357">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34357" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34358">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34358" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34359">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34359" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34360">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34360" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34361">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34361" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34362">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34362" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34363">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34363" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34364">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34364" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34365">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34365" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34366">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34366" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34367">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34367" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34368">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34368" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34369">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34369" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34370">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34370" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34371">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34371" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34372">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34372" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34373">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34373" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34374">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34374" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34375">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34375" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34376">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34376" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34377">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34377" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34378">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34378" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34379">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34379" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34380">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34380" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34381">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34381" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34382">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34382" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34383">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34383" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34384">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34384" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34385">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34385" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34386">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34386" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34387">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34387" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34388">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34388" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34389">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34389" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34390">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34390" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34391">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34391" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34392">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34392" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34393">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34393" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34394">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34394" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34395">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34395" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34396">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34396" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34397">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34397" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34398">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34398" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34399">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34399" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34400">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34400" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34401">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34401" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34402">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34402" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34403">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34403" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34404">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34404" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34405">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34405" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34406">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34406" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34407">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34407" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34408">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34408" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34409">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34409" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34410">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34410" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34411">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34411" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34412">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34412" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34413">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34413" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34414">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34414" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34415">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34415" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34416">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34416" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34417">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34417" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34418">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34418" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34419">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34419" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34420">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34420" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34421">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34421" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34422">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34422" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34423">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34423" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34424">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34424" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34425">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34425" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34426">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34426" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34427">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34427" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34428">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34428" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_DEFAULT_34429">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1000/34429" LOCTYPE="URL"/>
+							</mets:file>
+						</mets:fileGrp>
+						<mets:fileGrp USE="THUMBS">
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34316">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34316" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34317">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34317" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34318">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34318" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34319">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34319" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34320">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34320" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34321">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34321" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34322">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34322" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34323">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34323" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34324">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34324" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34325">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34325" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34326">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34326" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34327">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34327" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34328">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34328" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34329">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34329" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34330">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34330" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34331">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34331" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34332">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34332" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34333">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34333" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34334">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34334" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34335">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34335" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34336">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34336" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34337">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34337" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34338">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34338" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34339">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34339" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34340">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34340" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34341">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34341" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34342">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34342" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34343">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34343" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34344">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34344" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34345">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34345" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34346">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34346" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34347">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34347" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34348">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34348" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34349">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34349" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34350">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34350" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34351">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34351" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34352">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34352" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34353">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34353" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34354">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34354" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34355">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34355" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34356">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34356" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34357">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34357" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34358">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34358" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34359">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34359" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34360">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34360" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34361">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34361" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34362">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34362" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34363">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34363" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34364">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34364" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34365">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34365" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34366">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34366" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34367">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34367" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34368">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34368" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34369">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34369" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34370">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34370" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34371">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34371" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34372">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34372" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34373">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34373" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34374">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34374" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34375">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34375" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34376">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34376" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34377">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34377" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34378">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34378" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34379">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34379" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34380">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34380" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34381">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34381" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34382">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34382" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34383">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34383" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34384">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34384" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34385">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34385" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34386">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34386" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34387">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34387" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34388">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34388" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34389">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34389" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34390">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34390" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34391">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34391" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34392">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34392" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34393">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34393" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34394">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34394" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34395">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34395" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34396">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34396" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34397">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34397" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34398">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34398" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34399">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34399" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34400">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34400" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34401">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34401" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34402">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34402" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34403">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34403" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34404">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34404" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34405">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34405" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34406">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34406" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34407">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34407" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34408">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34408" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34409">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34409" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34410">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34410" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34411">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34411" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34412">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34412" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34413">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34413" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34414">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34414" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34415">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34415" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34416">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34416" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34417">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34417" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34418">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34418" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34419">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34419" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34420">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34420" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34421">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34421" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34422">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34422" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34423">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34423" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34424">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34424" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34425">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34425" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34426">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34426" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34427">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34427" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34428">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34428" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_THUMBS_34429">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/128/34429" LOCTYPE="URL"/>
+							</mets:file>
+						</mets:fileGrp>
+						<mets:fileGrp USE="MIN">
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34316">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34316" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34317">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34317" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34318">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34318" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34319">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34319" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34320">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34320" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34321">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34321" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34322">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34322" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34323">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34323" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34324">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34324" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34325">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34325" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34326">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34326" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34327">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34327" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34328">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34328" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34329">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34329" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34330">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34330" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34331">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34331" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34332">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34332" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34333">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34333" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34334">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34334" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34335">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34335" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34336">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34336" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34337">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34337" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34338">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34338" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34339">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34339" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34340">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34340" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34341">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34341" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34342">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34342" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34343">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34343" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34344">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34344" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34345">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34345" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34346">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34346" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34347">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34347" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34348">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34348" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34349">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34349" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34350">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34350" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34351">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34351" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34352">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34352" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34353">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34353" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34354">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34354" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34355">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34355" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34356">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34356" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34357">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34357" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34358">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34358" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34359">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34359" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34360">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34360" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34361">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34361" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34362">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34362" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34363">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34363" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34364">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34364" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34365">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34365" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34366">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34366" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34367">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34367" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34368">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34368" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34369">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34369" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34370">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34370" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34371">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34371" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34372">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34372" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34373">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34373" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34374">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34374" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34375">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34375" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34376">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34376" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34377">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34377" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34378">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34378" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34379">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34379" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34380">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34380" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34381">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34381" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34382">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34382" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34383">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34383" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34384">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34384" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34385">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34385" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34386">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34386" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34387">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34387" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34388">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34388" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34389">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34389" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34390">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34390" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34391">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34391" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34392">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34392" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34393">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34393" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34394">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34394" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34395">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34395" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34396">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34396" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34397">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34397" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34398">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34398" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34399">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34399" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34400">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34400" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34401">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34401" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34402">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34402" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34403">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34403" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34404">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34404" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34405">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34405" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34406">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34406" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34407">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34407" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34408">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34408" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34409">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34409" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34410">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34410" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34411">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34411" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34412">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34412" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34413">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34413" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34414">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34414" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34415">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34415" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34416">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34416" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34417">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34417" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34418">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34418" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34419">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34419" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34420">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34420" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34421">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34421" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34422">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34422" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34423">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34423" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34424">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34424" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34425">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34425" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34426">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34426" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34427">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34427" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34428">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34428" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MIN_34429">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/600/34429" LOCTYPE="URL"/>
+							</mets:file>
+						</mets:fileGrp>
+						<mets:fileGrp USE="MAX">
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34316">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34316" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34317">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34317" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34318">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34318" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34319">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34319" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34320">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34320" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34321">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34321" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34322">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34322" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34323">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34323" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34324">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34324" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34325">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34325" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34326">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34326" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34327">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34327" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34328">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34328" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34329">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34329" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34330">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34330" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34331">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34331" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34332">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34332" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34333">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34333" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34334">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34334" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34335">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34335" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34336">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34336" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34337">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34337" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34338">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34338" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34339">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34339" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34340">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34340" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34341">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34341" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34342">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34342" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34343">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34343" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34344">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34344" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34345">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34345" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34346">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34346" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34347">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34347" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34348">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34348" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34349">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34349" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34350">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34350" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34351">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34351" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34352">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34352" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34353">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34353" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34354">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34354" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34355">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34355" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34356">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34356" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34357">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34357" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34358">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34358" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34359">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34359" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34360">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34360" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34361">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34361" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34362">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34362" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34363">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34363" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34364">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34364" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34365">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34365" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34366">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34366" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34367">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34367" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34368">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34368" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34369">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34369" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34370">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34370" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34371">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34371" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34372">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34372" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34373">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34373" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34374">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34374" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34375">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34375" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34376">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34376" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34377">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34377" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34378">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34378" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34379">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34379" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34380">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34380" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34381">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34381" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34382">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34382" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34383">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34383" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34384">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34384" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34385">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34385" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34386">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34386" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34387">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34387" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34388">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34388" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34389">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34389" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34390">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34390" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34391">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34391" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34392">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34392" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34393">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34393" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34394">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34394" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34395">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34395" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34396">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34396" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34397">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34397" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34398">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34398" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34399">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34399" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34400">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34400" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34401">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34401" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34402">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34402" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34403">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34403" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34404">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34404" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34405">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34405" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34406">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34406" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34407">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34407" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34408">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34408" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34409">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34409" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34410">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34410" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34411">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34411" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34412">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34412" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34413">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34413" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34414">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34414" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34415">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34415" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34416">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34416" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34417">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34417" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34418">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34418" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34419">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34419" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34420">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34420" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34421">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34421" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34422">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34422" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34423">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34423" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34424">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34424" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34425">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34425" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34426">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34426" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34427">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34427" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34428">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34428" LOCTYPE="URL"/>
+							</mets:file>
+							<mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_34429">
+								<mets:FLocat xlink:href="http://www.e-rara.ch/download/webcache/1504/34429" LOCTYPE="URL"/>
+							</mets:file>
+						</mets:fileGrp>
+					</mets:fileSec>
+					<mets:structMap TYPE="PHYSICAL">
+						<mets:div ID="phys34314" TYPE="physSequence">
+							<mets:fptr FILEID="PDF_34314"/>
+							<mets:div ID="phys34316" TYPE="section" LABEL="[Seite 1]" ORDER="1">
+								<mets:fptr FILEID="IMG_DEFAULT_34316"/>
+								<mets:fptr FILEID="IMG_THUMBS_34316"/>
+								<mets:fptr FILEID="IMG_MIN_34316"/>
+								<mets:fptr FILEID="IMG_MAX_34316"/>
+							</mets:div>
+							<mets:div ID="phys34317" TYPE="section" LABEL="[Seite 2]" ORDER="2">
+								<mets:fptr FILEID="IMG_DEFAULT_34317"/>
+								<mets:fptr FILEID="IMG_THUMBS_34317"/>
+								<mets:fptr FILEID="IMG_MIN_34317"/>
+								<mets:fptr FILEID="IMG_MAX_34317"/>
+							</mets:div>
+							<mets:div ID="phys34318" TYPE="section" LABEL="[Seite 3]" ORDER="3">
+								<mets:fptr FILEID="IMG_DEFAULT_34318"/>
+								<mets:fptr FILEID="IMG_THUMBS_34318"/>
+								<mets:fptr FILEID="IMG_MIN_34318"/>
+								<mets:fptr FILEID="IMG_MAX_34318"/>
+							</mets:div>
+							<mets:div ID="phys34319" TYPE="section" LABEL="[Seite 4]" ORDER="4">
+								<mets:fptr FILEID="IMG_DEFAULT_34319"/>
+								<mets:fptr FILEID="IMG_THUMBS_34319"/>
+								<mets:fptr FILEID="IMG_MIN_34319"/>
+								<mets:fptr FILEID="IMG_MAX_34319"/>
+							</mets:div>
+							<mets:div ID="phys34320" TYPE="section" LABEL="[Seite 5]" ORDER="5">
+								<mets:fptr FILEID="IMG_DEFAULT_34320"/>
+								<mets:fptr FILEID="IMG_THUMBS_34320"/>
+								<mets:fptr FILEID="IMG_MIN_34320"/>
+								<mets:fptr FILEID="IMG_MAX_34320"/>
+							</mets:div>
+							<mets:div ID="phys34321" TYPE="section" LABEL="[Seite 6]" ORDER="6">
+								<mets:fptr FILEID="IMG_DEFAULT_34321"/>
+								<mets:fptr FILEID="IMG_THUMBS_34321"/>
+								<mets:fptr FILEID="IMG_MIN_34321"/>
+								<mets:fptr FILEID="IMG_MAX_34321"/>
+							</mets:div>
+							<mets:div ID="phys34322" TYPE="section" LABEL="Seite I" ORDER="7" ORDERLABEL="I">
+								<mets:fptr FILEID="IMG_DEFAULT_34322"/>
+								<mets:fptr FILEID="IMG_THUMBS_34322"/>
+								<mets:fptr FILEID="IMG_MIN_34322"/>
+								<mets:fptr FILEID="IMG_MAX_34322"/>
+							</mets:div>
+							<mets:div ID="phys34323" TYPE="section" LABEL="Seite II" ORDER="8" ORDERLABEL="II">
+								<mets:fptr FILEID="IMG_DEFAULT_34323"/>
+								<mets:fptr FILEID="IMG_THUMBS_34323"/>
+								<mets:fptr FILEID="IMG_MIN_34323"/>
+								<mets:fptr FILEID="IMG_MAX_34323"/>
+							</mets:div>
+							<mets:div ID="phys34324" TYPE="section" LABEL="Seite III" ORDER="9" ORDERLABEL="III">
+								<mets:fptr FILEID="IMG_DEFAULT_34324"/>
+								<mets:fptr FILEID="IMG_THUMBS_34324"/>
+								<mets:fptr FILEID="IMG_MIN_34324"/>
+								<mets:fptr FILEID="IMG_MAX_34324"/>
+							</mets:div>
+							<mets:div ID="phys34325" TYPE="section" LABEL="Seite IV" ORDER="10" ORDERLABEL="IV">
+								<mets:fptr FILEID="IMG_DEFAULT_34325"/>
+								<mets:fptr FILEID="IMG_THUMBS_34325"/>
+								<mets:fptr FILEID="IMG_MIN_34325"/>
+								<mets:fptr FILEID="IMG_MAX_34325"/>
+							</mets:div>
+							<mets:div ID="phys34326" TYPE="section" LABEL="Seite V" ORDER="11" ORDERLABEL="V">
+								<mets:fptr FILEID="IMG_DEFAULT_34326"/>
+								<mets:fptr FILEID="IMG_THUMBS_34326"/>
+								<mets:fptr FILEID="IMG_MIN_34326"/>
+								<mets:fptr FILEID="IMG_MAX_34326"/>
+							</mets:div>
+							<mets:div ID="phys34327" TYPE="section" LABEL="Seite VI" ORDER="12" ORDERLABEL="VI">
+								<mets:fptr FILEID="IMG_DEFAULT_34327"/>
+								<mets:fptr FILEID="IMG_THUMBS_34327"/>
+								<mets:fptr FILEID="IMG_MIN_34327"/>
+								<mets:fptr FILEID="IMG_MAX_34327"/>
+							</mets:div>
+							<mets:div ID="phys34328" TYPE="section" LABEL="Seite VII" ORDER="13" ORDERLABEL="VII">
+								<mets:fptr FILEID="IMG_DEFAULT_34328"/>
+								<mets:fptr FILEID="IMG_THUMBS_34328"/>
+								<mets:fptr FILEID="IMG_MIN_34328"/>
+								<mets:fptr FILEID="IMG_MAX_34328"/>
+							</mets:div>
+							<mets:div ID="phys34329" TYPE="section" LABEL="Seite VIII" ORDER="14" ORDERLABEL="VIII">
+								<mets:fptr FILEID="IMG_DEFAULT_34329"/>
+								<mets:fptr FILEID="IMG_THUMBS_34329"/>
+								<mets:fptr FILEID="IMG_MIN_34329"/>
+								<mets:fptr FILEID="IMG_MAX_34329"/>
+							</mets:div>
+							<mets:div ID="phys34330" TYPE="section" LABEL="Seite 1" ORDER="15" ORDERLABEL="1">
+								<mets:fptr FILEID="IMG_DEFAULT_34330"/>
+								<mets:fptr FILEID="IMG_THUMBS_34330"/>
+								<mets:fptr FILEID="IMG_MIN_34330"/>
+								<mets:fptr FILEID="IMG_MAX_34330"/>
+							</mets:div>
+							<mets:div ID="phys34331" TYPE="section" LABEL="Seite 2" ORDER="16" ORDERLABEL="2">
+								<mets:fptr FILEID="IMG_DEFAULT_34331"/>
+								<mets:fptr FILEID="IMG_THUMBS_34331"/>
+								<mets:fptr FILEID="IMG_MIN_34331"/>
+								<mets:fptr FILEID="IMG_MAX_34331"/>
+							</mets:div>
+							<mets:div ID="phys34332" TYPE="section" LABEL="Seite 3" ORDER="17" ORDERLABEL="3">
+								<mets:fptr FILEID="IMG_DEFAULT_34332"/>
+								<mets:fptr FILEID="IMG_THUMBS_34332"/>
+								<mets:fptr FILEID="IMG_MIN_34332"/>
+								<mets:fptr FILEID="IMG_MAX_34332"/>
+							</mets:div>
+							<mets:div ID="phys34333" TYPE="section" LABEL="Seite 4" ORDER="18" ORDERLABEL="4">
+								<mets:fptr FILEID="IMG_DEFAULT_34333"/>
+								<mets:fptr FILEID="IMG_THUMBS_34333"/>
+								<mets:fptr FILEID="IMG_MIN_34333"/>
+								<mets:fptr FILEID="IMG_MAX_34333"/>
+							</mets:div>
+							<mets:div ID="phys34334" TYPE="section" LABEL="Seite 5" ORDER="19" ORDERLABEL="5">
+								<mets:fptr FILEID="IMG_DEFAULT_34334"/>
+								<mets:fptr FILEID="IMG_THUMBS_34334"/>
+								<mets:fptr FILEID="IMG_MIN_34334"/>
+								<mets:fptr FILEID="IMG_MAX_34334"/>
+							</mets:div>
+							<mets:div ID="phys34335" TYPE="section" LABEL="Seite 6" ORDER="20" ORDERLABEL="6">
+								<mets:fptr FILEID="IMG_DEFAULT_34335"/>
+								<mets:fptr FILEID="IMG_THUMBS_34335"/>
+								<mets:fptr FILEID="IMG_MIN_34335"/>
+								<mets:fptr FILEID="IMG_MAX_34335"/>
+							</mets:div>
+							<mets:div ID="phys34336" TYPE="section" LABEL="Seite 7" ORDER="21" ORDERLABEL="7">
+								<mets:fptr FILEID="IMG_DEFAULT_34336"/>
+								<mets:fptr FILEID="IMG_THUMBS_34336"/>
+								<mets:fptr FILEID="IMG_MIN_34336"/>
+								<mets:fptr FILEID="IMG_MAX_34336"/>
+							</mets:div>
+							<mets:div ID="phys34337" TYPE="section" LABEL="Seite 8" ORDER="22" ORDERLABEL="8">
+								<mets:fptr FILEID="IMG_DEFAULT_34337"/>
+								<mets:fptr FILEID="IMG_THUMBS_34337"/>
+								<mets:fptr FILEID="IMG_MIN_34337"/>
+								<mets:fptr FILEID="IMG_MAX_34337"/>
+							</mets:div>
+							<mets:div ID="phys34338" TYPE="section" LABEL="Seite 9" ORDER="23" ORDERLABEL="9">
+								<mets:fptr FILEID="IMG_DEFAULT_34338"/>
+								<mets:fptr FILEID="IMG_THUMBS_34338"/>
+								<mets:fptr FILEID="IMG_MIN_34338"/>
+								<mets:fptr FILEID="IMG_MAX_34338"/>
+							</mets:div>
+							<mets:div ID="phys34339" TYPE="section" LABEL="Seite 10" ORDER="24" ORDERLABEL="10">
+								<mets:fptr FILEID="IMG_DEFAULT_34339"/>
+								<mets:fptr FILEID="IMG_THUMBS_34339"/>
+								<mets:fptr FILEID="IMG_MIN_34339"/>
+								<mets:fptr FILEID="IMG_MAX_34339"/>
+							</mets:div>
+							<mets:div ID="phys34340" TYPE="section" LABEL="Seite 11" ORDER="25" ORDERLABEL="11">
+								<mets:fptr FILEID="IMG_DEFAULT_34340"/>
+								<mets:fptr FILEID="IMG_THUMBS_34340"/>
+								<mets:fptr FILEID="IMG_MIN_34340"/>
+								<mets:fptr FILEID="IMG_MAX_34340"/>
+							</mets:div>
+							<mets:div ID="phys34341" TYPE="section" LABEL="Seite 12" ORDER="26" ORDERLABEL="12">
+								<mets:fptr FILEID="IMG_DEFAULT_34341"/>
+								<mets:fptr FILEID="IMG_THUMBS_34341"/>
+								<mets:fptr FILEID="IMG_MIN_34341"/>
+								<mets:fptr FILEID="IMG_MAX_34341"/>
+							</mets:div>
+							<mets:div ID="phys34342" TYPE="section" LABEL="Seite 13" ORDER="27" ORDERLABEL="13">
+								<mets:fptr FILEID="IMG_DEFAULT_34342"/>
+								<mets:fptr FILEID="IMG_THUMBS_34342"/>
+								<mets:fptr FILEID="IMG_MIN_34342"/>
+								<mets:fptr FILEID="IMG_MAX_34342"/>
+							</mets:div>
+							<mets:div ID="phys34343" TYPE="section" LABEL="Seite 14" ORDER="28" ORDERLABEL="14">
+								<mets:fptr FILEID="IMG_DEFAULT_34343"/>
+								<mets:fptr FILEID="IMG_THUMBS_34343"/>
+								<mets:fptr FILEID="IMG_MIN_34343"/>
+								<mets:fptr FILEID="IMG_MAX_34343"/>
+							</mets:div>
+							<mets:div ID="phys34344" TYPE="section" LABEL="Seite 15" ORDER="29" ORDERLABEL="15">
+								<mets:fptr FILEID="IMG_DEFAULT_34344"/>
+								<mets:fptr FILEID="IMG_THUMBS_34344"/>
+								<mets:fptr FILEID="IMG_MIN_34344"/>
+								<mets:fptr FILEID="IMG_MAX_34344"/>
+							</mets:div>
+							<mets:div ID="phys34345" TYPE="section" LABEL="Seite 16" ORDER="30" ORDERLABEL="16">
+								<mets:fptr FILEID="IMG_DEFAULT_34345"/>
+								<mets:fptr FILEID="IMG_THUMBS_34345"/>
+								<mets:fptr FILEID="IMG_MIN_34345"/>
+								<mets:fptr FILEID="IMG_MAX_34345"/>
+							</mets:div>
+							<mets:div ID="phys34346" TYPE="section" LABEL="Seite 17" ORDER="31" ORDERLABEL="17">
+								<mets:fptr FILEID="IMG_DEFAULT_34346"/>
+								<mets:fptr FILEID="IMG_THUMBS_34346"/>
+								<mets:fptr FILEID="IMG_MIN_34346"/>
+								<mets:fptr FILEID="IMG_MAX_34346"/>
+							</mets:div>
+							<mets:div ID="phys34347" TYPE="section" LABEL="Seite 18" ORDER="32" ORDERLABEL="18">
+								<mets:fptr FILEID="IMG_DEFAULT_34347"/>
+								<mets:fptr FILEID="IMG_THUMBS_34347"/>
+								<mets:fptr FILEID="IMG_MIN_34347"/>
+								<mets:fptr FILEID="IMG_MAX_34347"/>
+							</mets:div>
+							<mets:div ID="phys34348" TYPE="section" LABEL="Seite 19" ORDER="33" ORDERLABEL="19">
+								<mets:fptr FILEID="IMG_DEFAULT_34348"/>
+								<mets:fptr FILEID="IMG_THUMBS_34348"/>
+								<mets:fptr FILEID="IMG_MIN_34348"/>
+								<mets:fptr FILEID="IMG_MAX_34348"/>
+							</mets:div>
+							<mets:div ID="phys34349" TYPE="section" LABEL="Seite 20" ORDER="34" ORDERLABEL="20">
+								<mets:fptr FILEID="IMG_DEFAULT_34349"/>
+								<mets:fptr FILEID="IMG_THUMBS_34349"/>
+								<mets:fptr FILEID="IMG_MIN_34349"/>
+								<mets:fptr FILEID="IMG_MAX_34349"/>
+							</mets:div>
+							<mets:div ID="phys34350" TYPE="section" LABEL="Seite 21" ORDER="35" ORDERLABEL="21">
+								<mets:fptr FILEID="IMG_DEFAULT_34350"/>
+								<mets:fptr FILEID="IMG_THUMBS_34350"/>
+								<mets:fptr FILEID="IMG_MIN_34350"/>
+								<mets:fptr FILEID="IMG_MAX_34350"/>
+							</mets:div>
+							<mets:div ID="phys34351" TYPE="section" LABEL="Seite 22" ORDER="36" ORDERLABEL="22">
+								<mets:fptr FILEID="IMG_DEFAULT_34351"/>
+								<mets:fptr FILEID="IMG_THUMBS_34351"/>
+								<mets:fptr FILEID="IMG_MIN_34351"/>
+								<mets:fptr FILEID="IMG_MAX_34351"/>
+							</mets:div>
+							<mets:div ID="phys34352" TYPE="section" LABEL="Seite 23" ORDER="37" ORDERLABEL="23">
+								<mets:fptr FILEID="IMG_DEFAULT_34352"/>
+								<mets:fptr FILEID="IMG_THUMBS_34352"/>
+								<mets:fptr FILEID="IMG_MIN_34352"/>
+								<mets:fptr FILEID="IMG_MAX_34352"/>
+							</mets:div>
+							<mets:div ID="phys34353" TYPE="section" LABEL="Seite 24" ORDER="38" ORDERLABEL="24">
+								<mets:fptr FILEID="IMG_DEFAULT_34353"/>
+								<mets:fptr FILEID="IMG_THUMBS_34353"/>
+								<mets:fptr FILEID="IMG_MIN_34353"/>
+								<mets:fptr FILEID="IMG_MAX_34353"/>
+							</mets:div>
+							<mets:div ID="phys34354" TYPE="section" LABEL="Seite 25" ORDER="39" ORDERLABEL="25">
+								<mets:fptr FILEID="IMG_DEFAULT_34354"/>
+								<mets:fptr FILEID="IMG_THUMBS_34354"/>
+								<mets:fptr FILEID="IMG_MIN_34354"/>
+								<mets:fptr FILEID="IMG_MAX_34354"/>
+							</mets:div>
+							<mets:div ID="phys34355" TYPE="section" LABEL="Seite 26" ORDER="40" ORDERLABEL="26">
+								<mets:fptr FILEID="IMG_DEFAULT_34355"/>
+								<mets:fptr FILEID="IMG_THUMBS_34355"/>
+								<mets:fptr FILEID="IMG_MIN_34355"/>
+								<mets:fptr FILEID="IMG_MAX_34355"/>
+							</mets:div>
+							<mets:div ID="phys34356" TYPE="section" LABEL="Seite 27" ORDER="41" ORDERLABEL="27">
+								<mets:fptr FILEID="IMG_DEFAULT_34356"/>
+								<mets:fptr FILEID="IMG_THUMBS_34356"/>
+								<mets:fptr FILEID="IMG_MIN_34356"/>
+								<mets:fptr FILEID="IMG_MAX_34356"/>
+							</mets:div>
+							<mets:div ID="phys34357" TYPE="section" LABEL="Seite 28" ORDER="42" ORDERLABEL="28">
+								<mets:fptr FILEID="IMG_DEFAULT_34357"/>
+								<mets:fptr FILEID="IMG_THUMBS_34357"/>
+								<mets:fptr FILEID="IMG_MIN_34357"/>
+								<mets:fptr FILEID="IMG_MAX_34357"/>
+							</mets:div>
+							<mets:div ID="phys34358" TYPE="section" LABEL="Seite 29" ORDER="43" ORDERLABEL="29">
+								<mets:fptr FILEID="IMG_DEFAULT_34358"/>
+								<mets:fptr FILEID="IMG_THUMBS_34358"/>
+								<mets:fptr FILEID="IMG_MIN_34358"/>
+								<mets:fptr FILEID="IMG_MAX_34358"/>
+							</mets:div>
+							<mets:div ID="phys34359" TYPE="section" LABEL="Seite 30" ORDER="44" ORDERLABEL="30">
+								<mets:fptr FILEID="IMG_DEFAULT_34359"/>
+								<mets:fptr FILEID="IMG_THUMBS_34359"/>
+								<mets:fptr FILEID="IMG_MIN_34359"/>
+								<mets:fptr FILEID="IMG_MAX_34359"/>
+							</mets:div>
+							<mets:div ID="phys34360" TYPE="section" LABEL="Seite 31" ORDER="45" ORDERLABEL="31">
+								<mets:fptr FILEID="IMG_DEFAULT_34360"/>
+								<mets:fptr FILEID="IMG_THUMBS_34360"/>
+								<mets:fptr FILEID="IMG_MIN_34360"/>
+								<mets:fptr FILEID="IMG_MAX_34360"/>
+							</mets:div>
+							<mets:div ID="phys34361" TYPE="section" LABEL="Seite 32" ORDER="46" ORDERLABEL="32">
+								<mets:fptr FILEID="IMG_DEFAULT_34361"/>
+								<mets:fptr FILEID="IMG_THUMBS_34361"/>
+								<mets:fptr FILEID="IMG_MIN_34361"/>
+								<mets:fptr FILEID="IMG_MAX_34361"/>
+							</mets:div>
+							<mets:div ID="phys34362" TYPE="section" LABEL="Seite 33" ORDER="47" ORDERLABEL="33">
+								<mets:fptr FILEID="IMG_DEFAULT_34362"/>
+								<mets:fptr FILEID="IMG_THUMBS_34362"/>
+								<mets:fptr FILEID="IMG_MIN_34362"/>
+								<mets:fptr FILEID="IMG_MAX_34362"/>
+							</mets:div>
+							<mets:div ID="phys34363" TYPE="section" LABEL="Seite 34" ORDER="48" ORDERLABEL="34">
+								<mets:fptr FILEID="IMG_DEFAULT_34363"/>
+								<mets:fptr FILEID="IMG_THUMBS_34363"/>
+								<mets:fptr FILEID="IMG_MIN_34363"/>
+								<mets:fptr FILEID="IMG_MAX_34363"/>
+							</mets:div>
+							<mets:div ID="phys34364" TYPE="section" LABEL="Seite 35" ORDER="49" ORDERLABEL="35">
+								<mets:fptr FILEID="IMG_DEFAULT_34364"/>
+								<mets:fptr FILEID="IMG_THUMBS_34364"/>
+								<mets:fptr FILEID="IMG_MIN_34364"/>
+								<mets:fptr FILEID="IMG_MAX_34364"/>
+							</mets:div>
+							<mets:div ID="phys34365" TYPE="section" LABEL="Seite 36" ORDER="50" ORDERLABEL="36">
+								<mets:fptr FILEID="IMG_DEFAULT_34365"/>
+								<mets:fptr FILEID="IMG_THUMBS_34365"/>
+								<mets:fptr FILEID="IMG_MIN_34365"/>
+								<mets:fptr FILEID="IMG_MAX_34365"/>
+							</mets:div>
+							<mets:div ID="phys34366" TYPE="section" LABEL="Seite 37" ORDER="51" ORDERLABEL="37">
+								<mets:fptr FILEID="IMG_DEFAULT_34366"/>
+								<mets:fptr FILEID="IMG_THUMBS_34366"/>
+								<mets:fptr FILEID="IMG_MIN_34366"/>
+								<mets:fptr FILEID="IMG_MAX_34366"/>
+							</mets:div>
+							<mets:div ID="phys34367" TYPE="section" LABEL="Seite 38" ORDER="52" ORDERLABEL="38">
+								<mets:fptr FILEID="IMG_DEFAULT_34367"/>
+								<mets:fptr FILEID="IMG_THUMBS_34367"/>
+								<mets:fptr FILEID="IMG_MIN_34367"/>
+								<mets:fptr FILEID="IMG_MAX_34367"/>
+							</mets:div>
+							<mets:div ID="phys34368" TYPE="section" LABEL="Seite 39" ORDER="53" ORDERLABEL="39">
+								<mets:fptr FILEID="IMG_DEFAULT_34368"/>
+								<mets:fptr FILEID="IMG_THUMBS_34368"/>
+								<mets:fptr FILEID="IMG_MIN_34368"/>
+								<mets:fptr FILEID="IMG_MAX_34368"/>
+							</mets:div>
+							<mets:div ID="phys34369" TYPE="section" LABEL="Seite 40" ORDER="54" ORDERLABEL="40">
+								<mets:fptr FILEID="IMG_DEFAULT_34369"/>
+								<mets:fptr FILEID="IMG_THUMBS_34369"/>
+								<mets:fptr FILEID="IMG_MIN_34369"/>
+								<mets:fptr FILEID="IMG_MAX_34369"/>
+							</mets:div>
+							<mets:div ID="phys34370" TYPE="section" LABEL="Seite 41" ORDER="55" ORDERLABEL="41">
+								<mets:fptr FILEID="IMG_DEFAULT_34370"/>
+								<mets:fptr FILEID="IMG_THUMBS_34370"/>
+								<mets:fptr FILEID="IMG_MIN_34370"/>
+								<mets:fptr FILEID="IMG_MAX_34370"/>
+							</mets:div>
+							<mets:div ID="phys34371" TYPE="section" LABEL="Seite 42" ORDER="56" ORDERLABEL="42">
+								<mets:fptr FILEID="IMG_DEFAULT_34371"/>
+								<mets:fptr FILEID="IMG_THUMBS_34371"/>
+								<mets:fptr FILEID="IMG_MIN_34371"/>
+								<mets:fptr FILEID="IMG_MAX_34371"/>
+							</mets:div>
+							<mets:div ID="phys34372" TYPE="section" LABEL="Seite 43" ORDER="57" ORDERLABEL="43">
+								<mets:fptr FILEID="IMG_DEFAULT_34372"/>
+								<mets:fptr FILEID="IMG_THUMBS_34372"/>
+								<mets:fptr FILEID="IMG_MIN_34372"/>
+								<mets:fptr FILEID="IMG_MAX_34372"/>
+							</mets:div>
+							<mets:div ID="phys34373" TYPE="section" LABEL="Seite 44" ORDER="58" ORDERLABEL="44">
+								<mets:fptr FILEID="IMG_DEFAULT_34373"/>
+								<mets:fptr FILEID="IMG_THUMBS_34373"/>
+								<mets:fptr FILEID="IMG_MIN_34373"/>
+								<mets:fptr FILEID="IMG_MAX_34373"/>
+							</mets:div>
+							<mets:div ID="phys34374" TYPE="section" LABEL="Seite 45" ORDER="59" ORDERLABEL="45">
+								<mets:fptr FILEID="IMG_DEFAULT_34374"/>
+								<mets:fptr FILEID="IMG_THUMBS_34374"/>
+								<mets:fptr FILEID="IMG_MIN_34374"/>
+								<mets:fptr FILEID="IMG_MAX_34374"/>
+							</mets:div>
+							<mets:div ID="phys34375" TYPE="section" LABEL="Seite 46" ORDER="60" ORDERLABEL="46">
+								<mets:fptr FILEID="IMG_DEFAULT_34375"/>
+								<mets:fptr FILEID="IMG_THUMBS_34375"/>
+								<mets:fptr FILEID="IMG_MIN_34375"/>
+								<mets:fptr FILEID="IMG_MAX_34375"/>
+							</mets:div>
+							<mets:div ID="phys34376" TYPE="section" LABEL="Seite 47" ORDER="61" ORDERLABEL="47">
+								<mets:fptr FILEID="IMG_DEFAULT_34376"/>
+								<mets:fptr FILEID="IMG_THUMBS_34376"/>
+								<mets:fptr FILEID="IMG_MIN_34376"/>
+								<mets:fptr FILEID="IMG_MAX_34376"/>
+							</mets:div>
+							<mets:div ID="phys34377" TYPE="section" LABEL="Seite 48" ORDER="62" ORDERLABEL="48">
+								<mets:fptr FILEID="IMG_DEFAULT_34377"/>
+								<mets:fptr FILEID="IMG_THUMBS_34377"/>
+								<mets:fptr FILEID="IMG_MIN_34377"/>
+								<mets:fptr FILEID="IMG_MAX_34377"/>
+							</mets:div>
+							<mets:div ID="phys34378" TYPE="section" LABEL="Seite 49" ORDER="63" ORDERLABEL="49">
+								<mets:fptr FILEID="IMG_DEFAULT_34378"/>
+								<mets:fptr FILEID="IMG_THUMBS_34378"/>
+								<mets:fptr FILEID="IMG_MIN_34378"/>
+								<mets:fptr FILEID="IMG_MAX_34378"/>
+							</mets:div>
+							<mets:div ID="phys34379" TYPE="section" LABEL="Seite 50" ORDER="64" ORDERLABEL="50">
+								<mets:fptr FILEID="IMG_DEFAULT_34379"/>
+								<mets:fptr FILEID="IMG_THUMBS_34379"/>
+								<mets:fptr FILEID="IMG_MIN_34379"/>
+								<mets:fptr FILEID="IMG_MAX_34379"/>
+							</mets:div>
+							<mets:div ID="phys34380" TYPE="section" LABEL="Seite 51" ORDER="65" ORDERLABEL="51">
+								<mets:fptr FILEID="IMG_DEFAULT_34380"/>
+								<mets:fptr FILEID="IMG_THUMBS_34380"/>
+								<mets:fptr FILEID="IMG_MIN_34380"/>
+								<mets:fptr FILEID="IMG_MAX_34380"/>
+							</mets:div>
+							<mets:div ID="phys34381" TYPE="section" LABEL="Seite 52" ORDER="66" ORDERLABEL="52">
+								<mets:fptr FILEID="IMG_DEFAULT_34381"/>
+								<mets:fptr FILEID="IMG_THUMBS_34381"/>
+								<mets:fptr FILEID="IMG_MIN_34381"/>
+								<mets:fptr FILEID="IMG_MAX_34381"/>
+							</mets:div>
+							<mets:div ID="phys34382" TYPE="section" LABEL="Seite 53" ORDER="67" ORDERLABEL="53">
+								<mets:fptr FILEID="IMG_DEFAULT_34382"/>
+								<mets:fptr FILEID="IMG_THUMBS_34382"/>
+								<mets:fptr FILEID="IMG_MIN_34382"/>
+								<mets:fptr FILEID="IMG_MAX_34382"/>
+							</mets:div>
+							<mets:div ID="phys34383" TYPE="section" LABEL="Seite 54" ORDER="68" ORDERLABEL="54">
+								<mets:fptr FILEID="IMG_DEFAULT_34383"/>
+								<mets:fptr FILEID="IMG_THUMBS_34383"/>
+								<mets:fptr FILEID="IMG_MIN_34383"/>
+								<mets:fptr FILEID="IMG_MAX_34383"/>
+							</mets:div>
+							<mets:div ID="phys34384" TYPE="section" LABEL="Seite 55" ORDER="69" ORDERLABEL="55">
+								<mets:fptr FILEID="IMG_DEFAULT_34384"/>
+								<mets:fptr FILEID="IMG_THUMBS_34384"/>
+								<mets:fptr FILEID="IMG_MIN_34384"/>
+								<mets:fptr FILEID="IMG_MAX_34384"/>
+							</mets:div>
+							<mets:div ID="phys34385" TYPE="section" LABEL="Seite 56" ORDER="70" ORDERLABEL="56">
+								<mets:fptr FILEID="IMG_DEFAULT_34385"/>
+								<mets:fptr FILEID="IMG_THUMBS_34385"/>
+								<mets:fptr FILEID="IMG_MIN_34385"/>
+								<mets:fptr FILEID="IMG_MAX_34385"/>
+							</mets:div>
+							<mets:div ID="phys34386" TYPE="section" LABEL="Seite 57" ORDER="71" ORDERLABEL="57">
+								<mets:fptr FILEID="IMG_DEFAULT_34386"/>
+								<mets:fptr FILEID="IMG_THUMBS_34386"/>
+								<mets:fptr FILEID="IMG_MIN_34386"/>
+								<mets:fptr FILEID="IMG_MAX_34386"/>
+							</mets:div>
+							<mets:div ID="phys34387" TYPE="section" LABEL="Seite 58" ORDER="72" ORDERLABEL="58">
+								<mets:fptr FILEID="IMG_DEFAULT_34387"/>
+								<mets:fptr FILEID="IMG_THUMBS_34387"/>
+								<mets:fptr FILEID="IMG_MIN_34387"/>
+								<mets:fptr FILEID="IMG_MAX_34387"/>
+							</mets:div>
+							<mets:div ID="phys34388" TYPE="section" LABEL="Seite 59" ORDER="73" ORDERLABEL="59">
+								<mets:fptr FILEID="IMG_DEFAULT_34388"/>
+								<mets:fptr FILEID="IMG_THUMBS_34388"/>
+								<mets:fptr FILEID="IMG_MIN_34388"/>
+								<mets:fptr FILEID="IMG_MAX_34388"/>
+							</mets:div>
+							<mets:div ID="phys34389" TYPE="section" LABEL="Seite 60" ORDER="74" ORDERLABEL="60">
+								<mets:fptr FILEID="IMG_DEFAULT_34389"/>
+								<mets:fptr FILEID="IMG_THUMBS_34389"/>
+								<mets:fptr FILEID="IMG_MIN_34389"/>
+								<mets:fptr FILEID="IMG_MAX_34389"/>
+							</mets:div>
+							<mets:div ID="phys34390" TYPE="section" LABEL="Seite 61" ORDER="75" ORDERLABEL="61">
+								<mets:fptr FILEID="IMG_DEFAULT_34390"/>
+								<mets:fptr FILEID="IMG_THUMBS_34390"/>
+								<mets:fptr FILEID="IMG_MIN_34390"/>
+								<mets:fptr FILEID="IMG_MAX_34390"/>
+							</mets:div>
+							<mets:div ID="phys34391" TYPE="section" LABEL="Seite 62" ORDER="76" ORDERLABEL="62">
+								<mets:fptr FILEID="IMG_DEFAULT_34391"/>
+								<mets:fptr FILEID="IMG_THUMBS_34391"/>
+								<mets:fptr FILEID="IMG_MIN_34391"/>
+								<mets:fptr FILEID="IMG_MAX_34391"/>
+							</mets:div>
+							<mets:div ID="phys34392" TYPE="section" LABEL="Seite 63" ORDER="77" ORDERLABEL="63">
+								<mets:fptr FILEID="IMG_DEFAULT_34392"/>
+								<mets:fptr FILEID="IMG_THUMBS_34392"/>
+								<mets:fptr FILEID="IMG_MIN_34392"/>
+								<mets:fptr FILEID="IMG_MAX_34392"/>
+							</mets:div>
+							<mets:div ID="phys34393" TYPE="section" LABEL="Seite 64" ORDER="78" ORDERLABEL="64">
+								<mets:fptr FILEID="IMG_DEFAULT_34393"/>
+								<mets:fptr FILEID="IMG_THUMBS_34393"/>
+								<mets:fptr FILEID="IMG_MIN_34393"/>
+								<mets:fptr FILEID="IMG_MAX_34393"/>
+							</mets:div>
+							<mets:div ID="phys34394" TYPE="section" LABEL="Seite 65" ORDER="79" ORDERLABEL="65">
+								<mets:fptr FILEID="IMG_DEFAULT_34394"/>
+								<mets:fptr FILEID="IMG_THUMBS_34394"/>
+								<mets:fptr FILEID="IMG_MIN_34394"/>
+								<mets:fptr FILEID="IMG_MAX_34394"/>
+							</mets:div>
+							<mets:div ID="phys34395" TYPE="section" LABEL="Seite 66" ORDER="80" ORDERLABEL="66">
+								<mets:fptr FILEID="IMG_DEFAULT_34395"/>
+								<mets:fptr FILEID="IMG_THUMBS_34395"/>
+								<mets:fptr FILEID="IMG_MIN_34395"/>
+								<mets:fptr FILEID="IMG_MAX_34395"/>
+							</mets:div>
+							<mets:div ID="phys34396" TYPE="section" LABEL="Seite 67" ORDER="81" ORDERLABEL="67">
+								<mets:fptr FILEID="IMG_DEFAULT_34396"/>
+								<mets:fptr FILEID="IMG_THUMBS_34396"/>
+								<mets:fptr FILEID="IMG_MIN_34396"/>
+								<mets:fptr FILEID="IMG_MAX_34396"/>
+							</mets:div>
+							<mets:div ID="phys34397" TYPE="section" LABEL="Seite 68" ORDER="82" ORDERLABEL="68">
+								<mets:fptr FILEID="IMG_DEFAULT_34397"/>
+								<mets:fptr FILEID="IMG_THUMBS_34397"/>
+								<mets:fptr FILEID="IMG_MIN_34397"/>
+								<mets:fptr FILEID="IMG_MAX_34397"/>
+							</mets:div>
+							<mets:div ID="phys34398" TYPE="section" LABEL="Seite 69" ORDER="83" ORDERLABEL="69">
+								<mets:fptr FILEID="IMG_DEFAULT_34398"/>
+								<mets:fptr FILEID="IMG_THUMBS_34398"/>
+								<mets:fptr FILEID="IMG_MIN_34398"/>
+								<mets:fptr FILEID="IMG_MAX_34398"/>
+							</mets:div>
+							<mets:div ID="phys34399" TYPE="section" LABEL="Seite 70" ORDER="84" ORDERLABEL="70">
+								<mets:fptr FILEID="IMG_DEFAULT_34399"/>
+								<mets:fptr FILEID="IMG_THUMBS_34399"/>
+								<mets:fptr FILEID="IMG_MIN_34399"/>
+								<mets:fptr FILEID="IMG_MAX_34399"/>
+							</mets:div>
+							<mets:div ID="phys34400" TYPE="section" LABEL="Seite 71" ORDER="85" ORDERLABEL="71">
+								<mets:fptr FILEID="IMG_DEFAULT_34400"/>
+								<mets:fptr FILEID="IMG_THUMBS_34400"/>
+								<mets:fptr FILEID="IMG_MIN_34400"/>
+								<mets:fptr FILEID="IMG_MAX_34400"/>
+							</mets:div>
+							<mets:div ID="phys34401" TYPE="section" LABEL="Seite 72" ORDER="86" ORDERLABEL="72">
+								<mets:fptr FILEID="IMG_DEFAULT_34401"/>
+								<mets:fptr FILEID="IMG_THUMBS_34401"/>
+								<mets:fptr FILEID="IMG_MIN_34401"/>
+								<mets:fptr FILEID="IMG_MAX_34401"/>
+							</mets:div>
+							<mets:div ID="phys34402" TYPE="section" LABEL="Seite 73" ORDER="87" ORDERLABEL="73">
+								<mets:fptr FILEID="IMG_DEFAULT_34402"/>
+								<mets:fptr FILEID="IMG_THUMBS_34402"/>
+								<mets:fptr FILEID="IMG_MIN_34402"/>
+								<mets:fptr FILEID="IMG_MAX_34402"/>
+							</mets:div>
+							<mets:div ID="phys34403" TYPE="section" LABEL="Seite 74" ORDER="88" ORDERLABEL="74">
+								<mets:fptr FILEID="IMG_DEFAULT_34403"/>
+								<mets:fptr FILEID="IMG_THUMBS_34403"/>
+								<mets:fptr FILEID="IMG_MIN_34403"/>
+								<mets:fptr FILEID="IMG_MAX_34403"/>
+							</mets:div>
+							<mets:div ID="phys34404" TYPE="section" LABEL="Seite 75" ORDER="89" ORDERLABEL="75">
+								<mets:fptr FILEID="IMG_DEFAULT_34404"/>
+								<mets:fptr FILEID="IMG_THUMBS_34404"/>
+								<mets:fptr FILEID="IMG_MIN_34404"/>
+								<mets:fptr FILEID="IMG_MAX_34404"/>
+							</mets:div>
+							<mets:div ID="phys34405" TYPE="section" LABEL="Seite 76" ORDER="90" ORDERLABEL="76">
+								<mets:fptr FILEID="IMG_DEFAULT_34405"/>
+								<mets:fptr FILEID="IMG_THUMBS_34405"/>
+								<mets:fptr FILEID="IMG_MIN_34405"/>
+								<mets:fptr FILEID="IMG_MAX_34405"/>
+							</mets:div>
+							<mets:div ID="phys34406" TYPE="section" LABEL="Seite 77" ORDER="91" ORDERLABEL="77">
+								<mets:fptr FILEID="IMG_DEFAULT_34406"/>
+								<mets:fptr FILEID="IMG_THUMBS_34406"/>
+								<mets:fptr FILEID="IMG_MIN_34406"/>
+								<mets:fptr FILEID="IMG_MAX_34406"/>
+							</mets:div>
+							<mets:div ID="phys34407" TYPE="section" LABEL="Seite 78" ORDER="92" ORDERLABEL="78">
+								<mets:fptr FILEID="IMG_DEFAULT_34407"/>
+								<mets:fptr FILEID="IMG_THUMBS_34407"/>
+								<mets:fptr FILEID="IMG_MIN_34407"/>
+								<mets:fptr FILEID="IMG_MAX_34407"/>
+							</mets:div>
+							<mets:div ID="phys34408" TYPE="section" LABEL="Seite 79" ORDER="93" ORDERLABEL="79">
+								<mets:fptr FILEID="IMG_DEFAULT_34408"/>
+								<mets:fptr FILEID="IMG_THUMBS_34408"/>
+								<mets:fptr FILEID="IMG_MIN_34408"/>
+								<mets:fptr FILEID="IMG_MAX_34408"/>
+							</mets:div>
+							<mets:div ID="phys34409" TYPE="section" LABEL="Seite 80" ORDER="94" ORDERLABEL="80">
+								<mets:fptr FILEID="IMG_DEFAULT_34409"/>
+								<mets:fptr FILEID="IMG_THUMBS_34409"/>
+								<mets:fptr FILEID="IMG_MIN_34409"/>
+								<mets:fptr FILEID="IMG_MAX_34409"/>
+							</mets:div>
+							<mets:div ID="phys34410" TYPE="section" LABEL="Seite 81" ORDER="95" ORDERLABEL="81">
+								<mets:fptr FILEID="IMG_DEFAULT_34410"/>
+								<mets:fptr FILEID="IMG_THUMBS_34410"/>
+								<mets:fptr FILEID="IMG_MIN_34410"/>
+								<mets:fptr FILEID="IMG_MAX_34410"/>
+							</mets:div>
+							<mets:div ID="phys34411" TYPE="section" LABEL="Seite 82" ORDER="96" ORDERLABEL="82">
+								<mets:fptr FILEID="IMG_DEFAULT_34411"/>
+								<mets:fptr FILEID="IMG_THUMBS_34411"/>
+								<mets:fptr FILEID="IMG_MIN_34411"/>
+								<mets:fptr FILEID="IMG_MAX_34411"/>
+							</mets:div>
+							<mets:div ID="phys34412" TYPE="section" LABEL="Seite 83" ORDER="97" ORDERLABEL="83">
+								<mets:fptr FILEID="IMG_DEFAULT_34412"/>
+								<mets:fptr FILEID="IMG_THUMBS_34412"/>
+								<mets:fptr FILEID="IMG_MIN_34412"/>
+								<mets:fptr FILEID="IMG_MAX_34412"/>
+							</mets:div>
+							<mets:div ID="phys34413" TYPE="section" LABEL="Seite 84" ORDER="98" ORDERLABEL="84">
+								<mets:fptr FILEID="IMG_DEFAULT_34413"/>
+								<mets:fptr FILEID="IMG_THUMBS_34413"/>
+								<mets:fptr FILEID="IMG_MIN_34413"/>
+								<mets:fptr FILEID="IMG_MAX_34413"/>
+							</mets:div>
+							<mets:div ID="phys34414" TYPE="section" LABEL="Seite 85" ORDER="99" ORDERLABEL="85">
+								<mets:fptr FILEID="IMG_DEFAULT_34414"/>
+								<mets:fptr FILEID="IMG_THUMBS_34414"/>
+								<mets:fptr FILEID="IMG_MIN_34414"/>
+								<mets:fptr FILEID="IMG_MAX_34414"/>
+							</mets:div>
+							<mets:div ID="phys34415" TYPE="section" LABEL="Seite 86" ORDER="100" ORDERLABEL="86">
+								<mets:fptr FILEID="IMG_DEFAULT_34415"/>
+								<mets:fptr FILEID="IMG_THUMBS_34415"/>
+								<mets:fptr FILEID="IMG_MIN_34415"/>
+								<mets:fptr FILEID="IMG_MAX_34415"/>
+							</mets:div>
+							<mets:div ID="phys34416" TYPE="section" LABEL="Seite 87" ORDER="101" ORDERLABEL="87">
+								<mets:fptr FILEID="IMG_DEFAULT_34416"/>
+								<mets:fptr FILEID="IMG_THUMBS_34416"/>
+								<mets:fptr FILEID="IMG_MIN_34416"/>
+								<mets:fptr FILEID="IMG_MAX_34416"/>
+							</mets:div>
+							<mets:div ID="phys34417" TYPE="section" LABEL="Seite 88" ORDER="102" ORDERLABEL="88">
+								<mets:fptr FILEID="IMG_DEFAULT_34417"/>
+								<mets:fptr FILEID="IMG_THUMBS_34417"/>
+								<mets:fptr FILEID="IMG_MIN_34417"/>
+								<mets:fptr FILEID="IMG_MAX_34417"/>
+							</mets:div>
+							<mets:div ID="phys34418" TYPE="section" LABEL="Seite 89" ORDER="103" ORDERLABEL="89">
+								<mets:fptr FILEID="IMG_DEFAULT_34418"/>
+								<mets:fptr FILEID="IMG_THUMBS_34418"/>
+								<mets:fptr FILEID="IMG_MIN_34418"/>
+								<mets:fptr FILEID="IMG_MAX_34418"/>
+							</mets:div>
+							<mets:div ID="phys34419" TYPE="section" LABEL="Seite 90" ORDER="104" ORDERLABEL="90">
+								<mets:fptr FILEID="IMG_DEFAULT_34419"/>
+								<mets:fptr FILEID="IMG_THUMBS_34419"/>
+								<mets:fptr FILEID="IMG_MIN_34419"/>
+								<mets:fptr FILEID="IMG_MAX_34419"/>
+							</mets:div>
+							<mets:div ID="phys34420" TYPE="section" LABEL="Seite 91" ORDER="105" ORDERLABEL="91">
+								<mets:fptr FILEID="IMG_DEFAULT_34420"/>
+								<mets:fptr FILEID="IMG_THUMBS_34420"/>
+								<mets:fptr FILEID="IMG_MIN_34420"/>
+								<mets:fptr FILEID="IMG_MAX_34420"/>
+							</mets:div>
+							<mets:div ID="phys34421" TYPE="section" LABEL="Seite 92" ORDER="106" ORDERLABEL="92">
+								<mets:fptr FILEID="IMG_DEFAULT_34421"/>
+								<mets:fptr FILEID="IMG_THUMBS_34421"/>
+								<mets:fptr FILEID="IMG_MIN_34421"/>
+								<mets:fptr FILEID="IMG_MAX_34421"/>
+							</mets:div>
+							<mets:div ID="phys34422" TYPE="section" LABEL="Seite 93" ORDER="107" ORDERLABEL="93">
+								<mets:fptr FILEID="IMG_DEFAULT_34422"/>
+								<mets:fptr FILEID="IMG_THUMBS_34422"/>
+								<mets:fptr FILEID="IMG_MIN_34422"/>
+								<mets:fptr FILEID="IMG_MAX_34422"/>
+							</mets:div>
+							<mets:div ID="phys34423" TYPE="section" LABEL="Seite 94" ORDER="108" ORDERLABEL="94">
+								<mets:fptr FILEID="IMG_DEFAULT_34423"/>
+								<mets:fptr FILEID="IMG_THUMBS_34423"/>
+								<mets:fptr FILEID="IMG_MIN_34423"/>
+								<mets:fptr FILEID="IMG_MAX_34423"/>
+							</mets:div>
+							<mets:div ID="phys34424" TYPE="section" LABEL="Seite 95" ORDER="109" ORDERLABEL="95">
+								<mets:fptr FILEID="IMG_DEFAULT_34424"/>
+								<mets:fptr FILEID="IMG_THUMBS_34424"/>
+								<mets:fptr FILEID="IMG_MIN_34424"/>
+								<mets:fptr FILEID="IMG_MAX_34424"/>
+							</mets:div>
+							<mets:div ID="phys34425" TYPE="section" LABEL="Seite 96" ORDER="110" ORDERLABEL="96">
+								<mets:fptr FILEID="IMG_DEFAULT_34425"/>
+								<mets:fptr FILEID="IMG_THUMBS_34425"/>
+								<mets:fptr FILEID="IMG_MIN_34425"/>
+								<mets:fptr FILEID="IMG_MAX_34425"/>
+							</mets:div>
+							<mets:div ID="phys34426" TYPE="section" LABEL="[Seite 111]" ORDER="111">
+								<mets:fptr FILEID="IMG_DEFAULT_34426"/>
+								<mets:fptr FILEID="IMG_THUMBS_34426"/>
+								<mets:fptr FILEID="IMG_MIN_34426"/>
+								<mets:fptr FILEID="IMG_MAX_34426"/>
+							</mets:div>
+							<mets:div ID="phys34427" TYPE="section" LABEL="[Seite 112]" ORDER="112">
+								<mets:fptr FILEID="IMG_DEFAULT_34427"/>
+								<mets:fptr FILEID="IMG_THUMBS_34427"/>
+								<mets:fptr FILEID="IMG_MIN_34427"/>
+								<mets:fptr FILEID="IMG_MAX_34427"/>
+							</mets:div>
+							<mets:div ID="phys34428" TYPE="section" LABEL="[Seite 113]" ORDER="113">
+								<mets:fptr FILEID="IMG_DEFAULT_34428"/>
+								<mets:fptr FILEID="IMG_THUMBS_34428"/>
+								<mets:fptr FILEID="IMG_MIN_34428"/>
+								<mets:fptr FILEID="IMG_MAX_34428"/>
+							</mets:div>
+							<mets:div ID="phys34429" TYPE="section" LABEL="[Seite 114]" ORDER="114">
+								<mets:fptr FILEID="IMG_DEFAULT_34429"/>
+								<mets:fptr FILEID="IMG_THUMBS_34429"/>
+								<mets:fptr FILEID="IMG_MIN_34429"/>
+								<mets:fptr FILEID="IMG_MAX_34429"/>
+							</mets:div>
+						</mets:div>
+					</mets:structMap>
+					<mets:structMap TYPE="LOGICAL">
+						<mets:div ID="log34314" DMDID="md34314" ADMID="amd34314" TYPE="document" LABEL="&lt;&lt;A&gt;&gt; popular treatise on the art of photography" ORDER="1">
+							<mets:mptr LOCTYPE="URL" xlink:href="http://www.e-rara.ch/oai/?verb=GetRecord&amp;metadataPrefix=mets&amp;identifier=34314"/>
+							<mets:fptr FILEID="PDF_34314"/>
+							<mets:div ID="log35616" TYPE="cover_front" ORDER="1">
+								<mets:fptr FILEID="PDF_35616"/>
+							</mets:div>
+							<mets:div ID="log35620" TYPE="title_page" ORDER="2">
+								<mets:fptr FILEID="PDF_35620"/>
+							</mets:div>
+							<mets:div ID="log35623" TYPE="chapter" LABEL="Introduction" ORDER="3">
+								<mets:fptr FILEID="PDF_35623"/>
+							</mets:div>
+							<mets:div ID="log35621" TYPE="contents" LABEL="Contents. " ORDER="4">
+								<mets:fptr FILEID="PDF_35621"/>
+							</mets:div>
+							<mets:div ID="log35624" TYPE="chapter" LABEL="History of photography" ORDER="5">
+								<mets:fptr FILEID="PDF_35624"/>
+							</mets:div>
+							<mets:div ID="log35625" TYPE="chapter" LABEL="Processes on paper" ORDER="6">
+								<mets:fptr FILEID="PDF_35625"/>
+							</mets:div>
+							<mets:div ID="log35626" TYPE="chapter" LABEL="Processes on metallic and glass tablets" ORDER="7">
+								<mets:fptr FILEID="PDF_35626"/>
+							</mets:div>
+							<mets:div ID="log35627" TYPE="chapter" LABEL="Miscellaneous processes" ORDER="8">
+								<mets:fptr FILEID="PDF_35627"/>
+							</mets:div>
+							<mets:div ID="log35628" TYPE="chapter" LABEL="Conclusion" ORDER="9">
+								<mets:fptr FILEID="PDF_35628"/>
+							</mets:div>
+							<mets:div ID="log35629" TYPE="chapter" LABEL="Supplementary chapter" ORDER="10">
+								<mets:fptr FILEID="PDF_35629"/>
+							</mets:div>
+							<mets:div ID="log35617" TYPE="cover_back" ORDER="11">
+								<mets:fptr FILEID="PDF_35617"/>
+							</mets:div>
+						</mets:div>
+					</mets:structMap>
+					<mets:structLink>
+						<mets:smLink xlink:from="log35616" xlink:to="phys34316"/>
+						<mets:smLink xlink:from="log35616" xlink:to="phys34317"/>
+						<mets:smLink xlink:from="log35616" xlink:to="phys34318"/>
+						<mets:smLink xlink:from="log35616" xlink:to="phys34319"/>
+						<mets:smLink xlink:from="log35616" xlink:to="phys34320"/>
+						<mets:smLink xlink:from="log35620" xlink:to="phys34321"/>
+						<mets:smLink xlink:from="log35620" xlink:to="phys34322"/>
+						<mets:smLink xlink:from="log35620" xlink:to="phys34323"/>
+						<mets:smLink xlink:from="log35623" xlink:to="phys34324"/>
+						<mets:smLink xlink:from="log35623" xlink:to="phys34325"/>
+						<mets:smLink xlink:from="log35623" xlink:to="phys34326"/>
+						<mets:smLink xlink:from="log35623" xlink:to="phys34327"/>
+						<mets:smLink xlink:from="log35621" xlink:to="phys34328"/>
+						<mets:smLink xlink:from="log35621" xlink:to="phys34329"/>
+						<mets:smLink xlink:from="log35624" xlink:to="phys34330"/>
+						<mets:smLink xlink:from="log35624" xlink:to="phys34331"/>
+						<mets:smLink xlink:from="log35624" xlink:to="phys34332"/>
+						<mets:smLink xlink:from="log35624" xlink:to="phys34333"/>
+						<mets:smLink xlink:from="log35624" xlink:to="phys34334"/>
+						<mets:smLink xlink:from="log35625" xlink:to="phys34335"/>
+						<mets:smLink xlink:from="log35625" xlink:to="phys34336"/>
+						<mets:smLink xlink:from="log35625" xlink:to="phys34337"/>
+						<mets:smLink xlink:from="log35625" xlink:to="phys34338"/>
+						<mets:smLink xlink:from="log35625" xlink:to="phys34339"/>
+						<mets:smLink xlink:from="log35625" xlink:to="phys34340"/>
+						<mets:smLink xlink:from="log35625" xlink:to="phys34341"/>
+						<mets:smLink xlink:from="log35625" xlink:to="phys34342"/>
+						<mets:smLink xlink:from="log35625" xlink:to="phys34343"/>
+						<mets:smLink xlink:from="log35625" xlink:to="phys34344"/>
+						<mets:smLink xlink:from="log35625" xlink:to="phys34345"/>
+						<mets:smLink xlink:from="log35625" xlink:to="phys34346"/>
+						<mets:smLink xlink:from="log35625" xlink:to="phys34347"/>
+						<mets:smLink xlink:from="log35625" xlink:to="phys34348"/>
+						<mets:smLink xlink:from="log35625" xlink:to="phys34349"/>
+						<mets:smLink xlink:from="log35625" xlink:to="phys34350"/>
+						<mets:smLink xlink:from="log35625" xlink:to="phys34351"/>
+						<mets:smLink xlink:from="log35625" xlink:to="phys34352"/>
+						<mets:smLink xlink:from="log35625" xlink:to="phys34353"/>
+						<mets:smLink xlink:from="log35625" xlink:to="phys34354"/>
+						<mets:smLink xlink:from="log35625" xlink:to="phys34355"/>
+						<mets:smLink xlink:from="log35625" xlink:to="phys34356"/>
+						<mets:smLink xlink:from="log35625" xlink:to="phys34357"/>
+						<mets:smLink xlink:from="log35625" xlink:to="phys34358"/>
+						<mets:smLink xlink:from="log35625" xlink:to="phys34359"/>
+						<mets:smLink xlink:from="log35625" xlink:to="phys34360"/>
+						<mets:smLink xlink:from="log35625" xlink:to="phys34361"/>
+						<mets:smLink xlink:from="log35625" xlink:to="phys34362"/>
+						<mets:smLink xlink:from="log35625" xlink:to="phys34363"/>
+						<mets:smLink xlink:from="log35625" xlink:to="phys34364"/>
+						<mets:smLink xlink:from="log35625" xlink:to="phys34365"/>
+						<mets:smLink xlink:from="log35625" xlink:to="phys34366"/>
+						<mets:smLink xlink:from="log35625" xlink:to="phys34367"/>
+						<mets:smLink xlink:from="log35625" xlink:to="phys34368"/>
+						<mets:smLink xlink:from="log35625" xlink:to="phys34369"/>
+						<mets:smLink xlink:from="log35625" xlink:to="phys34370"/>
+						<mets:smLink xlink:from="log35625" xlink:to="phys34371"/>
+						<mets:smLink xlink:from="log35625" xlink:to="phys34372"/>
+						<mets:smLink xlink:from="log35625" xlink:to="phys34373"/>
+						<mets:smLink xlink:from="log35625" xlink:to="phys34374"/>
+						<mets:smLink xlink:from="log35625" xlink:to="phys34375"/>
+						<mets:smLink xlink:from="log35625" xlink:to="phys34376"/>
+						<mets:smLink xlink:from="log35626" xlink:to="phys34377"/>
+						<mets:smLink xlink:from="log35626" xlink:to="phys34378"/>
+						<mets:smLink xlink:from="log35626" xlink:to="phys34379"/>
+						<mets:smLink xlink:from="log35626" xlink:to="phys34380"/>
+						<mets:smLink xlink:from="log35626" xlink:to="phys34381"/>
+						<mets:smLink xlink:from="log35626" xlink:to="phys34382"/>
+						<mets:smLink xlink:from="log35626" xlink:to="phys34383"/>
+						<mets:smLink xlink:from="log35626" xlink:to="phys34384"/>
+						<mets:smLink xlink:from="log35626" xlink:to="phys34385"/>
+						<mets:smLink xlink:from="log35626" xlink:to="phys34386"/>
+						<mets:smLink xlink:from="log35626" xlink:to="phys34387"/>
+						<mets:smLink xlink:from="log35626" xlink:to="phys34388"/>
+						<mets:smLink xlink:from="log35626" xlink:to="phys34389"/>
+						<mets:smLink xlink:from="log35626" xlink:to="phys34390"/>
+						<mets:smLink xlink:from="log35626" xlink:to="phys34391"/>
+						<mets:smLink xlink:from="log35626" xlink:to="phys34392"/>
+						<mets:smLink xlink:from="log35626" xlink:to="phys34393"/>
+						<mets:smLink xlink:from="log35626" xlink:to="phys34394"/>
+						<mets:smLink xlink:from="log35626" xlink:to="phys34395"/>
+						<mets:smLink xlink:from="log35626" xlink:to="phys34396"/>
+						<mets:smLink xlink:from="log35626" xlink:to="phys34397"/>
+						<mets:smLink xlink:from="log35626" xlink:to="phys34398"/>
+						<mets:smLink xlink:from="log35626" xlink:to="phys34399"/>
+						<mets:smLink xlink:from="log35626" xlink:to="phys34400"/>
+						<mets:smLink xlink:from="log35626" xlink:to="phys34401"/>
+						<mets:smLink xlink:from="log35627" xlink:to="phys34402"/>
+						<mets:smLink xlink:from="log35627" xlink:to="phys34403"/>
+						<mets:smLink xlink:from="log35627" xlink:to="phys34404"/>
+						<mets:smLink xlink:from="log35627" xlink:to="phys34405"/>
+						<mets:smLink xlink:from="log35627" xlink:to="phys34406"/>
+						<mets:smLink xlink:from="log35627" xlink:to="phys34407"/>
+						<mets:smLink xlink:from="log35627" xlink:to="phys34408"/>
+						<mets:smLink xlink:from="log35627" xlink:to="phys34409"/>
+						<mets:smLink xlink:from="log35627" xlink:to="phys34410"/>
+						<mets:smLink xlink:from="log35627" xlink:to="phys34411"/>
+						<mets:smLink xlink:from="log35627" xlink:to="phys34412"/>
+						<mets:smLink xlink:from="log35627" xlink:to="phys34413"/>
+						<mets:smLink xlink:from="log35627" xlink:to="phys34414"/>
+						<mets:smLink xlink:from="log35627" xlink:to="phys34415"/>
+						<mets:smLink xlink:from="log35627" xlink:to="phys34416"/>
+						<mets:smLink xlink:from="log35627" xlink:to="phys34417"/>
+						<mets:smLink xlink:from="log35627" xlink:to="phys34418"/>
+						<mets:smLink xlink:from="log35627" xlink:to="phys34419"/>
+						<mets:smLink xlink:from="log35628" xlink:to="phys34420"/>
+						<mets:smLink xlink:from="log35628" xlink:to="phys34421"/>
+						<mets:smLink xlink:from="log35628" xlink:to="phys34422"/>
+						<mets:smLink xlink:from="log35629" xlink:to="phys34423"/>
+						<mets:smLink xlink:from="log35629" xlink:to="phys34424"/>
+						<mets:smLink xlink:from="log35629" xlink:to="phys34425"/>
+						<mets:smLink xlink:from="log35629" xlink:to="phys34426"/>
+						<mets:smLink xlink:from="log35629" xlink:to="phys34427"/>
+						<mets:smLink xlink:from="log35629" xlink:to="phys34428"/>
+						<mets:smLink xlink:from="log35617" xlink:to="phys34429"/>
+					</mets:structLink>
+				</mets:mets>
+			</metadata>
+		</record>
+	</GetRecord>
+</OAI-PMH>
