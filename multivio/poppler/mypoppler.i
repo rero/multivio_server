@@ -8,6 +8,7 @@
 #include "SplashOutputDev.h"
 #include "GlobalParams.h"
 #include "Catalog.h"
+#include "Outline.h"
 #include "OutputDev.h"
 #include "Page.h"
 #include "splash/SplashFontEngine.h"
@@ -21,6 +22,7 @@
 #include "TextOutputDev.h"
 #include <stdio.h>
 #include <wchar.h>
+#include "PDFDocEncoding.h"
 
 #include "Link.h"
 %}
@@ -158,16 +160,16 @@ extern GooString* test_goo_string_new(GooString* test, GooString* fifi)
 %typemap(in) (Unicode *s, int len) 
 {
   size_t len = PyUnicode_GET_SIZE($input);
-    //printf("String memory size: %d", len);
-    //fflush(stdout);
+  //printf("String memory size: %d", len);
+  //fflush(stdout);
   if (PyUnicode_Check($input)) {
     size_t len = PyUnicode_GET_SIZE($input);
     if (len > 0) {
-        //check if it is work with all version of python
-         wchar_t * tmp = (wchar_t*) malloc(PyUnicode_GET_DATA_SIZE($input)); // malloc(len*sizeof(char));
-         $2 = PyUnicode_AsWideChar((PyUnicodeObject*)$input, tmp, len) ;
-         $1 = (Unicode*)tmp;
-     }
+      //check if it is work with all version of python
+      wchar_t * tmp = (wchar_t*) malloc(PyUnicode_GET_DATA_SIZE($input)); // malloc(len*sizeof(char));
+      $2 = PyUnicode_AsWideChar((PyUnicodeObject*)$input, tmp, len) ;
+      $1 = (Unicode*)tmp;
+    }
   }else{
     PyErr_SetString(PyExc_TypeError,"not a string type");
     return NULL; 
@@ -191,18 +193,44 @@ GBool newOutlineLevel(Object *node, Catalog* catalog, PyObject* dic, int level=1
   Object curr, next;
   GBool atLeastOne = gFalse;
   int page_number = -1;
-  GooString * label = NULL;
+  Unicode *title = NULL;
+  int titleLen = 0;
+  GooString* s = NULL;
+  int i;
 
   if (node->dictLookup("First", &curr)->isDict()) {
     do {
+      page_number = -1;
       // get title, give up if not found
-      Object title;
-      if (curr.dictLookup("Title", &title)->isNull()) {
-        title.free();
+      Object obj_title;
+
+      if (curr.dictLookup("Title", &obj_title)->isString() && !(obj_title.isNull())) {
+        s = obj_title.getString();
+        if ((s->getChar(0) & 0xff) == 0xfe &&
+            (s->getChar(1) & 0xff) == 0xff) {
+          titleLen = (s->getLength() - 2) / 2;
+          title = (Unicode *)gmallocn(titleLen, sizeof(Unicode));
+          for (i = 0; i < titleLen; ++i) {
+            title[i] = ((s->getChar(2 + 2*i) & 0xff) << 8) |
+              (s->getChar(3 + 2*i) & 0xff);
+          }
+        } else {
+          titleLen = s->getLength();
+          title = (Unicode *)gmallocn(titleLen, sizeof(Unicode));
+          for (i = 0; i < titleLen; ++i) {
+            title[i] = pdfDocEncoding[s->getChar(i) & 0xff];
+          }
+        }
+      } else {
+        titleLen = 0;
+        obj_title.free();
+       // printf("Break\n");
         break;
       }
-
-      label = new GooString(title.getString());
+      //printf("Len: %d\n", titleLen);
+      //printf("Test: %s\n", s->getCString());
+      //fflush(stdout);
+      obj_title.free();
 
       // get corresponding link
       GooString *linkName = NULL;;
@@ -213,7 +241,6 @@ GBool newOutlineLevel(Object *node, Catalog* catalog, PyObject* dic, int level=1
       {
         LinkGoTo* action = (LinkGoTo *)LinkAction::parseAction(&dest);
         LinkDest* link_dest = catalog->findDest(action->getNamedDest());
-        int page_number = 0;
 
         if (link_dest){
           if (link_dest->isPageRef()){
@@ -223,7 +250,6 @@ GBool newOutlineLevel(Object *node, Catalog* catalog, PyObject* dic, int level=1
           else {
             page_number = link_dest->getPageNum();
           }
-          printf("%d\n", page_number);
         }
         delete(link_dest);
         delete(action);
@@ -241,24 +267,36 @@ GBool newOutlineLevel(Object *node, Catalog* catalog, PyObject* dic, int level=1
 
         delete link;
         if (linkdest) {
-          int page;
           if (linkdest->isPageRef()) {
             Ref pageref=linkdest->getPageRef();
-            page=catalog->findPage(pageref.num,pageref.gen);
+            page_number=catalog->findPage(pageref.num,pageref.gen);
           } else {
-            page=linkdest->getPageNum();
+            page_number=linkdest->getPageNum();
           }
-          printf("%d\n", page);
           delete linkdest;
         }
       }
       dest.free();
 
-      if (linkName)
-        printf("%s", linkName->getCString());
+      //if (linkName)
+      //printf("%s", linkName->getCString());
 
       PyObject * local_dic =  PyDict_New();
-      PyDict_SetItemString(local_dic, "label", PyString_FromStringAndSize(label->getCString(), label->getLength()));
+      PyObject* childs = PyList_New(0);
+
+      newOutlineLevel( &curr, catalog, childs, level+1);
+      //PyDict_SetItemString(local_dic, "label", PyString_FromStringAndSize(label->getCString(), label->getLength()));
+      if(titleLen > 0)
+        PyDict_SetItemString(local_dic, "label", PyUnicode_FromWideChar((const wchar_t *)title, titleLen));
+        else
+        PyDict_SetItemString(local_dic, "label", PyUnicode_FromStringAndSize("", 0));
+        /*
+      else{
+        printf("Test: %s\n", obj_title.getName());
+        //GooString *label = new GooString(obj_title.getString());
+        //PyDict_SetItemString(local_dic, "label", PyString_FromStringAndSize(label->getCString(), label->getLength()));
+        }
+        */
       PyDict_SetItemString(local_dic, "page_number", PyInt_FromLong(page_number));
       PyObject* childs = PyList_New(0);
       PyDict_SetItemString(local_dic, "childs", childs);
@@ -292,12 +330,57 @@ GBool newOutlineLevel(Object *node, Catalog* catalog, PyObject* dic, int level=1
 
 %extend PDFDoc {
   PyObject* getToc(){ 
-        printf("Test\n");
-       PyObject * dic =  PyDict_New();
-  PyObject* childs = PyList_New(0);
-  PyDict_SetItemString(dic, "childs", childs);
-        newOutlineLevel(self->getCatalog()->getOutline(), self->getCatalog(), dic);
-        return dic;
+        //printf("Test\n");
+        PyObject* childs = PyList_New(0);
+        Object* outline = self->getCatalog()->getOutline();
+        if (outline != NULL && outline->isDict())
+        {
+          newOutlineLevel(outline, self->getCatalog(), childs);
+        }
+        return childs;
+  };
+  PyObject* getInfo()
+  {
+    Object info;
+    Object obj;
+    PyObject * dic =  PyDict_New();
+    Unicode *title = NULL;
+    int titleLen = 0;
+    GooString* s = NULL;
+    if (!self->getDocInfo(&info)->isDict()) {
+      info.free();
+      return dic;
+    } 
+
+    Dict *info_dict = info.getDict();
+    for (int i = 0; i < info_dict->getLength(); ++i) {
+      char* key = info_dict->getKey(i);
+      if (info_dict->lookup(key, &obj)->isString()) {
+        s = obj.getString();
+        if ((s->getChar(0) & 0xff) == 0xfe &&
+            (s->getChar(1) & 0xff) == 0xff) {
+          titleLen = (s->getLength() - 2) / 2;
+          title = (Unicode *)gmallocn(titleLen, sizeof(Unicode));
+          for (int j = 0; j < titleLen; ++j) {
+            title[j] = ((s->getChar(2 + 2*j) & 0xff) << 8) |
+              (s->getChar(3 + 2*j) & 0xff);
+          }
+        } else {
+          titleLen = s->getLength();
+          title = (Unicode *)gmallocn(titleLen, sizeof(Unicode));
+          for (int j = 0; j < titleLen; ++j) {
+            title[j] = pdfDocEncoding[s->getChar(j) & 0xff];
+          }
+        }
+      if(titleLen > 0)
+        PyDict_SetItemString(dic, key, PyUnicode_FromWideChar((const wchar_t *)title, titleLen));
+      else
+        PyDict_SetItemString(dic, key, PyUnicode_FromStringAndSize("", 0));
+      }
+    obj.free();
+    }  //end of for
+    info.free();
+  return dic;
   };
 };
 

@@ -43,22 +43,19 @@ class PdfParserOK (unittest.TestCase):
 
     def testPdfParser(self):
         """Check PdfParser instance."""
-        pdf_file = file(pdf_file_name)
-        pdf_parser = PdfParser(pdf_file, "file://%s" %
+        pdf_parser = PdfParser(pdf_file_name, "file://%s" %
                         pdf_file_name, pdf_file_name)
         self.assert_ (pdf_parser, "Can not create simple Parser Object")
     
     def testPdfBadParser(self):
         """Check PdfParser instance with a bad file."""
-        pdf_file = file(mets_file_name)
         self.assertRaises(multivio.parser.ParserError.InvalidDocument,
-                PdfParser, pdf_file, "file://%s" %
+                PdfParser, mets_file_name, "file://%s" %
                 mets_file_name, mets_file_name)
 
     def testPdfParserMeta(self):
         """Get Pdf Metadata."""
-        pdf_file = file(pdf_file_name, )
-        pdf_parser = PdfParser(pdf_file, "file://%s" %
+        pdf_parser = PdfParser(pdf_file_name, "file://%s" %
                         pdf_file_name, pdf_file_name)
         meta = pdf_parser.get_metadata()
         title = meta['title']
@@ -68,8 +65,7 @@ class PdfParserOK (unittest.TestCase):
     
     def testPdfParserLogical(self):
         """Get Pdf logical structure."""
-        pdf_file = file(pdf_file_name)
-        pdf_parser = PdfParser(pdf_file, "file://%s" %
+        pdf_parser = PdfParser(pdf_file_name, "file://%s" %
                         pdf_file_name, pdf_file_name)
         logic = pdf_parser.get_logical_structure()
         first_section = logic[0]['label']
@@ -78,9 +74,8 @@ class PdfParserOK (unittest.TestCase):
 
     def testPdfParserPhysical(self):
         """Get Pdf physical structure."""
-        pdf_file = file(pdf_file_name)
         url = "file://%s" % pdf_file_name
-        pdf_parser = PdfParser(pdf_file, url, pdf_file_name)
+        pdf_parser = PdfParser(pdf_file_name, url, pdf_file_name)
         phys = pdf_parser.get_physical_structure()
         self.assertEqual(phys[0]['label'], pdf_file_name, "Physical Structure "\
                         "missmatch: %s != %s" % (phys[0]['label'], pdf_file_name))

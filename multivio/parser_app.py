@@ -167,11 +167,12 @@ Core with Pdfs inside..</b></a>
                 return ["%s" % physical]
         raise ApplicationError.InvalidArgument("Invalid Argument")
 
-    def _choose_parser(self, content, url, mime):
+    def _choose_parser(self, file_name, url, mime):
         """Select the right parser given the mime type."""
+        content = file(file_name,'r')
         if re.match('.*?/pdf.*?', mime):
             self.logger.info("Pdf parser found!")
-            return PdfParser(content, url, url.split('/')[-1])
+            return PdfParser(file_name, url, url.split('/')[-1])
         
         if re.match('image/.*?', mime):
             self.logger.info("Image parser found!")
@@ -226,11 +227,10 @@ Core with Pdfs inside..</b></a>
         """Get the internal metadata of a document."""
         (local_file, mime) = self.get_remote_file(url)
             
-        content = file(local_file,'r')
 
         #check the mime type
         self.logger.debug("Url: %s Detected Mime: %s" % (url, mime))
-        selected_parser = self._choose_parser(content, url, mime)
+        selected_parser = self._choose_parser(local_file, url, mime)
         metadata = selected_parser.get_metadata()
         metadata['mime'] = mime
             
@@ -240,10 +240,9 @@ Core with Pdfs inside..</b></a>
         """Get the internal structure of a document such as Table of
         content."""
         (local_file, mime) = self.get_remote_file(url)
-        content = file(local_file,'r')
 
         #check the mime type
-        selected_parser = self._choose_parser(content, url, mime)
+        selected_parser = self._choose_parser(local_file, url, mime)
         logic = selected_parser.get_logical_structure()
         #logic['mime'] = mime
             
@@ -252,10 +251,9 @@ Core with Pdfs inside..</b></a>
     def get_physical_structure(self, url):
         """Get the list of physical files such as pdf or images."""
         (local_file, mime) = self.get_remote_file(url)
-        content = file(local_file,'r')
 
         #check the mime type
-        selected_parser = self._choose_parser(content, url, mime)
+        selected_parser = self._choose_parser(local_file, url, mime)
         physic = selected_parser.get_physical_structure()
         #physic['mime'] = mime
             
