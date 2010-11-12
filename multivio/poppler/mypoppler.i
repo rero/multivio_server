@@ -290,6 +290,10 @@ GBool newOutlineLevel(Object *node, Catalog* catalog, PyObject* list, int level=
 
       newOutlineLevel( &curr, catalog, childs, level+1);
       PyDict_SetItemString(local_dic, "label", PyUnicode_FromWideChar((const wchar_t *)title, titleLen));
+      if(page_number < 1) 
+        page_number = 1;
+      if(page_number >  catalog->getNumPages())
+        page_number =  catalog->getNumPages();
       PyDict_SetItemString(local_dic, "page_number", PyInt_FromLong(page_number));
       if (PyList_Size(childs) > 0)
         PyDict_SetItemString(local_dic, "childs", childs);
