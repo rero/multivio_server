@@ -190,17 +190,17 @@ class MetsParser(DocumentParser):
                         role = n.getElementsByTagName('mods:role')
                         if len(role) < 1 or role[0].getElementsByTagName('mods:roleTerm')[0].firstChild.nodeValue.encode('utf-8') == 'aut':
                             name_part = n.getElementsByTagName('mods:namePart')
-                            if len(name_part) == 1:
-                                complete_name = name_part[0].firstChild.nodeValue.encode('utf-8')
-                                self._meta_data[id]['creator'].append("%s" % complete_name)
-                            else:
-                                first_name = ""
-                                last_name = ""
-                                for np in name_part:
-                                    if np.getAttribute('type') == 'family':
-                                        last_name = np.firstChild.nodeValue.encode('utf-8')
-                                    if np.getAttribute('type') == 'given':
-                                        first_name = np.firstChild.nodeValue.encode('utf-8')
+                            first_name = ""
+                            last_name = ""
+                            for np in name_part:
+                                if not np.hasAttributes():
+                                    complete_name = np.firstChild.nodeValue.encode('utf-8')
+                                    self._meta_data[id]['creator'].append("%s" % complete_name)
+                                if np.getAttribute('type') == 'family':
+                                    last_name = np.firstChild.nodeValue.encode('utf-8')
+                                if np.getAttribute('type') == 'given':
+                                    first_name = np.firstChild.nodeValue.encode('utf-8')
+                                if last_name and first_name:
                                     self._meta_data[id]['creator'].append("%s, %s" % (last_name, first_name))
             
 

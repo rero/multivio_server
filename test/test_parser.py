@@ -173,6 +173,15 @@ class MetsParserOK (unittest.TestCase):
         sect1_obtained = metadata['creator'][0]
         sect1_desired = 'Hunt, Robert'
         self.assertEqual (sect1_desired, sect1_obtained, "Author is not valid %s != %s" % (sect1_desired, sect1_obtained) )
+    
+    def testMetsParserSimpleAuthor2(self):
+        """Get Mets authors simple2."""
+        mets_file = file("examples/author_problem.mets")
+        mets_parser = MetsParser(mets_file, 'http://doc.rero.ch')
+        metadata = mets_parser.get_metadata()
+        sect1_obtained = metadata['creator'][0]
+        sect1_desired = 'Boulliau, Ismael'
+        self.assertEqual (sect1_desired, sect1_obtained, "Author is not valid %s != %s" % (sect1_desired, sect1_obtained) )
 
     def testMetsParserPhysical(self):
         """Get Mets physical structure."""
