@@ -52,7 +52,11 @@ class PdfParser(DocumentParser):
         try:
             metadata['title'] = infos['Title']
         except KeyError:
-            pass
+            metadata['title'] = 'PDF Document'
+            pdf_file_parts = self._url.split('/')
+            if len(pdf_file_parts) > 0:
+                if re.match('.*?\.pdf', pdf_file_parts[-1]):
+                    metadata['title'] = pdf_file_parts[-1]
         try:
             metadata['creator'] = infos['Author']
         except KeyError:
