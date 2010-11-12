@@ -82,7 +82,8 @@ class DocumentProcessor(object):
         """
         return None
 
-    def search(self, query, from_=None, to_=None, max_results=None, sort=None):
+    def search(self, query, from_=None, to_=None, max_results=None, sort=None,
+            context_size=None, angle=0):
         """Search parts of the document that match the given query.
 
             from_ -- dict: start the search at from_
@@ -92,7 +93,14 @@ class DocumentProcessor(object):
         return:
             a dictionary with the found results
         """
-        return None
+        to_return = {
+            "max_reached": 0, 
+            "file_position": {
+                "results": []
+            }, 
+            "context": "text"
+        }
+        return to_return
 
     def indexing(self, output_file):
         """Batch indexing of the document.
