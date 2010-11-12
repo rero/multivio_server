@@ -237,7 +237,6 @@ GBool newOutlineLevel(Object *node, Catalog* catalog, PyObject* list, int level=
       GooString *linkName = NULL;;
       Object dest;
       curr.dictLookup("A", &dest);
-
       if (!dest.isNull())
       {
         LinkGoTo* action = (LinkGoTo *)LinkAction::parseAction(&dest);
@@ -246,6 +245,7 @@ GBool newOutlineLevel(Object *node, Catalog* catalog, PyObject* list, int level=
           linkdest=action->getDest()->copy();
         else if (action->getNamedDest()!=NULL)
           linkdest=catalog->findDest(action->getNamedDest());
+        delete(action);
 
           if (linkdest)
           {
@@ -260,21 +260,19 @@ GBool newOutlineLevel(Object *node, Catalog* catalog, PyObject* list, int level=
             }
           delete(linkdest);
           }
-        delete(action);
         dest.free();
       }
 
       if (!curr.dictLookup("Dest", &dest)->isNull())
       {
-        //printf("Dest not Null");
         LinkGoTo *link = new LinkGoTo(&dest);
         LinkDest *linkdest=NULL;
         if (link->getDest()!=NULL)
           linkdest=link->getDest()->copy();
         else if (link->getNamedDest()!=NULL)
           linkdest=catalog->findDest(link->getNamedDest());
-
         delete link;
+
         if (linkdest) {
           if (linkdest->isPageRef()) {
             Ref pageref=linkdest->getPageRef();
@@ -284,7 +282,6 @@ GBool newOutlineLevel(Object *node, Catalog* catalog, PyObject* list, int level=
           }
           delete linkdest;
         }
-        delete(link);
         dest.free();
       }
 
