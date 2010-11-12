@@ -188,7 +188,7 @@ extern GooString* test_goo_string_new(GooString* test, GooString* fifi)
 }
 
 %inline %{
-GBool newOutlineLevel(Object *node, Catalog* catalog, PyObject* dic, int level=1)
+GBool newOutlineLevel(Object *node, Catalog* catalog, PyObject* list, int level=1)
 {
   Object curr, next;
   GBool atLeastOne = gFalse;
