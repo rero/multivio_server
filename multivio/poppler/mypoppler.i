@@ -224,12 +224,8 @@ GBool newOutlineLevel(Object *node, Catalog* catalog, PyObject* dic, int level=1
       } else {
         titleLen = 0;
         obj_title.free();
-       // printf("Break\n");
         break;
       }
-      //printf("Len: %d\n", titleLen);
-      //printf("Test: %s\n", s->getCString());
-      //fflush(stdout);
       obj_title.free();
 
       // get corresponding link
@@ -253,6 +249,7 @@ GBool newOutlineLevel(Object *node, Catalog* catalog, PyObject* dic, int level=1
         }
         delete(link_dest);
         delete(action);
+        dest.free();
       }
 
       if (!curr.dictLookup("Dest", &dest)->isNull())
@@ -275,11 +272,8 @@ GBool newOutlineLevel(Object *node, Catalog* catalog, PyObject* dic, int level=1
           }
           delete linkdest;
         }
+        dest.free();
       }
-      dest.free();
-
-      //if (linkName)
-      //printf("%s", linkName->getCString());
 
       PyObject * local_dic =  PyDict_New();
       PyObject* childs = PyList_New(0);
@@ -290,22 +284,14 @@ GBool newOutlineLevel(Object *node, Catalog* catalog, PyObject* dic, int level=1
         PyDict_SetItemString(local_dic, "label", PyUnicode_FromWideChar((const wchar_t *)title, titleLen));
         else
         PyDict_SetItemString(local_dic, "label", PyUnicode_FromStringAndSize("", 0));
-        /*
-      else{
-        printf("Test: %s\n", obj_title.getName());
-        //GooString *label = new GooString(obj_title.getString());
-        //PyDict_SetItemString(local_dic, "label", PyString_FromStringAndSize(label->getCString(), label->getLength()));
-        }
-        */
       PyDict_SetItemString(local_dic, "page_number", PyInt_FromLong(page_number));
-      PyObject* childs = PyList_New(0);
-      PyDict_SetItemString(local_dic, "childs", childs);
-      PyObject* to_append = PyDict_GetItemString(dic, "childs");
-      PyList_Append(to_append, local_dic);
+      if (PyList_Size(childs) > 0)
+        PyDict_SetItemString(local_dic, "childs", childs);
+      PyList_Append(list, local_dic);
 
-      newOutlineLevel( &curr, catalog, local_dic, level+1);
       curr.dictLookup("Next", &next);
       curr.free();
+      gfree(title);
       curr = next;
     } while(curr.isDict());
   }
@@ -372,15 +358,16 @@ GBool newOutlineLevel(Object *node, Catalog* catalog, PyObject* dic, int level=1
             title[j] = pdfDocEncoding[s->getChar(j) & 0xff];
           }
         }
-      if(titleLen > 0)
-        PyDict_SetItemString(dic, key, PyUnicode_FromWideChar((const wchar_t *)title, titleLen));
-      else
-        PyDict_SetItemString(dic, key, PyUnicode_FromStringAndSize("", 0));
+        if(titleLen > 0)
+          PyDict_SetItemString(dic, key, PyUnicode_FromWideChar((const wchar_t *)title, titleLen));
+        else
+          PyDict_SetItemString(dic, key, PyUnicode_FromStringAndSize("", 0));
+       gfree(title);
       }
-    obj.free();
+      obj.free();
     }  //end of for
     info.free();
-  return dic;
+    return dic;
   };
 };
 
