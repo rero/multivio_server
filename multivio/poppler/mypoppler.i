@@ -227,6 +227,12 @@ GBool newOutlineLevel(Object *node, Catalog* catalog, PyObject* list, int level=
         break;
       }
       obj_title.free();
+      if (titleLen == 0)
+      {
+          title = (Unicode *)gmallocn(1, sizeof(Unicode));
+          titleLen = 1;
+          title[0] = '\0';
+      }
 
       // get corresponding link
       GooString *linkName = NULL;;
@@ -279,11 +285,7 @@ GBool newOutlineLevel(Object *node, Catalog* catalog, PyObject* list, int level=
       PyObject* childs = PyList_New(0);
 
       newOutlineLevel( &curr, catalog, childs, level+1);
-      //PyDict_SetItemString(local_dic, "label", PyString_FromStringAndSize(label->getCString(), label->getLength()));
-      if(titleLen > 0)
-        PyDict_SetItemString(local_dic, "label", PyUnicode_FromWideChar((const wchar_t *)title, titleLen));
-        else
-        PyDict_SetItemString(local_dic, "label", PyUnicode_FromStringAndSize("", 0));
+      PyDict_SetItemString(local_dic, "label", PyUnicode_FromWideChar((const wchar_t *)title, titleLen));
       PyDict_SetItemString(local_dic, "page_number", PyInt_FromLong(page_number));
       if (PyList_Size(childs) > 0)
         PyDict_SetItemString(local_dic, "childs", childs);
@@ -358,10 +360,14 @@ GBool newOutlineLevel(Object *node, Catalog* catalog, PyObject* list, int level=
             title[j] = pdfDocEncoding[s->getChar(j) & 0xff];
           }
         }
+        if (titleLen == 0)
+        {
+          title = (Unicode *)gmallocn(1, sizeof(Unicode));
+          titleLen = 1;
+          title[0] = '\0';
+        }
         if(titleLen > 0)
           PyDict_SetItemString(dic, key, PyUnicode_FromWideChar((const wchar_t *)title, titleLen));
-        else
-          PyDict_SetItemString(dic, key, PyUnicode_FromStringAndSize("", 0));
        gfree(title);
       }
       obj.free();
