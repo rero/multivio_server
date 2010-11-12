@@ -203,7 +203,6 @@ GBool newOutlineLevel(Object *node, Catalog* catalog, PyObject* list, int level=
       page_number = -1;
       // get title, give up if not found
       Object obj_title;
-
       if (curr.dictLookup("Title", &obj_title)->isString() && !(obj_title.isNull())) {
         s = obj_title.getString();
         if ((s->getChar(0) & 0xff) == 0xfe &&
@@ -242,18 +241,25 @@ GBool newOutlineLevel(Object *node, Catalog* catalog, PyObject* list, int level=
       if (!dest.isNull())
       {
         LinkGoTo* action = (LinkGoTo *)LinkAction::parseAction(&dest);
-        LinkDest* link_dest = catalog->findDest(action->getNamedDest());
+        LinkDest *linkdest=NULL;
+        if (action->getDest()!=NULL)
+          linkdest=action->getDest()->copy();
+        else if (action->getNamedDest()!=NULL)
+          linkdest=catalog->findDest(action->getNamedDest());
 
-        if (link_dest){
-          if (link_dest->isPageRef()){
-            Ref pageref = link_dest->getPageRef();
-            page_number = catalog->findPage(pageref.num, pageref.gen);
+          if (linkdest)
+          {
+            if (linkdest->isPageRef())
+            {
+              Ref pageref = linkdest->getPageRef();
+              page_number = catalog->findPage(pageref.num, pageref.gen);
+            }
+            else 
+            {
+              page_number = linkdest->getPageNum();
+            }
+          delete(linkdest);
           }
-          else {
-            page_number = link_dest->getPageNum();
-          }
-        }
-        delete(link_dest);
         delete(action);
         dest.free();
       }
@@ -278,6 +284,7 @@ GBool newOutlineLevel(Object *node, Catalog* catalog, PyObject* list, int level=
           }
           delete linkdest;
         }
+        delete(link);
         dest.free();
       }
 
