@@ -388,9 +388,11 @@ GBool newOutlineLevel(Object *node, Catalog* catalog, PyObject* list, int level=
 %newobject TextPage::makeWordList;
 %newobject TextOutputDev::takeText;
 %newobject TextWord::getText;
+%newobject TextPage::getText;
 %include "poppler/TextOutputDev.h"
 %extend TextPage {
   ~TextPage(){ 
     self->decRefCnt(); 
   };
 };
+
