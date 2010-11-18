@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 from distutils.core import setup, Extension
 
-poppler_install_path = '/usr'
+poppler_install_path = '/usr/local'
 import multivio
 
 setup(
