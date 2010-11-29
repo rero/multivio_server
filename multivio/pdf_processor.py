@@ -40,6 +40,10 @@ class PdfProcessor(DocumentProcessor):
         self._url_md5 = os.path.split(self._file_name)[1]
         #self.logger.debug("PDFProcessor, got url_md5=[%s]"%self._url_md5)
 
+        # keyword for boolean search
+        self._AND = ' and'
+
+
     def _check(self):
         """Check if the document is valid."""
         return True
@@ -89,7 +93,7 @@ class PdfProcessor(DocumentProcessor):
         # get page text
         td = poppler.TextOutputDev(None, True, False, False)
         self._doc.displayPage(td, page_nr, 72, 72, 0, True, True, False)
-        text_page = td.takeText()    
+        text_page = td.takeText()
     
         # get text inside given bounding box
         text = {}
@@ -109,17 +113,21 @@ class PdfProcessor(DocumentProcessor):
             angle -- integer: angle of display in degrees
         return:
             a dictionary with the found results
-        """  
+        """
 
         # number of results
         num_results = 0
 
         # number of pages in document
-        num_pages = self._doc.getNumPages()        
+        num_pages = self._doc.getNumPages()
 
         # conversion of search text to unicode
         query = unicode(query, 'utf-8')
         self.logger.debug("pdf_processor: searching term: [%s]"%query)
+
+        # create sub queries separated by boolean keywords, if necessary
+        boolean_search = query.find(self._AND) != -1
+        queries = [x.strip() for x in query.lower().split(self._AND)]
 
         ## findText options: perform find from top to bottom of page
         startAtTop = True
@@ -131,10 +139,10 @@ class PdfProcessor(DocumentProcessor):
 
         # param check. TODO report errors ?
         if (from_ is None): from_ = 1
-        if (to_ in [0, -1, None]): to_ = num_pages + 1   
+        if (to_ in [0, -1, None]): to_ = num_pages + 1
         if (max_results in [0, None]):
             # TODO: config for upper limit
-            #import sys 
+            #import sys
             max_results = 50 #sys.maxint
 
         # calculate page range [1, num_pages+1]
@@ -147,20 +155,23 @@ class PdfProcessor(DocumentProcessor):
           'file_position': {
             'url':self._file_name, # will be replaced by remote URL by processor_app, if necessary
             'results':[ # results for that file go here
-            ] 
+            ]
           }
         }
-
+        
         # current result
         cur_res = {}
 
         # note: to_ is not included in range
-        done = False
+        all_done = False
         for np in xrange(from_, to_):
-            # debug
-            #self.logger.debug("pdf_processor: searching on page %d"%np)
 
-            if done is True:
+            self.logger.debug("pdf_processor: searching on page %d"%np)
+
+            # results for the current page, all subqueries
+            page_results = []
+
+            if all_done is True:
                 break
 
             td = poppler.TextOutputDev(None, True, False, False)
@@ -172,50 +183,84 @@ class PdfProcessor(DocumentProcessor):
             page_size = self.get_size(index={'page_number': np})
 
             text_page = td.takeText()
-            # store coordinates
-            coords = (found, x1, y1, x2, y2) = text_page.findText(query, startAtTop, stopAtBottom, startAtLast, stopAtLast, caseSensitive, backward)
-            coords = coords[1:] # don't keep found boolean        
-
-            ## findText options: find from last find to bottom of page
-            startAtTop = False
-            stopAtBottom = True 
-            startAtLast = True
-  
-            # keep searching on this page
-            while found is True:
-                # build structure for the found word (round coordinates to ints)
-                (x1, y1, x2, y2) = [round(x,0) for x in coords]
-                bbox = {'x1':x1, 'y1':y1, 'x2':x2, 'y2':y2}
-
-                # get context
-                prw = self._get_context(np, bbox, text_page, context_size)
-
-                # store coordinates, taking angle into account
-                cur_res = {
-                  'preview': prw,
-                  'index': {
-                    'page': np, 
-                    'bounding_box': self._get_coords(bbox, angle, page_size)
-                  }
-                }
-                
-                # append result to list
-                result['file_position']['results'].append(cur_res)
-                                
-                num_results = num_results + 1
-                if (num_results >= max_results):
-                    done = True
-                    result['max_reached'] = max_results
-                    break
-                # find additional words on page
-                coords = (found, x1, y1, x2, y2) = text_page.findText(query, startAtTop, stopAtBottom, startAtLast, stopAtLast, caseSensitive, backward)
+            
+            # TODO test dwy: search for all sub-queries
+            lq = len(queries)
+            for i in xrange(0, lq):
+            
+                subquery = queries[i]
+            
+                self.logger.debug("pdf_processor: searching subquery: %s on page %s..."%(subquery, np))
+            
+                ## findText options: for each word, start at top of page
+                startAtTop = True
+                stopAtBottom = True
+                startAtLast = False
+            
+                # store coordinates
+                coords = (found, x1, y1, x2, y2) = text_page.findText(subquery, startAtTop, stopAtBottom, startAtLast, stopAtLast, caseSensitive, backward)
                 coords = coords[1:] # don't keep found boolean
+    
+                # TODO boolean: if a subquery not found, no need to look for the other subqueries 
+                # on this page (NOTE: only for AND, for now...)
+                # TODO discard all the previous results found on this page
+                if (not found):
+                    self.logger.debug("pdf_processor: word %s not found on page %s, skipping"%(subquery, np))               
+                    break
+    
+    
+                ## findText options: find from last find to bottom of page
+                startAtTop = False
+                stopAtBottom = True
+                startAtLast = True
+      
+                # keep searching on this page
+                while found is True:
+                
+                    self.logger.debug("pdf_processor: found word %s on page %s, building structure"%(subquery, np))
+                
+                    # build structure for the found word (round coordinates to ints)
+                    (x1, y1, x2, y2) = [round(x,0) for x in coords]
+                    bbox = {'x1':x1, 'y1':y1, 'x2':x2, 'y2':y2}
+    
+                    # get context
+                    prw = self._get_context(np, bbox, text_page, context_size)
+    
+                    # store coordinates, taking angle into account
+                    cur_res = {
+                      'preview': prw,
+                      'index': {
+                        'page': np,
+                        'bounding_box': self._get_coords(bbox, angle, page_size)
+                      }
+                    }
+                    
+                    # append result to list
+                    # TODO boolean: current page results, may be discarded if a subquery is not found
+                    #result['file_position']['results'].append(cur_res)
+                    page_results.append(cur_res)
+                                    
+                    num_results = num_results + 1
+                    if (num_results >= max_results):
+                        all_done = True
+                        result['max_reached'] = max_results
+                        break
+                    # find additional words on page
+                    coords = (found, x1, y1, x2, y2) = text_page.findText(subquery, startAtTop, stopAtBottom, startAtLast, stopAtLast, caseSensitive, backward)
+                    coords = coords[1:] # don't keep found boolean
+                    
+
+                # last subquery was found on the page, we can add the results to the global results list now
+                if (i == (lq - 1)):
+                    self.logger.debug("pdf_processor: word %s found on page %s, adding to global results"%(subquery, np))
+                    result['file_position']['results'].extend(page_results)
+                
 
         return result
 
     def _get_coords(self, bbox, angle, page_size):
        """Adapt coordinates according to given rotation angle and page size.
-          Only orthogonal rotations are supported: 
+          Only orthogonal rotations are supported:
                                 0, +-90, +-180, +-270 degrees.
 
            bbox -- dict: bounding box coordinates
@@ -268,9 +313,9 @@ class PdfProcessor(DocumentProcessor):
             num_chars -- int: number of context chars on each side of the word
         return:
             data -- string: output text
-        """    
+        """
 
-        if (num_chars in [0, None]): 
+        if (num_chars in [0, None]):
             return ''
 
         # this allows us to get the words before and after
@@ -370,11 +415,11 @@ class PdfProcessor(DocumentProcessor):
                 'h': page_size['height'],\
                 'lines': []}
         #self.logger.debug("page dimensions: [%s,%s]"\
-        #                   %(page_size['width'], page_size['height'] ))
+        # %(page_size['width'], page_size['height'] ))
 
-        line = None            # current line structure
-        line_start_x = -1      # horizontal position of beginning of the line
-        words_text = []        # list of words in current line
+        line = None # current line structure
+        line_start_x = -1 # horizontal position of beginning of the line
+        words_text = [] # list of words in current line
         import sys
         prev = {'y2':-1}
         x1 = y1 = x2 = y2 = 0
@@ -384,9 +429,9 @@ class PdfProcessor(DocumentProcessor):
             w = words.get(i)
             coords = (x1, y1, x2, y2) = w.getBBox()
             # round values
-            (x1, y1, x2, y2) = [round(x,0) for x in coords] 
+            (x1, y1, x2, y2) = [round(x,0) for x in coords]
             #self.logger.debug("new word [%s], coord:[%s,%s/%s,%s]"\
-            #                                %(w.getText(), x1,y1,x2,y2))
+            # %(w.getText(), x1,y1,x2,y2))
 
             # detect new line based on line height
             if (y2 > prev['y2']):
@@ -396,7 +441,7 @@ class PdfProcessor(DocumentProcessor):
                     words_text = []
                     # compute line width
                     line['w'] = abs(prev['x2'] - line_start_x)
-                    # store line in list
+                    # store line in list
                     page['lines'].append(line)
                     #self.logger.debug("finished line: [%s]"%line['text'])
 
@@ -420,7 +465,7 @@ class PdfProcessor(DocumentProcessor):
                 words_text = []
                 # compute line width
                 line['w'] = abs(x2 - line_start_x)
-                # store line in list
+                # store line in list
                 page['lines'].append(line)
                 #self.logger.debug("finished last line: [%s]"%line['text'])
 
@@ -448,7 +493,7 @@ class PdfProcessor(DocumentProcessor):
 
         self.logger.debug("indexing %s pages to file: %s"%(num_pages,output_file))
 
-        # process each page
+        # process each page
         for np in xrange(1,num_pages):
 
             #self.logger.debug("processing page number %s"%np)
@@ -471,7 +516,7 @@ class PdfProcessor(DocumentProcessor):
                 # replace some characters, remove punctuation
                 wt = self._strip_punctuation(wt.lower())
 
-                if (len(wt.strip())==0): 
+                if (len(wt.strip())==0):
                     continue
 
                 # check for existing entry of word in index
@@ -483,7 +528,7 @@ class PdfProcessor(DocumentProcessor):
                                   'bbx':{'x1':x1,'y1':y1,'x2':x2,'y2':y2}}]
 
         # store index in processor instance
-        self._index = index 
+        self._index = index
 
         self.logger.debug("Total Indexing Time: %s", (time.clock() - start))
 
@@ -518,7 +563,7 @@ class PdfProcessor(DocumentProcessor):
         """
 
         import string
-        not_letters_or_digits = string.punctuation  
+        not_letters_or_digits = string.punctuation
         # '!"#%\'()*+,-./:;<=>?@[\]^_`{|}~'
 
         if isinstance(text, unicode):
@@ -586,4 +631,3 @@ class PdfProcessor(DocumentProcessor):
         #header = [('content-type', 'image/jpeg'), ('content-length',
         #str(len(content)))]
         return('image/jpeg', content)
-
