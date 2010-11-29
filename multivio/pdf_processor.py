@@ -127,7 +127,7 @@ class PdfProcessor(DocumentProcessor):
 
         # create sub queries separated by boolean keywords, if necessary
         boolean_search = query.find(self._AND) != -1
-        queries = [x.strip() for x in query.lower().split(self._AND)]
+        queries = [x.strip() for x in query.lower().split(self._AND) if len(x) > 0]
 
         ## findText options: perform find from top to bottom of page
         startAtTop = True
@@ -184,7 +184,7 @@ class PdfProcessor(DocumentProcessor):
 
             text_page = td.takeText()
             
-            # TODO test dwy: search for all sub-queries
+            # search for all sub-queries
             lq = len(queries)
             for i in xrange(0, lq):
             
@@ -201,9 +201,10 @@ class PdfProcessor(DocumentProcessor):
                 coords = (found, x1, y1, x2, y2) = text_page.findText(subquery, startAtTop, stopAtBottom, startAtLast, stopAtLast, caseSensitive, backward)
                 coords = coords[1:] # don't keep found boolean
     
-                # TODO boolean: if a subquery not found, no need to look for the other subqueries 
+                # boolean: if a subquery is not found, no need to look for the other subqueries 
                 # on this page (NOTE: only for AND, for now...)
-                # TODO discard all the previous results found on this page
+                # discard all the previous results found on this page (ie store them only after we 
+                # found at least 1 result for the last subquery on the page).
                 if (not found):
                     self.logger.debug("pdf_processor: word %s not found on page %s, skipping"%(subquery, np))               
                     break
@@ -236,8 +237,7 @@ class PdfProcessor(DocumentProcessor):
                     }
                     
                     # append result to list
-                    # TODO boolean: current page results, may be discarded if a subquery is not found
-                    #result['file_position']['results'].append(cur_res)
+                    # boolean: current page results, may be discarded if a subquery is not found
                     page_results.append(cur_res)
                                     
                     num_results = num_results + 1

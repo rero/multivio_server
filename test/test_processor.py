@@ -28,8 +28,8 @@ pdf_file_name = 'examples/document.pdf'
 
 class PdfProcessorOK (unittest.TestCase):
     """
-    Test PdfProcessor Class.
-    """
+Test PdfProcessor Class.
+"""
 
     def testPdfProcessor(self):
         """Check PdfProcessor instance."""
@@ -39,7 +39,7 @@ class PdfProcessorOK (unittest.TestCase):
     def testPdfProcess(self):
         """Check Page extraction."""
         pdf_processor = PdfProcessor(pdf_file_name)
-        (mime, content)  = pdf_processor.render(index={'page_number':1},
+        (mime, content) = pdf_processor.render(index={'page_number':1},
         max_output_size = (100,100))
 
     def testPdfGetText(self):
@@ -99,7 +99,7 @@ class PdfProcessorOK (unittest.TestCase):
     def testPdfSearchRotation(self):
         """Check search results and context with different rotation angles"""
         pdf_processor = PdfProcessor(pdf_file_name)
-        result1 = pdf_processor.search(query='user', angle=  0, context_size=15)
+        result1 = pdf_processor.search(query='user', angle= 0,  context_size=15)
         result2 = pdf_processor.search(query='user', angle= 90, context_size=15)
         result3 = pdf_processor.search(query='user', angle=180, context_size=15)
         result4 = pdf_processor.search(query='user', angle=270, context_size=15)
@@ -112,16 +112,110 @@ class PdfProcessorOK (unittest.TestCase):
 
         # context preview should be the same everywhere
         c1 = result1['file_position']['results'][0]['preview']
-        c2 = result2['file_position']['results'][0]['preview'] 
-        c3 = result3['file_position']['results'][0]['preview'] 
-        c4 = result4['file_position']['results'][0]['preview'] 
+        c2 = result2['file_position']['results'][0]['preview']
+        c3 = result3['file_position']['results'][0]['preview']
+        c4 = result4['file_position']['results'][0]['preview']
 
         self.assertEqual(n1, n2)
-        self.assertEqual(n2, n3) 
-        self.assertEqual(n3, n4) 
-        self.assertEqual(c1, c2) 
-        self.assertEqual(c2, c3) 
-        self.assertEqual(c3, c4) 
+        self.assertEqual(n2, n3)
+        self.assertEqual(n3, n4)
+        self.assertEqual(c1, c2)
+        self.assertEqual(c2, c3)
+        self.assertEqual(c3, c4)
+
+    def testPdfSearchBooleanAnd2(self):
+        """Check regular boolean search with 2 terms"""
+        pdf_processor = PdfProcessor(pdf_file_name)
+        
+        result1 = pdf_processor.search(query='multivio and context')
+        self.assertEqual(result1['max_reached'], 0)
+        n1 = len(result1['file_position']['results'])
+        self.assertEqual(n1, 7) # number of search results
+
+        result2 = pdf_processor.search(query='context and multivio')
+        self.assertEqual(result2['max_reached'], 0)
+        n2 = len(result2['file_position']['results'])
+        self.assertEqual(n2, n1) # number of search results
+
+        # both search results should be the same (but not necessarily in the same order)
+        for res in result2['file_position']['results']:
+            self.assertTrue(res in result1['file_position']['results'])
+        
+        # there should be no result on page 2
+        result0 = pdf_processor.search(query='context and multivio', from_=2, to_=2)
+        self.assertEqual(result0['max_reached'], 0)
+        n0 = len(result0['file_position']['results'])
+        self.assertEqual(n0, 0) # number of search results
+
+
+    def testPdfSearchBooleanAnd34(self):
+        """Check regular boolean search with 3 and 4 terms"""
+        pdf_processor = PdfProcessor(pdf_file_name)
+        
+        
+        ## 3 terms
+        result1 = pdf_processor.search(query='multivio and context and introduction')
+        self.assertEqual(result1['max_reached'], 0)
+        n1 = len(result1['file_position']['results'])
+        self.assertEqual(n1, 5) # number of search results
+
+        result2 = pdf_processor.search(query='context and multivio and introduction')
+        self.assertEqual(result2['max_reached'], 0)
+        n2 = len(result2['file_position']['results'])
+        self.assertEqual(n1, n2) # number of search results
+        
+        
+        # both search results should be the same (but not necessarily in the same order)
+        for res in result2['file_position']['results']:
+            self.assertTrue(res in result1['file_position']['results'])
+        
+        # there should be no result on pages 2 and 3
+        result0 = pdf_processor.search(query='context and multivio and introduction', from_=2, to_=3)
+        self.assertEqual(result0['max_reached'], 0)
+        n0 = len(result0['file_position']['results'])
+        self.assertEqual(n0, 0) # number of search results
+        
+        
+        ## 4 terms
+        result1 = pdf_processor.search(query='multivio and context and introduction and software')
+        self.assertEqual(result1['max_reached'], 0)
+        n1 = len(result1['file_position']['results'])
+        self.assertEqual(n1, 9) # number of search results
+
+        result2 = pdf_processor.search(query='context and software and multivio and introduction')
+        self.assertEqual(result2['max_reached'], 0)
+        n2 = len(result2['file_position']['results'])
+        self.assertEqual(n1, n2) # number of search results
+        
+        # both search results should be the same (but not necessarily in the same order)
+        for res in result2['file_position']['results']:
+            self.assertTrue(res in result1['file_position']['results'])
+
+        # there should be no result on pages 2 and 3
+        result0 = pdf_processor.search(query='context and software and multivio and introduction', from_=2, to_=3)
+        self.assertEqual(result0['max_reached'], 0)
+        n0 = len(result0['file_position']['results'])
+        self.assertEqual(n0, 0) # number of search results        
+
+
+    def testPdfSearchBooleanAndNone(self):
+        """Check boolean with missing second term"""
+        pdf_processor = PdfProcessor(pdf_file_name)
+        
+        result1 = pdf_processor.search(query='multivio and')
+        self.assertEqual(result1['max_reached'], 0)
+        n1 = len(result1['file_position']['results'])
+        self.assertEqual(n1, 9) # number of search results
+
+        result2 = pdf_processor.search(query='multivio')
+        self.assertEqual(result2['max_reached'], 0)
+        n2 = len(result2['file_position']['results'])
+        self.assertEqual(n2, n1) # number of search results
+
+        # both search results should be the same (but not necessarily in the same order)
+        for res in result2['file_position']['results']:
+            self.assertTrue(res in result1['file_position']['results'])
+
 
 if __name__ == '__main__':
     # the main program if we execute directly this module
