@@ -79,6 +79,18 @@ class PdfParserOK (unittest.TestCase):
         phys = pdf_parser.get_physical_structure()
         self.assertEqual(phys[0]['label'], pdf_file_name, "Physical Structure "\
                         "missmatch: %s != %s" % (phys[0]['label'], pdf_file_name))
+    
+    def testPdfParserLogicalSegfault(self):
+        """Get Pdf logical structure for a malformed pdf:
+            http://www.tendancesit.com/pdf/19.pdf."""
+        file_name = "examples/toc_segfault.pdf"
+        pdf_parser = PdfParser(file_name, "file://%s" %
+                        file_name, file_name)
+        logic = pdf_parser.get_logical_structure()
+        first_section = logic[0]['label']
+        first_section_ref = 'Tendances IT 19 WEB.pdf'
+        self.assertEqual (first_section, first_section_ref, "TOC is not well "\
+                "detected: %s != %s" %(first_section, first_section_ref)) 
 
     def tearDown(self):
         pass
