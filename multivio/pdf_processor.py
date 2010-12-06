@@ -370,8 +370,9 @@ class PdfProcessor(DocumentProcessor):
 
         # if range specified, use it and ignore index['page_number']
         page_range = xrange(1,num_pages)
-        if (None not in [from_, to_] and \
-            '' not in [from_, to_]):
+        if (0    not in [from_, to_] and \
+            None not in [from_, to_] and \
+            ''   not in [from_, to_]):
 
             # adapt to pages' range [1, num_pages]
             (from_, to_) = (max(from_, 1), min(to_, num_pages))
