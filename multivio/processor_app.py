@@ -152,17 +152,18 @@ If a range of pages is specified with 'from' and 'to', 'page_nr' is ignored. Els
             self.logger.debug("Get text with opts: %s" % opts)
             if opts.has_key('url'):
                 page_nr = 1
+                # round coordinates to 2 decimals
                 x1 = x2 = y1 = y2 = 0
                 if opts.has_key('page_nr'):
                     page_nr = int(opts['page_nr'] or 1)
                 if opts.has_key('x1'):
-                    x1 = int(opts['x1'] or 0)
+                    x1 = round(float(opts['x1']), 2)
                 if opts.has_key('x2'):
-                    x2 = int(opts['x2'] or 0)
+                    x2 = round(float(opts['x2']), 2) 
                 if opts.has_key('y1'):
-                    y1 = int(opts['y1'] or 0)
+                    y1 = round(float(opts['y1']), 2) 
                 if opts.has_key('y2'):
-                    y2 = int(opts['y2'] or 0)
+                    y2 = round(float(opts['y2']), 2)
 
                 text_result = self.get_text(url=opts['url'],
                     index={'page_number':page_nr,
