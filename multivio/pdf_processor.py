@@ -80,10 +80,10 @@ class PdfProcessor(DocumentProcessor):
 
         return size
 
-    def get_text(self, index=None):
+    def get_text(self, index=None, angle=0):
         """Return the text contained inside the selected box.
             index -- dict: index in the document, including 'bounding_box'
-
+            angle -- int: rotation angle, 0, +-90, +- 180, +-270
         return:
             data -- string: output text
         """
@@ -92,7 +92,7 @@ class PdfProcessor(DocumentProcessor):
 
         # get page text
         td = poppler.TextOutputDev(None, True, False, False)
-        self._doc.displayPage(td, page_nr, 72, 72, 0, True, True, False)
+        self._doc.displayPage(td, page_nr, 72, 72, -angle, True, True, False)
         text_page = td.takeText()
     
         # get text inside given bounding box

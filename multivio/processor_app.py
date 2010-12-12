@@ -153,7 +153,7 @@ If a range of pages is specified with 'from' and 'to', 'page_nr' is ignored. Els
             if opts.has_key('url'):
                 page_nr = 1
                 # round coordinates to 2 decimals
-                x1 = x2 = y1 = y2 = 0
+                x1 = x2 = y1 = y2 = angle = 0
                 if opts.has_key('page_nr'):
                     page_nr = int(opts['page_nr'] or 1)
                 if opts.has_key('x1'):
@@ -164,10 +164,12 @@ If a range of pages is specified with 'from' and 'to', 'page_nr' is ignored. Els
                     y1 = round(float(opts['y1']), 2) 
                 if opts.has_key('y2'):
                     y2 = round(float(opts['y2']), 2)
+                if opts.has_key('angle'):
+                    angle = int(opts['angle'] or 0)
 
                 text_result = self.get_text(url=opts['url'],
-                    index={'page_number':page_nr,
-                    'bounding_box':{'x1':x1,'x2':x2,'y1':y1,'y2':y2}})
+                    index={'page_number':page_nr, 'bounding_box':{'x1':x1,'x2':x2,'y1':y1,'y2':y2}}, angle=angle)
+                # get_text now takes rotation angle into account
                 start_response('200 OK', [('content-type',
                     'application/json')])
                 return [json.dumps(text_result, sort_keys=True, indent=2)]
@@ -266,13 +268,13 @@ If a range of pages is specified with 'from' and 'to', 'page_nr' is ignored. Els
         processor = self._choose_processor(file_name, mime)
         return processor.get_size(index)
 
-    def get_text(self, url, index=None):
+    def get_text(self, url, index=None, angle=0):
         """Get the text in the selected zone in the document"""
         (file_name, mime) = self.get_remote_file(url)
 
         #check the mime type
         processor = self._choose_processor(file_name, mime)
-        return processor.get_text(index)
+        return processor.get_text(index, angle)
 
     def get_indexing(self, url, index=None, from_=None, to_=None):
         """Get index of the positions of words on a given page"""
