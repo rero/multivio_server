@@ -153,7 +153,6 @@ If a range of pages is specified with 'from' and 'to', 'page_nr' is ignored. Els
             if opts.has_key('url'):
                 page_nr = 1
                 # round coordinates to 2 decimals
-
                 x1 = x2 = y1 = y2 = angle = 0
 
                 if opts.has_key('page_nr'):
