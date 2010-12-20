@@ -55,9 +55,10 @@ Test PdfProcessor Class.
         result = pdf_processor.get_indexing(index={'page_number':2})
         self.assertEqual(result.has_key('pages'), True)
         self.assertEqual(len(result['pages']), 1)
-        self.assertEqual(result['pages'][0].has_key('lines'), True)
-        self.assertEqual(len(result['pages'][0]['lines']), 39) # number of lines on page
-        self.assertEqual(len(result['pages'][0]['lines'][0]['x']), 13) # number of words on page
+        # NOTE: 'pages' is a dictionary with page number as key (here this number is 2, as defined above)
+        self.assertEqual(result['pages'][2].has_key('lines'), True)
+        self.assertEqual(len(result['pages'][2]['lines']), 39) # number of lines on page
+        self.assertEqual(len(result['pages'][2]['lines'][0]['x']), 13) # number of words on page
 
     def testPdfSearch(self):
         """Check regular search"""

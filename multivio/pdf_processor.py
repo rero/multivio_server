@@ -363,7 +363,7 @@ class PdfProcessor(DocumentProcessor):
         import time
         start = time.clock()
 
-        result = {'pages':[]}
+        result = {'pages':{}}
 
         # number of pages in document
         num_pages = self._doc.getNumPages()
@@ -378,14 +378,14 @@ class PdfProcessor(DocumentProcessor):
             (from_, to_) = (max(from_, 1), min(to_, num_pages))
 
             for np in xrange(from_,to_+1):
-                result['pages'].append(self._get_indexing(np))
+                result['pages'][np] = self._get_indexing(np)
 
         # else, try to use page_number in index
         else:
             page_nr = index['page_number']
             if (page_nr is not None and page_nr != ''\
                       and page_nr in page_range):
-                result['pages'].append(self._get_indexing(page_nr))
+                result['pages'][page_nr] = self._get_indexing(page_nr)
 
         self.logger.debug("get_indexing: Total Process Time: %s",\
                                             (time.clock() - start))
