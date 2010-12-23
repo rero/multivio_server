@@ -1,12 +1,16 @@
 #!/usr/bin/env python
-"""Base class for all wsgi web applications."""
 # -*- coding: utf-8 -*-
+"""Base class for all wsgi web applications."""
 
-__author__ = "Johnny Mariethoz <Johnny.Mariethoz@rero.ch>"
-__version__ = "0.0.0"
-__copyright__ = "Copyright (c) 2009 Rero, Johnny Mariethoz"
-__license__ = "Internal Use Only"
+#==============================================================================
+#  This file is part of the Multivio software.
+#  Project  : Multivio - https://www.multivio.org/
+#  Copyright: (c) 2009-2011 RERO (http://www.rero.ch/)
+#  License  : See file COPYING
+#==============================================================================
 
+__copyright__ = "Copyright (c) 2009-2011 RERO"
+__license__ = "GPL V.2"
 
 #---------------------------- Modules -----------------------------------------
 
@@ -103,8 +107,8 @@ cookies."""
            will call back into our open_http method, where we can pick up
            more cookies."""
         self.eatCookies(headers)
-        result = urllib.FancyURLopener.http_error_302(self, url, fp, errcode, errmsg,
-                        headers, data=None)
+        result = urllib.FancyURLopener.http_error_302(self, url, fp, errcode,
+                errmsg, headers, data=None)
         return result
 
     def eatCookies(self, headers):
@@ -112,10 +116,13 @@ cookies."""
            our list."""
         cookies = headers.getallmatchingheaders('set-cookie')
         for c in cookies:
-            self.addCookie(":".join(c.split(':')[1:]))        # "set-cookie: " is 11 characters
+            # "set-cookie: " is 11 characters
+            self.addCookie(":".join(c.split(':')[1:])) 
 
     def addCookie(self, cookie):
-        """Add a cookie to our cache of them and call addheaders of our parent."""
+        """Add a cookie to our cache of them and call addheaders of our
+           parent.
+        """
         self.cookies.append(cookie)
         self.addheader('Cookie', cookie)
 

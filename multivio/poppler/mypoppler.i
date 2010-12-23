@@ -1,4 +1,11 @@
 
+//==============================================================================
+//  This file is part of the Multivio software.
+//  Project  : Multivio - https://www.multivio.org/
+//  Copyright: (c) 2009-2011 RERO (http://www.rero.ch/)
+//  License  : See file COPYING
+//==============================================================================
+
 %module mypoppler
 %{
 #include "poppler-config.h"

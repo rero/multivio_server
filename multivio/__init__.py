@@ -1,10 +1,15 @@
+# -*- coding: utf-8 -*-
 """
 Multivio Python package.
 """
 
-__author__ = "Johnny Mariethoz <Johnny.Mariethoz@rero.ch>"
-__version__ = "0.3.0"
-#__version__ = "0.2.2010-11-18 13:41:21"
-__copyright__ = "Copyright (c) 2009,2010 RERO, Johnny Mariethoz"
-__license__ = "Internal Use Only"
+#==============================================================================
+#  This file is part of the Multivio software.
+#  Project  : Multivio - https://www.multivio.org/
+#  Copyright: (c) 2009-2011 RERO (http://www.rero.ch/)
+#  License  : See file COPYING
+#==============================================================================
 
+__version__ = "0.3.1"
+__copyright__ = "Copyright (c) 2009-2011 RERO"
+__license__ = "GPL V.2"

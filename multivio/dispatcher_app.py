@@ -2,10 +2,15 @@
 # -*- coding: utf-8 -*-
 """Multivio HTTP requests dispatcher."""
 
-__author__ = "Johnny Mariethoz <Johnny.Mariethoz@rero.ch>"
-__version__ = "0.0.0"
-__copyright__ = "Copyright (c) 2009 Rero, Johnny Mariethoz"
-__license__ = "Internal Use Only"
+#==============================================================================
+#  This file is part of the Multivio software.
+#  Project  : Multivio - https://www.multivio.org/
+#  Copyright: (c) 2009-2011 RERO (http://www.rero.ch/)
+#  License  : See file COPYING
+#==============================================================================
+
+__copyright__ = "Copyright (c) 2009-2011 RERO"
+__license__ = "GPL V.2"
 
 
 #---------------------------- Modules -----------------------------------------
@@ -90,8 +95,8 @@ class DispatcherApp(WebApplication):
                     }
                     return [json.dumps(result, sort_keys=True, indent=4)]
                 except Exception, exception:
-                    start_response('500 Internal Server Error', [('content-type',
-                           'application/json')])
+                    start_response('500 Internal Server Error',
+                            [('content-type', 'application/json')])
                     self.logger.error("Exception: %s occurs with message: %s" %
                         (type(exception).__name__, str(exception)))
                     result = {

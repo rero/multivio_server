@@ -165,7 +165,8 @@ If a range of pages is specified with 'from' and 'to', 'page_nr' is ignored. Els
                     y2 = int(opts['y2'] or 0)
 
                 text_result = self.get_text(url=opts['url'],
-                    index={'page_number':page_nr, 'bounding_box':{'x1':x1,'x2':x2,'y1':y1,'y2':y2}})
+                    index={'page_number':page_nr,
+                    'bounding_box':{'x1':x1,'x2':x2,'y1':y1,'y2':y2}})
                 start_response('200 OK', [('content-type',
                     'application/json')])
                 return [json.dumps(text_result, sort_keys=True, indent=2)]
@@ -195,7 +196,8 @@ If a range of pages is specified with 'from' and 'to', 'page_nr' is ignored. Els
             self.logger.debug("Search document with opts: %s" % opts)
             if opts.has_key('url'):
                 if not opts.has_key('query'):
-                    raise ApplicationError.InvalidArgument('Invalid Argument: param query missing')
+                    raise ApplicationError.InvalidArgument('Invalid Argument: "\
+                            "param query missing')
 
                 # note: unquote query string, useful for getting right
                 # accents and special chars
@@ -219,12 +221,14 @@ If a range of pages is specified with 'from' and 'to', 'page_nr' is ignored. Els
                 if opts.has_key('angle'):
                     angle = int(opts['angle'] or 0)
                 # get results
-                results = self.search(url, query, from_, to_, max_results, sort, context_size, angle)
+                results = self.search(url, query, from_, to_, max_results,
+                    sort, context_size, angle)
                 # add url to 'file_position' of results
                 results['file_position']['url'] = url
                 start_response('200 OK', [('content-type',
                     'application/json')])
-                return [json.dumps(results, sort_keys=False, indent=2, encoding='utf-8')]
+                return [json.dumps(results, sort_keys=False, indent=2,
+                    encoding='utf-8')]
             else:
                 raise ApplicationError.InvalidArgument('Invalid Argument')
 
@@ -275,16 +279,17 @@ If a range of pages is specified with 'from' and 'to', 'page_nr' is ignored. Els
 
         #check the mime type
         processor = self._choose_processor(file_name, mime)
-        #self.logger.debug("processor_app: calling get_indexing with opts: %s, [%s,%s]"%(index, from_, to_))
         return processor.get_indexing(index, from_, to_)
 
-    def search(self, url, query, from_=None, to_=None, max_results=None, sort=None, context_size=None, angle=0):
+    def search(self, url, query, from_=None, to_=None, max_results=None,
+            sort=None, context_size=None, angle=0):
         """Search text in a document"""
         (file_name, mime) = self.get_remote_file(url)
 
         #check the mime type
         processor = self._choose_processor(file_name, mime)
-        return processor.search(query, from_, to_, max_results, sort, context_size, angle)
+        return processor.search(query, from_, to_, max_results, sort,
+                context_size, angle)
 
     def get_params(self, environ):
         """ Overload the default method to allow cgi url.

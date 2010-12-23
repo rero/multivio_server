@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 from distutils.core import setup, Extension
 
-poppler_install_path = '/usr/local'
+poppler_install_path = '/usr'
 import multivio
 
 setup(
@@ -10,7 +10,6 @@ setup(
     description='Multivio server.',
     long_description='''Multivio is a project...''',
     license=multivio.__license__,
-    author=multivio.__author__,
     url='http://www.multivio.org',
     ext_modules=[Extension('multivio/poppler/_mypoppler', ['multivio/poppler/mypoppler.i'],
         swig_opts=['-c++', '-modern', '-I%s/include' % poppler_install_path],

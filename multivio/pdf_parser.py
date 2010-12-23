@@ -11,10 +11,10 @@ __license__ = "Internal Use Only"
 #---------------------------- Modules ---------------------------------------
 
 # import of standard modules
-import sys
 import re
-from optparse import OptionParser
 import poppler
+from optparse import OptionParser
+
 # local modules
 from parser import DocumentParser, ParserError
 
@@ -91,20 +91,20 @@ class PdfParser(DocumentParser):
 
     def get_logical_structure(self):
         """Get the logical structure of the pdf, basically the TOC."""
-        to_return = None
         toc = self._doc.getToc()
         if len(toc) < 1:
             return None
         def add_file_index(entries):
-            for e in entries:
-                page_nr = e['page_number']
-                e['file_position'] = {
+            """Recursive function."""
+            for entry in entries:
+                page_nr = entry['page_number']
+                entry['file_position'] = {
                     'index' : page_nr,
                     'url' : self._url     
                     }
-                del e['page_number']
-                if e.has_key('childs'):
-                    add_file_index(e['childs'])
+                del entry['page_number']
+                if entry.has_key('childs'):
+                    add_file_index(entry['childs'])
         add_file_index(toc)
         return toc
 
