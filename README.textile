@@ -2,7 +2,7 @@
 
 h1. "Multivio":https://www.multivio.org/ is a generic browser and visualizer for digital objects
 
-*Copyright: (C) 2009 RERO*
+*Copyright: (C) 2009-2011 RERO*
 
 h2. Description
 

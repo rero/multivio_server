@@ -2,16 +2,14 @@
 # -*- coding: utf-8 -*-
 
 """
-Unit test for the verif scores module.
-
-This file is part of the pyMeasure scripts module.
+Test for Multivio process (to generate image from pdf, for example).
 """
-
-# some general value for this module
-__author__ = "Johnny Mariethoz <Johnny.Mariethoz@idiap.ch>"
-__version__ = "0.0.0"
-__copyright__ = "Copyright (c) 2009 Rero, Johnny Mariethoz"
-__license__ = "Internal Use Only"
+#==============================================================================
+#  This file is part of the Multivio software.
+#  Project  : Multivio - https://www.multivio.org/
+#  Copyright: (c) 2009-2011 RERO (http://www.rero.ch/)
+#  License  : See file COPYING
+#==============================================================================
 
 # standard modules
 import sys

@@ -2,16 +2,14 @@
 # -*- coding: utf-8 -*-
 
 """
-Unit test for the verif scores module.
-
-This file is part of the pyMeasure scripts module.
+Test for document parsers such as XML Marc, Mets, etc.
 """
-
-# some general value for this module
-__author__ = "Johnny Mariethoz <Johnny.Mariethoz@idiap.ch>"
-__version__ = "0.0.0"
-__copyright__ = "Copyright (c) 2009 Rero, Johnny Mariethoz"
-__license__ = "Internal Use Only"
+#==============================================================================
+#  This file is part of the Multivio software.
+#  Project  : Multivio - https://www.multivio.org/
+#  Copyright: (c) 2009-2011 RERO (http://www.rero.ch/)
+#  License  : See file COPYING
+#==============================================================================
 
 # standard modules
 import sys
@@ -84,6 +82,11 @@ class PdfParserOK (unittest.TestCase):
         """Get Pdf logical structure for a malformed pdf:
             http://www.tendancesit.com/pdf/19.pdf."""
         file_name = "examples/toc_segfault.pdf"
+        try:
+            file(file_name)
+        except IOError:
+            raise Exception("Please go the examples directory and run: get_examples.sh")
+
         pdf_parser = PdfParser(file_name, "file://%s" %
                         file_name, file_name)
         logic = pdf_parser.get_logical_structure()

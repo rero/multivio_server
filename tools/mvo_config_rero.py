@@ -1,16 +1,17 @@
 #!/usr/bin/python
-"""Config file for multivio server."""
 # -*- coding: utf-8 -*-
 
-__author__ = "Johnny Mariethoz <Johnny.Mariethoz@rero.ch>"
-__version__ = "0.0.0"
-__copyright__ = "Copyright (c) 2009 Rero, Johnny Mariethoz"
-__license__ = "Internal Use Only"
+""" RERO config file for Multivio server."""
 
+#==============================================================================
+#  This file is part of the Multivio software.
+#  Project  : Multivio - https://www.multivio.org/
+#  Copyright: (c) 2009-2011 RERO (http://www.rero.ch/)
+#  License  : See file COPYING
+#==============================================================================
 
 import logging
 import re
-
 
 def get_internal_file(url):
     """Get the file in local."""
