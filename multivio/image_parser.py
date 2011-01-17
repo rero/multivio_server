@@ -49,6 +49,7 @@ class ImgParser(DocumentParser):
         metadata = {}
         metadata['title'] = self._url.split('/')[-1]
         metadata['mime'] = self._mime
+        metadata['fileSize'] = self.get_file_size()
         #metadata['width'] = self._width
         #metadata['height'] = self._height
 

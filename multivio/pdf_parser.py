@@ -42,6 +42,7 @@ class PdfParser(DocumentParser):
             return True
         return False
 
+
     def get_metadata(self):
         """Get pdf infos."""
         self.logger.debug("Get Metadata")
@@ -63,6 +64,7 @@ class PdfParser(DocumentParser):
             pass
         metadata['mime'] = 'application/pdf'
         metadata['nPages'] = self._doc.getNumPages()
+        metadata['fileSize'] = self.get_file_size()
         #info = None
         #try:
         #    info = self.getDocumentInfo()

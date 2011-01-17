@@ -61,6 +61,17 @@ class PdfParserOK (unittest.TestCase):
                         "not been correctly detected %s != %s" % 
                         (title, u'Multivio: Project description'))
     
+    def testPdfParserMetaFileSize(self):
+        """Get Pdf Metadata and test file size."""
+        pdf_parser = PdfParser(pdf_file_name, "file://%s" %
+                        pdf_file_name, pdf_file_name)
+        meta = pdf_parser.get_metadata()
+        file_size = meta['fileSize']
+        ref_size = os.path.getsize(pdf_file_name)
+        self.assertEqual(file_size, ref_size, "File size has "\
+                        "not been correctly detected %s != %s" % 
+                        (file_size, ref_size))
+
     def testPdfParserLogical(self):
         """Get Pdf logical structure."""
         pdf_parser = PdfParser(pdf_file_name, "file://%s" %

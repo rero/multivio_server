@@ -62,6 +62,15 @@ class DocumentParser(object):
         Such as Table of Contents.
         """
         return None
+    
+    def get_file_size(self):
+        """
+            Get the file size of the current file.
+        """
+        self._file_stream.seek(0, 2)
+        file_size = self._file_stream.tell()
+        self._file_stream.seek(0)
+        return file_size
 
     def get_physical_structure(self):
         """Get the physical structure of the document.
