@@ -49,7 +49,7 @@ class PdfProcessor(DocumentProcessor):
         return True
 
     def render(self, max_output_size=None, angle=0, index=None,
-        output_format=None):
+        output_format=None, restricted=False):
         """Render the document content.
 
             max_output_size -- tupple: maximum dimension of the output
@@ -64,7 +64,7 @@ class PdfProcessor(DocumentProcessor):
         self.logger.debug("Render")
         return self._get_image_from_pdf(page_nr=index['page_number'],
             max_width=max_output_size[0], max_height=max_output_size[1],
-            angle=angle, output_format=output_format)
+            angle=angle, output_format=output_format, restricted=restricted)
     
     def get_size(self, index=None):
         """Return the size of the document content.
@@ -599,8 +599,12 @@ class PdfProcessor(DocumentProcessor):
         return scale
 
     def _get_image_from_pdf(self, page_nr=1, max_width=None, max_height=None,
-        angle=0, output_format='JPEG'):
+        angle=0, output_format='JPEG', restricted=False):
         """Render a pdf page as image."""
+        if restricted and page_nr>1:
+            raise ApplicationError.PermissionDenied(
+                "Your are not allowed to see this document.")
+
         if self._doc.getNumPages() < page_nr:
             raise ApplicationError.InvalidArgument(
                 "Bad page number: it should be < %s." %
@@ -621,6 +625,11 @@ class PdfProcessor(DocumentProcessor):
         bitmap = splash.getBitmap()
         new_width = bitmap.getWidth()
         new_height = bitmap.getHeight()
+        if restricted and (MVOConfig.Security.pdf_max_width > new_width)\
+                and (MVOConfig.Security.pdf_max_height > new_height):
+            raise ApplicationError.PermissionDenied(
+                "Your are not allowed to see this document.")
+
         import Image
         pil = Image.fromstring('RGB', (new_width, new_height),
             bitmap.getDataPtr())

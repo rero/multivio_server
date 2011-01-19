@@ -12,7 +12,7 @@ import logging
 import re
 
 
-def get_internal_file(url):
+def get_internal_file(url, force=False):
     """Get the file in local."""
     document_type = {
             '10' : 'book',
@@ -89,15 +89,15 @@ def get_internal_file(url):
             '16' : 'l_impartial',
             '17' : 'bulletin_sng',
             '18' : 'federation_horlogere',
-            '19' : 'bibliotheques_et_musees'
+            '19' : 'bibliotheques_et_musees',
+            '20' : 'depeche_de_neuchatel'
     }
 
-    mime = None
+    mime = 'unknown'
     local_file = None
     if re.match('http://doc.rero.ch/lm.php', url):
-        print url
         parts = url.split(',')
-        if parts[0].endswith('1000'):
+        if force or parts[0].endswith('1000'):
             doc_type = document_type[parts[1]]
             if doc_type == 'journal':
                 collection = journal_collections[parts[2]]
@@ -107,13 +107,15 @@ def get_internal_file(url):
                 collection = localisations[parts[2]]
             local_file = '/rerodoc/public/%s/%s/%s' \
                 % (doc_type, collection, parts[3])
-            print local_file
-            mime = "application/pdf"
-            if re.match(".*?\.(jpg|jpeg)", local_file):
+            if re.match(".*?\.(pdf)", local_file.lower()):
+                mime = "application/pdf"
+            if re.match(".*?\.(jpg|jpeg)", local_file.lower()):
                 mime = "image/jpeg"
-            if re.match(".*?\.png", local_file):
+            if re.match(".*?\.(tif|tiff)", local_file.lower()):
+                mime = "image/tiff"
+            if re.match(".*?\.png", local_file.lower()):
                 mime = "image/png"
-            if re.match(".*?\.gif", local_file):
+            if re.match(".*?\.gif", local_file.lower()):
                 mime = "image/gif"
         else:
             from multivio.web_app import ApplicationError
@@ -126,10 +128,15 @@ class MVOConfig:
 
     class General:
         """General config."""
-        temp_dir = '/tmp' 
-        lib_dir = '/var/www/multivio/lib/python'
-        sys_pathes = ['/var/www/multivio/lib/python',
-                '/var/www/mutlivio/bin']
+        temp_dir = '/reroweb/var/tmp/multivio' 
+        lib_dir = '/reroweb/var/scripts/multivio/lib/python'
+        sys_pathes = ['/reroweb/var/scripts/multivio/lib/python',
+            '/reroweb/var/www/mutlivio/bin']
+    class Security:
+        pdf_max_width = 100
+        pdf_max_height = 100
+        img_max_width = 100
+        img_max_height = 100
 
     class Url:
         """Configuration for uploads."""

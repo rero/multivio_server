@@ -1,19 +1,18 @@
 #!/usr/bin/python
+"""Config file for multivio server."""
 # -*- coding: utf-8 -*-
 
-""" RERO config file for Multivio server."""
+__author__ = "Johnny Mariethoz <Johnny.Mariethoz@rero.ch>"
+__version__ = "0.0.0"
+__copyright__ = "Copyright (c) 2009 Rero, Johnny Mariethoz"
+__license__ = "Internal Use Only"
 
-#==============================================================================
-#  This file is part of the Multivio software.
-#  Project  : Multivio - https://www.multivio.org/
-#  Copyright: (c) 2009-2011 RERO (http://www.rero.ch/)
-#  License  : See file COPYING
-#==============================================================================
 
 import logging
 import re
 
-def get_internal_file(url):
+
+def get_internal_file(url, force=False):
     """Get the file in local."""
     document_type = {
             '10' : 'book',
@@ -90,14 +89,15 @@ def get_internal_file(url):
             '16' : 'l_impartial',
             '17' : 'bulletin_sng',
             '18' : 'federation_horlogere',
-            '19' : 'bibliotheques_et_musees'
+            '19' : 'bibliotheques_et_musees',
+            '20' : 'depeche_de_neuchatel'
     }
 
     mime = 'unknown'
     local_file = None
     if re.match('http://doc.rero.ch/lm.php', url):
         parts = url.split(',')
-        if parts[0].endswith('1000'):
+        if force or parts[0].endswith('1000'):
             doc_type = document_type[parts[1]]
             if doc_type == 'journal':
                 collection = journal_collections[parts[2]]
@@ -107,13 +107,15 @@ def get_internal_file(url):
                 collection = localisations[parts[2]]
             local_file = '/rerodoc/public/%s/%s/%s' \
                 % (doc_type, collection, parts[3])
-            if re.match(".*?\.(pdf)", local_file):
+            if re.match(".*?\.(pdf)", local_file.lower()):
                 mime = "application/pdf"
-            if re.match(".*?\.(jpg|jpeg)", local_file):
+            if re.match(".*?\.(jpg|jpeg)", local_file.lower()):
                 mime = "image/jpeg"
-            if re.match(".*?\.png", local_file):
+            if re.match(".*?\.(tif|tiff)", local_file.lower()):
+                mime = "image/tiff"
+            if re.match(".*?\.png", local_file.lower()):
                 mime = "image/png"
-            if re.match(".*?\.gif", local_file):
+            if re.match(".*?\.gif", local_file.lower()):
                 mime = "image/gif"
         else:
             from multivio.web_app import ApplicationError
@@ -126,10 +128,15 @@ class MVOConfig:
 
     class General:
         """General config."""
-        temp_dir = '/var/tmp/multivio' 
-        lib_dir = '/rero/multivio/lib/python'
-        sys_pathes = ['/rero/multivio/lib/python',
-                '/www/mutlivio-test/bin']
+        temp_dir = '/reroweb/var/tmp/multivio' 
+        lib_dir = '/reroweb/var/scripts/multivio/lib/python'
+        sys_pathes = ['/reroweb/var/scripts/multivio/lib/python',
+            '/reroweb/var/www/mutlivio/bin']
+    class Security:
+        pdf_max_width = 100
+        pdf_max_height = 100
+        img_max_width = 100
+        img_max_height = 100
 
     class Url:
         """Configuration for uploads."""
@@ -139,6 +146,6 @@ class MVOConfig:
     class Logger:
         """Config for logging."""
         name = "multivio"
-        file_name = "/var/log/multivio/multivio.log"
+        file_name = "/reroweb/var/log/multivio.log"
         console = False
         level = logging.INFO

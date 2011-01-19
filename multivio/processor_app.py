@@ -254,11 +254,17 @@ If a range of pages is specified with 'from' and 'to', 'page_nr' is ignored. Els
     def render(self, url, max_output_size=None, angle=0, 
         index=None, output_format=None):
         """Generate a content to display for a given document."""
-        (file_name, mime) = self.get_remote_file(url)
+        restricted_document = False
+        try:
+            (file_name, mime) = self.get_remote_file(url)
+        except ApplicationError.PermissionDenied:
+            (file_name, mime) = self.get_remote_file(url, force=True)
+            restricted_document = True
             
         #check the mime type
         processor = self._choose_processor(file_name, mime)
-        return processor.render(max_output_size, angle, index, output_format)
+        return processor.render(max_output_size, angle, index, output_format,
+                restricted)
 
     def get_size(self, url, index=None):
         """Generate a content to display for a given document."""

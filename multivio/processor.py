@@ -41,7 +41,7 @@ class DocumentProcessor(object):
         return True
 
     def render(self, max_output_size=None, angle=0, index=None,
-        output_format=None):
+        output_format=None, restricted=False):
         """Render the document content.
 
             max_output_size -- tupple: maximum dimension of the output

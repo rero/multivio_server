@@ -41,7 +41,7 @@ class ImageProcessor(DocumentProcessor):
         return True
 
     def render(self, max_output_size=None, angle=0, index=None,
-        output_format=None):
+        output_format=None, restricted=False):
         """Render the document content.
 
             max_output_size -- tupple: maximum dimension of the output
@@ -62,6 +62,13 @@ class ImageProcessor(DocumentProcessor):
         self.logger.debug("Rotate the image: %s degree" % angle)
         if angle != 0:
             self._img = self._img.rotate(angle)
+        if restricted:
+            (new_width, new_height) = self._img.size()
+            if (MVOConfig.Security.img_max_width > max_width)\
+                and (MVOConfig.Security.pdf_max_height > new_height):
+                raise ApplicationError.PermissionDenied(
+                    "Your are not allowed to see this document.")
+
         temp_file = cStringIO.StringIO()
         #img.save(f, "PNG")
         self.logger.debug("Out format: %s", output_format)
