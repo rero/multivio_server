@@ -18,6 +18,7 @@ import os.path
 from processor import DocumentProcessor
 import poppler
 from web_app import ApplicationError
+from mvo_config import MVOConfig
 
 #----------------------------------- Exceptions --------------------------------
 
@@ -601,7 +602,7 @@ class PdfProcessor(DocumentProcessor):
     def _get_image_from_pdf(self, page_nr=1, max_width=None, max_height=None,
         angle=0, output_format='JPEG', restricted=False):
         """Render a pdf page as image."""
-        if restricted and page_nr>1:
+        if restricted and (page_nr > 1):
             raise ApplicationError.PermissionDenied(
                 "Your are not allowed to see this document.")
 
@@ -625,8 +626,8 @@ class PdfProcessor(DocumentProcessor):
         bitmap = splash.getBitmap()
         new_width = bitmap.getWidth()
         new_height = bitmap.getHeight()
-        if restricted and (MVOConfig.Security.pdf_max_width > new_width)\
-                and (MVOConfig.Security.pdf_max_height > new_height):
+        if restricted and ((MVOConfig.Security.pdf_max_width < new_width)\
+                or (MVOConfig.Security.pdf_max_height < new_height)):
             raise ApplicationError.PermissionDenied(
                 "Your are not allowed to see this document.")
 

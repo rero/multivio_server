@@ -64,8 +64,8 @@ class ImageProcessor(DocumentProcessor):
             self._img = self._img.rotate(angle)
         if restricted:
             (new_width, new_height) = self._img.size()
-            if (MVOConfig.Security.img_max_width > max_width)\
-                and (MVOConfig.Security.pdf_max_height > new_height):
+            if (MVOConfig.Security.img_max_width < max_width)\
+                or (MVOConfig.Security.pdf_max_height < new_height):
                 raise ApplicationError.PermissionDenied(
                     "Your are not allowed to see this document.")
 

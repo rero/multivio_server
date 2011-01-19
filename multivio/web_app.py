@@ -197,11 +197,11 @@ class WebApplication(object):
             raise ApplicationError.UnsupportedFormat(
                 "Mime type: %s is not supported" % mime)
 
-    def get_remote_file(self, url):
+    def get_remote_file(self, url, force=False):
         """Get a remote file if needed and download it in a cache directory."""
         #file in RERO DOC nfs volume
         try:
-            (mime, local_file) = mvo_config.get_internal_file(url)
+            (mime, local_file) = mvo_config.get_internal_file(url, force)
             if local_file is not None and os.path.isfile(local_file):
                 self.check_mime(mime)
                 self.logger.info("Found local file: %s" % local_file)

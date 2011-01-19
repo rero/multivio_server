@@ -264,7 +264,7 @@ If a range of pages is specified with 'from' and 'to', 'page_nr' is ignored. Els
         #check the mime type
         processor = self._choose_processor(file_name, mime)
         return processor.render(max_output_size, angle, index, output_format,
-                restricted)
+                restricted_document)
 
     def get_size(self, url, index=None):
         """Generate a content to display for a given document."""
