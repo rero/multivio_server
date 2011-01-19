@@ -22,6 +22,8 @@ else:
     import json
 from xml.dom.minidom import parseString
 
+import re
+
 # local modules
 from parser import DocumentParser, ParserError
 
@@ -89,6 +91,9 @@ class MarcParser(DocumentParser):
         record = self._get_record()
         urls = self._get_fields(record, tag='856', code='u')
         labels = self._get_fields(record, tag='856', code='z')
+        if len(labels) == 0:
+            for u in urls:
+                labels.append(re.sub(r'\.\w+$','',u.split('/')[-1]))
         if len(urls) != len(labels):
             self.logger.warning('Length of labels is different that urls!')
         for i in range(len(urls)):
