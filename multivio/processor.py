@@ -64,9 +64,10 @@ class DocumentProcessor(object):
         """
         return None
 
-    def get_text(self, index=None):
+    def get_text(self, index=None, angle=0):
         """Return the text content of some part of the document.
             index -- dict: index in the document, including selection bounding box
+            angle -- int: rotation angle of content: 0, +-90, +-180, +-270
 
         return:
             data -- string: output data
