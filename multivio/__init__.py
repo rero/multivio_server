@@ -10,7 +10,7 @@ Multivio Python package.
 #  License  : See file COPYING
 #==============================================================================
 
-#__version__ = "0.3.1"
-__version__ = "2011-01-17 09:00:07"
+__version__ = "0.4.0"
+#__version__ = "2011-01-26 10:17:51"
 __copyright__ = "Copyright (c) 2009-2011 RERO"
 __license__ = "GPL V.2"
