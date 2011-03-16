@@ -405,8 +405,8 @@ class PdfProcessor(DocumentProcessor):
         # get words' list for a page
         # TextOutputDev(char *fileName, GBool physLayoutA, 
         #               GBool rawOrderA, GBool append)
-        # NOTE: don't use physical layout, use raw order of words in the page
-        td = poppler.TextOutputDev(None, False, True, False)
+        # NOTE: use physical layout and raw order of words in the page
+        td = poppler.TextOutputDev(None, True, True, False)
         self._doc.displayPage(td, page_nr, 72, 72, 0, True, True, False)
         text_page = td.takeText()
         # use physical layout to make word list
@@ -428,7 +428,7 @@ class PdfProcessor(DocumentProcessor):
         line_start_x = -1 # horizontal position of beginning of the line
         words_text = [] # list of words in current line
         import sys
-        prev = {'y2':-1}
+        prev = {'x1':-1,'y1':-1,'x2':-1,'y2':-1}
         x1 = y1 = x2 = y2 = 0
         for i in xrange(words.getLength()):
 
@@ -459,6 +459,20 @@ class PdfProcessor(DocumentProcessor):
                 # keep line start, used to compute line width
                 line_start_x = x1
 
+            # NOTE: check if word of current line is coherent with previous one
+            # if previous word is further to the right than the current, 
+            # it's probably wrong, remove it and redo line from scratch
+            # this can typically happen on the first line of a page, where
+            # 'rogue' elements such as page number in footer appear at
+            # the beginning of the word list
+            if (prev['x2'] > x1):
+                #self.logger.debug('--> redo line')
+                words_text = []
+                line['x'] = [] 
+                line_start_x = x1
+                line['t'] = y1
+                line['l'] = x1
+                line['h'] = abs(y2-y1)
 
             # store left and right coordinates of word
             line['x'].append({'l':x1,'r':x2})
