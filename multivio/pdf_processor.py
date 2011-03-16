@@ -403,9 +403,14 @@ class PdfProcessor(DocumentProcessor):
         """
 
         # get words' list for a page
-        td = poppler.TextOutputDev(None, True, False, False)
+        # TextOutputDev(char *fileName, GBool physLayoutA, 
+        #               GBool rawOrderA, GBool append)
+        # NOTE: don't use physical layout, use raw order of words in the page
+        td = poppler.TextOutputDev(None, False, True, False)
         self._doc.displayPage(td, page_nr, 72, 72, 0, True, True, False)
         text_page = td.takeText()
+        # use physical layout to make word list
+        # TextWordList *makeWordList(GBool physLayout)
         words = text_page.makeWordList(True)
 
         # get page dimension
