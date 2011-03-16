@@ -370,7 +370,7 @@ class PdfProcessor(DocumentProcessor):
         num_pages = self._doc.getNumPages()
 
         # if range specified, use it and ignore index['page_number']
-        page_range = xrange(1,num_pages)
+        page_range = xrange(1,num_pages + 1)
         if (0    not in [from_, to_] and \
             None not in [from_, to_] and \
             ''   not in [from_, to_]):
