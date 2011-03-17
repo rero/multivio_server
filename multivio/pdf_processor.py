@@ -440,21 +440,28 @@ class PdfProcessor(DocumentProcessor):
             #self.logger.debug("new word [%s], coord:[%s,%s/%s,%s]"\
             # %(w.getText(), x1,y1,x2,y2))
 
-            # detect new line based on height
-            if (y2 > prev['y2']):
+            # compute height difference with previous line
+            hdiff = prev['y2'] - y2
+            # compute current line height
+            line_height = abs(y2-y1)
+
+            # detect new line based on height, keep a few pixels margin,
+            # half of line height but at least 2 pixels
+            margin = max(0.5 * line_height, 2)
+            if (abs(hdiff) > margin):
                 if (line is not None):
                     # separate each word by a space
                     line['text'] = ' '.join(words_text)
                     words_text = []
-                    # compute line width
-                    line['w'] = abs(prev['x2'] - line_start_x)
+                    # store line right coordinate
+                    line['r'] = prev['x2']
                     # store line in list
                     page['lines'].append(line)
                     #self.logger.debug("finished line: [%s]"%line['text'])
 
                 # start a new line
-                line = {'t':y1, 'l':x1, 'w':-1,\
-                        'h':abs(y2-y1), 'x':[], 'text':''}
+                line = {'t':y1, 'l':x1, 'r':-1,\
+                        'h':line_height, 'x':[], 'text':''}
 
                 # keep line start, used to compute line width
                 line_start_x = x1
@@ -464,13 +471,7 @@ class PdfProcessor(DocumentProcessor):
             # it's probably wrong, remove it and redo line from scratch
             # this can typically happen on the first line of a page, where
             # 'rogue' elements such as page number in footer appear at
-            # the beginning of the word list
-            # compute height difference
-            hdiff = prev['y1'] - y1
-            #if (i < 50):
-            #    self.logger.debug('===> word: [%s], prev: %s'%(w.getText(),prev))
-            #    self.logger.debug('===> hdiff: %s'%(hdiff))
-
+            # the beginning of the word list.
             # difference should be zero in normal cases
             # if difference more than 10% of page height,
             # it's either a rogue word or first word on a new line
@@ -481,10 +482,10 @@ class PdfProcessor(DocumentProcessor):
                 line_start_x = x1
                 line['t'] = y1
                 line['l'] = x1
-                line['h'] = abs(y2-y1)
+                line['h'] = line_height
             
             # store left and right coordinates of word
-            line['x'].append({'l':x1,'r':x2,'TODO': w.getText()})
+            line['x'].append({'l':x1,'r':x2})
             # store word in text list
             words_text.append(w.getText())
 
@@ -493,8 +494,8 @@ class PdfProcessor(DocumentProcessor):
                 # separate each word by a space
                 line['text'] = ' '.join(words_text)
                 words_text = []
-                # compute line width
-                line['w'] = abs(x2 - line_start_x)
+                # store line right coordinate
+                line['r'] = x2
                 # store line in list
                 page['lines'].append(line)
                 #self.logger.debug("finished last line: [%s]"%line['text'])
