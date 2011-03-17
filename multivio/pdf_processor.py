@@ -440,7 +440,7 @@ class PdfProcessor(DocumentProcessor):
             #self.logger.debug("new word [%s], coord:[%s,%s/%s,%s]"\
             # %(w.getText(), x1,y1,x2,y2))
 
-            # detect new line based on line height
+            # detect new line based on height
             if (y2 > prev['y2']):
                 if (line is not None):
                     # separate each word by a space
@@ -460,12 +460,21 @@ class PdfProcessor(DocumentProcessor):
                 line_start_x = x1
 
             # NOTE: check if word of current line is coherent with previous one
-            # if previous word is further to the right than the current, 
+            # if previous word is further down in the page than the current, 
             # it's probably wrong, remove it and redo line from scratch
             # this can typically happen on the first line of a page, where
             # 'rogue' elements such as page number in footer appear at
             # the beginning of the word list
-            if (prev['x2'] > x1):
+            # compute height difference
+            hdiff = prev['y1'] - y1
+            #if (i < 50):
+            #    self.logger.debug('===> word: [%s], prev: %s'%(w.getText(),prev))
+            #    self.logger.debug('===> hdiff: %s'%(hdiff))
+
+            # difference should be zero in normal cases
+            # if difference more than 10% of page height,
+            # it's either a rogue word or first word on a new line
+            if (hdiff > 0.1 * page['h']):
                 #self.logger.debug('--> redo line')
                 words_text = []
                 line['x'] = [] 
@@ -473,9 +482,9 @@ class PdfProcessor(DocumentProcessor):
                 line['t'] = y1
                 line['l'] = x1
                 line['h'] = abs(y2-y1)
-
+            
             # store left and right coordinates of word
-            line['x'].append({'l':x1,'r':x2})
+            line['x'].append({'l':x1,'r':x2,'TODO': w.getText()})
             # store word in text list
             words_text.append(w.getText())
 
