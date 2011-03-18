@@ -455,6 +455,9 @@ class PdfProcessor(DocumentProcessor):
                     words_text = []
                     # store line right coordinate
                     line['r'] = prev['x2']
+                    # may need to adapt line top and height (for example 
+                    # if the first element was a superscript)
+                    line['h'] = abs(prev['y2'] - line['t'])
                     # store line in list
                     page['lines'].append(line)
                     #self.logger.debug("finished line: [%s]"%line['text'])
@@ -496,6 +499,9 @@ class PdfProcessor(DocumentProcessor):
                 words_text = []
                 # store line right coordinate
                 line['r'] = x2
+                # may need to adapt line top and height (for example 
+                # if the first element was a superscript)
+                line['h'] = abs(prev['y2'] - line['t'])
                 # store line in list
                 page['lines'].append(line)
                 #self.logger.debug("finished last line: [%s]"%line['text'])
