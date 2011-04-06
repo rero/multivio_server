@@ -1,11 +1,16 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-"""Document Parser module for Multivio"""
+"""PDF Document Parser module for Multivio"""
 
-__author__ = "Johnny Mariethoz <Johnny.Mariethoz@rero.ch>"
-__version__ = "0.0.0"
-__copyright__ = "Copyright (c) 2009 Rero, Johnny Mariethoz"
-__license__ = "Internal Use Only"
+#==============================================================================
+#  This file is part of the Multivio software.
+#  Project  : Multivio - https://www.multivio.org/
+#  Copyright: (c) 2009-2011 RERO (http://www.rero.ch/)
+#  License  : See file COPYING
+#==============================================================================
+
+__copyright__ = "Copyright (c) 2009-2011 RERO"
+__license__ = "GPL V.2"
 
 
 #---------------------------- Modules ---------------------------------------
@@ -65,6 +70,7 @@ class PdfParser(DocumentParser):
         metadata['mime'] = 'application/pdf'
         metadata['nPages'] = self._doc.getNumPages()
         metadata['fileSize'] = self.get_file_size()
+        metadata['defaultNativeSize'], metadata['nativeSize'] = self._get_native_size()
         #info = None
         #try:
         #    info = self.getDocumentInfo()
@@ -90,6 +96,32 @@ class PdfParser(DocumentParser):
         #                indent=4))
         return metadata
     
+
+    def _get_native_size(self, index=None):
+        """Return the size of the document content.
+            index -- dict: index in the document
+            
+        return:
+            data -- string: output data
+        """
+        pages = {}
+        np = self._doc.getNumPages()
+        for page_nr in range(np):
+            page_nr += 1
+            width = self._doc.getPageMediaWidth(page_nr)
+            height = self._doc.getPageMediaHeight(page_nr)
+            native_size = (width, height)
+            if pages.has_key(native_size):
+                pages[native_size].append(page_nr)
+            else:
+                pages[native_size] = [page_nr]
+        default_size = max(pages, key=lambda x: len(pages[x]))
+        pages.pop(default_size)
+        exceptions = {}
+        for k,v in pages.items():
+            for page_nr in v:
+                exceptions[page_nr] = k
+        return default_size, exceptions
 
     def get_logical_structure(self):
         """Get the logical structure of the pdf, basically the TOC."""
