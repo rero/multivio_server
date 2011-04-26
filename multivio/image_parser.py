@@ -50,6 +50,7 @@ class ImgParser(DocumentParser):
         metadata['title'] = self._url.split('/')[-1]
         metadata['mime'] = self._mime
         metadata['fileSize'] = self.get_file_size()
+        metadata['defaultNativeSize'] = (self._width, self._height) 
         #metadata['width'] = self._width
         #metadata['height'] = self._height
 
