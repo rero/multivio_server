@@ -31,6 +31,7 @@ class DublinCoreParser(DocumentParser):
     """To parse PDF document"""
 
     def __init__(self, file_stream, url):
+        self._namespace_URI = 'http://purl.org/dc/elements/1.1/'
         DocumentParser.__init__(self, file_stream)
         self._url = url
 
@@ -42,9 +43,8 @@ class DublinCoreParser(DocumentParser):
             doc = parseString(content_str)
         except Exception:
             return False
-        dc_dc = doc.getElementsByTagName('dc:dc')
-        if len(dc_dc) and dc_dc[0].namespaceURI == \
-            'http://purl.org/dc/elements/1.1/':
+        dc_dc = doc.getElementsByTagNameNS(self._namespace_URI, 'dc')
+        if len(dc_dc):
             return True
         return False
 
@@ -71,11 +71,11 @@ class DublinCoreParser(DocumentParser):
         record = self._get_record()
         metadata = {}
         metadata['title'] = self._get_values_for_labels(record,
-                'dc:title')[0].decode('utf-8')
+                'title')[0].decode('utf-8')
         metadata['creator'] = [v.decode('utf-8') for v in
-            self._get_values_for_labels(record, 'dc:creator')]
+            self._get_values_for_labels(record, 'creator')]
         metadata['language'] = self._get_values_for_labels(record,
-                'dc:language')[0].decode('utf-8')
+                'language')[0].decode('utf-8')
         self.logger.debug("Metadata: %s"% json.dumps(metadata, sort_keys=True, 
                         indent=4))
         return metadata
@@ -84,7 +84,7 @@ class DublinCoreParser(DocumentParser):
         """Get the physical structure of the pdf."""
         phys_struct = []
         record = self._get_record()
-        urls = self._get_values_for_labels(record, 'dc:identifier')
+        urls = self._get_values_for_labels(record, 'identifier')
         for url in urls:
             phys_struct.append({
                 'url': url,
@@ -98,7 +98,7 @@ class DublinCoreParser(DocumentParser):
     def _get_values_for_labels(self, record, tag_name):
         """Return the value for a xml label."""
         res = []
-        for data_field in record.getElementsByTagName(tag_name):
+        for data_field in record.getElementsByTagNameNS(self._namespace_URI, tag_name):
             if data_field.firstChild is not None:
                 res.append(data_field.firstChild.nodeValue.encode('utf-8'))
         return res

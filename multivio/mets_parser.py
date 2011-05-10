@@ -35,6 +35,8 @@ class MetsParser(DocumentParser):
     def __init__(self, file_stream, url):
         DocumentParser.__init__(self, file_stream)
         self._url = url
+        self._namespace_URI = 'http://www.loc.gov/METS/'
+        self._mods_namespace_URI = 'http://www.loc.gov/mods/v3'
 
         #read the content of the file
         self._content_str = self._file_stream.read()
@@ -46,10 +48,10 @@ class MetsParser(DocumentParser):
         self._file_list = None
 
         #some METS files contain uppercase mets directive
-        self._content_str = self._content_str.replace('METS=', 'mets=')
-        self._content_str = self._content_str.replace('METS:', 'mets:')
-        self._content_str = self._content_str.replace('MODS=', 'mods=')
-        self._content_str = self._content_str.replace('MODS:', 'mods:')
+        #self._content_str = self._content_str.replace('METS=', 'mets=')
+        #self._content_str = self._content_str.replace('', '')
+        #self._content_str = self._content_str.replace('MODS=', 'mods=')
+        #self._content_str = self._content_str.replace('', '')
         try:
             self._doc = parseString(self._content_str)
         except Exception:
@@ -64,9 +66,8 @@ class MetsParser(DocumentParser):
     def _check_xml(self):
         """Check if the pdf is valid."""
         #METS parser
-        mets = self._doc.getElementsByTagName('mets:mets')
-        if len(mets) > 0 and re.match('http://www.loc.gov/METS',
-                mets[0].namespaceURI):
+        mets = self._doc.getElementsByTagNameNS(self._namespace_URI, 'mets')
+        if len(mets) > 0:
             return True
         return False
 
@@ -169,37 +170,37 @@ class MetsParser(DocumentParser):
     def _get_metadata(self, node):
         """Parse admin part of the METS to retrieve metadata."""
         self._meta_data = {}
-        dmd_sec = node.getElementsByTagName('mets:dmdSec')
+        dmd_sec = node.getElementsByTagNameNS(self._namespace_URI, 'dmdSec')
         for s in dmd_sec:
             _id = s.getAttribute('ID')
             self._meta_data[_id] = {}
-            md_wrap = s.getElementsByTagName('mets:mdWrap')
+            md_wrap = s.getElementsByTagNameNS(self._namespace_URI, 'mdWrap')
             self._meta_data[_id]['title'] = ""
             for m in md_wrap:
                 if m.hasAttributes() and m.getAttribute('MDTYPE') == 'MODS':
-                    title_info = m.getElementsByTagName('mods:titleInfo')
+                    title_info = m.getElementsByTagNameNS(self._mods_namespace_URI, 'titleInfo')
                     if len(title_info) > 0:
-                        title = title_info[0].getElementsByTagName('mods:title')
+                        title = title_info[0].getElementsByTagNameNS(self._mods_namespace_URI, 'title')
                         if len(title) > 0:
                             self._meta_data[_id]['title'] = \
                                 title[0].firstChild.nodeValue.encode('utf-8')
 
-                    language = m.getElementsByTagName('mods:language')
+                    language = m.getElementsByTagNameNS(self._mods_namespace_URI, 'language')
                     self._meta_data[_id]['language'] = ""
                     if len(language) > 0:
                         language_term = \
-                          language[0].getElementsByTagName('mods:languageTerm')
+                          language[0].getElementsByTagNameNS(self._mods_namespace_URI, 'languageTerm')
                         if len(language_term) > 0:
                             self._meta_data[_id]['language'] = \
                               language_term[0].firstChild.nodeValue.encode('utf-8')
 
-                    name = m.getElementsByTagName('mods:name')
+                    name = m.getElementsByTagNameNS(self._mods_namespace_URI, 'name')
                     self._meta_data[_id]['creator'] = []
                     for n in name:
-                        role = n.getElementsByTagName('mods:role')
+                        role = n.getElementsByTagNameNS(self._mods_namespace_URI, 'role')
                         if len(role) < 1 or \
-                          role[0].getElementsByTagName('mods:roleTerm')[0].firstChild.nodeValue.encode('utf-8') == 'aut':
-                            name_part = n.getElementsByTagName('mods:namePart')
+                          role[0].getElementsByTagNameNS(self._mods_namespace_URI, 'roleTerm')[0].firstChild.nodeValue.encode('utf-8') == 'aut':
+                            name_part = n.getElementsByTagNameNS(self._mods_namespace_URI, 'namePart')
                             first_name = ""
                             last_name = ""
                             for np in name_part:
@@ -222,7 +223,7 @@ class MetsParser(DocumentParser):
     def _get_logical_structure(self, node):
         self._logical_structure = {}
         n = 1
-        struct_map = node.getElementsByTagName('mets:structMap')
+        struct_map = node.getElementsByTagNameNS(self._namespace_URI, 'structMap')
         for sm in struct_map:
             if sm.hasAttributes() and \
               sm.getAttribute('TYPE') == 'LOGICAL':
@@ -252,7 +253,7 @@ class MetsParser(DocumentParser):
                     else:
                         if len(d.getAttribute('TYPE')) > 0:
                             label = d.getAttribute('TYPE')
-                    mptrs = d.getElementsByTagName('mets:mptr')
+                    mptrs = d.getElementsByTagNameNS(self._namespace_URI, 'mptr')
                     external_docs = []
                     for m in mptrs:
                         url = m.getAttribute('xlink:href')
@@ -274,14 +275,14 @@ class MetsParser(DocumentParser):
     def _get_physical_structure(self, node):
         self._physical_structure = {}
         n = 0
-        struct_map = node.getElementsByTagName('mets:structMap')
+        struct_map = node.getElementsByTagNameNS(self._namespace_URI, 'structMap')
         for sm in struct_map:
             if sm.hasAttributes() and \
                     sm.getAttribute('TYPE') == 'PHYSICAL':
-                div = sm.getElementsByTagName('mets:div')
+                div = sm.getElementsByTagNameNS(self._namespace_URI, 'div')
                 for d in div:
                     if d.getAttribute('TYPE') == 'physSequence':
-                        sub_div = d.getElementsByTagName('mets:div')
+                        sub_div = d.getElementsByTagNameNS(self._namespace_URI, 'div')
                         for sd in sub_div:
                             if len(sd.getAttribute('ORDER')) > 0:
                                 order = int(sd.getAttribute('ORDER'))
@@ -291,7 +292,7 @@ class MetsParser(DocumentParser):
                             if len(sd.getAttribute('ID')) > 0:
                                 _id = sd.getAttribute('ID')
                             files = []
-                            f_ptr = sd.getElementsByTagName('mets:fptr')
+                            f_ptr = sd.getElementsByTagNameNS(self._namespace_URI, 'fptr')
                             for f in f_ptr:
                                 files.append(f.getAttribute('FILEID'))
                             self._physical_structure[_id] = {
@@ -301,23 +302,23 @@ class MetsParser(DocumentParser):
 
     def _get_file_list(self, node):
         self._file_list = {}
-        file_sec = node.getElementsByTagName('mets:fileSec')
+        file_sec = node.getElementsByTagNameNS(self._namespace_URI, 'fileSec')
         for fs in file_sec:
-            file_grp = fs.getElementsByTagName('mets:fileGrp')
+            file_grp = fs.getElementsByTagNameNS(self._namespace_URI, 'fileGrp')
             for fg in file_grp:
                 if fg.hasAttributes() and fg.getAttribute('USE') == 'DEFAULT':
-                    files = fg.getElementsByTagName('mets:file')
+                    files = fg.getElementsByTagNameNS(self._namespace_URI, 'file')
                     for f in files:
                         _id = f.getAttribute('ID')
-                        f_locat = f.getElementsByTagName('mets:FLocat')
+                        f_locat = f.getElementsByTagNameNS(self._namespace_URI, 'FLocat')
                         self._file_list[_id] = \
                           f_locat[0].getAttribute('xlink:href')
     
     def _get_physical_logical(self, node):
         self._relation = {}
-        struct_link = node.getElementsByTagName('mets:structLink')
+        struct_link = node.getElementsByTagNameNS(self._namespace_URI, 'structLink')
         for sl in struct_link:
-            sm_link = sl.getElementsByTagName('mets:smLink')
+            sm_link = sl.getElementsByTagNameNS(self._namespace_URI, 'smLink')
             for sm in sm_link:
                 x_from = sm.getAttribute('xlink:from')
                 x_to = sm.getAttribute('xlink:to')

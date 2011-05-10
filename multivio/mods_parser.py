@@ -38,13 +38,13 @@ class ModsParser(DocumentParser):
         """Check if the pdf is valid."""
         self._file_stream.seek(0)
         content_str = self._file_stream.read()
+        self._namespace_URI = 'http://www.loc.gov/mods/v3'
         try:
             doc = parseString(content_str)
         except Exception:
             return False
-        mods = doc.getElementsByTagName('modsCollection')
-        if len(mods) and mods[0].namespaceURI == \
-            'http://www.loc.gov/mods/v3':
+        mods = doc.getElementsByTagNameNS(self._namespace_URI, 'modsCollection')
+        if len(mods):
             return True
         return False
 
@@ -54,7 +54,7 @@ class ModsParser(DocumentParser):
         content_str = self._file_stream.read()
         doc = parseString(content_str)
         
-        records = doc.getElementsByTagName('mods')
+        records = doc.getElementsByTagNameNS(self._namespace_URI, 'mods')
 
         # get the id number of the first record
         if len(records) == 0:
@@ -70,26 +70,26 @@ class ModsParser(DocumentParser):
         """Get pdf infos."""
         record = self._get_record()
         metadata = {}
-        title_info = record.getElementsByTagName('titleInfo')
+        title_info = record.getElementsByTagNameNS(self._namespace_URI, 'titleInfo')
         if len(title_info) > 0:
-            title = title_info[0].getElementsByTagName('title')
+            title = title_info[0].getElementsByTagNameNS(self._namespace_URI, 'title')
             if len(title) > 0:
                 metadata['title'] = \
                     title[0].firstChild.nodeValue.encode('utf-8')
 
-        names = record.getElementsByTagName('name')
+        names = record.getElementsByTagNameNS(self._namespace_URI, 'name')
         creator = []
         if len(names) > 0:
             for name in names:
-                first_and_last_name = name.getElementsByTagName('namePart')
+                first_and_last_name = name.getElementsByTagNameNS(self._namespace_URI, 'namePart')
                 if len(first_and_last_name) > 0:
                     creator.append(
                         first_and_last_name[0].firstChild.nodeValue.encode('utf-8'))
         if len(creator) > 0:
             metadata['creator'] = creator
-        language_info = record.getElementsByTagName('language')
+        language_info = record.getElementsByTagNameNS(self._namespace_URI, 'language')
         if len(language_info) > 0:
-            language = language_info[0].getElementsByTagName('languageTerm')
+            language = language_info[0].getElementsByTagNameNS(self._namespace_URI, 'languageTerm')
             if len(language) > 0:
                 metadata['language'] = \
                     language[0].firstChild.nodeValue.encode('utf-8')
@@ -103,10 +103,10 @@ class ModsParser(DocumentParser):
         record = self._get_record()
         urls = []
         labels = []
-        locations = record.getElementsByTagName('location')
+        locations = record.getElementsByTagNameNS(self._namespace_URI, 'location')
 
         for location in locations:
-            urls_info = location.getElementsByTagName('url')
+            urls_info = location.getElementsByTagNameNS(self._namespace_URI, 'url')
             for url_info in urls_info:
                 if url_info.getAttribute('access').encode('utf-8') \
                     == 'raw object':

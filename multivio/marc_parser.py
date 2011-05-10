@@ -40,13 +40,13 @@ class MarcParser(DocumentParser):
         """Check if the pdf is valid."""
         self._file_stream.seek(0)
         content_str = self._file_stream.read()
+        self._namespace_URI = 'http://www.loc.gov/MARC21/slim'
         try:
             doc = parseString(content_str)
         except Exception:
             return False
-        marc = doc.getElementsByTagName('collection')
-        if len(marc) and marc[0].namespaceURI == \
-            'http://www.loc.gov/MARC21/slim':
+        marc = doc.getElementsByTagNameNS(self._namespace_URI, 'collection')
+        if len(marc):
             return True
         return False
 
@@ -56,7 +56,7 @@ class MarcParser(DocumentParser):
         content_str = self._file_stream.read()
         doc = parseString(content_str)
         
-        records = doc.getElementsByTagName('record')
+        records = doc.getElementsByTagNameNS(self._namespace_URI, 'record')
 
         # get the id number of the first record
         if len(records) == 0:
@@ -109,10 +109,10 @@ class MarcParser(DocumentParser):
     def _get_fields(self, record, tag, code):
         """Get fields content given the tag name."""
         values = []
-        for data_field in record.getElementsByTagName('datafield'):
+        for data_field in record.getElementsByTagNameNS(self._namespace_URI, 'datafield'):
             if data_field.hasAttributes() and \
                 data_field.getAttribute('tag') == tag:
-                for sub_field in data_field.getElementsByTagName('subfield'):
+                for sub_field in data_field.getElementsByTagNameNS(self._namespace_URI, 'subfield'):
                     if sub_field.hasAttributes() and \
                            sub_field.getAttribute('code') == code:
                         values.append(
