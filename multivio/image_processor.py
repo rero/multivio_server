@@ -73,6 +73,9 @@ class ImageProcessor(DocumentProcessor):
         #img.save(f, "PNG")
         self.logger.debug("Out format: %s", output_format)
         if re.match(r'.*?/jpeg', output_format):
+            self.logger.debug("Current Mode: %s", self._img.mode)
+            if self._img.mode != "RGB":
+                self._img = self._img.convert("RGB")
             self._img.save(temp_file, "JPEG", quality=90)
             mime_type = 'image/jpeg'
         else:
