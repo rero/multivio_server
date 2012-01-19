@@ -83,7 +83,10 @@ class ApplicationError:
 class MyFancyURLopener(urllib.FancyURLopener):
     """Class to intercept 404 HTTP error."""
 
-    def __init__(self):
+
+    def __init__(self, user_agent=None):
+        if user_agent is not None:
+            MyFancyURLopener.version = user_agent
         urllib.FancyURLopener.__init__(self)
         self.cookies = []
 
@@ -147,8 +150,8 @@ class WebApplication(object):
         self._timeout = MVOConfig.Url.timeout
         import socket
         socket.setdefaulttimeout(self._timeout)
-        self._urlopener = MyFancyURLopener()
-        self._urlopener.version = MVOConfig.Url.user_agent
+        self._urlopener = MyFancyURLopener(MVOConfig.Url.user_agent)
+        #self._urlopener.version = MVOConfig.Url.user_agent
         self.logger = logging.getLogger(MVOConfig.Logger.name + "."
                         + self.__class__.__name__) 
         self._supported_mime = [
