@@ -33,6 +33,7 @@ import parser_app
 import version_app
 
 from web_app import WebApplication
+from webprocessor_app import WebProcessorApp
 from mvo_config import MVOConfig
 from web_app import ApplicationError
 
@@ -59,6 +60,8 @@ class DispatcherApp(WebApplication):
             parser_app.DocParserApp(temp_dir=MVOConfig.General.temp_dir)
         self._apps['.*?/document/.*?'] = \
             processor_app.DocProcessorApp(temp_dir=MVOConfig.General.temp_dir)
+        self._apps['.*?/website/.*?'] = \
+            WebProcessorApp()
         self.usage = """<br><h1>Welcome to the multivio server.</h1><br>"""
         self.logger = logging.getLogger(MVOConfig.Logger.name+".Dispatcher")
         
