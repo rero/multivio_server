@@ -22,7 +22,10 @@ import cStringIO
 
 # local modules
 from processor import DocumentProcessor
-import Image
+try:
+    import Image
+except:
+    from PIL import Image
 
 #----------------------------------- Exceptions --------------------------------
 

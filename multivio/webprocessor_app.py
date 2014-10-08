@@ -19,7 +19,6 @@ from optparse import OptionParser
 import re
 import os
 import sys
-import Image
 import time
 import cStringIO
 import hashlib
@@ -28,6 +27,10 @@ if sys.version_info < (2, 6):
 else:
     import json
 
+try:
+    import Image
+except:
+    from PIL import Image
 import wkhtmltox
 
 # local modules

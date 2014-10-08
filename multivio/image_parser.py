@@ -25,6 +25,11 @@ else:
 # local modules
 from parser import DocumentParser
 
+try:
+    import Image
+except:
+    from PIL import Image
+
 #----------------------------------- Classes -----------------------------------
 
 class ImgParser(DocumentParser):
@@ -35,7 +40,6 @@ class ImgParser(DocumentParser):
         self._url = url
         self._label = label
         self._mime = mime
-        import Image
         img = Image.open(file_stream)
         (self._width, self._height) = img.size
 

@@ -19,6 +19,10 @@ from processor import DocumentProcessor
 import poppler
 from web_app import ApplicationError
 from mvo_config import MVOConfig
+try:
+    import Image
+except:
+    from PIL import Image
 
 #----------------------------------- Exceptions --------------------------------
 
@@ -666,7 +670,6 @@ class PdfProcessor(DocumentProcessor):
             raise ApplicationError.PermissionDenied(
                 "Your are not allowed to see this document.")
 
-        import Image
         pil = Image.fromstring('RGB', (new_width, new_height),
             bitmap.getDataPtr())
         temp_file = cStringIO.StringIO()
