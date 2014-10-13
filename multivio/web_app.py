@@ -114,6 +114,16 @@ cookies."""
                 errmsg, headers, data=None)
         return result
 
+    def http_error_401(self, url, fp, errcode, errmsg, headers, data=None):
+        """Handle an HTTP redirect.  First we get the cookies from the headers
+           off of the initial URL.  Then hand it off to the super-class, which
+           will call back into our open_http method, where we can pick up
+           more cookies."""
+        print "401"
+        raise ApplicationError.PermissionDenied(
+                                "Your are not allowed to see this document.")
+        return None
+
     def eatCookies(self, headers):
         """Scan a set of response headers for cookies.  We add each cookie to
            our list."""
