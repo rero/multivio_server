@@ -35,6 +35,7 @@ class PdfProcessor(DocumentProcessor):
     def __init__(self, file_name):
         DocumentProcessor.__init__(self, file_name)
         poppler.cvar.globalParams.setEnableFreeType("yes")
+        poppler.cvar.globalParams.setErrQuiet(True)
         poppler.cvar.globalParams.setAntialias("yes")
         poppler.cvar.globalParams.setVectorAntialias("yes")
         self._doc = poppler.PDFDoc(self._file_name)
