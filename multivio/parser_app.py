@@ -173,7 +173,10 @@ Core with Pdfs inside..</b></a>
 
     def _choose_parser(self, file_name, url, mime):
         """Select the right parser given the mime type."""
-        content = file(file_name,'r')
+        if isinstance(file_name, basestring):
+            content = file(file_name,'r')
+        else:
+            content = file_name
         if re.match('.*?/pdf.*?', mime):
             self.logger.info("Pdf parser found!")
             return PdfParser(file_name, url, url.split('/')[-1])
