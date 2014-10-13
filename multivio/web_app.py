@@ -241,8 +241,10 @@ class WebApplication(object):
         to_download = False
         try:
             #file exists: ATOMIC?
-            os.open(local_file, os.O_CREAT|os.O_EXCL|os.O_RDWR)
+            tmp_file = os.open(local_file, os.O_CREAT|os.O_EXCL|os.O_RDWR)
             to_download = True
+            os.close(tmp_file)
+
         except Exception:
             pass
 
