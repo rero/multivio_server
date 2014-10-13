@@ -31,7 +31,11 @@ try:
     import Image
 except:
     from PIL import Image
-import wkhtmltox
+WKHTMLTOX_SUPPORT = True
+try:
+    import wkhtmltox
+except ImportError:
+    WKHTMLTOX_SUPPORT = False
 
 # local modules
 from web_app import WebApplication, ApplicationError, WebException
@@ -71,6 +75,8 @@ of redering RERO DOC web site.</b></a><br>
         """ Callback method for new http request.
         
         """
+        if not WKHTMLTOX_SUPPORT:
+            raise WebProcessorError.UnableToRenderWebPage("WKTHMLTOX not installed")
         #get parameters from the URI
         (path, opts) = self.get_params(environ)
 
