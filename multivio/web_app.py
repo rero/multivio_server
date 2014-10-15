@@ -220,12 +220,12 @@ class WebApplication(object):
             (mime, local_file) = mvo_config.get_internal_file(url, force, 
                     self.request)
 
-            if not isinstance(local_file, basestring):
+            if local_file and not isinstance(local_file, basestring):
                 self.check_mime(mime)
                 self.logger.info("Memory file!")
                 return (local_file, mime)
 
-            if local_file is not None and os.path.isfile(local_file):
+            if local_file and os.path.isfile(local_file):
                 self.check_mime(mime)
                 self.logger.info("Found local file: %s" % local_file)
                 return (local_file, mime)
