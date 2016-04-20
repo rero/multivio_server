@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 from distutils.core import setup, Extension
 
-poppler_install_path = '/usr'
+poppler_install_path = '/usr/local'
 import multivio
 
 setup(
@@ -30,4 +30,7 @@ setup(
     'Intended Audience :: Science/Research',
     'License :: OSI Approved :: Internal',
     ],
+    install_requires=[
+        "Pillow>=3.0.0"
+    ]
 )
