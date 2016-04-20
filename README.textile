@@ -17,3 +17,16 @@ h2. Motivation
 Multivio was originally motivated by the requirements of the digital library "RERO DOC":http://doc.rero.ch/. However, it is meant to be open and adjustable in order to smoothly integrate with other document servers. It is also modular and extensible in order to cope with the continuous evolution of digital formats.
 
 The application is built in-house by "RERO":http://www.rero.ch/ (the Library Network of Western Switzerland) under an open-source license (to be defined), and integrates existing open-source software components. Its development is co-sponsored in the framework of the project "E-lib.ch: Swiss Electronic library":http://www.e-lib.ch/.
+
+h2. Installation
+
+See the project installation page at:
+
+https://www.multivio.org/main/wiki/Installation
+
+h3. Docker
+
+Get the source and run:
+
+* docker build -t multivio .
+* docker run -ti -p 80:80 multivio
