@@ -671,7 +671,7 @@ class PdfProcessor(DocumentProcessor):
             raise ApplicationError.PermissionDenied(
                 "Your are not allowed to see this document.")
 
-        pil = Image.fromstring('RGB', (new_width, new_height),
+        pil = Image.frombytes('RGB', (new_width, new_height),
             bitmap.getDataPtr())
         temp_file = cStringIO.StringIO()
         pil.save(temp_file, "JPEG", quality=90)
