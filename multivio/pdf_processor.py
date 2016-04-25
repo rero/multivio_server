@@ -36,8 +36,8 @@ class PdfProcessor(DocumentProcessor):
         DocumentProcessor.__init__(self, file_name)
         poppler.cvar.globalParams.setEnableFreeType("yes")
         poppler.cvar.globalParams.setErrQuiet(True)
-        poppler.cvar.globalParams.setAntialias("yes")
-        poppler.cvar.globalParams.setVectorAntialias("yes")
+        #poppler.cvar.globalParams.setAntialias("yes")
+        #poppler.cvar.globalParams.setVectorAntialias("yes")
         self._doc = poppler.PDFDoc(self._file_name)
         self._index = None
 
@@ -97,7 +97,7 @@ class PdfProcessor(DocumentProcessor):
         page_nr = index['page_number']
 
         # get page text
-        td = poppler.TextOutputDev(None, True, False, False)
+        td = poppler.TextOutputDev(None, True, 0, False, False)
         self._doc.displayPage(td, page_nr, 72, 72, -angle, True, True, False)
         text_page = td.takeText()
     
@@ -180,7 +180,7 @@ class PdfProcessor(DocumentProcessor):
             if all_done is True:
                 break
 
-            td = poppler.TextOutputDev(None, True, False, False)
+            td = poppler.TextOutputDev(None, True, 0, False, False)
             # NOTE: always do search and context retrieval without rotation,
             # and compute final coordinates at the end
             self._doc.displayPage(td, np, 72, 72, 0, True, True, False)
@@ -204,7 +204,7 @@ class PdfProcessor(DocumentProcessor):
                 startAtLast = False
             
                 # store coordinates
-                coords = (found, x1, y1, x2, y2) = text_page.findText(subquery, startAtTop, stopAtBottom, startAtLast, stopAtLast, caseSensitive, backward)
+                coords = (found, x1, y1, x2, y2) = text_page.findText(subquery, startAtTop, stopAtBottom, startAtLast, stopAtLast, caseSensitive, backward, False)
                 coords = coords[1:] # don't keep found boolean
     
                 # boolean: if a subquery is not found, no need to look for the other subqueries 
@@ -252,7 +252,7 @@ class PdfProcessor(DocumentProcessor):
                         result['max_reached'] = max_results
                         break
                     # find additional words on page
-                    coords = (found, x1, y1, x2, y2) = text_page.findText(subquery, startAtTop, stopAtBottom, startAtLast, stopAtLast, caseSensitive, backward)
+                    coords = (found, x1, y1, x2, y2) = text_page.findText(subquery, startAtTop, stopAtBottom, startAtLast, stopAtLast, caseSensitive, backward, False)
                     coords = coords[1:] # don't keep found boolean
                     
 
@@ -411,7 +411,7 @@ class PdfProcessor(DocumentProcessor):
         # TextOutputDev(char *fileName, GBool physLayoutA, 
         #               GBool rawOrderA, GBool append)
         # NOTE: use physical layout and raw order of words in the page
-        td = poppler.TextOutputDev(None, True, True, False)
+        td = poppler.TextOutputDev(None, True, 0, True, False)
         self._doc.displayPage(td, page_nr, 72, 72, 0, True, True, False)
         text_page = td.takeText()
         # use physical layout to make word list
@@ -541,7 +541,7 @@ class PdfProcessor(DocumentProcessor):
             #self.logger.debug("processing page number %s"%np)
 
             # get words' list for a page
-            td = poppler.TextOutputDev(None, True, False, False)
+            td = poppler.TextOutputDev(None, True, 0, False, False)
             self._doc.displayPage(td, np, 72, 72, 0, True, True, False)
             text_page = td.takeText()
             words = text_page.makeWordList(True)
@@ -656,8 +656,10 @@ class PdfProcessor(DocumentProcessor):
             page_nr))
         start = time.clock()
         splash = poppler.SplashOutputDev(poppler.splashModeRGB8, 3, False,
-            (255, 255, 255), True, True)
-        splash.startDoc(self._doc.getXRef())
+            (255, 255, 255), True)
+        splash.setFontAntialias(True)
+        splash.setVectorAntialias(True)
+        splash.startDoc(self._doc)
 
         scale = self._get_optimal_scale(max_width, max_height, page_nr)
         self._doc.displayPage(splash, page_nr, 72*scale, 72*scale, -angle, True,
