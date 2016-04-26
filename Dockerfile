@@ -11,17 +11,25 @@ RUN apt-get -qy upgrade --fix-missing --no-install-recommends
 # Install dependencies
 RUN apt-get -qy install --fix-missing --no-install-recommends \
     g++ make git python python-dev python-pip \
-    swig cmake cmake-curses-gui fontconfig libfontconfig1-dev \
-    libcairo2-dev libjpeg-dev libtiff-dev vim libopenjpeg-dev \
-    libapache2-mod-wsgi apache2
+    swig cmake fontconfig libfontconfig1-dev \
+    libjpeg-dev libtiff-dev libopenjpeg-dev \
+    libapache2-mod-wsgi apache2 wget unzip
 
 WORKDIR /code
 
 # Poppler
-RUN git clone git://git.freedesktop.org/git/poppler/poppler \
-	&& cd /code/poppler \
-	&& git checkout -b multivio origin/poppler-0.18 \
-	&& mkdir -p /code/poppler/build && cd /code/poppler/build \
+RUN git clone git://git.freedesktop.org/git/poppler/poppler 
+
+WORKDIR /code/poppler
+
+# Patch poppler > 0.19
+#RUN git checkout -b multivio poppler-0.38.0 \
+#    && perl -pi.bak -e 's/globalParams->getOverprintPreview\(\)/gTrue/g' poppler/SplashOutputDev.h
+
+#poppler 0.18
+RUN git checkout poppler-0.18
+
+RUN mkdir -p /code/poppler/build && cd /code/poppler/build \
 	&& cmake -Wno-dev -D ENABLE_XPDF_HEADERS=True ../ \
     && make -j 2 install
 
@@ -54,16 +62,24 @@ RUN mkdir -p /var/log/multivio /var/tmp/multivio /var/www/multivio/server \
 RUN cp scripts/httpd-foreground /usr/local/bin \
     && chmod a+x /usr/local/bin/httpd-foreground
 
+WORKDIR /var/www/multivio/client
+RUN wget http://demo.multivio.org/multivio/client_1.0.0.zip \
+    && unzip client_1.0.0.zip \
+    && mv client_1.0.0/* . \
+    && rm -fr client_1.0.0 client_1.0.0.zip \
+    && chown -R www-data:www-data /var/www/multivio/client
+
 #WORKDIR /
 # Slim down image
 #RUN rm -fr /code \
-RUN apt-get clean autoclean \
-    && apt-get autoremove -y \
-    && rm -rf /var/lib/{apt,dpkg}/ \
-    && find /usr/share/doc -depth -type f ! -name copyright -delete \
-    && find /usr/share/doc -empty -delete \
-    && rm -rf /usr/share/man/* /usr/share/groff/* /usr/share/info/* \
-    && rm -rf /tmp/* /var/lib/{cache,log}/ /root/.cache/*
+#RUN apt-get clean autoclean \
+#    && rm -rf /var/lib/{apt,dpkg}/ \
+#    && find /usr/share/doc -depth -type f ! -name copyright -delete \
+#    && find /usr/share/doc -empty -delete \
+#    && rm -rf /usr/share/man/* /usr/share/groff/* /usr/share/info/* \
+#    && rm -rf /tmp/* /var/lib/{cache,log}/ /root/.cache/* \
+#    && apt-get -qy remove --purge g++ make git python-dev python-pip swig wget unzip \
+#    && apt-get -qy autoremove
 
 #USER multivio
 #VOLUME ["/code"]
