@@ -23,7 +23,7 @@ RUN git clone git://git.freedesktop.org/git/poppler/poppler
 WORKDIR /code/poppler
 
 # Patch poppler > 0.19
-RUN git checkout -b multivio poppler-0.38.0 \
+RUN git checkout -b multivio poppler-0.42.0 \
     && perl -pi.bak -e 's/globalParams->getOverprintPreview\(\)/gTrue/g' poppler/SplashOutputDev.h
 
 #poppler 0.18
@@ -43,7 +43,7 @@ WORKDIR /code/multivio
 # Basic Python
 RUN pip install --upgrade pip setuptools \
 	#install multivio
-	&& pip install -e .
+	&& pip install --global-option=build_ext .
 
 # Multivio client
 
