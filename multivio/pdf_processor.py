@@ -656,7 +656,7 @@ class PdfProcessor(DocumentProcessor):
             page_nr))
         start = time.clock()
         splash = poppler.SplashOutputDev(poppler.splashModeRGB8, 3, False,
-            (255, 255, 255), True)
+            (255, 255, 255), True, 0)
         splash.setFontAntialias(True)
         splash.setVectorAntialias(True)
         splash.startDoc(self._doc)

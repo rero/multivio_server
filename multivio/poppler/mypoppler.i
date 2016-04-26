@@ -25,7 +25,6 @@
 #include "PDFDoc.h"
 #include "splash/SplashBitmap.h"
 #include "splash/Splash.h"
-#include "SplashOutputDev.h"
 #include "TextOutputDev.h"
 #include <stdio.h>
 #include <wchar.h>
@@ -41,6 +40,15 @@ typedef unsigned char SplashColor[4];
 //for TextWord::getBBox()
 %apply double *OUTPUT {double *xMinA, double *yMinA, double *xMaxA, double *yMaxA};
 %apply double *OUTPUT {double *xMin, double *yMin, double *xMax, double *yMax};
+
+/***************** SplashTypes *****************/
+
+enum SplashThinLineMode {
+  splashThinLineDefault,  // if SA on: draw solid if requested line width, transformed into 
+                          // device space, is less than half a pixel and a shaped line else
+  splashThinLineSolid,     // draw line solid at least with 1 pixel 
+  splashThinLineShape     // draw line shaped at least with 1 pixel
+};
 
 /***************** SplashColorPtr *****************/
 
