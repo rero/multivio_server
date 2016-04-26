@@ -43,7 +43,7 @@ WORKDIR /code/multivio
 # Basic Python
 RUN pip install --upgrade pip setuptools \
 	#install multivio
-	&& pip install -e .
+	&& pip install --global-option=build_ext .
 
 # Multivio client
 
@@ -71,15 +71,15 @@ RUN wget http://demo.multivio.org/multivio/client_1.0.0.zip \
 
 #WORKDIR /
 # Slim down image
-#RUN rm -fr /code \
-#RUN apt-get clean autoclean \
-#    && rm -rf /var/lib/{apt,dpkg}/ \
-#    && find /usr/share/doc -depth -type f ! -name copyright -delete \
-#    && find /usr/share/doc -empty -delete \
-#    && rm -rf /usr/share/man/* /usr/share/groff/* /usr/share/info/* \
-#    && rm -rf /tmp/* /var/lib/{cache,log}/ /root/.cache/* \
-#    && apt-get -qy remove --purge g++ make git python-dev python-pip swig wget unzip \
-#    && apt-get -qy autoremove
+RUN rm -fr /code \
+RUN apt-get clean autoclean \
+   && rm -rf /var/lib/{apt,dpkg}/ \
+   && find /usr/share/doc -depth -type f ! -name copyright -delete \
+   && find /usr/share/doc -empty -delete \
+   && rm -rf /usr/share/man/* /usr/share/groff/* /usr/share/info/* \
+   && rm -rf /tmp/* /var/lib/{cache,log}/ /root/.cache/* \
+   && apt-get -qy remove --purge make git python-dev python-pip swig wget unzip cmake cpp  binutils \
+   && apt-get -qy autoremove
 
 #USER multivio
 #VOLUME ["/code"]
