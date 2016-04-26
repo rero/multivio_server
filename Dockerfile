@@ -13,7 +13,7 @@ RUN apt-get -qy install --fix-missing --no-install-recommends \
     g++ make git python python-dev python-pip \
     swig cmake fontconfig libfontconfig1-dev \
     libjpeg-dev libtiff-dev libopenjpeg-dev \
-    libapache2-mod-wsgi apache2
+    libapache2-mod-wsgi apache2 wget unzip
 
 WORKDIR /code
 
@@ -27,7 +27,7 @@ RUN git checkout -b multivio poppler-0.38.0 \
     && perl -pi.bak -e 's/globalParams->getOverprintPreview\(\)/gTrue/g' poppler/SplashOutputDev.h
 
 #poppler 0.18
-#RUN git checkout -b multivio poppler-0.18
+#RUN git checkout poppler-0.18
 
 RUN mkdir -p /code/poppler/build && cd /code/poppler/build \
 	&& cmake -Wno-dev -D ENABLE_XPDF_HEADERS=True ../ \
@@ -62,6 +62,13 @@ RUN mkdir -p /var/log/multivio /var/tmp/multivio /var/www/multivio/server \
 RUN cp scripts/httpd-foreground /usr/local/bin \
     && chmod a+x /usr/local/bin/httpd-foreground
 
+WORKDIR /var/www/multivio/client
+RUN wget http://demo.multivio.org/multivio/client_1.0.0.zip \
+    && unzip client_1.0.0.zip \
+    && mv client_1.0.0/* . \
+    && rm -fr client_1.0.0 client_1.0.0.zip \
+    && chown -R www-data:www-data /var/www/multivio/client
+
 #WORKDIR /
 # Slim down image
 #RUN rm -fr /code \
@@ -71,7 +78,7 @@ RUN cp scripts/httpd-foreground /usr/local/bin \
 #    && find /usr/share/doc -empty -delete \
 #    && rm -rf /usr/share/man/* /usr/share/groff/* /usr/share/info/* \
 #    && rm -rf /tmp/* /var/lib/{cache,log}/ /root/.cache/* \
-#    && apt-get -qy remove --purge g++ make git python-dev python-pip swig \
+#    && apt-get -qy remove --purge g++ make git python-dev python-pip swig wget unzip \
 #    && apt-get -qy autoremove
 
 #USER multivio
