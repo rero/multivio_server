@@ -101,7 +101,7 @@ to do
            the real work.  Afterwards, we scan the info() for
 cookies."""
         result = urllib.FancyURLopener.open_http(self, url, data)
-        self.eatCookies(result.info())
+        #self.eatCookies(result.info())
         return result
 
     def http_error_302(self, url, fp, errcode, errmsg, headers, data=None):

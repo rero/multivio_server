@@ -23,7 +23,7 @@ RUN git clone git://git.freedesktop.org/git/poppler/poppler
 WORKDIR /code/poppler
 
 # Patch poppler > 0.19
-RUN git checkout -b multivio poppler-0.42.0 \
+RUN git checkout -b multivio poppler-0.49 \
     && perl -pi.bak -e 's/globalParams->getOverprintPreview\(\)/gTrue/g' poppler/SplashOutputDev.h
 
 #poppler 0.18
@@ -85,4 +85,4 @@ RUN wget http://demo.multivio.org/multivio/client_1.0.0.zip \
 #VOLUME ["/code"]
 CMD ["httpd-foreground"]
 
-#CMD ["rerodoc", "--debug", "run", "-h", "0.0.A0.0"]
+#CMD ["rerodoc", "--debug", "run", "-h", "0.0.0.0"]

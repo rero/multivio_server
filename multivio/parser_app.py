@@ -67,9 +67,9 @@ class DocParserApp(WebApplication):
 <ul> 
 <li><a href="/server/metadata/get?url=http://doc.rero.ch/record/9264/export/xd?"><b>Simple Dublin Core.</b></a>
 <li><a
-href="/server/metadata/get?url=http://doc.rero.ch/lm.php?url=1000,40,6,20091106095458-OI/2009INFO006.pdf"><b>Simple Pdf.</b></a>
+href="/server/metadata/get?url=http://doc.rero.ch/record/12899/files/2009INFO006.pdf"><b>Simple Pdf.</b></a>
 <li><a
-href="/server/metadata/get?url=http://doc.rero.ch/record/12703/export/xd?"><b>Dublin
+href="/server/metadata/get?url=http://doc.rero.ch/record/261080/export/xd?"><b>Dublin
 Core with Pdfs inside..</b></a>
 </ul>
 
@@ -84,16 +84,16 @@ Core with Pdfs inside..</b></a>
 </ul>
 <h4>Examples Pdf:</h4>
 <ul> 
-<li><a href="/server/metadata/get?url=http://doc.rero.ch/lm.php?url=1000,40,4,20091104141001-BU/Th_FautschC.pdf"><b>PDF with TOC.</b></a>
+<li><a href="/server/metadata/get?url=http://doc.rero.ch/record/12891/files/Th_FautschC.pdf"><b>PDF with TOC.</b></a>
 </ul>
 
 <h3>GetLogicalStructure:</h3>
 <ul> 
 <li><a href="/server/structure/get_logical?url=http://doc.rero.ch/record/9264/export/xd?"><b>Simple Dublin Core.</b></a>
 <li><a
-href="/server/structure/get_logical?url=http://doc.rero.ch/lm.php?url=1000,40,6,20091106095458-OI/2009INFO006.pdf"><b>Simple Pdf.</b></a>
+href="/server/structure/get_logical?url=http://doc.rero.ch/record/12899/files/2009INFO006.pdf"><b>Simple Pdf.</b></a>
 <li><a
-href="/server/structure/get_logical?url=http://doc.rero.ch/record/12703/export/xd?"><b>Dublin
+href="/server/structure/get_logical?url=http://doc.rero.ch/record/261080/export/xd?"><b>Dublin
 Core with Pdfs inside..</b></a>
 </ul>
 
@@ -108,16 +108,16 @@ Core with Pdfs inside..</b></a>
 </ul>
 <h4>Examples Pdf:</h4>
 <ul> 
-<li><a href="/server/structure/get_logical?url=http://doc.rero.ch/lm.php?url=1000,40,4,20091104141001-BU/Th_FautschC.pdf"><b>PDF with TOC.</b></a>
+<li><a href="/server/structure/get_logical?url=http://doc.rero.ch/record/12891/files/Th_FautschC.pdf"><b>PDF with TOC.</b></a>
 </ul>
 
 <h3>GetPhysicalStructure:</h3>
 <ul> 
 <li><a href="/server/structure/get_physical?url=http://doc.rero.ch/record/9264/export/xd?"><b>Simple Dublin Core.</b></a>
 <li><a
-href="/server/structure/get_physical?url=http://doc.rero.ch/lm.php?url=1000,40,6,20091106095458-OI/2009INFO006.pdf"><b>Simple Pdf.</b></a>
+href="/server/structure/get_physical?url=http://doc.rero.ch/record/12899/files/2009INFO006.pdf"><b>Simple Pdf.</b></a>
 <li><a
-href="/server/structure/get_physical?url=http://doc.rero.ch/record/12703/export/xd?"><b>Dublin
+href="/server/structure/get_physical?url=http://doc.rero.ch/record/261080/export/xd?"><b>Dublin
 Core with Pdfs inside..</b></a>
 </ul>
 
@@ -132,7 +132,7 @@ Core with Pdfs inside..</b></a>
 </ul>
 <h4>Examples Pdf:</h4>
 <ul> 
-<li><a href="/server/structure/get_physical?url=http://doc.rero.ch/lm.php?url=1000,40,4,20091104141001-BU/Th_FautschC.pdf"><b>PDF with TOC.</b></a>
+<li><a href="/server/structure/get_physical?url=http://doc.rero.ch/record/261080/files/14-DEZA_Jahresbericht_2016_inkl_Statistik_FR.pdf"><b>PDF with TOC.</b></a>
 </ul>
 """
     

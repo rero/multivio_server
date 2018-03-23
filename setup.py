@@ -31,6 +31,6 @@ setup(
     'License :: OSI Approved :: Internal',
     ],
     install_requires=[
-        "Pillow>=3.0.0"
+        "Pillow==3.0.0"
     ]
 )

@@ -53,10 +53,10 @@ image.<br>
 <li><em>angle --integer--</em>  angle rotation. Default(0).
 </ul>
 <a
-href="/server/document/render?max_width=400&max_height=400&angle=0&url=http://doc.rero.ch/lm.php?url=1000,10,2,20080701134109-FH/Braune_MWK_tab1a.jpg"><b>Image
+href="/server/document/render?max_width=400&max_height=400&angle=0&url=http://doc.rero.ch/record/9495/files/Braune_MWK_tab1a.jpg"><b>Image
 example.</b></a><br>
 <a
-href="/server/document/render?max_width=800&max_height=400&angle=0&page_nr=2&url=http://doc.rero.ch/lm.php?url=1000,43,4,20070117103715-FR/Dufaux_Alain_-_Automatic_sound_detection_and_recognition_20070117.pdf"><b>PDF
+href="/server/document/render?max_width=800&max_height=400&angle=0&page_nr=2&url=http://doc.rero.ch/record/6295/files/Dufaux_Alain_-_Automatic_sound_detection_and_recognition_20070117.pdf"><b>PDF
 example.</b></a>
 
 <h4>search</h4>Search a PDF file and return results in a dictionary structure.<br>
@@ -72,7 +72,7 @@ Default(0).
 <li><em>angle --integer--</em> angle of display in degrees. Default(0).
 </ul>
 <a
-href="/server/document/search?query=test&angle=0&max_results=15&context_size=10&url=http://doc.rero.ch/lm.php?url=1000,43,2,20100916082754-BW/cel_mas.pdf"><b>Search example.</b></a><br>
+href="/server/document/search?query=test&angle=0&max_results=15&context_size=10&url=http://doc.rero.ch/record/20430/files/cel_mas.pdf"><b>Search example.</b></a><br>
 
 <h4>get_text</h4>Return the text contained inside the selected area.<br>
 <b>Arguments:</b>
@@ -84,7 +84,7 @@ href="/server/document/search?query=test&angle=0&max_results=15&context_size=10&
 <li><em>x2 --integer--</em> x-coordinate of bottom-right point of selected area. Default(0).
 <li><em>y2 --integer--</em> y-coordinate of bottom-right point of selected area. Default(0).
 </ul>
-<a href="/server/document/get_text?page_nr=68&x1=395&y1=347&x2=600&y2=358&url=http://doc.rero.ch/lm.php?url=1000,10,38,20100803165622-EB/2008_-_Rapport_du_groupe_de_travail_du_cio_pour_acceptation_des_candidatures_-_fre.pdf"><b>Get text example.</b></a>
+<a href="/server/document/get_text?page_nr=3&x1=395&y1=347&x2=600&y2=358&url=http://doc.rero.ch/record/261080/files/14-DEZA_Jahresbericht_2016_inkl_Statistik_FR.pdf"><b>Get text example.</b></a>
 
 <h4>get_indexing</h4>Returns index of a range of pages of the document.<br>
 If a range of pages is specified with 'from' and 'to', 'page_nr' is ignored. Else, page number is used.<br/>
@@ -95,8 +95,8 @@ If a range of pages is specified with 'from' and 'to', 'page_nr' is ignored. Els
 <li><em>from --integer--</em> start page to get indexing of a range of pages. Default(1).
 <li><em>to --integer--</em> end page to get indexing of a range of pages. Default(&lt;number_of_pages&gt;).
 </ul>
-<a href="/server/document/get_indexing?page_nr=1&url=http://doc.rero.ch/lm.php?url=1000,10,38,20100803165622-EB/2008_-_Rapport_du_groupe_de_travail_du_cio_pour_acceptation_des_candidatures_-_fre.pdf"><b>Example with a page.</b></a><br/>
-<a href="/server/document/get_indexing?from=3&to=6&url=http://doc.rero.ch/lm.php?url=1000,10,38,20100803165622-EB/2008_-_Rapport_du_groupe_de_travail_du_cio_pour_acceptation_des_candidatures_-_fre.pdf"><b>Example with a range of pages.</b></a>
+<a href="/server/document/get_indexing?page_nr=1&url=http://doc.rero.ch/record/261080/files/14-DEZA_Jahresbericht_2016_inkl_Statistik_FR.pdf"><b>Example with a page.</b></a><br/>
+<a href="/server/document/get_indexing?from=3&to=6&url=http://doc.rero.ch/record/261080/files/14-DEZA_Jahresbericht_2016_inkl_Statistik_FR.pdf"><b>Example with a range of pages.</b></a>
 
 """
 
